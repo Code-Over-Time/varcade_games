@@ -1,0 +1,95 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: varcade-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/websocket-services: game-rps
+    nginx.org/websocket-services: game-rps
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - api.varcade-games.com
+    - varcade-games.com
+    - matchmaker.varcade-games.com
+    - games.varcade-games.com
+    - rps.varcade-games.com
+    secretName: varcade-tls
+  rules:
+  - host: "api.varcade-games.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: game-portal
+            port:
+              number: 8000
+      - pathType: Prefix
+        path: "/static"
+        backend:
+          service:
+            name: game-portal-static
+            port:
+              number: 8001
+      - pathType: Prefix
+        path: "/media"
+        backend:
+          service:
+            name: game-portal-static
+            port:
+              number: 8001
+  - host: "varcade-games.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: game-portal-client
+            port:
+              number: 8002
+  - host: "matchmaker.varcade-games.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: matchmaker
+            port:
+              number: 5050
+  - host: "games.varcade-games.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: game-rps-client
+            port:
+              number: 8090
+  - host: "rps.varcade-games.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: game-rps
+            port:
+              number: 8085
+  - host: "grafana.varcade-games.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000

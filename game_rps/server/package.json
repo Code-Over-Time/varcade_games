@@ -1,0 +1,36 @@
+{
+ "name": "game_rps_server",
+ "dependencies": {
+  "cors": "^2.8.5",
+  "express": "",
+  "express-prom-bundle": "^6.3.6",
+  "fs": "0.0.1-security",
+  "http": "0.0.1-security",
+  "prom-client": "^13.1.0",
+  "redis": "^3.0.2",
+  "ws": "7.3.1",
+  "rps-game-engine": "file:../game_engine/"
+ },
+ "scripts": {
+  "game_rps": "node index.js",
+  "game_rps_test": "NODE_ENV=development node index.js",
+  "game_rps_debug": "NODE_ENV=development nodemon index.js",
+  "lint": "eslint ./",
+  "lint-fix": "eslint ./ --fix",
+  "test": "NODE_ENV=test mocha tests/*.js --exit"
+ },
+ "devDependencies": {
+  "chai": "^4.3.0",
+  "chai-http": "^4.3.0",
+  "eslint": "^7.19.0",
+  "winston": "^3.3.3",
+  "morgan": "^1.10.0",
+  "morgan-json": "^1.1.0",
+  "eslint-config-standard": "^16.0.2",
+  "eslint-plugin-import": "^2.22.1",
+  "eslint-plugin-node": "^11.1.0",
+  "eslint-plugin-promise": "^4.2.1",
+  "mocha": "^8.2.1",
+  "nodemon": "^2.0.7"
+ }
+}

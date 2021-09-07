@@ -1,0 +1,89 @@
+{
+	"sceneAssets": {
+
+		"global": {
+			"packed_textures": {
+				"global_texture": "global",
+				"{characterId}_battle": "{characterId}_battle"
+			},
+			"audio": {
+				"bgMusic": "audio/battle.wav",
+				"gameplayMusic": "audio/title_music.wav",
+				"bossMusic": "audio/boss.wav",
+				"heavyImpact": "audio/heavy_impact.wav",
+				"impact": "audio/impact.wav",
+				"punch": "audio/punch.wav",
+				"beep": "audio/beep.wav"
+			}
+		},
+
+		"mainMenu": {
+			"images": {
+				"mainMenuBg": "backgrounds/main_menu.png"
+			}
+		},
+
+		"storyIntro": {
+			"images": {
+
+			},
+			"audio": {
+
+			}
+		},
+
+		"characterSelect": {
+			"images": {
+				"charSelectionBg": "backgrounds/character_select_bg.png"
+			},
+			"audio": {
+				"charSelectEffect": "audio/woosh.wav"
+			}
+		},
+
+		"characterIntro": {
+			"images": {
+
+			},
+			"audio": {
+
+			}
+		},
+
+		"vsScene": {
+			"images": {
+				"vsScreenTear": "backgrounds/vs_screen_tear.png"
+			},
+			"audio": {
+
+			}
+		},
+
+		"fightScene": {
+			"images": {
+			},
+			"audio": {
+
+			}
+		},
+
+		"postFightScene": {
+			"images": {
+
+			},
+			"audio": {
+
+			}
+		},
+
+		"gameOverScene": {
+			"images": {
+
+			},
+			"audio": {
+
+			}
+		}
+
+	}
+}

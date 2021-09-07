@@ -1,0 +1,23 @@
+FROM python:3.7-alpine
+ENV PYTHONUNBUFFERED 1
+
+RUN apk add bash
+RUN apk add vim
+RUN apk add redis
+RUN apk add build-base
+
+RUN mkdir /matchmaker
+WORKDIR /matchmaker
+
+ADD matchmaker ./matchmaker/
+ADD tests ./tests/
+
+ADD requirements.txt ./
+ADD requirements_test.txt ./
+ADD requirements_dev.txt ./
+
+RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install -r requirements_test.txt
+RUN pip install -r requirements_dev.txt
+
+CMD redis-server

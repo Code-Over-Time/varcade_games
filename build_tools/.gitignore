@@ -1,0 +1,3 @@
+*.swp
+kompose
+.env.local

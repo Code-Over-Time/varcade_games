@@ -1,0 +1,14 @@
+env
+*.DS_Store
+*.pyc
+__pycache__
+*.swp
+Stopping
+*.coverage
+*.log
+*.pid
+.python-version
+server/game_portal/conftest.py
+server/game_portal/img/
+server/game_portal/media/
+

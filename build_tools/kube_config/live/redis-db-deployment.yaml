@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: redis-db
+  name: redis-db
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: redis-db
+  serviceName: redis-db
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: redis-db
+    spec:
+      containers:
+        - args:
+            - redis-server
+          image: redis:alpine
+          name: redis-db
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redis-persistent-storage
+              mountPath: /var/lib/redis
+          resources: {}
+      restartPolicy: Always
+      volumes:
+        - name: redis-persistent-storage
+          persistentVolumeClaim:
+            claimName: redis-pvc  

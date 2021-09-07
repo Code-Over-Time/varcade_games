@@ -1,0 +1,41 @@
+# my global config
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+  external_labels:
+      monitor: 'Alertmanager'
+
+scrape_configs:
+
+  - job_name: 'gameportal'
+    static_configs:
+      - targets: ['game-portal:8000']
+
+  - job_name: 'stats-tracker'
+    static_configs:
+      - targets: ['stats-tracker:5000']
+
+  - job_name: 'stats-tracker-worker'
+    static_configs:
+      - targets: ['stats-tracker-worker:5002']
+
+  - job_name: 'matchmaker'
+    static_configs:
+      - targets: ['matchmaker:5050']
+
+  - job_name: 'matchmaker-worker'
+    static_configs:
+      - targets: ['matchmaker-worker:5051']
+
+  - job_name: 'game-rps'
+    static_configs:
+      - targets: ['game-rps:8080']
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: cadvisor
+    static_configs:
+    - targets: ['cadvisor:9091']

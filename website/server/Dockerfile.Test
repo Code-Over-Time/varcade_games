@@ -1,0 +1,28 @@
+FROM python:3.7-alpine
+ENV PYTHONUNBUFFERED 1
+
+RUN apk add alpine-sdk
+RUN apk add bash
+RUN apk add vim
+RUN apk add redis
+RUN apk add mariadb-dev
+RUN apk add jpeg-dev
+RUN apk add libpng-dev
+
+
+RUN mkdir /test_game_portal
+RUN mkdir /test_game_portal/game_portal
+WORKDIR /test_game_portal
+
+ADD game_portal ./game_portal
+ADD tests ./tests
+ADD mypy.ini ./
+ADD requirements.txt ./
+ADD requirements_test.txt ./
+ADD requirements_dev.txt ./
+
+RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install -r requirements_test.txt
+RUN pip install -r requirements_dev.txt
+
+CMD redis-server

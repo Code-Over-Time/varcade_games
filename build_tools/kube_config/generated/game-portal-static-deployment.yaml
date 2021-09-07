@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config/generated
+    kompose.image-pull-policy: Never
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: game-portal-static
+  name: game-portal-static
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: game-portal-static
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config/generated
+        kompose.image-pull-policy: Never
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: game-portal-static
+    spec:
+      containers:
+        - image: game-portal-static:v1
+          imagePullPolicy: Never
+          name: game-portal-static
+          ports:
+            - containerPort: 8001
+          resources: {}
+      restartPolicy: Always
+status: {}

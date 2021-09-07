@@ -1,0 +1,70 @@
+version: '3.4'
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+
+services:
+  gameportaldb:  
+    environment:
+       MYSQL_PASSWORD: "${GAME_PORTAL_DB_PASSWORD}"
+       MYSQL_ROOT_PASSWORD: "${GAME_PORTAL_DB_PASSWORD}"
+  game-portal:
+    image: game-portal:v1
+    environment:
+      DJANGO_DEBUG: "False"
+  game-portal-client:
+    image: game-portal-client:v1
+    build: 
+      context: ${PROJECT_ROOT}/website/client
+      dockerfile: Dockerfile.prod
+  game-portal-static:
+    container_name: "game-portal-static"
+    image: game-portal-static:v1
+    build: 
+      context: ${PROJECT_ROOT}/website/server
+      network: host
+      dockerfile: Dockerfile.Static
+    ports:
+      - "8001:8001"
+    labels: 
+      kompose.image-pull-policy: Never
+  game-rps:
+    image: game-rps:v1
+  game-rps-client:
+    image: game-rps-client:v1
+    build: 
+      dockerfile: Dockerfile.client.prod
+  stats-tracker:
+    image: stats-tracker:v1
+    environment:
+      STATS_TRACKER_REDIS_URL: "redis://redis-db:6379/2"
+      EVENT_STREAM_URL: "redis://redis-db:6379/1"
+    build: 
+      args:
+        server_mode: production
+  stats-tracker-worker:
+    image: stats-tracker-worker:v1
+    environment:
+      STATS_TRACKER_REDIS_URL: "redis://redis-db:6379/2"
+      EVENT_STREAM_URL: "redis://redis-db:6379/1"
+    build: 
+      args:
+        server_mode: production
+  matchmaker:
+    image: matchmaker:v1
+    environment:
+      MATCHMAKER_DB_REDIS_URL: "redis://redis-db:6379/0"
+      MATCHMAKER_CACHE_REDIS_URL: "redis://redis-db:6379/3"
+    build: 
+      args:
+        server_mode: production
+  matchmaker-worker:
+    image: matchmaker-worker:v1
+    environment:
+      MATCHMAKER_DB_REDIS_URL: "redis://redis-db:6379/0"
+      MATCHMAKER_CACHE_REDIS_URL: "redis://redis-db:6379/3"
+      GAME_EVENT_STREAM_REDIS_URL: "redis://redis-db:6379/1"
+    build: 
+      args:
+        server_mode: production

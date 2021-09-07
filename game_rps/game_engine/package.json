@@ -1,0 +1,20 @@
+{
+  "name": "rps_game_engine",
+  "version": "0.0.1",
+  "description": "Extreme Rock Paper Scissors core game engine. Shared between client and server.",
+  "files": [
+    "src/*.js"
+  ],
+  "main": "src/exports.js",
+  "scripts": {
+    "lint": "eslint ./src",
+    "lint-fix": "eslint ./src --fix"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0"
+  }
+}

@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      
+      - name: Install Black
+        run: pip install black
+      
+      - name: Run black --check .
+        run: black --check .
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Test Image
+        run: |
+          make build_test_image
+          make run_test_image
+
+      - name: Run Tests
+        run: make run_tests
+
+      - name: Run Coverage
+        run: make run_coverage
+          
+      - name: Run Type Checking
+        run: make run_type_checking

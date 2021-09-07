@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config --volumes=configMap
+    kompose.image-pull-policy: Never
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: matchmaker-worker
+  name: matchmaker-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: matchmaker-worker
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config --volumes=configMap
+        kompose.image-pull-policy: Never
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: matchmaker-worker
+    spec:
+      containers:
+        - env:
+            - name: MATCHMAKER_DB_REDIS_URL
+              value: "redis://redis-db:6379/0"
+            - name: MATCHMAKER_CACHE_REDIS_URL
+              value: "redis://redis-db:6379/3"
+            - name: GAME_EVENT_STREAM_REDIS_URL
+              value: "redis://redis-db:6379/1"
+          image: registry.digitalocean.com/dev-varcade-games/matchmaker-worker:v1
+          imagePullPolicy: Always
+          name: matchmaker-worker
+          ports:
+            - containerPort: 5051
+          resources: {}
+      restartPolicy: Always
+status: {}

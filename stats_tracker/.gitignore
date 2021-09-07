@@ -1,0 +1,8 @@
+env
+*.DS_Store
+*.pyc
+__pycache__
+supervisord.log
+Stopping
+supervisord.pid
+.python-version

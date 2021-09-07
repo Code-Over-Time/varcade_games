@@ -1,0 +1,2 @@
+class InvalidProductIdError(ValueError):
+    pass

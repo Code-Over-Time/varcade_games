@@ -1,0 +1,17 @@
+FROM python:3.7-alpine
+ENV PYTHONUNBUFFERED 1
+
+RUN apk add bash
+RUN apk add vim
+
+RUN mkdir /matchmaker
+WORKDIR /matchmaker
+
+ADD matchmaker ./
+ADD requirements.txt ./
+
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+ARG server_mode=development
+ENV SERVER_MODE=$server_mode
+CMD python game_worker.py -m $SERVER_MODE

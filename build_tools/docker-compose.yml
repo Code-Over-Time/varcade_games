@@ -1,0 +1,173 @@
+version: '3.4'
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+
+services:
+  gameportaldb:  
+    container_name: "gameportaldb"
+    image: mysql:5.7
+    ports:  
+      - "3306:3306"
+    environment:
+       MYSQL_DATABASE: "${GAME_PORTAL_DB}"
+       MYSQL_USER: ""
+       MYSQL_PASSWORD: "${GAME_PORTAL_DB_PASSWORD}"
+       MYSQL_ROOT_PASSWORD: "${GAME_PORTAL_DB_PASSWORD}"
+  redis-db:
+    container_name: "redis-db"
+    image: redis:alpine
+    command: redis-server
+    ports:
+      - "6379:6379"
+  game-portal:
+    container_name: "game-portal"
+    image: game-portal
+    build: 
+      context: ${PROJECT_ROOT}/website/server
+      network: host
+    ports:
+      - "8000:8000"
+    depends_on:
+      - gameportaldb
+      - redis-db
+    volumes:
+      - ${PROJECT_ROOT}/website/server/game_portal:/game_portal:Z
+    labels: 
+      kompose.image-pull-policy: Never
+  game-portal-client:
+    container_name: "game-portal-client"
+    image: "game-portal-client"
+    build: 
+      context: ${PROJECT_ROOT}/website/client
+      network: host
+    ports:
+      - "8002:8002"
+    volumes:
+      - /game_portal_client/node_modules
+      - ${PROJECT_ROOT}/website/client:/game_portal_client:Z
+    labels: 
+      kompose.image-pull-policy: Never
+  game-rps:
+    container_name: "game-rps"
+    image: "game-rps"
+    build: 
+      context: ${PROJECT_ROOT}/game_rps
+      network: host
+      dockerfile: Dockerfile.server
+    ports:
+      - "8080:8080"
+      - "8085:8085"
+    volumes:
+      - /usr/app/game_rps/server/node_modules
+      - ${PROJECT_ROOT}/game_rps/server:/usr/app/game_rps/server:Z
+    labels: 
+      kompose.image-pull-policy: Never
+  game-rps-client:
+    container_name: "game-rps-client"
+    image: "game-rps-client"
+    build: 
+      context: ${PROJECT_ROOT}/game_rps
+      dockerfile: Dockerfile.client
+      network: host
+    ports:
+      - "8090:8090"
+    volumes:
+      - /game_rps/client/node_modules
+      - ${PROJECT_ROOT}/game_rps/client/src:/game_rps/client/src:Z
+      - ${PROJECT_ROOT}/game_rps/game_engine:/game_rps/client/node_modules/rps-game-engine:Z
+    labels: 
+      kompose.image-pull-policy: Never
+  stats-tracker:
+    container_name: "stats-tracker"
+    image: "stats-tracker"
+    build: 
+      context: ${PROJECT_ROOT}/stats_tracker
+      network: host
+    ports:
+      - "5000:5000"
+    depends_on: 
+      - redis-db
+    volumes:
+      - ${PROJECT_ROOT}/stats_tracker/stats_tracker:/stats_tracker:Z
+    labels: 
+      kompose.image-pull-policy: Never
+  stats-tracker-worker:
+    container_name: "stats-tracker-worker"
+    image: "stats-tracker-worker"
+    build: 
+      context: ${PROJECT_ROOT}/stats_tracker
+      network: host
+      dockerfile: Dockerfile.Worker
+    ports:
+      - "5002:5002"  # Metrics
+    depends_on: 
+      - redis-db
+    labels: 
+      kompose.image-pull-policy: Never
+  matchmaker:
+    container_name: "matchmaker"
+    image: "matchmaker"
+    build: 
+      context: ${PROJECT_ROOT}/matchmaker
+      network: host
+    ports:
+      - "5050:5050"
+    depends_on:
+      - redis-db
+    volumes:
+      - ${PROJECT_ROOT}/matchmaker/matchmaker:/matchmaker:Z
+    labels: 
+      kompose.image-pull-policy: Never
+  matchmaker-worker:
+    container_name: "matchmaker-worker"
+    image: "matchmaker-worker"
+    build: 
+      context: ${PROJECT_ROOT}/matchmaker
+      network: host
+      dockerfile: Dockerfile.Worker
+    ports:
+      - "5051:5051"
+    depends_on:
+      - redis-db
+      - matchmaker
+    labels: 
+      kompose.image-pull-policy: Never
+  prometheus:
+    container_name: "prometheus"
+    image: prom/prometheus:v2.0.0
+    volumes:
+      - ./prometheus/:/etc/prometheus/:Z
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+  grafana:
+    container_name: "grafana"
+    image: grafana/grafana
+    ports:
+      - 3001:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+    env_file:
+      - config.monitoring
+    depends_on:
+      - prometheus
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    privileged: true
+    ports:
+    - 9091:8080
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    depends_on:
+    - redis-db

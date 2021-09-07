@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html style="display: table; margin: auto;">
+    
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <meta content='width=device-width, initial-scale=1' name='viewport'/>
+
+        <title>
+            Rock Paper Scissors Apocalypse
+        </title>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+              integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+              crossorigin="anonymous"></script>
+    </head>
+
+    <body style="background: black; color:white; margin: auto; padding-top: 5em; display: table-cell; vertical-align: middle;">
+    
+        <div>
+
+            <div id="gameContainer" style="border: solid 1px red;"></div>
+        
+            <div id="playerInfo" style="display: none;">
+                <h2>Your Player Info</h2>
+                <label style="margin-right: 2em;">User ID:</label>
+                <input style="margin-right: 2em;" type="text" id="userId"></input>
+                <input type="button" name="submit" value="Select Name" id="setUsername"> 
+                <hr/>
+            </div>
+
+            <div id="currentPlayer" style="display: none;">
+                <h2>Player: <span id="currentPlayerName"></span></h2>
+            </div>
+
+            <div id="createGame" style="display: none;">
+                <h2>Create A New Game</h2>
+            
+                <form id="createGameForm">
+                    <table cellspacing="1em">
+                    
+                        <tr>
+                            <td>
+                                <label>Game ID:&nbsp;</label>
+                            </td>
+                            <td>
+                             <input type="text" id="gameId"></input><br/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" style="text-align: center;padding: 1em;">
+                                <input type="button" name="submit" value="Create Game" id="submitGame"> 
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            
+                <hr/>
+            
+            </div>
+
+            <div id="activeGames" style="display: none;">
+                <h2>Active Games</h2>
+                <p id="noActiveGames">No active games to display</p>
+                <ul id="activeGamesList">
+                </ul>
+                <input type="button" name="fetchLobby" value="Get Available Games" id="refreshGamesList">
+            </div>
+            <hr/>
+            <p style="color: white; text-align: right; padding-top: 1em;">
+                RPS Standalone Test Client v0.0.1
+            </p>
+
+        </div>
+
+        <!-- Our Debug matchmaker and UI so the client can run standalone -->
+        <script>
+
+            class Matchmaker {
+
+                showMatchmaker (tokenListener) {
+                    console.log("Matchmaker: Called 'showMatchmaker.");
+                    this.tokenListener = tokenListener;
+                    $('#playerInfo').show();
+                }
+
+                createGame (onSuccess, onError) {
+                    console.log("Creating a new game...");
+                    const _mm = this;
+                    var formData = JSON.stringify($("#createGameForm").serializeArray());
+                    $.ajax({
+                        type :'POST',
+                        url : 'http://localhost:8080/create_game',
+                        cache: false,
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            gameId: $('#gameId').val(),
+                            userId: window.getMatchmaker().userId,
+                            username: window.getMatchmaker().userId
+                        }),
+                        success: function(response) {
+                            _mm.getOpenGameList();
+                            _mm.tokenListener('localhost:8085', 
+                                window.getMatchmaker().userId, response.gameToken);
+                        },
+                        error: function(req, status, error) {
+                            const errorMsg = req.status + ' , ' + req.responseJSON.message
+                            console.log("Unable create a new game. Error: " + errorMsg)
+                        }
+                    });
+                }
+
+                joinGame(targetGameId, onSuccess, onError) {
+                    console.log('Sending join request, Game ID => ' + targetGameId);
+                    const _mm = this;
+                    $.ajax({
+                        type :'POST',
+                        url : 'http://localhost:8080/join_game',
+                        cache: false,
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            gameId: targetGameId,
+                            userId: window.getMatchmaker().userId,
+                            username: window.getMatchmaker().userId
+                        }),
+                        success: function(response) {
+                            _mm.tokenListener('localhost:8085', 
+                                window.getMatchmaker().userId, response.gameToken);
+                        },
+                        error: function(req, status, error) {
+                            const errorMsg = req.status + ' , ' + req.responseJSON.message
+                            console.log("Unable join game. Error: " + errorMsg)
+                        }
+                    });
+                }
+
+                getOpenGameList(onSuccess, onError) {
+                    const _mm = this;
+                    $.ajax({
+                        type :'GET',
+                        url : 'http://localhost:8080/active_games',
+                        cache: false,
+                        contentType: 'application/json',
+                        success: function(response) {
+
+                            $("#activeGamesList").empty();
+                            for (var i = 0; i < response.length; i++) {
+                                var gameId = response[i];
+                                console.log("Adding game to game list: " + gameId);
+                                $("#activeGamesList").append(
+                                    "<li><span>" + gameId + 
+                                    "<span>&emsp;<a href='#' id='" + 
+                                    gameId + "'>Join>>></a></li>"
+                                );
+                                
+                                (function addJoinCallback (gameToJoin) {
+                                    $("a#" + gameToJoin).click(function (){
+                                        _mm.joinGame(gameToJoin, userId);
+                                    })
+                                }) (gameId);
+                            }
+                            if (response.length > 0) {
+                                $("#activeGamesList").show();
+                                $("#noActiveGames").hide();
+                            }
+                        },
+                        error: function(req, status, error) {
+                            const errorMsg = req.status + ' , ' + req.responseJSON.message
+                            console.log("Unable to fetch active game list. Error: " + errorMsg)
+                        }
+                    });
+                }
+            }
+
+            const matchmaker = new Matchmaker();
+            window.getMatchmaker = function() {
+                return matchmaker;
+            }
+
+            $(document).ready(function(){
+
+                $('#setUsername').click(function () {
+                    const userName = $('#userId').val();
+                    
+                    $('#currentPlayer').show();
+                    $('#currentPlayerName').text(userName);
+                    
+                    $('#playerInfo').hide();
+                    $('#activeGames').show();
+                    $('#createGame').show();
+
+                    matchmaker.userId = userName;
+                    matchmaker.getOpenGameList();
+                })
+
+                $('#submitGame').click(function(){
+                    matchmaker.createGame(response => {
+                        console.log('Matchmaker create game successful.')
+                    }, error => {
+                        console.log('Matchmaker create game failed. Check logs for more info.')
+                    });
+                });
+
+            });
+
+        </script>
+
+    </body>
+
+</html>
+

@@ -1,0 +1,194 @@
+services:
+  game-portal:
+    build:
+      context: /home/kev/Projects/rwl/website
+      network: host
+    container_name: game-portal
+    depends_on:
+      - gameportaldb
+    environment:
+      DJANGO_DEBUG: "False"
+    image: game-portal:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 8000
+      target: 8000
+  game-portal-client:
+    build:
+      context: /home/kev/Projects/rwl/website/web_portal_client
+      dockerfile: Dockerfile.prod
+      network: host
+    container_name: game-portal-client
+    image: game-portal-client:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 8002
+      target: 8002
+  game-portal-static:
+    build:
+      context: /home/kev/Projects/rwl/website
+      dockerfile: Dockerfile.Static
+      network: host
+    container_name: game-portal-static
+    image: game-portal-static:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 8001
+      target: 8001
+  game-rps:
+    build:
+      context: /home/kev/Projects/rwl/game_rps
+      dockerfile: Dockerfile.server
+      network: host
+    container_name: game-rps
+    image: game-rps:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 8080
+      target: 8080
+    - published: 8085
+      target: 8085
+  game-rps-client:
+    build:
+      context: /home/kev/Projects/rwl/game_rps
+      dockerfile: Dockerfile.client.prod
+      network: host
+    container_name: game-rps-client
+    image: game-rps-client:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 8090
+      target: 8090
+  gameportaldb:
+    container_name: gameportaldb
+    environment:
+      MYSQL_DATABASE: game_portal
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: ''
+    image: mysql:5.7
+    ports:
+    - published: 3306
+      target: 3306
+  grafana:
+    container_name: grafana
+    depends_on:
+      - prometheus
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: password
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    image: grafana/grafana
+    ports:
+    - published: 3001
+      target: 3000
+    volumes:
+    - grafana_data:/var/lib/grafana:rw
+  matchmaker:
+    build:
+      args:
+        server_mode: production
+      context: /home/kev/Projects/rwl/matchmaker
+      network: host
+    container_name: matchmaker
+    depends_on:
+      - redis-db
+    environment:
+      MATCHMAKER_CACHE_REDIS_URL: redis://redis-db:6379/3
+      MATCHMAKER_DB_REDIS_URL: redis://redis-db:6379/0
+    image: matchmaker:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 5050
+      target: 5050
+  matchmaker-worker:
+    build:
+      args:
+        server_mode: production
+      context: /home/kev/Projects/rwl/matchmaker
+      dockerfile: Dockerfile.Worker
+      network: host
+    container_name: matchmaker-worker
+    depends_on:
+      - matchmaker
+      - redis-db
+    environment:
+      GAME_EVENT_STREAM_REDIS_URL: redis://redis-db:6379/1
+      MATCHMAKER_CACHE_REDIS_URL: redis://redis-db:6379/3
+      MATCHMAKER_DB_REDIS_URL: redis://redis-db:6379/0
+    image: matchmaker-worker:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 5051
+      target: 5051
+  prometheus:
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    - --storage.tsdb.path=/prometheus
+    - --web.console.libraries=/usr/share/prometheus/console_libraries
+    - --web.console.templates=/usr/share/prometheus/consoles
+    container_name: prometheus
+    image: prom/prometheus:v2.0.0
+    ports:
+    - published: 9090
+      target: 9090
+    volumes:
+    - /home/kev/Projects/rwl/build_tools/prometheus:/etc/prometheus:Z
+    - prometheus_data:/prometheus:rw
+  redis-db:
+    command: redis-server
+    container_name: redis-db
+    image: redis:alpine
+    ports:
+    - published: 6379
+      target: 6379
+  stats-tracker:
+    build:
+      args:
+        server_mode: production
+      context: /home/kev/Projects/rwl/stats_tracker
+      network: host
+    container_name: stats-tracker
+    depends_on:
+      - redis-db
+    environment:
+      EVENT_STREAM_URL: redis://redis-db:6379/1
+      STATS_TRACKER_REDIS_URL: redis://redis-db:6379/2
+    image: stats-tracker:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 5000
+      target: 5000
+    - published: 5001
+      target: 5001
+  stats-tracker-worker:
+    build:
+      args:
+        server_mode: production
+      context: /home/kev/Projects/rwl/stats_tracker
+      dockerfile: Dockerfile.Worker
+      network: host
+    container_name: stats-tracker-worker
+    depends_on:
+      - redis-db
+    environment:
+      EVENT_STREAM_URL: redis://redis-db:6379/1
+      STATS_TRACKER_REDIS_URL: redis://redis-db:6379/2
+    image: stats-tracker-worker:v1
+    labels:
+      kompose.image-pull-policy: Never
+    ports:
+    - published: 5002
+      target: 5002
+version: '3.4'
+volumes:
+  grafana_data: {}
+  prometheus_data: {}
+

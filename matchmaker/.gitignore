@@ -1,0 +1,9 @@
+env
+*.DS_Store
+*.pyc
+__pycache__
+*.swp
+Stopping
+.python-version
+*.log
+*.pid

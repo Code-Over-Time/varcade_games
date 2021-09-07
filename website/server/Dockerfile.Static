@@ -1,0 +1,4 @@
+# A very basic image that will just mount a persistent volume and server static files
+FROM nginx
+RUN mkdir -p /www/game_portal/data
+COPY nginx.static.conf /etc/nginx/nginx.conf	

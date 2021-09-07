@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config/generated
+    kompose.image-pull-policy: Never
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: stats-tracker-worker
+  name: stats-tracker-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: stats-tracker-worker
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config/generated
+        kompose.image-pull-policy: Never
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: stats-tracker-worker
+    spec:
+      containers:
+        - env:
+            - name: STATS_TRACKER_REDIS_URL
+              value: "redis://redis-db:6379/2"
+            - name: GAME_EVENT_STREAM_REDIS_URL
+              value: "redis://redis-db:6379/1"
+          image: registry.digitalocean.com/dev-varcade-games/stats-tracker-worker:v1
+          imagePullPolicy: Always
+          name: stats-tracker-worker
+          ports:
+            - containerPort: 5002
+          resources: {}
+      restartPolicy: Always
+status: {}

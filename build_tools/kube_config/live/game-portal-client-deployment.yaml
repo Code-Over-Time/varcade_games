@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config --volumes=configMap
+    kompose.image-pull-policy: Never
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: game-portal-client
+  name: game-portal-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: game-portal-client
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config --volumes=configMap
+        kompose.image-pull-policy: Never
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: game-portal-client
+    spec:
+      containers:
+        - args:
+          image: registry.digitalocean.com/dev-varcade-games/game-portal-client:v1
+          imagePullPolicy: Always
+          name: game-portal-client
+          ports:
+            - containerPort: 8002
+          resources: {}
+      restartPolicy: Always
+status: {}

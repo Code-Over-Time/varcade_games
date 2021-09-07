@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config --volumes=configMap
+    kompose.image-pull-policy: Never
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: game-rps
+  name: game-rps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: game-rps
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-resolved.yaml -o ./kube_config --volumes=configMap
+        kompose.image-pull-policy: Never
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: game-rps
+    spec:
+      containers:
+        - image: registry.digitalocean.com/dev-varcade-games/game-rps:v1
+          imagePullPolicy: Always
+          name: game-rps
+          ports:
+            - containerPort: 8080
+            - containerPort: 8085
+          resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,22 @@
+{
+    "stat_ordering": [
+        "games",
+        "wins",
+        "losses",
+        "rock_selection_count",
+        "paper_selection_count",
+        "scissors_selection_count",
+        "botch_selection_count"
+    ],
+    "strings": {
+        "en": {
+            "botch_selection_count": "No selection",
+            "paper_selection_count": "Paper Selections",
+            "rock_selection_count": "Rock Selections",
+            "scissors_selection_count": "Scissors Selections",
+            "games": "Games played",
+            "wins": "Games Won",
+            "losses": "Games Lost"
+        }
+    }
+}
