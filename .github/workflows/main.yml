@@ -9,6 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
+  # Varcade Games Portal
   vcg-server-linter:
     runs-on: ubuntu-latest
     defaults:
@@ -48,6 +49,148 @@ jobs:
     defaults:
       run:
         working-directory: ./website/server
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Test Image
+        run: |
+          make build_test_image
+          make run_test_image
+
+      - name: Run Tests
+        run: make run_tests
+
+      - name: Run Coverage
+        run: make run_coverage
+          
+      - name: Run Type Checking
+        run: make run_type_checking
+
+  # Rock Paper Scissors Apocalypse
+  rps-server-linter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./game_rps/server
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name:  Run linter
+        run: npm run lint
+
+  rps-server-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./game_rps/server
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name:  Run linter
+        run: npm run test
+  
+  rps-client-linter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./game_rps/client
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name:  Run linter
+        run: npm run lint
+  
+  rps-game-engine-linter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./game_rps/game_engine
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name:  Run linter
+        run: npm run lint
+
+  # Matchmaker
+  matchmaker-linter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./matchmaker
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      
+      - name: Install Black
+        run: pip install black
+      
+      - name: Run black --check .
+        run: black --check .
+  
+  matchmaker-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./matchmaker
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Test Image
+        run: |
+          make build_test_image
+          make run_test_image
+
+      - name: Run Tests
+        run: make run_tests
+
+      - name: Run Coverage
+        run: make run_coverage
+          
+      - name: Run Type Checking
+        run: make run_type_checking
+
+  # Stats Tracker
+  stats-tracker-linter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./stats_tracker
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      
+      - name: Install Black
+        run: pip install black
+      
+      - name: Run black --check .
+        run: black --check .
+  stats-tracker-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./stats_tracker
 
     steps:
       - uses: actions/checkout@v2
