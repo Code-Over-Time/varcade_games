@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
-          python-version: 3.7
+          python-version: 3.8.3
       
       - name: Install Black
         run: pip install black
@@ -136,10 +136,10 @@ jobs:
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
-          python-version: 3.7
+          python-version: 3.8.3
       
-      - name: Install Black
-        run: pip install black
+      - name: Install dev dependencies
+        run: pip install -r requirements_dev.txt
       
       - name: Run black --check .
         run: black --check .
@@ -179,10 +179,10 @@ jobs:
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
-          python-version: 3.7
+          python-version: 3.8.3
       
-      - name: Install Black
-        run: pip install black
+      - name: Install dev dependencies
+        run: pip install -r requirements_dev.txt
       
       - name: Run black --check .
         run: black --check .
