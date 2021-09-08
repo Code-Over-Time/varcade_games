@@ -3,7 +3,6 @@ FROM node:lts-alpine
 RUN apk add bash
 RUN apk add git
 
-
 RUN mkdir /game_rps
 RUN mkdir /game_rps/client
 WORKDIR /game_rps
@@ -17,6 +16,7 @@ ADD client/index.html ./client
 ADD client/.babelrc ./client
 
 WORKDIR client
+RUN npm update
 RUN npm install
 
 CMD npm run start

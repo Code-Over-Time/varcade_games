@@ -16,6 +16,7 @@ ADD server/index.js .
 ADD server/game_server ./game_server
 
 
+RUN npm update
 RUN npm install --quiet
 RUN npm install supervisor -g
 
