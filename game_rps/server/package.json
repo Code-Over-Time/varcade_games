@@ -7,8 +7,8 @@
   "fs": "0.0.1-security",
   "http": "0.0.1-security",
   "prom-client": "^13.1.0",
-  "redis": "^3.0.2",
-  "ws": "7.3.1",
+  "redis": "^3.1.1",
+  "ws": "7.4.6",
   "rps-game-engine": "file:../game_engine/"
  },
  "scripts": {
