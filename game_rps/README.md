@@ -99,6 +99,7 @@ Once you've got that up and running you can add a new game via the admin panel a
 * Desc: A fun but intense online multi player version of the classic game Rock Paper Scissors
 * Client url: http://localhost:8090/main.js
 * Cover art: Upload the file `exrps_cover.png` from `game_rps/client/assets/`
+* Stats config: Upload the file `exrps_stats.json` from `game_rps/client/assets/`
 * Game type: MultiAndSinglePlayer
 * Game State: Active
 
