@@ -60,6 +60,7 @@ Vue.component('wp-info-board', require('./components/wp-info-board.vue').default
 Vue.component('wp-game-list', require('./components/wp-game-list.vue').default)
 Vue.component('wp-login-register', require('./components/wp-login-register.vue').default)
 Vue.component('wp-top-bar', require('./components/wp-top-bar.vue').default)
+Vue.component('wp-footer', require('./components/wp-footer.vue').default)
 Vue.component('wp-matchmaker', require('./components/wp-matchmaker.vue').default)
 Vue.component('wp-player-stats', require('./components/wp-player-stats.vue').default)
 Vue.component('wp-game-leaderboard', require('./components/wp-game-leaderboard.vue').default)

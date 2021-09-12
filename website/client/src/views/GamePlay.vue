@@ -19,7 +19,7 @@
             </div>
 
         </div>
-
+        <wp-footer/>
     </div>
 
 </template>
