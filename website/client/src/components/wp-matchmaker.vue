@@ -8,7 +8,7 @@
                 :scrollable="false"
                 :reset="true">
 
-            <div id="modelContent">
+            <div id="modelContent" onclick="event.stopPropagation();">
                 
                 <div class="container">
                 
@@ -20,30 +20,30 @@
                     
                     </div>
 
-                    <div class="game-list row">
-                          
-                          <div v-if="openGames.length > 0" class="game-list-container">
-                                <div class="row game-entry" v-for="game in openGames" :key="game.game_id">
-                                    <div class="col-1">
-                                        <font-awesome-icon :icon="icoPlayerVS" size="2x"/>
-                                    </div>
-                                    <div class="col">
-                                        <h4> {{ game.creator_name }}</h4>
-                                    </div>                                            
-                                    <div class="col-4">
-                                        <button type="button" 
-                                                class="btn btn-custom btn-block" 
-                                                @click=joinGame(game.game_id)>
-                                            FIGHT!
-                                        </button>
-                                    </div>
-                                    <hr/>
+                    <div class="row game-list" v-bind:class="(openGames.length == 0)?'game-list-empty':''">
+
+                        <div v-if="openGames.length > 0" class="game-list-container">
+                            <div class="row game-entry" v-for="game in openGames" :key="game.game_id">
+                                <div class="col-1">
+                                    <font-awesome-icon :icon="icoPlayerVS" size="2x"/>
                                 </div>
-                          </div>
-                          <div v-else>
+                                <div class="col">
+                                    <h4> {{ game.creator_name }}</h4>
+                                </div>                                            
+                                <div class="col-4">
+                                    <button type="button" 
+                                            class="btn btn-custom btn-block" 
+                                            @click=joinGame(game.game_id)>
+                                        Join Game
+                                    </button>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div v-else>
                             <h5>THERE ARE NO OPEN GAMES CURRENTLY AVAILABLE.</h5>
                             <h6>Select 'Create Game' to start your own game and wait for others to join.</h6>
-                          </div>
+                        </div>
 
                     </div>
 
@@ -126,7 +126,7 @@
             createGame: function () {
                 this.matchmaker.createGame(
                     response => {
-                        console.log('Game create => ' + response);
+                        console.log(`Create game => ${response}`);
                         this.$modal.hide('matchmaker-modal');
                         this.matchmaker.notifyJoinedGame(
                             response.target_game_server,
@@ -143,7 +143,7 @@
             joinGame: function (targetGameId) {
                 this.matchmaker.joinGame(targetGameId,
                     response => {
-                        console.log('Join game => ' + response);
+                        console.log(`Join game => ${response}`);
                         this.$modal.hide('matchmaker-modal');
                         this.matchmaker.notifyJoinedGame(
                             response.target_game_server,
@@ -152,7 +152,7 @@
                         );
                     }, 
                     error => {
-                        console.log('Game creation failed => ' + error);
+                        console.log(`Game creation failed => ${error}`);
                     }
                 );
             }
@@ -199,14 +199,17 @@
     }
 
     .game-list {
-        padding: 1em;
+        padding: 0 1em 0 1em;
         display: flex;
         justify-content: center;
-        align-items: center;
         height: 400px;
         border: 1px solid #ff4848;
-        overflow-y: scroll;
+        overflow-y: auto;
         width: 100%;
+    }
+
+    .game-list-empty {
+        align-items: center;
     }
 
     .game-list-container {

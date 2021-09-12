@@ -55,7 +55,19 @@
 
     .root-container {
         margin: auto;
-        max-width: 60%;
+        max-width: 960px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .root-container { 
+            max-width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .root-container { 
+            max-width: 90%;
+        }
     }
 
     .header {
@@ -131,6 +143,18 @@
         color: #ff4848;
         text-align: center;
         text-shadow: 0 0 15px #f00
+    }
+
+    @media screen and (max-width: 1024px) {
+        .glow { 
+        font-size: 32px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .glow { 
+        font-size: 24px;
+        }
     }
 
 

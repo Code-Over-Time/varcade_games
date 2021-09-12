@@ -17,7 +17,9 @@
                 <div class="col">
                     <h2>{{ selectedGame.name }}</h2>
                     <hr/>
-                    <p>{{ selectedGame.desc }}</p>
+                    <p>
+                        {{ selectedGame.desc }}
+                    </p>
                 </div>
             </div>
         </div>
