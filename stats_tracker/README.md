@@ -2,9 +2,9 @@
 
 Welcome to the Stats Tracker project!
 
-The Stats Tracker is responsible for listening to game events and using those events to build and maintain leaderboards and player stats.
+The Stats Tracker is responsible for listening to events and using those events to build and maintain leaderboards and player stats.
 
-Both the leaderboard system and player stats system is designed to be pluggable so that different games can provide custom handling for leaderboard scoring (for example a game may want to use an [Elo](https://en.wikipedia.org/wiki/Elo_rating_system] scoring system) and can dictate what stats are tracked (this will generally vary from game to game).
+Both the leaderboard system and player stats system are designed to be pluggable so that different games can provide custom handling for leaderboard scoring (for example a game may want to use an [Elo](https://en.wikipedia.org/wiki/Elo_rating_system] scoring system) and can dictate what stats are tracked (this will generally vary from game to game).
 
 This project provides both an API to query leaderboard and stats data, as well as a set of workers that process events in order to populate the system with data.
 
@@ -14,54 +14,6 @@ This project provides both an API to query leaderboard and stats data, as well a
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [Redis](https://redis.io/)
     * [Redis Streams](https://redis.io/topics/streams-intro)
-
-## Project Setup
-
-### Clone the repo
-
-First clone the repo for the Stats Tracker.
-
-```
-git clone https://github.com/theblacknight/stats_tracker 
-```
-
-If you haven't already, clone the Build Tools project into the same directory as the Stats Tracker project.
-
-```
-git clone https://github.com/theblacknight/build_tools.git 
-```
-
-### Build and run the images
-
-Next we will build and run the required images for Varcade Games.
-
-```
-cd build_tools
-make build a=stats-tracker
-make build a=stats-tracker-worker
-make start a=stats-tracker
-make start a=stats-tracker-worker
-```
-
-You can check the status of the applications (a Redis image will also be started) at any time by running:
-
-```
-make ps
-```
-
-You can view the log output for the client and server at any time by running `make logs` from within the build tools directory.
-
-Or individually by running:
-
-```
-make logs a=stats-tracker
-```
-
-or 
-
-```
-make logs a=stats-tracker-worker
-```
 
 ## Running the tests
 
