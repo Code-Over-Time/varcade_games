@@ -9,17 +9,25 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('accounts', '0001_initial'),
+        ("accounts", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='accounts.account')),
-                ('location', models.CharField(blank=True, max_length=30)),
-                ('level', models.IntegerField(default=1)),
-                ('xp', models.IntegerField(default=0)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        primary_key=True,
+                        serialize=False,
+                        to="accounts.account",
+                    ),
+                ),
+                ("location", models.CharField(blank=True, max_length=30)),
+                ("level", models.IntegerField(default=1)),
+                ("xp", models.IntegerField(default=0)),
             ],
         ),
     ]

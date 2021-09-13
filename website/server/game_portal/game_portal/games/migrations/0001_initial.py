@@ -7,22 +7,51 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Game',
+            name="Game",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('game_id', models.CharField(max_length=10)),
-                ('name', models.CharField(max_length=40)),
-                ('desc', models.CharField(max_length=180)),
-                ('client_url', models.CharField(max_length=160)),
-                ('cover_art', models.ImageField(null=True, upload_to='images')),
-                ('stats_config', models.FileField(null=True, upload_to='stats_config')),
-                ('game_type', models.CharField(choices=[('SPO', 'SinglePlayerOnly'), ('MPO', 'MultiPlayerOnly'), ('MSP', 'MultiAndSinglePlayer')], default='SPO', max_length=3)),
-                ('game_state', models.CharField(choices=[('ACT', 'Active'), ('INA', 'Inactive'), ('CMS', 'ComingSoon')], default='INA', max_length=3)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("game_id", models.CharField(max_length=10)),
+                ("name", models.CharField(max_length=40)),
+                ("desc", models.CharField(max_length=180)),
+                ("client_url", models.CharField(max_length=160)),
+                ("cover_art", models.ImageField(null=True, upload_to="images")),
+                ("stats_config", models.FileField(null=True, upload_to="stats_config")),
+                (
+                    "game_type",
+                    models.CharField(
+                        choices=[
+                            ("SPO", "SinglePlayerOnly"),
+                            ("MPO", "MultiPlayerOnly"),
+                            ("MSP", "MultiAndSinglePlayer"),
+                        ],
+                        default="SPO",
+                        max_length=3,
+                    ),
+                ),
+                (
+                    "game_state",
+                    models.CharField(
+                        choices=[
+                            ("ACT", "Active"),
+                            ("INA", "Inactive"),
+                            ("CMS", "ComingSoon"),
+                        ],
+                        default="INA",
+                        max_length=3,
+                    ),
+                ),
             ],
         ),
     ]
