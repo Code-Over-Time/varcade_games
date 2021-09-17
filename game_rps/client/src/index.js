@@ -33,3 +33,11 @@ const config = {
 }
 
 const game = new Phaser.Game(config) // eslint-disable-line
+
+if (window.registerGameUnloadedListener) {
+  window.registerGameUnloadedListener(() => {
+    console.log("RPSA: Destroying Phaser Game object...")
+    game.destroy(true, true)
+  })
+  console.log("RPSA: Registered listener for game unloading.")
+}

@@ -44,7 +44,8 @@
             return {
                 loadingSpinner: faSpinner,
                 loadingInterval: null,
-                gameLoaded: false
+                gameLoaded: false,
+                destroyListener: null
             }
         },
         computed: {
@@ -59,6 +60,13 @@
                     console.log('Will not load game - it appears to be loaded already')
                 }
                 else{
+                    // Game client should register a callback that VCG can
+                    // call to do any required cleanup when navigating away
+                    // from the page
+                    window.registerGameUnloadedListener = (callback) => {
+                        this.destroyListener = callback
+                    }
+
                     let gameScript = document.createElement('script');
                     gameScript.setAttribute('src', this.selectedGame.client_url);
                     gameScript.setAttribute('type', 'text/javascript');
@@ -93,6 +101,12 @@
             // Very important to clean this up - navigating away and back can lead to
             // multiple scripts being loaded, and browsers will hate you
             console.log(`Unloading game: ${this.gameId}...`)
+
+            if (this.destroyListener) {
+                console.log("Current game has a unload listener - calling.")
+                this.destroyListener()
+            }
+
             var gameScript = document.getElementById(`_game_instance_${this.gameId}`);
             if (gameScript != null) {
                 document.body.removeChild(gameScript);
@@ -103,12 +117,6 @@
             }
         },
         created: function () {
-            // console.log('GamePlay: Mounted game play view.');
-            // if (this.$store.state.games.length == 0) {
-            //     console.log('GamePlay: No game data loaded - requesting from server...');
-            //     loadActiveGames(this.$store, this.loadGameData);
-            // } else {
-            // }
             this.loadGameData();
         }
     }
