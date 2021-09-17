@@ -8,7 +8,7 @@ import { IconButton } from '../ui_elements/icon_button'
 import { showErrorModal } from '../ui_elements/modals'
 
 // Gameplay
-import { SinglePlayerGame, MultiPlayerGame } from '../game_engine_interface.js'
+import { SinglePlayerGame } from '../game_engine_interface.js'
 
 import { getSceneLayoutData } from '../game_data/layout.js'
 
@@ -91,7 +91,7 @@ const MainMenuScene = new Phaser.Class({
     /**
       Multi Player Select
     **/
-    if (window.getMatchmaker) {  // only provide a multiplayer option is a Matchmaker is available
+    if (window.getMatchmaker) { // only provide a multiplayer option is a Matchmaker is available
       const multiPlayerButtonYPos = menuButtonLayout.y + menuButtonLayout.padding + menuButtonLayout.fontSize
       const multiPlayerButton = new TextButton(this,
         menuButtonLayout.x,
@@ -105,9 +105,9 @@ const MainMenuScene = new Phaser.Class({
           // console.log('Starting new multi-player game...')
 
           // window.getMatchmaker().showMatchmaker((gameServerUrl, userId, token) => {
-            
+
           //   // We get all null args if the matchmaker UI was closed without joining a game
-          //   if (!gameServerUrl) { 
+          //   if (!gameServerUrl) {
           //     return
           //   }
 
@@ -132,8 +132,7 @@ const MainMenuScene = new Phaser.Class({
         menuButtonLayout.originY
       )
       this.add.existing(multiPlayerButton)
-    }
-    else {
+    } else {
       console.log('No Matchmaker found - disabling multi player option.')
     }
 

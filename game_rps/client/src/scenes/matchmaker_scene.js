@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 
-import { SinglePlayerGame, MultiPlayerGame } from '../game_engine_interface.js'
+import { MultiPlayerGame } from '../game_engine_interface.js'
 import { getSceneLayoutData } from '../game_data/layout.js'
 
 const MatchmakerScene = new Phaser.Class({
@@ -30,10 +30,9 @@ const MatchmakerScene = new Phaser.Class({
     )
 
     window.getMatchmaker().showMatchmaker((gameServerUrl, userId, token) => {
-      
       // We get all null args if the matchmaker UI was closed without joining a game
       // Head back to the menu scene
-      if (!gameServerUrl) { 
+      if (!gameServerUrl) {
         this.scene.start('MainMenuScene')
         return
       }

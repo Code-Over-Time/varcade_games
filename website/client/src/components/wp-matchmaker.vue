@@ -114,7 +114,8 @@
             },
 
             notifyMatchmakerClosed: function () {
-                this.matchmaker.notifyMatchmakerClosed()
+                // might not have access to this 'this' here
+                window.getMatchmaker().notifyMatchmakerClosed()
             },
             
             refreshGameList: function () {
