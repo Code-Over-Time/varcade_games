@@ -19,73 +19,16 @@ const LoadingScene = new Phaser.Class({
 
     const assetList = this.cache.json.get('assetList')
 
+    // See assets/asset_list.json for the structure of this data
     for (const [key, sceneEntry] of Object.entries(assetList.sceneAssets)) {
-      console.log(`Loading '${key}' assets...`)
+      console.log(`Loading assets for Scene:'${key}'...`)
 
-      if (sceneEntry.packed_textures) {
-        for (const [key, value] of Object.entries(sceneEntry.packed_textures)) {
-          console.log(`Loading packed texture sheet ${key}: ${value}`)
-
-          if (key.indexOf('{characterId}') !== -1) {
-            for (let i = 0; i < characters.length; i++) {
-              const character = characters[i]
-              const jsonData = require(
-                `../assets/packed_textures/${value.replace('{characterId}', character.id)}.json`
-              )
-              jsonData.textures[0].image = require(
-                `../assets/packed_textures/${value.replace('{characterId}', character.id)}.png`
-              )
-              this.load.multiatlas(
-                key.replace('{characterId}', character.id), jsonData
-              )
-            }
-          } else {
-            const jsonData = require(`../assets/packed_textures/${value}.json`)
-            jsonData.textures[0].image = require(`../assets/packed_textures/${value}.png`)
-            this.load.multiatlas(key, jsonData)
-          }
-        }
-      }
-
-      if (sceneEntry.spritesheets) {
-        for (const [key, value] of Object.entries(sceneEntry.spritesheets)) {
-          console.log(`Loading ${key}: ${Object.values(value)}`)
-          this.load.spritesheet(
-            key,
-            require(`../assets/${value.path}`),
-            { frameWidth: value.frameWidth, frameHeight: value.frameHeight }
-          )
-        }
-      }
-
-      if (sceneEntry.images) {
-        for (const [key, value] of Object.entries(sceneEntry.images)) {
-          console.log(`Loading ${key}: ${value}`)
-          this.load.image(key, require(`../assets/${value}`))
-        }
-      }
-
-      if (sceneEntry.characterVariants) {
-        for (const [key, value] of Object.entries(sceneEntry.characterVariants)) {
-          console.log(`Loading ${key}: ${value} for each character`)
-          for (let i = 0; i < characters.length; i++) {
-            const character = characters[i]
-            this.load.image(
-              key.replace('{characterId}', character.id),
-              require(`../assets/${value.replace('{characterId}', character.id)}`)
-            )
-          }
-        }
-      }
-
-      if (sceneEntry.audio) {
-        for (const [key, value] of Object.entries(sceneEntry.audio)) {
-          console.log(`Loading ${key}: ${value}`)
-          this.load.audio(key, require(`../assets/${value}`))
-        }
-      }
-
-      console.log('Done.')
+      this.loadPackedTextures(sceneEntry.packedTextures)
+      this.loadSpritesheets(sceneEntry.spritesheets)
+      this.loadImages(sceneEntry.images)
+      this.loadAudio(sceneEntry.audio)
+      
+      console.log('Finished loading assets.')
     }
 
     const loadingTextLayout = getSceneLayoutData('LoadingScene').ui.text
@@ -105,14 +48,70 @@ const LoadingScene = new Phaser.Class({
     this.createProgressbar(this.centerX(), this.centerY() + 200)
   },
 
+  loadPackedTextures: function (assetData) {
+    if (assetData) {
+      for (const [key, value] of Object.entries(assetData)) {
+        console.log(`Loading packed texture sheet ${key}: ${value}`)
+
+        if (key.indexOf('{characterId}') !== -1) {
+          for (let i = 0; i < characters.length; i++) {
+            const character = characters[i]
+            const jsonData = require(
+              `../assets/packed_textures/${value.replace('{characterId}', character.id)}.json`
+            )
+            jsonData.textures[0].image = require(
+              `../assets/packed_textures/${value.replace('{characterId}', character.id)}.png`
+            )
+            this.load.multiatlas(
+              key.replace('{characterId}', character.id), jsonData
+            )
+          }
+        } else {
+          const jsonData = require(`../assets/packed_textures/${value}.json`)
+          jsonData.textures[0].image = require(`../assets/packed_textures/${value}.png`)
+          this.load.multiatlas(key, jsonData)
+        }
+      }
+    }
+  },
+
+  loadSpritesheets: function (assetData) {
+    if (assetData) {
+      for (const [key, value] of Object.entries(assetData)) {
+        console.log(`Loading ${key}: ${Object.values(value)}`)
+        this.load.spritesheet(
+          key,
+          require(`../assets/${value.path}`),
+          { frameWidth: value.frameWidth, frameHeight: value.frameHeight }
+        )
+      }
+    }
+  },
+  
+  loadImages: function (assetData) {
+    if (assetData) {
+      for (const [key, value] of Object.entries(assetData)) {
+        console.log(`Loading ${key}: ${value}`)
+        this.load.image(key, require(`../assets/${value}`))
+      }
+    }
+  },
+  
+  loadAudio: function (assetData) {
+    if (assetData) {
+      for (const [key, value] of Object.entries(assetData)) {
+        console.log(`Loading ${key}: ${value}`)
+        this.load.audio(key, require(`../assets/${value}`))
+      }
+    }
+  },
+
   createProgressbar: function (x, y) {
-    // size & position
     const width = 400
     const height = 20
     const xStart = x - width / 2
     const yStart = y - height / 2
 
-    // border size
     const borderOffset = 2
 
     const borderRect = new Phaser.Geom.Rectangle(
@@ -131,11 +130,6 @@ const LoadingScene = new Phaser.Class({
 
     const progressbar = this.add.graphics()
 
-    /**
-         * Updates the progress bar.
-         *
-         * @param {number} percentage
-         */
     const updateProgressbar = function (percentage) {
       progressbar.clear()
       progressbar.fillStyle(0xff0000, 1)
@@ -143,7 +137,6 @@ const LoadingScene = new Phaser.Class({
     }
 
     this.load.on('progress', updateProgressbar)
-
     this.load.once('complete', function () {
       console.log('Asset loading complete - starting game')
       this.load.off('progress', updateProgressbar)

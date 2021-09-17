@@ -22,20 +22,14 @@ const BattleScene = new Phaser.Class({
     this.viewData = this.gameInterface.getGameViewData()
   },
 
-  preload: function () {
-    this.load.setBaseURL(gameConfig.baseURL)
-    // Character background
-    this.load.image('arenaBg', require(
-      '../assets/backgrounds/end_game.png'))
-  },
-
   create: function () {
     this.layoutData = getSceneLayoutData('BattleScene')
 
-    this.background = this.add.image(
+    this.background = this.add.sprite(
       this.layoutData.ui.background.x,
       this.layoutData.ui.background.y,
-      'arenaBg'
+      this.viewData.p2Spec.id + '_battle',  // Always fight in opponents location
+      this.viewData.p2Spec.id + '_bg'
     ).setOrigin(
       this.layoutData.ui.background.originX,
       this.layoutData.ui.background.originY

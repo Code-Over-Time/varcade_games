@@ -2,7 +2,7 @@
 	"sceneAssets": {
 
 		"global": {
-			"packed_textures": {
+			"packedTextures": {
 				"global_texture": "global",
 				"{characterId}_battle": "{characterId}_battle"
 			},
