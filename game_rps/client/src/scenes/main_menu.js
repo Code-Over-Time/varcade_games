@@ -91,18 +91,18 @@ const MainMenuScene = new Phaser.Class({
     /**
       Multi Player Select
     **/
-    const multiPlayerButtonYPos = menuButtonLayout.y + menuButtonLayout.padding + menuButtonLayout.fontSize
-    const multiPlayerButton = new TextButton(this,
-      menuButtonLayout.x,
-      multiPlayerButtonYPos,
-      'Multi Player',
-      menuButtonLayout.bitmapFontId,
-      menuButtonLayout.fontSize,
-      menuButtonLayout.color,
-      () => { // On click
-        console.log('Starting new multi-player game...')
+    if (window.getMatchmaker) {  // only provide a multiplayer option is a Matchmaker is available
+      const multiPlayerButtonYPos = menuButtonLayout.y + menuButtonLayout.padding + menuButtonLayout.fontSize
+      const multiPlayerButton = new TextButton(this,
+        menuButtonLayout.x,
+        multiPlayerButtonYPos,
+        'Multi Player',
+        menuButtonLayout.bitmapFontId,
+        menuButtonLayout.fontSize,
+        menuButtonLayout.color,
+        () => { // On click
+          console.log('Starting new multi-player game...')
 
-        if (window.getMatchmaker) {
           window.getMatchmaker().showMatchmaker((gameServerUrl, userId, token) => {
             console.log('Multi-player game selected, launching game...')
             const gameInterface = new MultiPlayerGame(gameServerUrl, token, userId)
@@ -114,20 +114,21 @@ const MainMenuScene = new Phaser.Class({
               }
             )
           })
-        } else {
-          console.log('Error! Matchmaker not found - unable to connect to matchmaking server.')
+        },
+        () => { // On hover
+          this.fistIndicator.setY(multiPlayerButtonYPos + menuButtonLayout.fistIndicatorYOffset)
+          this.fistIndicator.setFrame(['rock_ico', 'paper_ico', 'scissors_ico'][++this.menuHighlightIconIndex % 3])
         }
-      },
-      () => { // On hover
-        this.fistIndicator.setY(multiPlayerButtonYPos + menuButtonLayout.fistIndicatorYOffset)
-        this.fistIndicator.setFrame(['rock_ico', 'paper_ico', 'scissors_ico'][++this.menuHighlightIconIndex % 3])
-      }
-    )
-    multiPlayerButton.setOrigin(
-      menuButtonLayout.originX,
-      menuButtonLayout.originY
-    )
-    this.add.existing(multiPlayerButton)
+      )
+      multiPlayerButton.setOrigin(
+        menuButtonLayout.originX,
+        menuButtonLayout.originY
+      )
+      this.add.existing(multiPlayerButton)
+    }
+    else {
+      console.log('No Matchmaker found - disabling multi player option.')
+    }
 
     this.addMenuOptions()
 
