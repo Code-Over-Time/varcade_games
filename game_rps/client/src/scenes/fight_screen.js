@@ -6,7 +6,6 @@ import { IconButton } from '../ui_elements/icon_button'
 
 import { RPSRoundStates, RPSRoundEvent, RPSGameEvent } from 'rps-game-engine'
 import { HealthBar } from '../ui_elements/health_bar'
-import { gameConfig } from '../game_data/config.js'
 import { getSceneLayoutData } from '../game_data/layout.js'
 
 const BattleScene = new Phaser.Class({
@@ -28,7 +27,7 @@ const BattleScene = new Phaser.Class({
     this.background = this.add.sprite(
       this.layoutData.ui.background.x,
       this.layoutData.ui.background.y,
-      this.viewData.p2Spec.id + '_battle',  // Always fight in opponents location
+      this.viewData.p2Spec.id + '_battle', // Always fight in opponents location
       this.viewData.p2Spec.id + '_bg'
     ).setOrigin(
       this.layoutData.ui.background.originX,

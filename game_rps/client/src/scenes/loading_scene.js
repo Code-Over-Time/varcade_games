@@ -27,7 +27,7 @@ const LoadingScene = new Phaser.Class({
       this.loadSpritesheets(sceneEntry.spritesheets)
       this.loadImages(sceneEntry.images)
       this.loadAudio(sceneEntry.audio)
-      
+
       console.log('Finished loading assets.')
     }
 
@@ -87,7 +87,7 @@ const LoadingScene = new Phaser.Class({
       }
     }
   },
-  
+
   loadImages: function (assetData) {
     if (assetData) {
       for (const [key, value] of Object.entries(assetData)) {
@@ -96,7 +96,7 @@ const LoadingScene = new Phaser.Class({
       }
     }
   },
-  
+
   loadAudio: function (assetData) {
     if (assetData) {
       for (const [key, value] of Object.entries(assetData)) {
