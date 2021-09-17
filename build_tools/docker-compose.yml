@@ -155,7 +155,7 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
     env_file:
-      - config.monitoring
+      - grafana/config.monitoring
     depends_on:
       - prometheus
   cadvisor:

@@ -59,7 +59,7 @@ Next you need to add the following line to your hosts file (`/etc/hosts`):
 127.0.0.1   varcade.local api.varcade.local games.varcade.local matchmaker.varcade.local rps.varcade.local
 ```
 
-You can use this command:
+You can use this command (on Linux and MacOS):
 
 ```
 sudo -- sh -c 'echo "127.0.0.1    varcade.local api.varcade.local games.varcade.local matchmaker.varcade.local rps.varcade.local" >> /etc/hosts'

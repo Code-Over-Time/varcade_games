@@ -83,13 +83,3 @@ spec:
             name: game-rps
             port:
               number: 8085
-  - host: "grafana.varcade-games.com"
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: grafana
-            port:
-              number: 3000

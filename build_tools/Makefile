@@ -55,10 +55,5 @@ import_game_portal_db:
 kube_build_env:
 	minikube -p minikube docker-env
 
-kube_generate:  # Resolve .env variables and run Kompose generate
-	docker-compose -f $(DOCKER_COMPOSE_FILE) -f $(PROD_DOCKER_COMPOSE_FILE) config > docker-compose-resolved.yaml && \
-	kompose convert -f docker-compose-resolved.yaml -o ./kube_config/generated --volumes=configMap &&\
-	rm docker-compose-resolved.yaml
-
 kube_apply:
-	kubectl apply -f ./kube_config/live
+	kubectl apply -f ./kube_config
