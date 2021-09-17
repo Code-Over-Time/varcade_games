@@ -546,13 +546,13 @@ const sceneLayoutData = {
           ]
         },
         unknownOpponent: {
-          x: globalLayoutData.halfScreenWidth * 1.5,
+          x: globalLayoutData.halfScreenWidth * 1.6,
           y: globalLayoutData.halfScreenHeight,
           originX: 0.5,
           originY: 0.5,
           bitmapFontId: 'MedievalSharp64',
-          fontSize: 64,
-          maxWidth: globalLayoutData.halfScreenWidth * 0.75,
+          fontSize: 48,
+          maxWidth: globalLayoutData.halfScreenWidth * 0.6,
           color: 0xFF0000,
           xTranslationDistance: globalLayoutData.halfScreenWidth,
           xTranslationDuration: 500

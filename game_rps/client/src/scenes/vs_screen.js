@@ -51,6 +51,8 @@ const VSScene = new Phaser.Class({
     ).setOrigin(
       p1Layout.originX,
       p1Layout.originY
+    ).setVisible(
+      false
     )
 
     const p1MaskShape = this.make.graphics()
@@ -69,6 +71,8 @@ const VSScene = new Phaser.Class({
     ).setOrigin(
       p2Layout.originX,
       p2Layout.originY
+    ).setVisible(
+      false
     )
     this.p2CharacterImage.flipX = true
 
@@ -116,7 +120,7 @@ const VSScene = new Phaser.Class({
 
     if (!this.p1Ready && this.viewData.p1Spec != null) {
       this.p1CharacterImage.setFrame(this.viewData.p1Spec.id + '_upperbody')
-
+      this.p1CharacterImage.setVisible(true)
       const p1Layout = this.layoutData.graphics.p1
 
       const txtP1Name = this.add.bitmapText(
@@ -164,7 +168,7 @@ const VSScene = new Phaser.Class({
 
       const p2Layout = this.layoutData.graphics.p2
       this.p2CharacterImage.setFrame(this.viewData.p2Spec.id + '_upperbody')
-
+      this.p2CharacterImage.setVisible(true)
       const txtP2Name = this.add.bitmapText(
         p2Layout.name.x + p2Layout.name.xTranslationDistance,
         p2Layout.name.y,
@@ -202,7 +206,7 @@ const VSScene = new Phaser.Class({
         unknownOpponentLayout.x,
         unknownOpponentLayout.y,
         unknownOpponentLayout.bitmapFontId,
-        'Waiting for an opponent...',
+        'Waiting\nfor an opponent...',
         unknownOpponentLayout.fontSize
       ).setOrigin(
         unknownOpponentLayout.originX,
