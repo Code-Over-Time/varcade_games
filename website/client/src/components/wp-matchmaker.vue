@@ -6,9 +6,10 @@
                 width="800"
                 height="600"
                 :scrollable="false"
-                :reset="true">
+                :reset="true"
+                @before-close="notifyMatchmakerClosed">
 
-            <div id="modelContent" onclick="event.stopPropagation();">
+            <div id="modelContent">
                 
                 <div class="container">
                 
@@ -16,7 +17,7 @@
                         <div class="col">
                             <h2>Available Games</h2>
                         </div>
-                        <font-awesome-icon :icon="icoCloseModal" class="col-1 red-ico" @click="closeMatchmaker()"/>
+                        <font-awesome-icon :icon="icoCloseModal" class="col-1 red-ico" @click="closeMatchmaker"/>
                     
                     </div>
 
@@ -110,6 +111,10 @@
             /* Matchmaker Actions*/
             closeMatchmaker: function () {
                 this.$modal.hide('matchmaker-modal');
+            },
+
+            notifyMatchmakerClosed: function () {
+                this.matchmaker.notifyMatchmakerClosed()
             },
             
             refreshGameList: function () {

@@ -68,6 +68,20 @@ const sceneLayoutData = {
       }
     },
 
+    MatchmakerScene: {
+      ui: {
+        header: {
+          originX: 0.5,
+          originY: 0.5,
+          x: globalLayoutData.halfScreenWidth,
+          y: globalLayoutData.halfScreenHeight,
+          color: 0xFF0000,
+          bitmapFontId: 'verdana64',
+          fontSize: 32
+        }
+      }
+    },
+
     CharacterSelectScene: {
       ui: {
         background: {

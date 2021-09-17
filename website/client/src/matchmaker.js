@@ -21,6 +21,10 @@ class Matchmaker {
     this.tokenListener(gameServerUrl, userId, token)
   }
 
+  notifyMatchmakerClosed () {
+    this.tokenListener()
+  }
+
   getOpenGameList (onSuccess, onError) {
     console.log('Matchmaker: Fetching list of open games')
 

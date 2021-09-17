@@ -4,6 +4,7 @@ import { BootScene } from './scenes/boot_scene.js'
 import { LoadingScene } from './scenes/loading_scene.js'
 import { MainMenuScene } from './scenes/main_menu.js'
 import { StoryIntroScene } from './scenes/story_intro.js'
+import { MatchmakerScene } from './scenes/matchmaker_scene.js'
 import { CharacterSelectScene } from './scenes/character_select.js'
 import { CharacterIntroScene } from './scenes/character_intro.js'
 import { VSScene } from './scenes/vs_screen.js'
@@ -23,6 +24,7 @@ const config = {
     LoadingScene,
     MainMenuScene,
     StoryIntroScene,
+    MatchmakerScene,
     CharacterSelectScene,
     CharacterIntroScene,
     VSScene,

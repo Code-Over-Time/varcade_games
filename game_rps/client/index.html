@@ -26,6 +26,7 @@
                 <label style="margin-right: 2em;">User ID:</label>
                 <input style="margin-right: 2em;" type="text" id="userId"></input>
                 <input type="button" name="submit" value="Select Name" id="setUsername"> 
+                <input type="button" name="close" value="Close Matchmaker" id="closeMatchmaker"> 
                 <hr/>
             </div>
 
@@ -83,6 +84,10 @@
                     console.log("Matchmaker: Called 'showMatchmaker.");
                     this.tokenListener = tokenListener;
                     $('#playerInfo').show();
+                }
+
+                notifyMatchmakerClosed () {
+                    this.tokenListener()
                 }
 
                 createGame (onSuccess, onError) {
@@ -200,6 +205,14 @@
                     }, error => {
                         console.log('Matchmaker create game failed. Check logs for more info.')
                     });
+                });
+
+                $('#closeMatchmaker').click(function(){
+                    matchmaker.notifyMatchmakerClosed()
+                    $('#playerInfo').show();
+                    $('#activeGames').hide();
+                    $('#createGame').hide();
+
                 });
 
             });

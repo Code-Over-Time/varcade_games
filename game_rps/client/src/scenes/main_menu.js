@@ -101,19 +101,26 @@ const MainMenuScene = new Phaser.Class({
         menuButtonLayout.fontSize,
         menuButtonLayout.color,
         () => { // On click
-          console.log('Starting new multi-player game...')
+          this.scene.start('MatchmakerScene')
+          // console.log('Starting new multi-player game...')
 
-          window.getMatchmaker().showMatchmaker((gameServerUrl, userId, token) => {
-            console.log('Multi-player game selected, launching game...')
-            const gameInterface = new MultiPlayerGame(gameServerUrl, token, userId)
-            gameInterface.connectToGameServer(
-              () => {
-                this.scene.start('CharacterSelectScene', { gameInterface: gameInterface })
-              }, () => {
+          // window.getMatchmaker().showMatchmaker((gameServerUrl, userId, token) => {
+            
+          //   // We get all null args if the matchmaker UI was closed without joining a game
+          //   if (!gameServerUrl) { 
+          //     return
+          //   }
 
-              }
-            )
-          })
+          //   console.log('Multi-player game selected, launching game...')
+          //   const gameInterface = new MultiPlayerGame(gameServerUrl, token, userId)
+          //   gameInterface.connectToGameServer(
+          //     () => {
+          //       this.scene.start('CharacterSelectScene', { gameInterface: gameInterface })
+          //     }, () => {
+
+          //     }
+          //   )
+          // })
         },
         () => { // On hover
           this.fistIndicator.setY(multiPlayerButtonYPos + menuButtonLayout.fistIndicatorYOffset)
