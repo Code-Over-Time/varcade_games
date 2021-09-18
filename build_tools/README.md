@@ -8,33 +8,7 @@ The `Build Tools` project contains everything you need to run and manage the var
 * [Kubernetes](https://kubernetes.io/)
 * [K6](https://k6.io/)
 
-## Project Setup
-
-### Clone the repo
-
-First clone the repo for the Build Tools.
-
-```
-git clone https://github.com/theblacknight/build_tools.git  
-```
-
-### Clone the service repos
-
-Next you will need to clone the repos for the various different services managed by `Build Tools`:
-
-* [Varcade Games](https://github.com/theblacknight/website)
-* [Matchmaker](https://github.com/theblacknight/matchmaker)
-* [Stats Tracker](https://github.com/theblacknight/stats_tracker)
-* [RPS Apocalypse](https://github.com/theblacknight/game_rps)
-
-```
-git clone https://github.com/theblacknight/website
-git clone https://github.com/theblacknight/matchmaker
-git clone https://github.com/theblacknight/stats_tracker
-git clone https://github.com/theblacknight/game_rps
-```
-
-### Run the project
+### Setup
 
 Before running the project you need to tell `build_tools` where everything is.
 

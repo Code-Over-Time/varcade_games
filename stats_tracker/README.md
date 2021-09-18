@@ -15,6 +15,38 @@ This project provides both an API to query leaderboard and stats data, as well a
 * [Redis](https://redis.io/)
     * [Redis Streams](https://redis.io/topics/streams-intro)
 
+### Build and run the images
+
+If you just want to run the stats tracker you can run the following commands from the `build_tools` directory:
+
+```
+make build a=stats-tracker
+make build a=stats-tracker-worker
+make start a=stats-tracker
+make start a=stats-tracker-worker
+```
+
+You can check the status of the applications (a Redis image will also be started) at any time by running:
+
+```
+make ps
+```
+
+You can view the log output for the client and server at any time by running `make logs` from within the build tools directory.
+
+Or individually by running:
+
+```
+make logs a=stats-tracker
+```
+
+or 
+
+```
+make logs a=stats-tracker-worker
+```
+
+
 ## Running the tests
 
 The Stats Tracker tests can be run inside a dedicated container.

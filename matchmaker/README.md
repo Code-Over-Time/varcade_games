@@ -17,26 +17,11 @@ The matchmaker is configurable, so new games can be easily added - provided they
 
 ## Project Setup
 
-### Clone the repo
-
-First clone the repo for the Matchmaker.
-
-```
-git clone https://github.com/theblacknight/matchmaker.git 
-```
-
-If you haven't already, clone the Build Tools project into the same directory as the Matchmaker source.
-
-```
-git clone https://github.com/theblacknight/build_tools.git 
-```
-
 ### Build and run the images
 
-Next we will build and run the required images for Varcade Games.
+If you just want to run the matchmaker you can run the following commands from the `build_tools` directory:
 
 ```
-cd build_tools
 make build a=matchmaker
 make build a=matchmaker-worker
 make start a=matchmaker
