@@ -108,7 +108,6 @@ const VSScene = new Phaser.Class({
     if (this.viewData.interfaceErrors.length > 0) {
       const error = this.viewData.interfaceErrors.pop()
       if (error.action === 'reset-hard') {
-        console.log(error.message)
         this.scene.start('MainMenuScene', {
           error: {
             title: 'Network Error',

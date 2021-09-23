@@ -124,7 +124,7 @@
                         this.openGames = response;
                     },
                     error => {
-                        console.log('Game creation failed => ' + error);
+                        console.log(`Game creation failed => ${error}`);
                     }
                 );
             },
@@ -133,12 +133,12 @@
                 this.matchmaker.createGame(
                     response => {
                         console.log(`Create game => ${response}`);
-                        this.$modal.hide('matchmaker-modal');
                         this.matchmaker.notifyJoinedGame(
                             response.target_game_server,
                             this.$store.state.userProfile.user.id, 
                             response.token
                         );
+                        this.$modal.hide('matchmaker-modal');
                     }, 
                     error => {
                         console.log('Game creation failed => ' + error);

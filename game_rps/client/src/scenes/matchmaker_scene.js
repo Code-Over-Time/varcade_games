@@ -30,19 +30,13 @@ const MatchmakerScene = new Phaser.Class({
     )
 
     window.getMatchmaker().showMatchmaker((gameServerUrl, userId, token) => {
-      // We get all null args if the matchmaker UI was closed without joining a game
-      // Head back to the menu scene
-      if (!gameServerUrl) {
-        this.scene.start('MainMenuScene')
-        return
-      }
-
       console.log('Multi-player game selected, launching game...')
       const gameInterface = new MultiPlayerGame(gameServerUrl, token, userId)
       gameInterface.connectToGameServer(
-        () => {
+        () => { // On Success
           this.scene.start('CharacterSelectScene', { gameInterface: gameInterface })
-        }, () => {
+        },
+        () => { // On Error
           this.scene.start('MainMenuScene', {
             error: {
               title: 'Connection Error',
@@ -51,6 +45,9 @@ const MatchmakerScene = new Phaser.Class({
           })
         }
       )
+    },
+    () => { // Window was closed without joining a game
+      this.scene.start('MainMenuScene')
     })
   }
 

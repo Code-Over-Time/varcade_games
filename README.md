@@ -12,10 +12,13 @@ It has everything you'd expect from a real and modern software project:
 * Web tech
     - Vue.js
     - Node.js
+    - Websockets
 * Server tech
     - Python - Django, Flask
     - Redis
     - Stateless and stateful
+* A sample game
+    - Phaser 3 (Javascript)
 * Containerized distributed services
 * Build scripts
 * Automated tests

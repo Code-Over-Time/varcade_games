@@ -15,7 +15,10 @@ function showErrorModal (scene, title, messageText, buttonText) {
 
   const errorModal = new ErrorModal(errorWindow, title, messageText, buttonText)
 
-  console.log(scene)
+  if (scene.scene.get('Error')) {
+    console.log('[MODAL] !! Not adding a modal as there is one already active.')
+    return
+  }
   scene.scene.add('Error', errorModal, true)
 }
 

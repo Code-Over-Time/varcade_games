@@ -11,18 +11,22 @@ class Matchmaker {
     tokenListener: A callback that will be called with a token
     and game info required to join the game.
   */
-  showMatchmaker (tokenListener) {
+  showMatchmaker (tokenListener, closeListener) {
     console.log("Matchmaker: Called 'showMatchmaker.")
     this.tokenListener = tokenListener
+    this.closeListener = closeListener
     this.displayCallback()
   }
 
   notifyJoinedGame (gameServerUrl, userId, token) {
     this.tokenListener(gameServerUrl, userId, token)
+    this.closeListener = null  // at this point we don't want to accidentally give clients mixed signals
   }
 
   notifyMatchmakerClosed () {
-    this.tokenListener()
+    if (this.closeListener) {
+      this.closeListener()
+    }
   }
 
   getOpenGameList (onSuccess, onError) {

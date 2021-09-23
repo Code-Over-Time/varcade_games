@@ -80,14 +80,15 @@
 
             class Matchmaker {
 
-                showMatchmaker (tokenListener) {
+                showMatchmaker (tokenListener, closeListener) {
                     console.log("Matchmaker: Called 'showMatchmaker.");
                     this.tokenListener = tokenListener;
+                    this.closeListener = closeListener;
                     $('#playerInfo').show();
                 }
 
                 notifyMatchmakerClosed () {
-                    this.tokenListener()
+                    this.closeListener()
                 }
 
                 createGame (onSuccess, onError) {
