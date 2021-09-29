@@ -12,20 +12,17 @@ import { SinglePlayerGame } from '../game_engine_interface.js'
 
 import { getSceneLayoutData } from '../game_data/layout.js'
 
-const MainMenuScene = new Phaser.Class({
-
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'MainMenuScene' })
+class MainMenuScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'MainMenuScene' })
     this.menuHighlightIconIndex = 0
-  },
+  }
 
-  init: function (data) {
+  init (data) {
     this.error = data.error // This will be filled if returning from an error in another scene
-  },
+  }
 
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('MainMenuScene')
 
     audioManager.initialize(this.game)
@@ -64,11 +61,11 @@ const MainMenuScene = new Phaser.Class({
       () => { // On click
         console.log('Starting new single player game...')
         const gameInterface = new SinglePlayerGame({
-          sequence: 0,
-          vsScreenDelay: 500,
-          bossFight: false
+          vsScreenDelay: 500
         },
         {
+          sequence: 0,
+          isBossFight: false,
           undefeated: true
         }
         )
@@ -102,25 +99,6 @@ const MainMenuScene = new Phaser.Class({
         menuButtonLayout.color,
         () => { // On click
           this.scene.start('MatchmakerScene')
-          // console.log('Starting new multi-player game...')
-
-          // window.getMatchmaker().showMatchmaker((gameServerUrl, userId, token) => {
-
-          //   // We get all null args if the matchmaker UI was closed without joining a game
-          //   if (!gameServerUrl) {
-          //     return
-          //   }
-
-          //   console.log('Multi-player game selected, launching game...')
-          //   const gameInterface = new MultiPlayerGame(gameServerUrl, token, userId)
-          //   gameInterface.connectToGameServer(
-          //     () => {
-          //       this.scene.start('CharacterSelectScene', { gameInterface: gameInterface })
-          //     }, () => {
-
-          //     }
-          //   )
-          // })
         },
         () => { // On hover
           this.fistIndicator.setY(multiPlayerButtonYPos + menuButtonLayout.fistIndicatorYOffset)
@@ -146,9 +124,9 @@ const MainMenuScene = new Phaser.Class({
         'Close'
       )
     }
-  },
+  }
 
-  addMenuOptions: function () {
+  addMenuOptions () {
     const settingsLayout = this.layoutData.ui.settingsList
 
     const activeMusicIcon = audioManager.musicEnabled
@@ -177,7 +155,6 @@ const MainMenuScene = new Phaser.Class({
         audioManager.toggleEffectsEnabled()
       }).setOrigin(settingsLayout.originX, settingsLayout.originY))
   }
-
-})
+}
 
 export { MainMenuScene }

@@ -6,20 +6,17 @@ import { lore } from 'rps-game-engine'
 
 import { getSceneLayoutData } from '../game_data/layout.js'
 
-const StoryIntroScene = new Phaser.Class({
+class StoryIntroScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'StoryIntroScene' })
+  }
 
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'StoryIntroScene' })
-  },
-
-  init: function (data) {
+  init (data) {
     this.gameInterface = data.gameInterface
     this.clickCount = 0
-  },
+  }
 
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('StoryIntroScene')
     const scrollingTextLayout = this.layoutData.ui.storyText
 
@@ -54,9 +51,9 @@ const StoryIntroScene = new Phaser.Class({
         this.loreTween.complete()
       }
     })
-  },
+  }
 
-  addSkipButton: function () {
+  addSkipButton () {
     const skipButtonLayout = this.layoutData.ui.skipButton
 
     this.add.existing(new IconButton(this,
@@ -76,7 +73,6 @@ const StoryIntroScene = new Phaser.Class({
       1.5
     ))
   }
-
-})
+}
 
 export { StoryIntroScene }

@@ -8,22 +8,19 @@ import { RPSGameMode, getBossCharacterId } from 'rps-game-engine'
 
 import { getSaveGameData, writeSaveGameData } from '../game_data/save_data.js'
 
-const PostFightScene = new Phaser.Class({
-
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'PostFightScene' })
+class PostFightScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'PostFightScene' })
     this.sceneChangeDelay = 5000
-  },
+  }
 
-  init: function (data) {
+  init (data) {
     this.gameInterface = data.gameInterface
     this.viewData = this.gameInterface.getGameViewData()
     this.saveGameData = getSaveGameData()
-  },
+  }
 
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('PostFightScene')
 
     this.add.image(
@@ -148,29 +145,26 @@ const PostFightScene = new Phaser.Class({
     } else {
       this.handleMultiPlayer()
     }
-  },
+  }
 
-  update: function (time, delta) {
-
-  },
-
-  handleMultiPlayer: function () {
+  handleMultiPlayer () {
     if (this.p1Wins) {
       this.showP1Victory()
     } else {
       this.showP2Victory()
     }
     this.showMainMenuButton()
-  },
+  }
 
-  handleSinglePlayer: function () {
-    const nextSequenceNumber = this.gameInterface.gameSettings.sequence + 1
+  handleSinglePlayer () {
     if (this.p1Wins) {
       this.showP1Victory()
-      if (nextSequenceNumber >= this.viewData.p1Spec.singlePlayerSequence.length) {
+      // Check if we have reached the end of the list of opponents for this fighter
+      if (this.gameInterface.gameState.sequence + 1 >= this.viewData.p1Spec.singlePlayerSequence.length) {
+        // We might have a character unlock to process
         let characterToUnlock = this.viewData.p1Spec.singlePlayerUnlock
 
-        if (this.gameInterface.gameSettings.bossFight) {
+        if (this.gameInterface.gameState.isBossFight) {
           characterToUnlock = getBossCharacterId()
         }
 
@@ -181,47 +175,43 @@ const PostFightScene = new Phaser.Class({
           writeSaveGameData()
         }
 
-        if (!this.gameInterface.gameSettings.bossFight && this.gameInterface.gameState.undefeated) {
-          this.timerEvent = this.time.delayedCall(this.sceneChangeDelay, () => {
-            const nextGameConfig = this.gameInterface.gameSettings
-            nextGameConfig.bossFight = true
-            const nextGame = new SinglePlayerGame(nextGameConfig)
-            nextGame.selectFighter(this.viewData.p1Spec, () => {
-              this.scene.start('VSScene', { gameInterface: nextGame })
-            })
-          })
+        // Only trigger the boss fight if the player did not lose a single round through all opponents
+        if (!this.gameInterface.gameState.isBossFight && this.gameInterface.gameState.undefeated) {
+          this.timerEvent = this.scheduleNextBattle(true)
         } else {
           this.scheduleGameOverScene(true)
         }
       } else {
-        this.timerEvent = this.time.delayedCall(this.sceneChangeDelay, () => {
-          const nextGameConfig = this.gameInterface.gameSettings
-          nextGameConfig.sequence = nextSequenceNumber
-          const nextGame = new SinglePlayerGame(nextGameConfig, this.gameInterface.gameState)
-          nextGame.selectFighter(this.viewData.p1Spec, () => {
-            this.scene.start('VSScene', { gameInterface: nextGame })
-          })
-        })
-        // For impatient people - clicking the screen will progress to the next game
-        this.input.on('pointerup', () => {
-          this.timerEvent.remove(true)
-        })
+        this.timerEvent = this.scheduleNextBattle(false)
       }
     } else {
       this.showP2Victory()
       this.scheduleGameOverScene(false)
     }
-  },
+  }
+
+  scheduleNextBattle (isBossFight) {
+    return this.time.delayedCall(this.sceneChangeDelay, () => {
+      const newGameState = Object.assign({}, this.gameInterface.gameState)
+      newGameState.sequence++
+      newGameState.isBossFight = !!isBossFight
+
+      const nextGame = new SinglePlayerGame(this.gameInterface.gameSettings, newGameState)
+      nextGame.selectFighter(this.viewData.p1Spec, () => {
+        this.scene.start('VSScene', { gameInterface: nextGame })
+      })
+    })
+  }
 
   showP2Victory () {
     this.txtP1TrashTalk.setText(this.viewData.p1Spec.trashTalk.lose[0])
     this.txtP2TrashTalk.setText(this.viewData.p2Spec.trashTalk.win[0])
-  },
+  }
 
   showP1Victory () {
     this.txtP1TrashTalk.setText(this.viewData.p1Spec.trashTalk.win[0])
     this.txtP2TrashTalk.setText(this.viewData.p2Spec.trashTalk.lose[0])
-  },
+  }
 
   showMainMenuButton () {
     const menuBtnLayout = this.layoutData.ui.mainMenu
@@ -241,16 +231,16 @@ const PostFightScene = new Phaser.Class({
       menuBtnLayout.originY
     )
     this.add.existing(mainMenuButton)
-  },
+  }
 
   scheduleGameOverScene (isWinner) {
     this.timerEvent = this.time.delayedCall(this.sceneChangeDelay, () => {
       this.scene.start('GameOverScene', {
         isWinner: isWinner,
-        bossFight: this.gameInterface.gameSettings.bossFight
+        bossFight: this.gameInterface.gameSettings.isBossFight
       })
     })
-  },
+  }
 
   showCharacterUnlockNotification () {
     const charUnlockLayout = this.layoutData.ui.characterUnlock
@@ -267,7 +257,6 @@ const PostFightScene = new Phaser.Class({
       charUnlockLayout.color
     )
   }
-
-})
+}
 
 export { PostFightScene }

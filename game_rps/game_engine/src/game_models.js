@@ -79,8 +79,7 @@ class RPSRandomBot extends RPSPlayer {
   eventListener (event) {
     if (event instanceof RPSRoundEvent) {
       if (event.type === RPSRoundEvent.WEAPON_COUNTDOWN) {
-        // this.fighter.equipWeapon(Math.floor(Math.random() * 3))
-        this.fighter.equipWeapon(2)
+        this.fighter.equipWeapon(Math.floor(Math.random() * 3))
       }
     }
   }

@@ -5,15 +5,12 @@ import { characters } from 'rps-game-engine'
 
 import { getSceneLayoutData } from '../game_data/layout.js'
 
-const LoadingScene = new Phaser.Class({
+class LoadingScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'LoadingScene' })
+  }
 
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'LoadingScene' })
-  },
-
-  preload: function () {
+  preload () {
     console.log('Loading assets...')
     this.load.setBaseURL(gameConfig.baseURL)
 
@@ -46,9 +43,9 @@ const LoadingScene = new Phaser.Class({
     )
 
     this.createProgressbar(this.centerX(), this.centerY() + 200)
-  },
+  }
 
-  loadPackedTextures: function (assetData) {
+  loadPackedTextures (assetData) {
     if (assetData) {
       for (const [key, value] of Object.entries(assetData)) {
         console.log(`Loading packed texture sheet ${key}: ${value}`)
@@ -73,9 +70,9 @@ const LoadingScene = new Phaser.Class({
         }
       }
     }
-  },
+  }
 
-  loadSpritesheets: function (assetData) {
+  loadSpritesheets (assetData) {
     if (assetData) {
       for (const [key, value] of Object.entries(assetData)) {
         console.log(`Loading ${key}: ${Object.values(value)}`)
@@ -86,27 +83,27 @@ const LoadingScene = new Phaser.Class({
         )
       }
     }
-  },
+  }
 
-  loadImages: function (assetData) {
+  loadImages (assetData) {
     if (assetData) {
       for (const [key, value] of Object.entries(assetData)) {
         console.log(`Loading ${key}: ${value}`)
         this.load.image(key, require(`../assets/${value}`))
       }
     }
-  },
+  }
 
-  loadAudio: function (assetData) {
+  loadAudio (assetData) {
     if (assetData) {
       for (const [key, value] of Object.entries(assetData)) {
         console.log(`Loading ${key}: ${value}`)
         this.load.audio(key, require(`../assets/${value}`))
       }
     }
-  },
+  }
 
-  createProgressbar: function (x, y) {
+  createProgressbar (x, y) {
     const width = 400
     const height = 20
     const xStart = x - width / 2
@@ -142,15 +139,15 @@ const LoadingScene = new Phaser.Class({
       this.load.off('progress', updateProgressbar)
       this.scene.start('MainMenuScene')
     }, this)
-  },
+  }
 
   centerX () {
     return this.sys.game.config.width / 2
-  },
+  }
 
   centerY () {
     return this.sys.game.config.height / 2
   }
-})
+}
 
 export { LoadingScene }

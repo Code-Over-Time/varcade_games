@@ -6,22 +6,19 @@ import { IconButton } from '../ui_elements/icon_button'
 
 import { getSceneLayoutData } from '../game_data/layout.js'
 
-const CharacterIntroScene = new Phaser.Class({
+class CharacterIntroScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'CharacterIntroScene' })
+  }
 
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'CharacterIntroScene' })
-  },
-
-  init: function (data) {
+  init (data) {
     this.gameInterface = data.gameInterface
     this.viewData = this.gameInterface.getGameViewData()
 
     this.clickCount = 0
-  },
+  }
 
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('CharacterIntroScene')
 
     const charNameLayout = this.layoutData.ui.characterName
@@ -76,9 +73,9 @@ const CharacterIntroScene = new Phaser.Class({
         this.completeAllTweens()
       }
     })
-  },
+  }
 
-  addSkipButton: function () {
+  addSkipButton () {
     const skipButtonLayout = this.layoutData.ui.skipButton
 
     this.add.existing(new IconButton(this,
@@ -97,13 +94,12 @@ const CharacterIntroScene = new Phaser.Class({
     )).setRotation(
       1.5
     )
-  },
+  }
 
-  completeAllTweens: function () {
+  completeAllTweens () {
     this.twnName.complete()
     this.twnStoryline.complete()
   }
-
-})
+}
 
 export { CharacterIntroScene }

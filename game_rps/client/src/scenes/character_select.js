@@ -9,22 +9,19 @@ import { getSceneLayoutData } from '../game_data/layout.js'
 import { getSaveGameData } from '../game_data/save_data.js'
 import { CharacterInfoBox } from '../ui_elements/character_info_box.js'
 
-const CharacterSelectScene = new Phaser.Class({
-
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'CharacterSelectScene' })
+class CharacterSelectScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'CharacterSelectScene' })
     this.characterSelectEnabled = true
     this.saveGameData = getSaveGameData()
-  },
+  }
 
-  init: function (data) {
+  init (data) {
     this.gameInterface = data.gameInterface
     this.viewData = this.gameInterface.getGameViewData()
-  },
+  }
 
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('CharacterSelectScene')
 
     this.add.image(
@@ -134,9 +131,9 @@ const CharacterSelectScene = new Phaser.Class({
     this.characterInfoBox.addToScene()
 
     this.handleCharacterSelection(headshots[0])
-  },
+  }
 
-  update: function (time, delta) {
+  update (time, delta) {
     // Handle case where a game is timed out while the host is waiting for an opponent
     if (this.viewData.interfaceErrors.length > 0) {
       const error = this.viewData.interfaceErrors.pop()
@@ -150,13 +147,13 @@ const CharacterSelectScene = new Phaser.Class({
         })
       }
     }
-  },
+  }
 
   /**
     Character selection and animation
   **/
 
-  handleCharacterSelection: function (selectedHeadshot) {
+  handleCharacterSelection (selectedHeadshot) {
     if (this.characterSelectEnabled) {
       audioManager.playEffect('charSelectEffect')
       this.characterSelectEnabled = false
@@ -179,13 +176,13 @@ const CharacterSelectScene = new Phaser.Class({
       this.currentDisplayCharacter = newCharacterSelection
       this.selectedCharacter = characterData
     }
-  },
+  }
 
-  characterUnlocked: function (characterId) {
+  characterUnlocked (characterId) {
     return this.saveGameData.characterUnlocks.indexOf(characterId) !== -1
-  },
+  }
 
-  tweenCharacterIn: function (character) {
+  tweenCharacterIn (character) {
     character.setVisible(true)
     const tweenConfig = {
       targets: [character],
@@ -198,9 +195,9 @@ const CharacterSelectScene = new Phaser.Class({
       }
     }
     this.tweens.add(tweenConfig)
-  },
+  }
 
-  tweenCharacterOut: function (character, replacementCharacter) {
+  tweenCharacterOut (character, replacementCharacter) {
     this.tweens.add({
       targets: [character],
       x: -this.layoutData.ui.character.width,
@@ -211,9 +208,9 @@ const CharacterSelectScene = new Phaser.Class({
         this.tweenCharacterIn(replacementCharacter)
       }
     })
-  },
+  }
 
-  getText: function (key) {
+  getText (key) {
     return {
       char_name: '',
       char_country: 'Country: ',
@@ -223,7 +220,6 @@ const CharacterSelectScene = new Phaser.Class({
       char_stats_health: 'Health: '
     }[key]
   }
-
-})
+}
 
 export { CharacterSelectScene }

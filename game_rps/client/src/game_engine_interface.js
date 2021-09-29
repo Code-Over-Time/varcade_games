@@ -2,7 +2,7 @@ import { gameConfig } from './game_data/config.js'
 
 import {
   RPSGame, RPSPlayer, RPSStrategyBot, RPSGameMode,
-  RPSFighter, RPSRoundEvent,
+  RPSFighter, RPSRoundEvent, RPSRandomBot,
   RPSGameEvent, getCharacterById, getBossCharacterId
 } from 'rps-game-engine'
 
@@ -57,9 +57,6 @@ class GameEngineInterface {
 
   }
 
-  endGame () {
-  }
-
   addEventListener () {
     console.warning('Event listener added to abstract GameEngineInterface base class. Events will be ignored.')
   }
@@ -76,7 +73,7 @@ class SinglePlayerGame extends GameEngineInterface {
     // before this game. It allows us to decide which NPC they will face next
     // in their campaign
     this.game.addPlayer(new RPSPlayer('player'))
-    this.game.addPlayer(new RPSStrategyBot('computer', this.gameSettings.sequence))
+    this.game.addPlayer(this.createComputerPlayer())
 
     this.game.addEventListener((event) => this.handleNPCEvent(event))
     this.game.addEventListener((event) => {
@@ -100,6 +97,13 @@ class SinglePlayerGame extends GameEngineInterface {
     this.gameViewData.p2Id = this.game.player2.id
   }
 
+  createComputerPlayer () {
+    if (this.gameState.isBossFight) { // Random is the most difficult to play against
+      return new RPSRandomBot('computer')
+    }
+    return new RPSStrategyBot('computer', Math.min(this.gameState.sequence, 3))
+  }
+
   selectFighter (characterSpec, callback) {
     this.game.player1.selectFighter(new RPSFighter(characterSpec))
     this.gameViewData.p1Spec = characterSpec
@@ -110,12 +114,12 @@ class SinglePlayerGame extends GameEngineInterface {
     // single player opponent sequence in the character spec
     setTimeout(() => {
       let nextOpponentId = null
-      if (this.gameSettings.bossFight) {
+      if (this.gameState.isBossFight) {
         nextOpponentId = getBossCharacterId()
       } else {
-        const opponentIndex = this.gameSettings.sequence
+        const opponentIndex = this.gameState.sequence
         if (opponentIndex >= characterSpec.singlePlayerSequence.length) {
-          throw new Error('Invalid game setup - single player sequence ID invalid')
+          throw new Error('Invalid game setup - opponent index greater than list of available opponents.')
         }
         nextOpponentId = characterSpec.singlePlayerSequence[opponentIndex]
       }

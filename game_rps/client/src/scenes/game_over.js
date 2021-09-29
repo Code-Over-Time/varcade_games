@@ -10,34 +10,27 @@ import { TextButton } from '../ui_elements/text_button'
 
 import { lore, credits } from 'rps-game-engine'
 
-const GameOverScene = new Phaser.Class({
+class GameOverScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'GameOverScene' })
+  }
 
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'GameOverScene' })
-  },
-
-  init: function (data) {
+  init (data) {
     this.isWinner = data.isWinner
     this.bossFight = data.bossFight
     this.saveGameData = getSaveGameData()
-  },
+  }
 
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('GameOverScene')
     if (this.bossFight) {
       this.finalBossSequence()
     } else {
       this.gameOverSequence()
     }
-  },
+  }
 
-  update: function (time, delta) {
-
-  },
-
-  gameOverSequence: function () {
+  gameOverSequence () {
     if (this.isWinner) {
       this.showVictory()
       audioManager.playMusic('gameplayMusic', true)
@@ -45,29 +38,29 @@ const GameOverScene = new Phaser.Class({
       this.showDefeat()
       audioManager.stopMusic()
     }
-  },
+  }
 
-  finalBossSequence: function () {
+  finalBossSequence () {
     if (this.isWinner) {
       this.showCreditSequence('SAVIOUR!', lore.fullVictoryLore)
       audioManager.playMusic('gameplayMusic', true)
     } else {
       this.showDefeat()
     }
-  },
+  }
 
-  showVictory: function () {
+  showVictory () {
     this.showCreditSequence('VICTORY', lore.basicVictoryLore)
-  },
+  }
 
-  showDefeat: function () {
+  showDefeat () {
     let headerText = 'GAME OVER'
     let bodyText = [
       'You have been defeated.\n',
       'The fate of humanity remains uncertain still...'
     ]
 
-    if (this.bossFight) {
+    if (this.isBossFight) {
       headerText = 'DEFEAT!'
       bodyText = [
         'You have literally single handedly',
@@ -111,9 +104,9 @@ const GameOverScene = new Phaser.Class({
     })
 
     this.tweenTextColorRed(txtGameOver, () => this.showMainMenuButton())
-  },
+  }
 
-  showCreditSequence: function (header, lore) {
+  showCreditSequence (header, lore) {
     const txtVictory = this.add.bitmapText(
       this.layoutData.ui.header.x,
       this.layoutData.ui.header.y,
@@ -175,9 +168,9 @@ const GameOverScene = new Phaser.Class({
     })
 
     this.tweenTextColorRed(txtVictory)
-  },
+  }
 
-  showMainMenuButton: function () {
+  showMainMenuButton () {
     const mainMenuButton = new TextButton(
       this,
       this.layoutData.ui.menuButton.x,
@@ -194,9 +187,9 @@ const GameOverScene = new Phaser.Class({
       this.layoutData.ui.menuButton.originY
     )
     this.add.existing(mainMenuButton)
-  },
+  }
 
-  tweenTextColorRed: function (txtEntity, onCompleteCallback) {
+  tweenTextColorRed (txtEntity, onCompleteCallback) {
     this.tweens.addCounter({
       from: 255,
       to: 0,
@@ -208,7 +201,6 @@ const GameOverScene = new Phaser.Class({
       onComplete: onCompleteCallback
     })
   }
-
-})
+}
 
 export { GameOverScene }

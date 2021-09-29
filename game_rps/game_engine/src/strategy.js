@@ -1,5 +1,5 @@
 const difficultyToSelectionSize = [3, 4, 5, 6]
-const difficultyToStrategyChangeThreshold = [0.9, 0.2, 0.30, 0.45]
+const difficultyToStrategyChangeThreshold = [null, 0.2, 0.30, 0.45]
 
 class RPSStrategy {
   static get BABY () { return 0 }

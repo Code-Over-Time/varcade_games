@@ -3,15 +3,12 @@ import Phaser from 'phaser'
 import { MultiPlayerGame } from '../game_engine_interface.js'
 import { getSceneLayoutData } from '../game_data/layout.js'
 
-const MatchmakerScene = new Phaser.Class({
+class MatchmakerScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'MatchmakerScene' })
+  }
 
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'MatchmakerScene' })
-  },
-
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('MatchmakerScene')
 
     const headerLayout = this.layoutData.ui.header
@@ -50,7 +47,6 @@ const MatchmakerScene = new Phaser.Class({
       this.scene.start('MainMenuScene')
     })
   }
-
-})
+}
 
 export { MatchmakerScene }

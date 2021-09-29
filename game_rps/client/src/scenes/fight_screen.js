@@ -8,20 +8,17 @@ import { RPSRoundStates, RPSRoundEvent, RPSGameEvent } from 'rps-game-engine'
 import { HealthBar } from '../ui_elements/health_bar'
 import { getSceneLayoutData } from '../game_data/layout.js'
 
-const BattleScene = new Phaser.Class({
+class BattleScene extends Phaser.Scene {
+  constructor () {
+    super({ key: 'BattleScene' })
+  }
 
-  Extends: Phaser.Scene,
-
-  initialize: function () {
-    Phaser.Scene.call(this, { key: 'BattleScene' })
-  },
-
-  init: function (data) {
+  init (data) {
     this.gameInterface = data.gameInterface
     this.viewData = this.gameInterface.getGameViewData()
-  },
+  }
 
-  create: function () {
+  create () {
     this.layoutData = getSceneLayoutData('BattleScene')
 
     this.background = this.add.sprite(
@@ -198,9 +195,9 @@ const BattleScene = new Phaser.Class({
       0,
       0
     ))
-  },
+  }
 
-  update: function (time, delta) {
+  update (time, delta) {
     this.p1HealthBar.updateHealth(this.viewData.p1CurrentHealth)
     this.p2HealthBar.updateHealth(this.viewData.p2CurrentHealth)
 
@@ -219,22 +216,22 @@ const BattleScene = new Phaser.Class({
         this.leaveScene('VSScene', { gameInterface: this.gameInterface })
       }
     }
-  },
+  }
 
-  selectWeapon: function (selectedImage, index) {
+  selectWeapon (selectedImage, index) {
     if (this.currentlySelectedImage != null) {
       this.currentlySelectedImage.setScale(1, 1)
     }
     this.currentlySelectedImage = selectedImage
     selectedImage.setScale(1.5, 1.5)
     this.gameInterface.selectWeapon(index)
-  },
+  }
 
   /*
         EVENT HANDLING
   */
 
-  gameEventListener: function (event) {
+  gameEventListener (event) {
     if (event instanceof RPSRoundEvent) {
       switch (event.type) {
         case RPSRoundEvent.ROUND_COUNTDOWN:
@@ -268,9 +265,9 @@ const BattleScene = new Phaser.Class({
           break
       }
     }
-  },
+  }
 
-  leaveScene: function (targetScene, data) {
+  leaveScene (targetScene, data) {
     // Need to unload these textures because the next
     // time we enter this scene we will likely have
     // new characters, and Phaser keeps already loaded
@@ -280,9 +277,9 @@ const BattleScene = new Phaser.Class({
     console.log('Fight scene cleaned up.')
     this.scene.start(targetScene, data)
     // this.scene.remove()
-  },
+  }
 
-  handleRoundCountdownEvent: function (event) {
+  handleRoundCountdownEvent (event) {
     if (event.data.value === 2) {
       this.txtRoundCountdown.setScale(0, 0)
       this.txtRoundCountdown.setText('Get Ready!')
@@ -332,9 +329,9 @@ const BattleScene = new Phaser.Class({
         ease: 'Expo.easeOut'
       })
     }
-  },
+  }
 
-  handleWeaponCountdownEvent: function (event) {
+  handleWeaponCountdownEvent (event) {
     this.txtWeaponCountdown.setScale(0, 0)
     this.txtWeaponCountdown.setText(event.data.value)
 
@@ -348,9 +345,9 @@ const BattleScene = new Phaser.Class({
       ease: 'Expo.easeOut'
     })
     audioManager.playEffect('beep')
-  },
+  }
 
-  handleBattleEvent: function (event) {
+  handleBattleEvent (event) {
     const attackSummary = event.data.attackSummary
 
     // If format of texture is <char_id>_r, <char_id>_p etc...
@@ -383,7 +380,7 @@ const BattleScene = new Phaser.Class({
     })
 
     audioManager.playEffect('punch')
-  },
+  }
 
   handleRoundEnd (event) {
     const roundWinnerName = event.data.roundWinnerId === this.viewData.p1Id
@@ -407,17 +404,17 @@ const BattleScene = new Phaser.Class({
       }
       return true
     })
-  },
+  }
 
   /*
         STATE MANAGEMENT
   */
-  handleStateChangeEvent: function (event) {
+  handleStateChangeEvent (event) {
     this.stateHandlerMap[event.data.oldState].onExit()
     this.stateHandlerMap[event.data.newState].onEnter()
-  },
+  }
 
-  initStateHandlers: function () {
+  initStateHandlers () {
     this.stateHandlerMap = {}
 
     this.stateHandlerMap[RPSRoundStates.NEW_ROUND] = {
@@ -496,26 +493,26 @@ const BattleScene = new Phaser.Class({
 
       }
     }
-  },
+  }
 
   /*
         UTILITIES
   */
-  setRoundCountdownGroupVisible: function (visible) {
+  setRoundCountdownGroupVisible (visible) {
     const children = this.roundCountdownGroup.getChildren()
     children.forEach((child) => {
       child.setVisible(visible)
     })
-  },
+  }
 
-  setWeaponCountdownGroupVisible: function (visible) {
+  setWeaponCountdownGroupVisible (visible) {
     const children = this.weaponCountdownGroup.getChildren()
     children.forEach((child) => {
       child.setVisible(visible)
     })
-  },
+  }
 
-  addWinIndicators: function (layoutData, characterData) {
+  addWinIndicators (layoutData, characterData) {
     const winIndicators = []
 
     // First Win
@@ -557,9 +554,9 @@ const BattleScene = new Phaser.Class({
     ))
 
     return this.add.group(winIndicators)
-  },
+  }
 
-  addRoundLifecycleUI: function () {
+  addRoundLifecycleUI () {
     const roundLayout = this.layoutData.ui.roundLifecycle
     // Start of round
     this.txtRoundCountdownHeader = this.add.bitmapText(
@@ -623,9 +620,9 @@ const BattleScene = new Phaser.Class({
       this.txtRoundCountdownHeader,
       this.txtRoundCountdown
     ])
-  },
+  }
 
-  addWeaponSelectLifecycleUI: function () {
+  addWeaponSelectLifecycleUI () {
     const weaponLayout = this.layoutData.ui.weaponSelectLifecycle
     // Weapon countdown UI
     this.txtWeaponCountdownHeader = this.add.bitmapText(
@@ -714,6 +711,6 @@ const BattleScene = new Phaser.Class({
       imgScissorsSelect
     ])
   }
-})
+}
 
 export { BattleScene }

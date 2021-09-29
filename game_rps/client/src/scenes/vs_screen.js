@@ -24,7 +24,7 @@ const VSScene = new Phaser.Class({
   },
 
   create: function () {
-    if (this.viewData.gameMode === RPSGameMode.SINGLE && this.gameInterface.gameSettings.bossFight) {
+    if (this.viewData.gameMode === RPSGameMode.SINGLE && this.gameInterface.gameState.isBossFight) {
       audioManager.playMusic('bossMusic', true)
     } else {
       audioManager.playMusic('gameplayMusic')
