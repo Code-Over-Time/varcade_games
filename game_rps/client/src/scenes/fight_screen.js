@@ -19,6 +19,10 @@ class BattleScene extends Phaser.Scene {
   }
 
   create () {
+    this.events.on('destroy', () => {
+      this.gameInterface.endGame()
+    })
+
     this.layoutData = getSceneLayoutData('BattleScene')
 
     this.background = this.add.sprite(

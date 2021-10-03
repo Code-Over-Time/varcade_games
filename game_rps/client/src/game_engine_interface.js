@@ -57,6 +57,10 @@ class GameEngineInterface {
 
   }
 
+  endGame () {
+
+  }
+
   addEventListener () {
     console.warning('Event listener added to abstract GameEngineInterface base class. Events will be ignored.')
   }
@@ -79,7 +83,7 @@ class SinglePlayerGame extends GameEngineInterface {
     this.game.addEventListener((event) => {
       if (event instanceof RPSGameEvent && event.type === RPSGameEvent.GAME_COMPLETE) {
         this.gameViewData.winnerId = this.game.p1Wins > this.game.p2Wins ? this.game.player1.id : this.game.player2.id
-        clearInterval(this.tickTimer)
+        this.endGame()
       } else if (event instanceof RPSRoundEvent) {
         this.gameViewData.p1CurrentHealth = this.game.player1.fighter.getCurrentHealth()
         this.gameViewData.p2CurrentHealth = this.game.player2.fighter.getCurrentHealth()
@@ -95,6 +99,11 @@ class SinglePlayerGame extends GameEngineInterface {
     this.gameViewData.activePlayerId = this.game.player1.id
     this.gameViewData.p1Id = this.game.player1.id
     this.gameViewData.p2Id = this.game.player2.id
+  }
+
+  endGame () {
+    console.log('Game ended - clearing tick interval.')
+    clearInterval(this.tickTimer)
   }
 
   createComputerPlayer () {

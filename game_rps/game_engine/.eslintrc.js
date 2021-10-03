@@ -4,12 +4,11 @@ module.exports = {
     commonjs: true,
     es2021: true
   },
-  extends: [
-    'standard'
-  ],
+  extends: ["eslint:recommended", "standard"],
+  rules: {
+    "linebreak-style": ["error", "unix"]
+  },
   parserOptions: {
     ecmaVersion: 12
-  },
-  rules: {
   }
 }

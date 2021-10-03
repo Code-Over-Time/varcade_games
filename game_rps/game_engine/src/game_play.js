@@ -84,7 +84,7 @@ class RPSGame {
      *
      *  Otherwise the method returns true and sends a 'GameStarted' event.
     **/
-    if (this.player1 == null || this.player2 == null) {
+    if (!this.player1 || !this.player2) {
       return false
     } else if (!this.player1.ready() || !this.player2.ready()) {
       return false
