@@ -138,7 +138,9 @@
                             this.$store.state.userProfile.user.id, 
                             response.token
                         );
-                        this.$modal.hide('matchmaker-modal');
+                        // TODO:    This needs to go last or weird stuff happens
+                        //          The main menu doesn't clear
+                        this.$modal.hide('matchmaker-modal');  
                     }, 
                     error => {
                         console.log('Game creation failed => ' + error);
@@ -150,12 +152,14 @@
                 this.matchmaker.joinGame(targetGameId,
                     response => {
                         console.log(`Join game => ${response}`);
-                        this.$modal.hide('matchmaker-modal');
                         this.matchmaker.notifyJoinedGame(
                             response.target_game_server,
                             this.$store.state.userProfile.user.id, 
                             response.token
                         );
+                        // TODO:    This needs to go last or weird stuff happens
+                        //          The main menu doesn't clear
+                        this.$modal.hide('matchmaker-modal');
                     }, 
                     error => {
                         console.log(`Game creation failed => ${error}`);

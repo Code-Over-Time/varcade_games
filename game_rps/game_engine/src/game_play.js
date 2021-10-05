@@ -94,6 +94,10 @@ class RPSGame {
     return true
   }
 
+  isInProgress () {
+    return this.state === RPSGameStates.IN_PROGRESS
+  }
+
   resetGame (preserveP1) {
     /**
      *  Resets the game back to it's initial state.

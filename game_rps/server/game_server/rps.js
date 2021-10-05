@@ -291,7 +291,7 @@ class RPSServer {
     const gameWrapper = new GameHandler.MultiPlayerGame(
       gameToken, gameId, userId, username,
       (gameId, event) => this.pushStreamEvent(gameId, event),
-      () => this.removeGame(gameId)
+      () => this.removeGame(gameId, '', 0)
     )
     this.activeGames[gameId] = gameWrapper
     this.tokenGameMap[gameToken] = gameId
@@ -346,7 +346,7 @@ class RPSServer {
     return removalResult
   }
 
-  removeGame (gameId, msg = 'This game has been removed.') {
+  removeGame (gameId, msg = 'This game has been removed.', code = 1000) {
     if (!gameId) {
       throw new RPSErrors.ValidationError(1, 'Unable to remove game - no game ID specified.')
     }
@@ -359,10 +359,10 @@ class RPSServer {
     }
 
     if (game.p1Connection) {
-      game.p1Connection.close(1000, msg)
+      game.p1Connection.close(code, msg)
     }
     if (game.p2Connection) {
-      game.p2Connection.close(1000, msg)
+      game.p2Connection.close(code, msg)
     }
 
     this.pushStreamEvent(new StreamEvent(gameId, 'game_removed'))

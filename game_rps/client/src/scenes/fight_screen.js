@@ -659,11 +659,17 @@ class BattleScene extends Phaser.Scene {
       weaponLayout.count.color
     )
 
+    // Need to know which spec to use for multi-player
+    let playerSpec = this.viewData.p1Spec
+    if (this.viewData.activePlayerId !== this.viewData.p1Id) {
+      playerSpec = this.viewData.p2Spec
+    }
+
     const imgRockSelect = this.add.image(
       weaponLayout.rockSelect.x,
       weaponLayout.rockSelect.y,
       'global_texture',
-      this.viewData.p1Spec.id + '_r'
+      playerSpec.id + '_r'
     ).setOrigin(
       weaponLayout.rockSelect.originX,
       weaponLayout.rockSelect.originY
@@ -679,7 +685,7 @@ class BattleScene extends Phaser.Scene {
       weaponLayout.paperSelect.x,
       weaponLayout.paperSelect.y,
       'global_texture',
-      this.viewData.p1Spec.id + '_p'
+      playerSpec.id + '_p'
     ).setOrigin(
       weaponLayout.paperSelect.originX,
       weaponLayout.paperSelect.originY
@@ -695,7 +701,7 @@ class BattleScene extends Phaser.Scene {
       weaponLayout.scissorsSelect.x,
       weaponLayout.scissorsSelect.y,
       'global_texture',
-      this.viewData.p1Spec.id + '_s'
+      playerSpec.id + '_s'
     ).setOrigin(
       weaponLayout.scissorsSelect.originX,
       weaponLayout.scissorsSelect.originY

@@ -3,25 +3,12 @@ const RPSErrors = require('./rps_errors')
 const { GameplayEvent, StateChangeEvent, GameOverEvent, GameProgressEvent } = require('./event_stream')
 const logger = require('./logger')
 
-// The game server needs to maintain its own state to keep trap of player actions,
-// this is unrelated to the game state in the game engine
-class GameStates {
-  static get WAIT_CREATOR_JOIN () { return 0 } // Waiting for the host of the game to join
-  static get WAIT_PLAYERS_JOIN () { return 1 } // Waiting for player 2 to join
-  static get SERVER_READY () { return 2 } // All players have joined and the server can proceed
-  static get PLAYERS_READY () { return 3 } // Players are ready to actually play
-  static get SELECTION () { return 4 } // Time period for players to select option
-  static get RESULT () { return 5 } // Server is processing and sending result
-  static get GAME_OVER () { return 6 } // Game has finished
-}
-
 class MultiPlayerGame {
   constructor (token, gameId, userId, username, streamEventListener, gameOverListener) {
     this.id = gameId
     this.token = token
 
     // default state
-    this.state = GameStates.WAIT_CREATOR_JOIN
     this.p1Connection = null
     this.p2Connection = null
     this.p1Ready = false // Variables used to sync the start of the actual battle
@@ -65,7 +52,6 @@ class MultiPlayerGame {
       }
 
       this.p1Connection = connection
-      this.state = GameStates.WAIT_PLAYERS_JOIN
       this.streamEventListener(new StateChangeEvent(this.game.id, 'creator_joined'))
     } else if (this.game.player2 != null && userId === this.game.player2.id) {
       if (!this.p1Connection) {
@@ -79,7 +65,6 @@ class MultiPlayerGame {
       }
 
       this.p2Connection = connection
-      this.state = GameStates.SERVER_READY
       this.streamEventListener(new StateChangeEvent(this.game.id, 'all_players_joined'))
     }
 
@@ -136,7 +121,6 @@ class MultiPlayerGame {
       this.p2Connection = null
       this.p1Ready = false
       this.p2Ready = false
-      this.state = GameStates.WAIT_PLAYERS_JOIN
       this.game.resetGame(true)
     }
     return removalResult
@@ -160,6 +144,11 @@ class MultiPlayerGame {
   }
 
   handleSelectFighter (connection, msg) {
+    if (this.getPlayerForConnection(connection).fighter) {
+      logger.warn(`Select fighter message sent after a fighter was already selected. Game id: ${this.game.id}`)
+      return
+    }
+
     if (!this.selectFighter(connection, msg.characterId)) {
       connection.send(JSON.stringify({
         type: 'error',
@@ -177,6 +166,11 @@ class MultiPlayerGame {
   }
 
   handleStartBattle (connection, msg) {
+    if (this.game.isInProgress()) {
+      logger.warning(`Start battle message sent to server while game is in progress. Game id: ${this.game.id}`)
+      return
+    }
+    
     let activePlayer = null
     if (connection === this.p1Connection) {
       activePlayer = this.game.player1
@@ -351,4 +345,3 @@ class MultiPlayerGame {
 }
 
 exports.MultiPlayerGame = MultiPlayerGame
-exports.GameStates = GameStates
