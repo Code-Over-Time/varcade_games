@@ -170,7 +170,7 @@ class MultiPlayerGame {
       logger.warning(`Start battle message sent to server while game is in progress. Game id: ${this.game.id}`)
       return
     }
-    
+
     let activePlayer = null
     if (connection === this.p1Connection) {
       activePlayer = this.game.player1

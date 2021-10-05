@@ -268,7 +268,7 @@ class MultiPlayerGame extends GameEngineInterface {
 
     this.gameServerSocketConnection.onclose = (event) => {
       if (event.code === 0) {
-        console.log("Connection with server closed normally - game is over.")
+        console.log('Connection with server closed normally - game is over.')
         return
       }
       console.log(`MultiPlayerInterface: WebSocket closed by the server. Code: ${event.code} Reason: ${event.reason}`)
