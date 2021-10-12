@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.8-alpine
 ENV PYTHONUNBUFFERED 1
 
 RUN apk add alpine-sdk
@@ -8,7 +8,7 @@ RUN apk add redis
 RUN apk add mariadb-dev
 RUN apk add jpeg-dev
 RUN apk add libpng-dev
-
+RUN apk add libffi-dev
 
 RUN mkdir /test_game_portal
 RUN mkdir /test_game_portal/game_portal
