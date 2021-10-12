@@ -70,11 +70,11 @@ const characters = [
     isBoss: false,
     singlePlayerUnlock: 'rad',
     storyline: [
-      `Manbo is no stranger to dark and powerful spirits.\n`,
-      `As a practitioner of West African Vudon and Queen Mother to her clan she is believed to maintain unearthly connections with her people's ancestors.\n`,
-      `Manbo carries many talismen, or Fetishes as they are known to her, each of which is said to contain spirits that guide her hand during the game.\n`,
-      `Some have claimed she uses the dark arts to manipulate her opponents decisions, others say her sixth sense also exposes the intentions of her opponents.\n`,
-      `Out of all of the contenders, none carry with them the threatening mystique that Manbo does.\n`
+      'Manbo is no stranger to dark and powerful spirits.\n',
+      'As a practitioner of West African Vudon and Queen Mother to her clan she is believed to maintain unearthly connections with her people\'s ancestors.\n',
+      'Manbo carries many talismen, or Fetishes as they are known to her, each of which is said to contain spirits that guide her hand during the game.\n',
+      'Some have claimed she uses the dark arts to manipulate her opponents decisions, others say her sixth sense also exposes the intentions of her opponents.\n',
+      'Out of all of the contenders, none carry with them the threatening mystique that Manbo does.\n'
     ],
     trashTalk: {
       win: ['Your strings were easily pulled...'],
@@ -155,8 +155,10 @@ const characters = [
     storyline: [
       'Born on the island of Java, Raden belongs to an unnamed and ancient Indonesian sect.\n',
       'Established during the formation of the Medang Empire, this secret order seeks out young girls that display strong empathic abilities to join their ranks.\n',
-      'These girls spend a lifetime submerged in grueling training regimes designed to push their physical and mental strength to their limits. Once their training is complete they go out into the world, acting as beacons of hope in times of despair\n',
-      'This combination of unwavering composure and empathy also results in a near unmatched ability to play Rock Paper Scissors. Raden stands strong in the face of unwavering evil and existential pressure, long after all other have crumbled.\n',
+      'These girls spend a lifetime submerged in grueling training regimes designed to push their physical and mental strength to their limits.\n',
+      'Once their training is complete they go out into the world, acting as beacons of hope in times of despair\n',
+      'This combination of unwavering composure and empathy also results in a near unmatched ability to play Rock Paper Scissors.\n',
+      'Raden stands strong in the face of unwavering evil and existential pressure, long after all other have crumbled.\n',
       'Some have claimed that the secret sect that Raden belongs to and `The Keepers of the Game` are one and the same, though these claims are unsubstantiated.\n'
     ],
     trashTalk: {
@@ -194,9 +196,10 @@ const characters = [
     ],
     singlePlayerUnlock: null,
     storyline: [
-      'Mainyu is the spirit of a pure evil that exists only to corrupt, consume and destroy.\n',
-      'Its one weakness can be found in its willingness to gamble with it`s victims so that it can foster hope within living souls so that it can crush that hope and bath in the broken remains of the human spirit it has crushed.\n',
-      'The Keepers of the Game refer to Mainyu as the darkness that haunts all humans.\n',
+      'Mainyu is a spirit of a pure evil that exists only to corrupt, consume and destroy.\n',
+      'Its one weakness is its willingness to gamble with its victims.\n',
+      'It fosters hope within living souls so that it can destroy that hope and bath in the broken remains of the human spirit it has crushed.\n',
+      'The Keepers of the Game refer to Mainyu as the `darkness that haunts all humans`.\n',
       'It is corruption.\n',
       'It is subjugation. \n',
       'It is envy.\n',

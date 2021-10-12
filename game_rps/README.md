@@ -1,7 +1,3 @@
-#### Code Over Time
-
-This project is part of `Code Over Time`. For more information visit the [Code Over Time](http://www.codeovertime.com) website.
-
 # Rock Paper Scissors Apocalypse!
 
 `Rock Paper Scissors Apocalypse` is a single and multi player fighting game based around rock paper scissors.
