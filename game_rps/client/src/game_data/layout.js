@@ -585,7 +585,7 @@ const sceneLayoutData = {
           fontSize: 22,
           x: globalLayoutData.halfScreenWidth,
           y: globalLayoutData.screenHeight,
-          scrollDuration: 38 * 1000
+          scrollDuration: 30000
         },
         skipButton: {
           icons: {
@@ -611,7 +611,7 @@ const sceneLayoutData = {
           fontSize: 22,
           x: globalLayoutData.halfScreenWidth,
           y: globalLayoutData.screenHeight,
-          scrollDuration: 25000
+          scrollDuration: 20000
         },
         characterName: {
           x: globalLayoutData.halfScreenWidth,

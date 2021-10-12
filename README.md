@@ -10,7 +10,11 @@ Developers can build an share single and multi player games, which can be publis
 
 ![Screenshot of an active game in Varcade Games](assets/documentation/rpsa_character_selection.png "Varcade Games Game")
 
-You can check out an active dev server [here](https://varcade-games.com) (Note: This dev server is deployed to a K8S cluster, but it is small in order to keep it cheap - so it will likely be unstable under load).
+You can check out an active dev server [here](https://varcade-games.com). 
+
+**Note:** This dev server is deployed to a K8S cluster, but it is small in order to keep it cheap - so it will likely be unstable under load. 
+
+It is also not entirely secure, so don't use real personal information, any real looking email will work for registration. This server will also be periodically wiped).
 
 ***
 

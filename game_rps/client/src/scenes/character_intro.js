@@ -49,9 +49,9 @@ class CharacterIntroScene extends Phaser.Scene {
     this.twnName = this.tweens.add({
       targets: [this.txtCharacterName],
       alpha: 1,
-      duration: 2300,
+      duration: 2000,
       yoyo: true,
-      hold: 1000,
+      hold: 800,
       onComplete: () => {
         this.twnStoryline = this.tweens.add({
           targets: [this.txtStoryline],
