@@ -22,7 +22,7 @@ from game_data.dao import initialise_db
 def api_call(req):
     """ The name of the function becomes the label name. """
     if not req.view_args:
-        return f'{req.endpoint}'
+        return f"{req.endpoint}"
     return f'{req.endpoint}.{req.view_args.get("product_id", "")}'
 
 
