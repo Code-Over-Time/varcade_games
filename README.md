@@ -1,13 +1,29 @@
 # Varcade Games
 
-Varcade Games is a software engineering sandbox.
+![Screenshot of the Varcade Games login screen](assets/documentation/game_portal_homepage.png "Varcade Games Login")
+
+Varcade Games is an online gaming portal with a built in matchmaker, leaderboards and player stat tracking. 
+
+![Screenshot of the Varcade Games game portal](assets/documentation/game_portal.png "Varcade Games Games")
+
+Developers can build an share single and multi player games, which can be published to the portal for players to play.
+
+![Screenshot of an active game in Varcade Games](assets/documentation/rpsa_character_selection.png "Varcade Games Game")
+
+You can check out an active dev server [here](https://varcade-games.com) (Note: This dev server is deployed to a K8S cluster, but it is small in order to keep it cheap - so it will likely be unstable under load).
+
+***
+
+Having said all that, Varcade Games is not a real product...
+
+Its real purpose is to serve as a software engineering sandbox.
 
 A real world project that anyone can use to:
 
 * Learn the craft of software engineering
 * Explore different languages and technologies
 
-It has everything you'd expect from a real and modern software project:
+It has a lot of what you might expect from a modern web project:
 
 * Web tech
     - Vue.js
@@ -19,6 +35,7 @@ It has everything you'd expect from a real and modern software project:
     - Stateless and stateful
 * A sample game
     - Phaser 3 (Javascript)
+    - Single player and multi player
 * Containerized distributed services
 * Build scripts
 * Automated tests
@@ -47,7 +64,7 @@ The project itself consists of:
 
 The goal was for it to be small and simple enough that anyone can learn the ins and outs of how it works, but scalable and flexible enough to improve and extend.
 
-For junior engineers it should serve and a 'next step' after learning to write a bit of code. This will show how to build real software.
+For junior engineers it should serve as a 'next step' after learning to write a bit of code. It should help you understand how to build real world software.
 
 For more experienced engineers it offers a playground - a place to try out new tech and ideas. For example - when learning a new language you could replace some of these project components in your language of choice. This should help to experience a real world application of the language.
 
@@ -142,7 +159,7 @@ You should be greeted by a login page. Use the credentials that you provided in 
 
 Once you've logged in you should see a menu that looks like this:
 
-![Screenshot of the Varcade Games admin interface](server/assets/documentation/admin_panel.png "Varcade Games admin interface")
+![Screenshot of the Varcade Games admin interface](assets/documentation/admin_panel.png "Varcade Games admin interface")
 
 Click the `add` link under the `GAMES` category.
 
@@ -167,5 +184,5 @@ Navigate your browser back to `localhost:8002` again.
 
 You should now see your new game in the `Coming Soon` section.
 
-To add an actual game that you can play and play with others head over to the [game_rps project](/varcade_games/game_rps/README.md) and follow the instructions there.
+To add an actual game that you can play and play with others head over to the [game_rps project](game_rps/README.md) and follow the instructions there.
 
