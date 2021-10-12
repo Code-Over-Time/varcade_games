@@ -1,4 +1,4 @@
-Django==3.1.12
+Django==3.1.13
 mysqlclient==2.0.1
 django-mysql==3.7.1
 django-allauth==0.42.0
