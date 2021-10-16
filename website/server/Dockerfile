@@ -7,6 +7,7 @@ RUN apk add vim
 RUN apk add mariadb-dev
 RUN apk add jpeg-dev
 RUN apk add libpng-dev
+RUN apk add libffi-dev
 
 RUN mkdir /game_portal
 WORKDIR /game_portal
