@@ -1,9 +1,12 @@
 <template>
-
-    <div class="index-screen-image">
-        <wp-top-bar v-bind:display-logout-option="false"/>
-        <div class="login-box-container">
-            <wp-login-register/>
+    <div>
+        <div class="index-screen-image">
+        </div>
+        <div class="content">
+            <wp-top-bar v-bind:display-logout-option="false"/>
+            <div class="login-box-container">
+                <wp-login-register/>
+            </div>
         </div>
     </div>
 </template>
@@ -31,15 +34,21 @@
 </script>
 
 <style scoped>
-    
+    .content{
+      position: absolute;
+      left: 50%; 
+      transform: translateX(-50%);
+      width: 100%;
+    }
+
     .index-screen-image {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: url(../assets/images/bg.jpg) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
+        background-image: url(../assets/images/bg.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        z-index: -1; 
         background-size: cover;
     }
 
@@ -47,7 +56,18 @@
         display: flex;
         align-items: center;
         margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 20em;
+        margin-bottom: 20em;
         height: 80%;
     }
 
+    @media only screen 
+    and (min-device-width : 320px) 
+    and (max-device-width : 1640px) {
+        .login-box-container {
+            /*margin-top: 90%;*/
+            justify-content: center;
+        }
+    }
 </style>
