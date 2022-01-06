@@ -239,14 +239,9 @@ export default {
   }
 
   .container {
-    width: 30em;
     padding: 1em;
     line-height: 20px;
     color: #c9c9c9;
-  }
-
-  .extended-container {
-    width: 60em;
   }
 
   .input {
@@ -329,6 +324,8 @@ export default {
     background: #343a40;
     border-radius: 5px;
     padding: 1em;
+    max-width: 30em;
+    width: 100%;
   }
 
 
