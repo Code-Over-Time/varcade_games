@@ -57,8 +57,8 @@
         align-items: center;
         margin-left: 10%;
         margin-right: 10%;
-        margin-top: 20em;
-        margin-bottom: 20em;
+        margin-bottom: 10vh;
+        margin-top: 30vh;
         height: 80%;
     }
 
@@ -66,8 +66,8 @@
     and (min-device-width : 320px) 
     and (max-device-width : 1640px) {
         .login-box-container {
-            /*margin-top: 90%;*/
             justify-content: center;
+            margin-top: 80vh;
         }
     }
 </style>
