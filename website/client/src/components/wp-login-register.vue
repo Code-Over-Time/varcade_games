@@ -19,12 +19,13 @@
               <div class="form-group">
                 <label for="email" class="input-label">EMAIL</label>
                 <input  type="email" class="input form-control" id="email" v-model="lemail"
-                        aria-describedby="emailHelp">
+                        aria-describedby="emailHelp" @keyup.enter="login">
               </div>
 
               <div class="form-group">
                 <label for="password" class="input-label">PASSWORD</label>
-                <input type="password" class="input form-control" id="password" v-model="lpassword">
+                <input  type="password" class="input form-control" id="password" 
+                        v-model="lpassword" @keyup.enter="login">
                 <!-- <div>
                   <a href="#">Forgot your password?</a>
                 </div> -->
@@ -64,18 +65,20 @@
               <div class="form-group">
                 <label for="email" class="input-label">EMAIL</label>
                 <input  type="email" class="input form-control" id="email" v-model="remail"
-                        aria-describedby="emailHelp">
+                        aria-describedby="emailHelp" @keyup.enter="register">
                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
 
               <div class="form-group">
                 <label for="uname" class="input-label">USERNAME</label>
-                <input  type="text" class="input form-control" id="uname" v-model="rusername">
+                <input  type="text" class="input form-control" id="uname" 
+                        v-model="rusername" @keyup.enter="register">
               </div>
 
               <div class="form-group">
                 <label for="password" class="input-label">PASSWORD</label>
-                <input type="password" class="input form-control" id="password" v-model="rpassword">
+                <input  type="password" class="input form-control" id="password" 
+                        v-model="rpassword" @keyup.enter="register">
               </div>
               <button type="button" 
                       :disabled=!registerEnabled 
