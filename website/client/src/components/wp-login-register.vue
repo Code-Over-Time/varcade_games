@@ -193,6 +193,7 @@ export default {
     },
 
     login: function() {
+      if (!this.loginEnabled) return;
       this.showInvalidCredentialsError = false
       login(this.$store, this.lemail, this.lpassword, () => {
         this.fetchUserProfile();
@@ -202,6 +203,7 @@ export default {
     },
 
     register: function() {
+      if (!this.registerEnabled) return;
       register(this.$store, this.remail, this.rusername, this.rpassword, () => {  // On success
           this.fetchUserProfile();
         }, (status, errorData) => { //onError
