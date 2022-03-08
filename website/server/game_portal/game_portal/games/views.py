@@ -31,7 +31,6 @@ class GameViewSet(viewsets.ModelViewSet):
 
 
 class GameStatsView(APIView):
-    permission_classes = [IsAuthenticated]
     http_method_names = ["get"]
 
     def get(self, request, product_id, format=None):
@@ -39,7 +38,6 @@ class GameStatsView(APIView):
 
 
 class LeaderboardView(APIView):
-    permission_classes = [IsAuthenticated]
     http_method_names = ["get"]
 
     def get(self, request, product_id, format=None):
