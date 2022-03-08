@@ -174,7 +174,7 @@ const routes = [
     component: GamePortal,
     props: true,
     meta: {
-      requiresAuth: true
+      // requiresAuth: true
     }
   },
   {
@@ -183,7 +183,7 @@ const routes = [
     component: GamePlay,
     props: true,
     meta: {
-      requiresAuth: true
+      // requiresAuth: true
     }
   }
 ]

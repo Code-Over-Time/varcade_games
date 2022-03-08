@@ -1,5 +1,5 @@
 <template>
-
+  <div style="width:100%">
     <div class="form-box-bg">
 
         <div class="container">
@@ -96,7 +96,15 @@
 
         </div>
     </div>
-
+    <div class="guest_button">
+      <a  type="button"
+          href="/games"
+          class="btn btn-custom btn-block"
+          style="font-weight: bold;">
+        Enter as Guest
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -329,6 +337,11 @@ export default {
     background: #343a40;
     border-radius: 5px;
     padding: 1em;
+    max-width: 30em;
+    width: 100%;
+  }
+
+  .guest_button {
     max-width: 30em;
     width: 100%;
   }

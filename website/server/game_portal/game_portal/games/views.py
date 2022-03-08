@@ -25,7 +25,6 @@ class GameViewSet(viewsets.ModelViewSet):
         game_state__in=[Game.GameState.ACTIVE, Game.GameState.COMING_SOON]
     ).order_by("name")
     serializer_class = GameSerializer
-    permission_classes = [IsAuthenticated]
     http_method_names = ["get"]
     pagination_class = GameResultSetPagination
 
