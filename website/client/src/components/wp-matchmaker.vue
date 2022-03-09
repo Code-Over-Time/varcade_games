@@ -12,55 +12,64 @@
             <div id="modelContent">
                 
                 <div class="container">
-                
-                    <div class="row title">
-                        <div class="col">
-                            <h2>Available Games</h2>
-                        </div>
-                        <font-awesome-icon :icon="icoCloseModal" class="col-1 red-ico" @click="closeMatchmaker"/>
                     
-                    </div>
-
-                    <div class="row game-list" v-bind:class="(openGames.length == 0)?'game-list-empty':''">
-
-                        <div v-if="openGames.length > 0" class="game-list-container">
-                            <div class="row game-entry" v-for="game in openGames" :key="game.game_id">
-                                <div class="col-1">
-                                    <font-awesome-icon :icon="icoPlayerVS" size="2x"/>
-                                </div>
-                                <div class="col">
-                                    <h4> {{ game.creator_name }}</h4>
-                                </div>                                            
-                                <div class="col-4">
-                                    <button type="button" 
-                                            class="btn btn-custom btn-block" 
-                                            @click=joinGame(game.game_id)>
-                                        Join Game
-                                    </button>
-                                </div>
-                                <hr/>
+                    <div v-if="isLoggedIn">
+                        <div class="row title">
+                            <div class="col">
+                                <h2>Available Games</h2>
                             </div>
+                            <font-awesome-icon :icon="icoCloseModal" class="col-1 red-ico" @click="closeMatchmaker"/>
                         </div>
-                        <div v-else>
-                            <h5>THERE ARE NO OPEN GAMES CURRENTLY AVAILABLE.</h5>
-                            <h6>Select 'Create Game' to start your own game and wait for others to join.</h6>
+
+                        <div class="row game-list" v-bind:class="(openGames.length == 0)?'game-list-empty':''">
+
+                            <div v-if="openGames.length > 0" class="game-list-container">
+                                <div class="row game-entry" v-for="game in openGames" :key="game.game_id">
+                                    <div class="col-1">
+                                        <font-awesome-icon :icon="icoPlayerVS" size="2x"/>
+                                    </div>
+                                    <div class="col">
+                                        <h4> {{ game.creator_name }}</h4>
+                                    </div>                                            
+                                    <div class="col-4">
+                                        <button type="button" 
+                                                class="btn btn-custom btn-block" 
+                                                @click=joinGame(game.game_id)>
+                                            Join Game
+                                        </button>
+                                    </div>
+                                    <hr/>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <h5>THERE ARE NO OPEN GAMES CURRENTLY AVAILABLE.</h5>
+                                <h6>Select 'Create Game' to start your own game and wait for others to join.</h6>
+                            </div>
+
+                        </div>
+
+                        <div class="buttons row" style="padding: 1em;">
+
+                          <div class="col">
+                            <button type="button" class="btn btn-custom btn-block" @click=createGame>Create Game</button>
+                          </div>
+
+                          <div class="col">
+                            <button type="button" class="btn btn-custom btn-block" @click=refreshGameList>Refresh Games</button>
+                          </div>
+
                         </div>
 
                     </div>
 
-                    <div class="buttons row" style="padding: 1em;">
-
-                      <div class="col">
-                        <button type="button" class="btn btn-custom btn-block" @click=createGame>Create Game</button>
-                      </div>
-
-                      <div class="col">
-                        <button type="button" class="btn btn-custom btn-block" @click=refreshGameList>Refresh Games</button>
-                      </div>
-
-                    </div>
-
-                </div>        
+                    <wp-login-register 
+                        v-else
+                        class="modal-dialog modal-dialog-centered"
+                        title="Login to play online!" 
+                        subtitle="To play against your friends you must have an account."
+                    />
+                
+                </div>       
 
             </div> 
 
@@ -74,13 +83,13 @@
 
     import Matchmaker from '../matchmaker.js';
 
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+    // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
     import { faUserCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 
     export default {
         name: 'matchmaker-modal',
         props: ['gameId'],
-        components: {FontAwesomeIcon},
+        // components: {FontAwesomeIcon},
         data () {
             return {
                 matchmaker: null,
@@ -91,6 +100,9 @@
             }
         },
         computed: {
+            isLoggedIn: function() {
+              return this.$store.getters.loggedIn
+            }
         },
         methods: {
 

@@ -7,8 +7,8 @@
           <div v-if="loginSelected">
 
             <div class="login-header">            
-              <h4 class="login-title">Welcome Back!</h4>
-              <p>Ready to play some games?</p>
+              <h4 class="login-title">{{ title }}</h4>
+              <p>{{ subtitle }}</p>
             </div>
             
             <div v-if="showInvalidCredentialsError" class="login-error">
@@ -96,7 +96,7 @@
 
         </div>
     </div>
-    <div class="guest_button">
+    <div class="guest_button" v-if="showGuest">
       <a  type="button"
           href="/games"
           class="btn btn-custom btn-block"
@@ -115,7 +115,7 @@ import {login, register} from '../auth.js';
 
 export default {
   name: "wp-login-register",
-  props: [],
+  props: ["title", "subtitle", "showGuestButton"],
   data () {
     return {
       loginSelected: true,
@@ -161,7 +161,10 @@ export default {
         return "Register Now"
       }
       return "Please enter a valid Email address, username and password."
-    }
+    },
+    showGuest: function() {
+      return this.showGuestButton != null || this.showGuestButton === "true";
+    },
   },
   methods: {
 

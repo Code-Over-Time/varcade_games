@@ -5,7 +5,11 @@
         <div class="content">
             <wp-top-bar v-bind:display-logout-option="false"/>
             <div class="login-box-container">
-                <wp-login-register/>
+                <wp-login-register 
+                    title="Welcome Back!" 
+                    subtitle="Ready to play some games?"
+                    showGuestButton="true"
+                />
             </div>
         </div>
     </div>

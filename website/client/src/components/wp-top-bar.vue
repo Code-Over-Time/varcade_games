@@ -14,8 +14,12 @@
 
           <b-navbar-nav class="ml-auto">  
 
-              <b-nav-item href="#" v-on:click="logout()">
+              <b-nav-item href="#" v-if="isLoggedIn" v-on:click="logout()">
                   <p>Logout</p>
+              </b-nav-item>
+              
+              <b-nav-item href="/" v-else>
+                  <p>Login</p>
               </b-nav-item>
 
           </b-navbar-nav>
@@ -48,6 +52,9 @@ export default {
     },
     showDevServerWarning: function() {
       return clientConfig.isDevServer;
+    },
+    isLoggedIn: function() {
+      return this.$store.getters.loggedIn
     }
   },
   methods: {
