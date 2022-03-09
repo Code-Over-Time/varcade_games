@@ -8,7 +8,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import axios from 'axios'
-import VModal from 'vue-js-modal'
 
 import { clientConfig } from './config.js'
 
@@ -34,7 +33,6 @@ import { refreshAuthToken, loadTokensFromLocalStorage } from './auth.js'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-Vue.use(VModal)
 
 Vue.use(VueCarousel)
 

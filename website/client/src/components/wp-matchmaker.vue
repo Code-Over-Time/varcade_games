@@ -2,23 +2,29 @@
 
     <div>
         
-        <modal name="matchmaker-modal"
-                width="800"
-                height="600"
-                :scrollable="false"
-                :reset="true"
-                @before-close="notifyMatchmakerClosed">
+        <b-modal 
+            id="matchmaker-modal" 
+            hide-footer 
+            hide-header 
+            content-class="mm-content"
+            @hide="notifyMatchmakerClosed"
+            v-bind:size="isLoggedIn?'lg':'md'">
 
-            <div id="modelContent">
+            <div>
                 
                 <div class="container">
                     
                     <div v-if="isLoggedIn">
                         <div class="row title">
-                            <div class="col">
+                            <div class="col-10" style="padding-left:0;">
                                 <h2>Available Games</h2>
                             </div>
-                            <font-awesome-icon :icon="icoCloseModal" class="col-1 red-ico" @click="closeMatchmaker"/>
+                            <div class="col-2 text-right" style="padding-right:0;">
+                                <font-awesome-icon 
+                                    :icon="icoCloseModal"
+                                    class="red-ico"
+                                    @click="closeMatchmaker"/>
+                            </div>
                         </div>
 
                         <div class="row game-list" v-bind:class="(openGames.length == 0)?'game-list-empty':''">
@@ -41,7 +47,7 @@
                                     <hr/>
                                 </div>
                             </div>
-                            <div v-else>
+                            <div class="no-games" v-else>
                                 <h5>THERE ARE NO OPEN GAMES CURRENTLY AVAILABLE.</h5>
                                 <h6>Select 'Create Game' to start your own game and wait for others to join.</h6>
                             </div>
@@ -62,18 +68,18 @@
 
                     </div>
 
-                    <wp-login-register 
-                        v-else
-                        class="modal-dialog modal-dialog-centered"
-                        title="Login to play online!" 
-                        subtitle="To play against your friends you must have an account."
-                    />
+                    <div class="row" v-else>
+                        <wp-login-register 
+                            title="Log in to play online!"
+                            subtitle="To play against your friends you must have an account."
+                        />
+                    </div>
                 
                 </div>       
 
             </div> 
 
-        </modal>
+        </b-modal>
 
     </div>
 
@@ -83,17 +89,18 @@
 
     import Matchmaker from '../matchmaker.js';
 
-    // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
     import { faUserCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 
     export default {
         name: 'matchmaker-modal',
         props: ['gameId'],
-        // components: {FontAwesomeIcon},
+        components: {FontAwesomeIcon},
         data () {
             return {
                 matchmaker: null,
                 openGames: [
+                    // {creatorName: "kev", game_id: "test"}
                 ],
                 icoPlayerVS: faUserCircle,
                 icoCloseModal: faTimes
@@ -109,7 +116,7 @@
             initMatchmaker: function () {
                 if (!this.matchmaker && !window.getMatchmaker) {
                     const matchmaker = new Matchmaker(this.gameId, this.$store, () => {
-                        this.$modal.show('matchmaker-modal');
+                        this.$bvModal.show('matchmaker-modal');
                         this.refreshGameList();
                     });
                     
@@ -122,7 +129,7 @@
 
             /* Matchmaker Actions*/
             closeMatchmaker: function () {
-                this.$modal.hide('matchmaker-modal');
+                this.$bvModal.hide('matchmaker-modal');
             },
 
             notifyMatchmakerClosed: function () {
@@ -152,7 +159,7 @@
                         );
                         // TODO:    This needs to go last or weird stuff happens
                         //          The main menu doesn't clear
-                        this.$modal.hide('matchmaker-modal');  
+                        this.$bvModal.hide('matchmaker-modal');  
                     }, 
                     error => {
                         console.log('Game creation failed => ' + error);
@@ -171,7 +178,7 @@
                         );
                         // TODO:    This needs to go last or weird stuff happens
                         //          The main menu doesn't clear
-                        this.$modal.hide('matchmaker-modal');
+                        this.$bvModal.hide('matchmaker-modal');
                     }, 
                     error => {
                         console.log(`Game creation failed => ${error}`);
@@ -206,13 +213,14 @@
     }
 
     .container {
-        width: 800px;
-        height: 600px;
         background: #343a40;
         padding: 2em;
         color: #c9c9c9;
         line-height: 20px;
-        box-shadow: 0px 0px 100px 5px #ff4848
+    }
+
+    /deep/ .mm-content {
+        background-color: #343a40;
     }
 
     .title {
@@ -227,7 +235,10 @@
         height: 400px;
         border: 1px solid #ff4848;
         overflow-y: auto;
-        width: 100%;
+    }
+
+    .no-games {
+        text-align: center;
     }
 
     .game-list-empty {
