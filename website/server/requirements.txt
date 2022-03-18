@@ -1,4 +1,4 @@
-Django==3.1.13
+Django==3.1.14
 mysqlclient==2.0.1
 django-mysql==3.7.1
 django-allauth==0.45.0
@@ -13,4 +13,4 @@ django-prometheus==2.1.0
 redis==3.5.2
 gunicorn==20.0.4
 requests==2.24.0
-Pillow==8.3.2
+Pillow==9.0.0
