@@ -31,9 +31,10 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
 
 class ProfileServiceView(APIView):
-    permission_classes = [IsAuthenticated]
     http_method_names = ["get"]
 
     def get(self, request, format=None):
+        if request.user.is_anonymous:
+            return Response()
         profile = Profile.objects.get(user=request.user)
         return Response(ProfileSerializer(profile, context={"request": request}).data)

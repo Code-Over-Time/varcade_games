@@ -25,13 +25,11 @@ class GameViewSet(viewsets.ModelViewSet):
         game_state__in=[Game.GameState.ACTIVE, Game.GameState.COMING_SOON]
     ).order_by("name")
     serializer_class = GameSerializer
-    permission_classes = [IsAuthenticated]
     http_method_names = ["get"]
     pagination_class = GameResultSetPagination
 
 
 class GameStatsView(APIView):
-    permission_classes = [IsAuthenticated]
     http_method_names = ["get"]
 
     def get(self, request, product_id, format=None):
@@ -39,7 +37,6 @@ class GameStatsView(APIView):
 
 
 class LeaderboardView(APIView):
-    permission_classes = [IsAuthenticated]
     http_method_names = ["get"]
 
     def get(self, request, product_id, format=None):

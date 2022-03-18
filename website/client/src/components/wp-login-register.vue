@@ -1,5 +1,5 @@
 <template>
-
+  <div style="width:100%">
     <div class="form-box-bg">
 
         <div class="container">
@@ -7,8 +7,8 @@
           <div v-if="loginSelected">
 
             <div class="login-header">            
-              <h4 class="login-title">Welcome Back!</h4>
-              <p>Ready to play some games?</p>
+              <h4 class="login-title">{{ title }}</h4>
+              <p>{{ subtitle }}</p>
             </div>
             
             <div v-if="showInvalidCredentialsError" class="login-error">
@@ -96,7 +96,15 @@
 
         </div>
     </div>
-
+    <div class="guest_button" v-if="showGuest">
+      <a  type="button"
+          href="/games"
+          class="btn btn-custom btn-block"
+          style="font-weight: bold;">
+        Enter as Guest
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -107,7 +115,7 @@ import {login, register} from '../auth.js';
 
 export default {
   name: "wp-login-register",
-  props: [],
+  props: ["title", "subtitle", "showGuestButton"],
   data () {
     return {
       loginSelected: true,
@@ -153,7 +161,10 @@ export default {
         return "Register Now"
       }
       return "Please enter a valid Email address, username and password."
-    }
+    },
+    showGuest: function() {
+      return this.showGuestButton != null || this.showGuestButton === "true";
+    },
   },
   methods: {
 
@@ -329,6 +340,11 @@ export default {
     background: #343a40;
     border-radius: 5px;
     padding: 1em;
+    max-width: 30em;
+    width: 100%;
+  }
+
+  .guest_button {
     max-width: 30em;
     width: 100%;
   }

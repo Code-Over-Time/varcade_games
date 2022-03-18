@@ -44,12 +44,6 @@
 
 <style>
 
-    .game-container {
-        margin: 5em;
-        justify-content: center;
-        display: flex;
-    }
-
     .red-ico {
         color: #ff4848
     }

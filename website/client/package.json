@@ -23,7 +23,6 @@
     "retry": "^0.12.0",
     "vue": "^2.6.11",
     "vue-carousel": "^0.18.0",
-    "vue-js-modal": "^2.0.0-rc.6",
     "vue-router": "^3.4.9",
     "vue-sidebar-menu": "^4.7.4",
     "vuex": "^3.5.1"
