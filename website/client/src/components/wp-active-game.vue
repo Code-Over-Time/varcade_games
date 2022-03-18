@@ -125,5 +125,10 @@
 
 <style>
 
-
+    .game-container {
+        margin: 5em;
+        justify-content: center;
+        display: flex;
+    }
+    
 </style>

@@ -4,7 +4,7 @@
 
     <b-navbar type="dark" variant="dark" toggleable="lg">
   
-      <b-navbar-brand href="#" to="/">
+      <b-navbar-brand href="#" to="/games">
         <h1 class="glow">Varcade Games</h1>
       </b-navbar-brand>
       
