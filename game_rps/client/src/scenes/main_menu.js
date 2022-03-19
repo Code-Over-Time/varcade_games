@@ -159,12 +159,12 @@ class MainMenuScene extends Phaser.Scene {
     // this.add.existing(new IconButton(this,
     //   settingsLayout.x, settingsLayout.y - settingsLayout.padding, 'global_texture',
     //   activeEffectsIcon, inactiveEffectsIcon, 0xFFFFFF, () => {
-        
+
     //     if (this.scale.isFullscreen) {
-    //       this.scale.stopFullscreen();  
+    //       this.scale.stopFullscreen();
     //     }
     //     else {
-    //       this.scale.startFullscreen();  
+    //       this.scale.startFullscreen();
     //     }
     //   }).setOrigin(settingsLayout.originX, settingsLayout.originY))
   }
