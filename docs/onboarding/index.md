@@ -1,6 +1,6 @@
 # Code Over Time
 
-![Icons for tech used in the project](img/tech_list.png)
+![Onboarding screen](img/onboarding_course_placeholder.png)
 
 Welcome to the Code Over Time `Onboarding` course! 
 

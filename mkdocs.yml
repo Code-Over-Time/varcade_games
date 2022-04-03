@@ -1,4 +1,4 @@
-site_name: Code Over Time
+site_name: Code Over Time [ALPHA]
 site_url: https://codeovertime.com/
 theme:
   name: material
@@ -19,16 +19,18 @@ theme:
 nav: 
   - Welcome: index.md
   - Curriculum: curriculum.md
-  - Systems:
-      Introduction: systems/index.md
-      Inputs & Outputs: systems/io.md
-  - Hardware:
-      Introduction: hardware/index.md
-  - Software:
-      Introduction: software/index.md
-  - Coding:
-      Introduction: coding/index.md
-  - Internship:
+  - Reading Material:
+    - Systems:
+        Introduction: systems/index.md
+        Inputs & Outputs: systems/io.md
+    - Hardware:
+        Introduction: hardware/index.md
+    - Software:
+        Introduction: software/index.md
+    - Coding:
+        Introduction: coding/index.md
+  - Your Internship:
+    - Overview: internship.md
     - Getting Set Up:
       - Introduction: setup/index.md
       - Dev Environment:
@@ -45,7 +47,7 @@ nav:
       - Next Steps: setup/next_steps.md
     - Onboarding:
       - Introduction: onboarding/index.md
-      - Working on Varcade Games:
+      - Varcade Games:
         - Introduction: onboarding/varcade_games/intro_client.md
         - System Architecture: onboarding/varcade_games/system_architecture.md
         - Reverse Engineering: onboarding/varcade_games/reverse_engineering.md
