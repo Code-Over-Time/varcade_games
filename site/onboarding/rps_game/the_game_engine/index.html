@@ -1,0 +1,1964 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://codeovertime.com/onboarding/rps_game/the_game_engine/">
+      
+      <link rel="icon" href="../../../img/logo.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>The Game Engine - Code Over Time [ALPHA]</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#game-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Code Over Time [ALPHA]" class="md-header__button md-logo" aria-label="Code Over Time [ALPHA]" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Code Over Time [ALPHA]
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Game Engine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent=""  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent=""  aria-label="Light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Code Over Time [ALPHA]" class="md-nav__button md-logo" aria-label="Code Over Time [ALPHA]" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Code Over Time [ALPHA]
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculum/" class="md-nav__link">
+        Curriculum
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Reading Material
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reading Material" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reading Material
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Systems
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Systems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systems/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systems/io/" class="md-nav__link">
+        Inputs & Outputs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Hardware
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        Software
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        Coding
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Coding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Coding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../coding/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Your Internship
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Your Internship" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Your Internship
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../internship/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Getting Set Up
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting Set Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Set Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2_2">
+        Dev Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Dev Environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Dev Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/windows/" class="md-nav__link">
+        Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/osx/" class="md-nav__link">
+        OSX
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/testing_your_setup/" class="md-nav__link">
+        Testing your setup
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      <label class="md-nav__link" for="__nav_4_2_3">
+        Project Setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Project Setup" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Project Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/intro/" class="md-nav__link">
+        Varcade Games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/get_the_code/" class="md-nav__link">
+        Get the code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/running_vcg/" class="md-nav__link">
+        Running Varcade Games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/adding_a_game/" class="md-nav__link">
+        Adding a game
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/next_steps/" class="md-nav__link">
+        Next Steps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      <label class="md-nav__link" for="__nav_4_3">
+        Onboarding
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Onboarding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Onboarding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_2" type="checkbox" id="__nav_4_3_2" >
+      
+      <label class="md-nav__link" for="__nav_4_3_2">
+        Varcade Games
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Varcade Games" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Varcade Games
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/intro_client/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/system_architecture/" class="md-nav__link">
+        System Architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/reverse_engineering/" class="md-nav__link">
+        Reverse Engineering
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/making_changes/" class="md-nav__link">
+        Making Changes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/tests_and_linters/" class="md-nav__link">
+        Tests and Linters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_3" type="checkbox" id="__nav_4_3_3" >
+      
+      <label class="md-nav__link" for="__nav_4_3_3">
+        Plugging in games
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Plugging in games" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugging in games
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/intro_server/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/admin/" class="md-nav__link">
+        The Admin panel
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/embedding_games/" class="md-nav__link">
+        Embedding games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/matchmaker/" class="md-nav__link">
+        The Matchmaker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_4" type="checkbox" id="__nav_4_3_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4_3_4">
+        The Game Client
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The Game Client" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Game Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_the_game/" class="md-nav__link">
+        Working with Rock Paper Scissors Apocalypse
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../key_concepts/" class="md-nav__link">
+        Key Concepts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../single_player_mode/" class="md-nav__link">
+        Single player
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          The Game Engine
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        The Game Engine
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#game-data" class="md-nav__link">
+    Game Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-models" class="md-nav__link">
+    Game Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-play" class="md-nav__link">
+    Game Play
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Play">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#game-states" class="md-nav__link">
+    Game States
+  </a>
+  
+    <nav class="md-nav" aria-label="Game States">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waiting_for_players" class="md-nav__link">
+    WAITING_FOR_PLAYERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character_selection" class="md-nav__link">
+    CHARACTER_SELECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_progress" class="md-nav__link">
+    IN_PROGRESS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#game_over" class="md-nav__link">
+    GAME_OVER
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rounds" class="md-nav__link">
+    Rounds
+  </a>
+  
+    <nav class="md-nav" aria-label="Rounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new_round" class="md-nav__link">
+    NEW_ROUND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#countdown" class="md-nav__link">
+    COUNTDOWN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waiting_for_weapon_selection" class="md-nav__link">
+    WAITING_FOR_WEAPON_SELECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing_result" class="md-nav__link">
+    PROCESSING_RESULT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finished" class="md-nav__link">
+    FINISHED
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tick" class="md-nav__link">
+    Tick
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_design/" class="md-nav__link">
+        Game Design
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_5" type="checkbox" id="__nav_4_3_5" >
+      
+      <label class="md-nav__link" for="__nav_4_3_5">
+        The Game Server
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The Game Server" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          The Game Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/playing_with_others/" class="md-nav__link">
+        Playing with Others
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/key_concepts/" class="md-nav__link">
+        Key Concepts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/system_design/" class="md-nav__link">
+        System Design
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/the_game_engine/" class="md-nav__link">
+        The Game Engine
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_6" type="checkbox" id="__nav_4_3_6" >
+      
+      <label class="md-nav__link" for="__nav_4_3_6">
+        Backend Services
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Backend Services" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Backend Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/matchmaker/" class="md-nav__link">
+        The Matchmaker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/working_with_matchmaker/" class="md-nav__link">
+        Working with the Matchmaker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/workers/" class="md-nav__link">
+        The Workers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/stats_tracker/" class="md-nav__link">
+        The Stats Tracker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_7" type="checkbox" id="__nav_4_3_7" >
+      
+      <label class="md-nav__link" for="__nav_4_3_7">
+        Instrumentation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Instrumentation" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Instrumentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/grafana/" class="md-nav__link">
+        Setting up Grafana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/load_test/" class="md-nav__link">
+        Running a load test
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../closing_words/" class="md-nav__link">
+        Next Steps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#game-data" class="md-nav__link">
+    Game Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-models" class="md-nav__link">
+    Game Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-play" class="md-nav__link">
+    Game Play
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Play">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#game-states" class="md-nav__link">
+    Game States
+  </a>
+  
+    <nav class="md-nav" aria-label="Game States">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waiting_for_players" class="md-nav__link">
+    WAITING_FOR_PLAYERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character_selection" class="md-nav__link">
+    CHARACTER_SELECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_progress" class="md-nav__link">
+    IN_PROGRESS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#game_over" class="md-nav__link">
+    GAME_OVER
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rounds" class="md-nav__link">
+    Rounds
+  </a>
+  
+    <nav class="md-nav" aria-label="Rounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new_round" class="md-nav__link">
+    NEW_ROUND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#countdown" class="md-nav__link">
+    COUNTDOWN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waiting_for_weapon_selection" class="md-nav__link">
+    WAITING_FOR_WEAPON_SELECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing_result" class="md-nav__link">
+    PROCESSING_RESULT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finished" class="md-nav__link">
+    FINISHED
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tick" class="md-nav__link">
+    Tick
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>The Game Engine</h1>
+                
+                <p>The <code>Game Engine</code> is a combination of all of the game data and game logic for Rock Paper Scissors Apocalypse.</p>
+<p>It is a library that can be run in a browser <strong>or</strong> on a server - enabling multi-player gameplay.</p>
+<p>The game characters are defined here, as are the rules of the game and the execution of the game.</p>
+<p>In this section we'll have a quick look at some of the important elements of the engine.</p>
+<h2 id="game-data">Game Data</h2>
+<p>Open up <code>game_engine/src/game_data.js</code>. </p>
+<p>The contents of this file should be immediately familiar. It's all of the character information you've seen in the game UI.</p>
+<p>Here's the first entry in the character list:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">characters</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;aru&#39;</span><span class="p">,</span>
+    <span class="nx">displayName</span><span class="o">:</span> <span class="s1">&#39;Aruka&#39;</span><span class="p">,</span>
+    <span class="nx">country</span><span class="o">:</span> <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+    <span class="nx">stats</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">health</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+      <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;paper&#39;</span><span class="p">,</span>
+      <span class="nx">rock</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">baseDamage</span><span class="o">:</span> <span class="mf">25</span><span class="p">,</span>
+        <span class="nx">damageModifier</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+        <span class="nx">damageMitigation</span><span class="o">:</span> <span class="mf">0.2</span>
+      <span class="p">},</span>
+      <span class="nx">paper</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">baseDamage</span><span class="o">:</span> <span class="mf">25</span><span class="p">,</span>
+        <span class="nx">damageModifier</span><span class="o">:</span> <span class="mf">0.30</span><span class="p">,</span>
+        <span class="nx">damageMitigation</span><span class="o">:</span> <span class="mf">0</span>
+      <span class="p">},</span>
+      <span class="nx">scissors</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">baseDamage</span><span class="o">:</span> <span class="mf">25</span><span class="p">,</span>
+        <span class="nx">damageModifier</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+        <span class="nx">damageMitigation</span><span class="o">:</span> <span class="mf">0</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">singlePlayerSequence</span><span class="o">:</span> <span class="p">[</span>
+      <span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;rad&#39;</span><span class="p">,</span> <span class="s1">&#39;hog&#39;</span>
+    <span class="p">],</span>
+    <span class="nx">locked</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">isBoss</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">singlePlayerUnlock</span><span class="o">:</span> <span class="s1">&#39;hog&#39;</span><span class="p">,</span>
+    <span class="nx">storyline</span><span class="o">:</span> <span class="p">[</span>
+      <span class="s1">&#39;As humanity stood face to face with the darkest evil it had ever encountered, the indigenous warriors of the Amazon were some of the first to stand in its path.\n&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Many believe that the spirit of mother nature flows through Aruka and guides him against the forces of darkness.\n&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;His intuition of all things natural, be they creative or destructive forces, makes Aruka a natural RPS contender. During battle he enters a trance-like state, through which his focus and composure is unwavering.&#39;</span>
+    <span class="p">],</span>
+    <span class="nx">trashTalk</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">win</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;The forest will always prevail...&#39;</span><span class="p">],</span>
+      <span class="nx">lose</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;There is no good that lasts forever nor evil that never ends.&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>Some interesting fields here are:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">singlePlayerSequence</span><span class="o">:</span> <span class="p">[</span>
+  <span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;rad&#39;</span><span class="p">,</span> <span class="s1">&#39;hog&#39;</span>
+<span class="p">],</span>
+</code></pre></div>
+</td></tr></table>
+<p>These are the IDs of the characters that Aruka will face during single player mode.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">locked</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</code></pre></div>
+</td></tr></table>
+<p>This tell the game client whether the character should initially be displayed as locked. If this is true you will need to make sure that the character can be unlocked (see below).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">isBoss</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is, and should only be, true for one of the characters. The boss is treated differently to other players and is only faced once the player defeats all of their opponents without losing a single round. Mainyu is our boss.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">singlePlayerUnlock</span><span class="o">:</span> <span class="s1">&#39;hog&#39;</span><span class="p">,</span>
+</code></pre></div>
+</td></tr></table>
+<p>This entry tells us what character to unlock when this character successfully defeats every opponent in their <code>singlePlayerSequence</code>.</p>
+<p>Not every character unlocks another character, so this can be null.</p>
+<p>Try playing around with some of these settings and see what happens.</p>
+<h2 id="game-models">Game Models</h2>
+<p>This is where we define the various different game objects that we will use to represent players in the game, along with their characters and weapon selections.</p>
+<p>Most of these classes should be fairly self-explanatory. One thing to note is the <code>RPSFighter</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">RPSFighter</span> <span class="p">{</span>
+  <span class="cm">/**</span>
+<span class="cm">   *  Represents the player&#39;s character selection.</span>
+<span class="cm">  **/</span>
+  <span class="nx">constructor</span> <span class="p">(</span><span class="nx">spec</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">spec</span><span class="p">.</span><span class="nx">id</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">spec</span> <span class="o">=</span> <span class="nx">spec</span>
+    <span class="c1">// Amount of damage this fighter has taken in the current round</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">damage</span> <span class="o">=</span> <span class="mf">0</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">weapons</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="k">new</span> <span class="nx">Rock</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">rock</span><span class="p">.</span><span class="nx">baseDamage</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">damageModifier</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">rock</span><span class="p">.</span><span class="nx">damageModifier</span><span class="p">,</span>
+        <span class="nx">damageMitigation</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">rock</span><span class="p">.</span><span class="nx">damageMitigation</span>
+      <span class="p">}),</span>
+      <span class="k">new</span> <span class="nx">Paper</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">paper</span><span class="p">.</span><span class="nx">baseDamage</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">damageModifier</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">paper</span><span class="p">.</span><span class="nx">damageModifier</span><span class="p">,</span>
+        <span class="nx">damageMitigation</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">paper</span><span class="p">.</span><span class="nx">damageMitigation</span>
+      <span class="p">}),</span>
+      <span class="k">new</span> <span class="nx">Scissors</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">scissors</span><span class="p">.</span><span class="nx">baseDamage</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">damageModifier</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">scissors</span><span class="p">.</span><span class="nx">damageModifier</span><span class="p">,</span>
+        <span class="nx">damageMitigation</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">stats</span><span class="p">.</span><span class="nx">scissors</span><span class="p">.</span><span class="nx">damageMitigation</span>
+      <span class="p">})</span>
+    <span class="p">]</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentSelectedWeaponIndex</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="c1">// True if the current round is accepting weapon selection from players</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">weaponSelectAvailable</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>In it's constructor it loads stats from <code>game_data.js</code>. So we can balance the characters strengths and weaknesses from the data file. Or in other words - it's <strong>data driven</strong>.</p>
+<p>A couple of other interesting classes in this file are our bots:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">RPSStrategyBot</span> <span class="k">extends</span> <span class="nx">RPSPlayer</span> <span class="p">{</span>
+  <span class="cm">/**</span>
+<span class="cm">   *  Represents an AI player (single player mode)</span>
+<span class="cm">   *  that uses some basic strategy, as defined in</span>
+<span class="cm">   *  strategy.js</span>
+<span class="cm">  **/</span>
+  <span class="nx">constructor</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">difficulty</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">strategy</span> <span class="o">=</span> <span class="nx">getStrategy</span><span class="p">(</span><span class="nx">difficulty</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">eventListener</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span> <span class="k">instanceof</span> <span class="nx">RPSRoundEvent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">WEAPON_COUNTDOWN</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="mf">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">fighter</span><span class="p">.</span><span class="nx">equipWeapon</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">strategy</span><span class="p">.</span><span class="nx">getNextSelection</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">fighter</span><span class="p">.</span><span class="nx">getCurrentHealthPct</span><span class="p">()))</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">ROUND_FINISHED</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">strategy</span><span class="p">.</span><span class="nx">reset</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">RPSRandomBot</span> <span class="k">extends</span> <span class="nx">RPSPlayer</span> <span class="p">{</span>
+  <span class="cm">/**</span>
+<span class="cm">   *  Represents an AI player (single player mode)</span>
+<span class="cm">   *  that simply makes random selection -</span>
+<span class="cm">   *  !Note! This is one of the most difficult to play against</span>
+<span class="cm">  **/</span>
+  <span class="nx">eventListener</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span> <span class="k">instanceof</span> <span class="nx">RPSRoundEvent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">WEAPON_COUNTDOWN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">fighter</span><span class="p">.</span><span class="nx">equipWeapon</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">3</span><span class="p">))</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>The <code>RPSRandomBot</code> is used to create a single player enemy that will just make random selections. This is the hardest type of opponent to play against - so this is used by the final boss.</p>
+<p>The <code>RPSStrategyBot</code> is a little different. This object is used to create a single player enemy that plays according to strategies of varying difficulty.</p>
+<p>Our AI will always use some repeating pattern. The strategy difficulty dictates how difficult the pattern is to detect and whether the AI will change strategy after taking a certain amount of damage.</p>
+<p>These are used during single player to create a set of opponents that increase in difficulty as the player progresses.</p>
+<h2 id="game-play">Game Play</h2>
+<p>Open up <code>game_engine/src/game_play.js</code>.</p>
+<p>This is there the actual game happens.</p>
+<p>There is a class called <code>RPSGame</code>. This is class is essentially a state management system.</p>
+<h3 id="game-states">Game States</h3>
+<p>A game have a number of states it can be in:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nx">RPSGameStates</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">WAITING_FOR_PLAYERS</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">0</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">CHARACTER_SELECTION</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">1</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">IN_PROGRESS</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">2</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">GAME_OVER</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">3</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="waiting_for_players">WAITING_FOR_PLAYERS</h4>
+<p>The game has been created and is now waiting for players to be added.</p>
+<h4 id="character_selection">CHARACTER_SELECTION</h4>
+<p>The game is now waiting for the players to make their character selection.</p>
+<h4 id="in_progress">IN_PROGRESS</h4>
+<p>The game is in progress.</p>
+<h4 id="game_over">GAME_OVER</h4>
+<p>The game has ended.</p>
+<h3 id="rounds">Rounds</h3>
+<p>Once a game is in progress it is represented as a series of rounds. A player must win two rounds to win the game. Therefore the minimum number of rounds is 2 and the maximum is 3.</p>
+<p>Rounds are have a number of states that they progress through during gameplay:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="k">static</span> <span class="nx">get</span> <span class="nx">NEW_ROUND</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">0</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">COUNTDOWN</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">1</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">WAITING_FOR_WEAPON_SELECTION</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">2</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">PROCESSING_RESULT</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">3</span> <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">FINISHED</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">4</span> <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="new_round">NEW_ROUND</h4>
+<p>The round has been created.</p>
+<h4 id="countdown">COUNTDOWN</h4>
+<p>The 'start of round' countdown is in progress.</p>
+<h4 id="waiting_for_weapon_selection">WAITING_FOR_WEAPON_SELECTION</h4>
+<p>Players can make their weapon selections.</p>
+<h4 id="processing_result">PROCESSING_RESULT</h4>
+<p>The result of the player's selection are being processed.</p>
+<h4 id="finished">FINISHED</h4>
+<p>The round has finished.</p>
+<p>A round will enter a cycle of going from WAITING_FOR_WEAPON_SELECTION to PROCESSING_RESULT until the game detects that a player has reached zero health, at which point it will progress to the FINISHED state.</p>
+<h2 id="tick">Tick</h2>
+<p>So as you can see there is a logical progression of states that happens in order to make the game run.</p>
+<p>This progression is very similar in code to what the player experiences:</p>
+<p>Start game -&gt; Select character -&gt; Start battle -&gt; start round -&gt; select weapon -&gt; Apply damage -&gt; Repeat until health is zero -&gt; End round -&gt; Repeat until one player wins two rounds.</p>
+<p>But what is actually running this progression?</p>
+<p>That would be our game <code>tick</code>. </p>
+<p>The <code>RPSGame</code> object has a method:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">tick</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">stateHandlers</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">]()</span>
+  <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>This method calls a <code>state handler</code>, which will behave differently depending on the current state of the game.</p>
+<p>This tick can be called at any desired interval. When the server is running the game it calls 'tick' every second. Single player mode calls it every half second.</p>
+<p>The speed of the game is based on the tick, because the tick is simply what causes our game states to change from one state to the next.</p>
+<p>If you want to play with this yourself, open up <code>game_rps/client/src/game_engine_interface.js</code> and find the line:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Single player game - starting client side tick loop...&#39;</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tickTimer</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">paused</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">tick</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="mf">500</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>That <code>500</code> is the 500 millisecond tick for single player. If you increase that value your single player game will run slower. Decrease it and it will run faster.</p>
+<hr />
+<p>That's about as deep as I want to go into the game for this onboarding course. </p>
+<p>Next we will look at the game design - understanding the gameplay will help you reason about the code.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../single_player_mode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Single player" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Single player
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../game_design/" class="md-footer__link md-footer__link--next" aria-label="Next: Game Design" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Game Design
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+    
+  </body>
+</html>

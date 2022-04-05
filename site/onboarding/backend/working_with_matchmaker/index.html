@@ -1,0 +1,2060 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://codeovertime.com/onboarding/backend/working_with_matchmaker/">
+      
+      <link rel="icon" href="../../../img/logo.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Working with the Matchmaker - Code Over Time [ALPHA]</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Code Over Time [ALPHA]" class="md-header__button md-logo" aria-label="Code Over Time [ALPHA]" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Code Over Time [ALPHA]
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Working with the Matchmaker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent=""  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent=""  aria-label="Light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Code Over Time [ALPHA]" class="md-nav__button md-logo" aria-label="Code Over Time [ALPHA]" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Code Over Time [ALPHA]
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculum/" class="md-nav__link">
+        Curriculum
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Reading Material
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reading Material" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reading Material
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Systems
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Systems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systems/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systems/io/" class="md-nav__link">
+        Inputs & Outputs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Hardware
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        Software
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        Coding
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Coding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Coding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../coding/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Your Internship
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Your Internship" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Your Internship
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../internship/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Getting Set Up
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting Set Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Set Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2_2">
+        Dev Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Dev Environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Dev Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/windows/" class="md-nav__link">
+        Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/osx/" class="md-nav__link">
+        OSX
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/testing_your_setup/" class="md-nav__link">
+        Testing your setup
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      <label class="md-nav__link" for="__nav_4_2_3">
+        Project Setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Project Setup" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Project Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/intro/" class="md-nav__link">
+        Varcade Games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/get_the_code/" class="md-nav__link">
+        Get the code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/running_vcg/" class="md-nav__link">
+        Running Varcade Games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/adding_a_game/" class="md-nav__link">
+        Adding a game
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/next_steps/" class="md-nav__link">
+        Next Steps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      <label class="md-nav__link" for="__nav_4_3">
+        Onboarding
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Onboarding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Onboarding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_2" type="checkbox" id="__nav_4_3_2" >
+      
+      <label class="md-nav__link" for="__nav_4_3_2">
+        Varcade Games
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Varcade Games" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Varcade Games
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/intro_client/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/system_architecture/" class="md-nav__link">
+        System Architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/reverse_engineering/" class="md-nav__link">
+        Reverse Engineering
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/making_changes/" class="md-nav__link">
+        Making Changes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/tests_and_linters/" class="md-nav__link">
+        Tests and Linters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_3" type="checkbox" id="__nav_4_3_3" >
+      
+      <label class="md-nav__link" for="__nav_4_3_3">
+        Plugging in games
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Plugging in games" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugging in games
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/intro_server/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/admin/" class="md-nav__link">
+        The Admin panel
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/embedding_games/" class="md-nav__link">
+        Embedding games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/matchmaker/" class="md-nav__link">
+        The Matchmaker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_4" type="checkbox" id="__nav_4_3_4" >
+      
+      <label class="md-nav__link" for="__nav_4_3_4">
+        The Game Client
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The Game Client" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Game Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game/working_with_the_game/" class="md-nav__link">
+        Working with Rock Paper Scissors Apocalypse
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game/key_concepts/" class="md-nav__link">
+        Key Concepts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game/single_player_mode/" class="md-nav__link">
+        Single player
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game/the_game_engine/" class="md-nav__link">
+        The Game Engine
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game/game_design/" class="md-nav__link">
+        Game Design
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_5" type="checkbox" id="__nav_4_3_5" >
+      
+      <label class="md-nav__link" for="__nav_4_3_5">
+        The Game Server
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The Game Server" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          The Game Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/playing_with_others/" class="md-nav__link">
+        Playing with Others
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/key_concepts/" class="md-nav__link">
+        Key Concepts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/system_design/" class="md-nav__link">
+        System Design
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/the_game_engine/" class="md-nav__link">
+        The Game Engine
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_6" type="checkbox" id="__nav_4_3_6" checked>
+      
+      <label class="md-nav__link" for="__nav_4_3_6">
+        Backend Services
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Backend Services" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Backend Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matchmaker/" class="md-nav__link">
+        The Matchmaker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Working with the Matchmaker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Working with the Matchmaker
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entry-point" class="md-nav__link">
+    Entry point
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+    <nav class="md-nav" aria-label="API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lobby-endpoints" class="md-nav__link">
+    Lobby Endpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-server-api" class="md-nav__link">
+    Game Server API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dao" class="md-nav__link">
+    DAO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-changes" class="md-nav__link">
+    Making Changes
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-tests" class="md-nav__link">
+    Running the Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    Coverage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-checking" class="md-nav__link">
+    Type Checking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workers/" class="md-nav__link">
+        The Workers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stats_tracker/" class="md-nav__link">
+        The Stats Tracker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_7" type="checkbox" id="__nav_4_3_7" >
+      
+      <label class="md-nav__link" for="__nav_4_3_7">
+        Instrumentation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Instrumentation" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Instrumentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/grafana/" class="md-nav__link">
+        Setting up Grafana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/load_test/" class="md-nav__link">
+        Running a load test
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../closing_words/" class="md-nav__link">
+        Next Steps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entry-point" class="md-nav__link">
+    Entry point
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+    <nav class="md-nav" aria-label="API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lobby-endpoints" class="md-nav__link">
+    Lobby Endpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-server-api" class="md-nav__link">
+    Game Server API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dao" class="md-nav__link">
+    DAO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-changes" class="md-nav__link">
+    Making Changes
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-tests" class="md-nav__link">
+    Running the Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    Coverage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-checking" class="md-nav__link">
+    Type Checking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Working with the Matchmaker</h1>
+                
+                <p>In this section we'll take a high level tour of the Matchmaker could, pointing out key some key areas and concepts.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>At this point you should have your full Varcade Games stack up and running, but before proceeding let's double check.</p>
+<p>From your <code>build_tools</code> directory run:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make ps
+</code></pre></div>
+</td></tr></table>
+<p>You should see something like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        Name                      Command                State                         Ports                     
+-----------------------------------------------------------------------------------------------------------------                                              
+game-portal            /bin/sh -c gunicorn game_p ...   Up         <span class="m">0</span>.0.0.0:8000-&gt;8000/tcp                        
+game-portal-client     docker-entrypoint.sh npm r ...   Up         <span class="m">0</span>.0.0.0:8002-&gt;8002/tcp                        
+game-rps               docker-entrypoint.sh /bin/ ...   Up         <span class="m">0</span>.0.0.0:8080-&gt;8080/tcp, <span class="m">0</span>.0.0.0:8085-&gt;8085/tcp
+game-rps-client        docker-entrypoint.sh /bin/ ...   Up         <span class="m">0</span>.0.0.0:8090-&gt;8090/tcp                        
+gameportaldb           docker-entrypoint.sh mysqld      Up         <span class="m">0</span>.0.0.0:3306-&gt;3306/tcp, <span class="m">33060</span>/tcp             
+grafana                /run.sh                          Up         <span class="m">0</span>.0.0.0:3001-&gt;3000/tcp                        
+matchmaker             /bin/sh -c gunicorn --relo ...   Up         <span class="m">0</span>.0.0.0:5050-&gt;5050/tcp                        
+matchmaker-worker      /bin/sh -c python game_wor ...   Up         <span class="m">0</span>.0.0.0:5051-&gt;5051/tcp                        
+prometheus             /bin/prometheus --config.f ...   Up         <span class="m">0</span>.0.0.0:9090-&gt;9090/tcp                        
+redis-db               docker-entrypoint.sh redis ...   Up         <span class="m">0</span>.0.0.0:6379-&gt;6379/tcp                        
+stats-tracker          /bin/sh -c gunicorn --relo ...   Up         <span class="m">0</span>.0.0.0:5000-&gt;5000/tcp                        
+stats-tracker-worker   /bin/sh -c python stats_wo ...   Up         <span class="m">0</span>.0.0.0:5002-&gt;5002/tcp 
+</code></pre></div>
+</td></tr></table>
+<p>The line you're interested in is:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>matchmaker             /bin/sh -c gunicorn --relo ...   Up         <span class="m">0</span>.0.0.0:5050-&gt;5050/tcp 
+</code></pre></div>
+</td></tr></table>
+<p>This is our dev build of the game client. Notice at the end of the line:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="m">0</span>.0.0.0:5050
+</code></pre></div>
+</td></tr></table>
+<p>This is telling us that the container is listening on port 5050... so let's try it. In your browser enter 'localhost:5050' in the URL bar and hit enter.</p>
+<p>If your setup is working you should see an error. But why would you see an error if the setup is working? The error should look like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Not Found
+
+The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+</code></pre></div>
+</td></tr></table>
+<p>This is because when using the Matchmaker you need to interact with it using specific URLs that we have defined in our Application Programming Interface (API). </p>
+<p>More on this below!</p>
+<h2 id="entry-point">Entry point</h2>
+<p>The Matchmaker code is located in  <code>varcade_games/matchmaker/matchmaker</code>.</p>
+<p>The actual entry point to the code is in <code>app.py</code>.</p>
+<p>This is the code we run to start the server. It creates and initializes a '<a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> app. It is a 'micro framework' that allows us to run a lightweight HTTP server.</p>
+<p>We will use it to create the endpoints that the Matchmaker UI will send create/join game requests to. This is the <code>Matchmaker API</code>.</p>
+<h2 id="api">API</h2>
+<p>The definition of the Matchmaker API can be found in <code>matchmaker/lobby/api.py</code>.</p>
+<p>There you will find functions with signatures like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@game_lobby</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;product_id&gt;/create_game&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">create_new_game</span><span class="p">(</span><span class="n">product_id</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is how we register an endpoint with Flask and it is using the concepts of '<a href="https://exploreflask.com/en/latest/blueprints.html">Blueprints</a>' in Flask.</p>
+<p>The blueprint for our lobby is defined earlier in the <code>api.py</code> file:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">game_lobby</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s2">&quot;game_lobby&quot;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Here we simple create a blueprint called 'game_lobby'. Back in <code>app.py</code> you can see where this blueprint gets registered with Flask:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">game_lobby</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;/game_lobby&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is basically our way to telling Flask "I have a bunch of endpoints I'd like you know know about, they're group conceptually into something I'm calling a lobby".</p>
+<p>Once you run the serve you can access your endpoint by visiting the URL of you server and giving the path for your blueprint.</p>
+<p>So in the above example we register our blueprint with a <code>url_prefix</code>. This means that when ever we access our lobby we will have to use a path like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>http://localhost/game_lobby
+</code></pre></div>
+</td></tr></table>
+<p>Now lets jump back to the endpoint mentioned earlier:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@game_lobby</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;product_id&gt;/create_game&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">create_new_game</span><span class="p">(</span><span class="n">product_id</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>Here we use a <code>decorator</code> to add a route to our blueprint. We also give a path for this endpoint. Let's deconstruct this decorator:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@game_lobby</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;product_id&gt;/create_game&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
+<p>Basically we are adding a 'route' or and endpoint to our game_lobby blueprint. We are giving that endpoint a path <code>/&lt;product_id&gt;/create_game</code>. </p>
+<p>The bit inside the <code>&lt;angled brackets&gt;</code> is important here. This endpoint is about creating a game, but what game? Our Matchmaker is generic so we could be trying to create a multi-player game for any game that is registered with the game portal. We've only registered one game so far, Rock Paper Scissors, and we gave it the ID 'exrps'.</p>
+<p>So if we want to create a game our endpoint now looks like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>http://localhost/game_lobby/exrps/create_game
+</code></pre></div>
+</td></tr></table>
+<p>So a request to this URL will connect to the local server, hit the <code>game_lobby</code> blueprint and then get mapped to the <code>&lt;product_id&gt;/create_game</code> route.</p>
+<p>Once Flask has matched a URL to a route it will extract that product ID and give it as an argument to the function the route is attached to:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@game_lobby</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;product_id&gt;/create_game&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">create_new_game</span><span class="p">(</span><span class="n">product_id</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>So our <code>create_new_game</code> function is passed the 'product_id' that gets extracted from the URL, which is enough information for it to go ahead and create a game.</p>
+<h3 id="lobby-endpoints">Lobby Endpoints</h3>
+<p>We've defined three endpoints in our Matchmaker API:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Create a new multi-player game</span>
+<span class="nd">@game_lobby</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;product_id&gt;/create_game&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+
+<span class="c1"># Join and existing multi-player game</span>
+<span class="nd">@game_lobby</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;product_id&gt;/join_game/&lt;game_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+
+<span class="c1"># Fetch all games that are currently open to join</span>
+<span class="nd">@game_lobby</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;product_id&gt;/open_games&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
+<p>These endpoints provide the functionality we discussed in the previous section.</p>
+<p>All of them require that we specify a product ID so that Matchmaker knows what game it is working with.  </p>
+<p>The create and join are the more interesting endpoints because, as mentioned in the last section, they need to talk to the game server.</p>
+<hr />
+<h2 id="game-server-api">Game Server API</h2>
+<p>In <code>matchmaker/core/game_server_api.py</code> you will find the the code that allows the Matchmaker to send requests to the game servers.</p>
+<p>In order for a game to use this Matchmaker for managing games and player connections to those games it must provide a set of endpoints that conform to what is defined here.</p>
+<p>For example, the first function in this file:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">send_create_game_request</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">user_name</span><span class="p">,</span> <span class="n">game_id</span><span class="p">,</span> <span class="n">game_server</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sends a &#39;create game&#39; request to the remote game server.</span>
+
+<span class="sd">    :param str user_id:                             The ID of the user creating the game</span>
+<span class="sd">    :param str user_name:                           The username of the user creating the game</span>
+<span class="sd">    :param str game_id:                             UID of the new game being created</span>
+<span class="sd">    :param matchmaker.core.GameServer game_server:  the target game server</span>
+
+<span class="sd">    :returns:   A dict containing the &#39;token&#39; for the game that was created</span>
+<span class="sd">    :rtype:     dict</span>
+
+<span class="sd">    :raises GameServerNetworkError: If the response from the remote game server is not a 200</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gameId&quot;</span><span class="p">:</span> <span class="n">game_id</span><span class="p">,</span> <span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">user_name</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">_send_request</span><span class="p">(</span><span class="n">game_server</span><span class="p">,</span> <span class="s2">&quot;create_game&quot;</span><span class="p">,</span> <span class="n">request_data</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>This function with send a 'create_game' request to a game server, just like we saw in the diagrams in the previous section.</p>
+<p>The Matchmaker expects that any game server that has been registered with it has some endpoint:</p>
+<p><code>&lt;game_server_url&gt;/create_game</code></p>
+<p>The endpoint should also take a <code>gameId</code>, <code>userId</code> and <code>username</code> as input data.</p>
+<p>If the game server does not have this endpoint then the Matchmaker will not be able to interact with it.</p>
+<p>The game server API has four endpoints that are expected to be implemented by game servers:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>create_game     - Create a new game on the remote game server
+join_game       - Join an existing game on the remote server
+remove_game     - Remove a game from the remote server
+remove_player   - Remove a player from a remote game on a remote server
+</code></pre></div>
+</td></tr></table>
+<p>If you open up <code>game_rps/server/game_server/app.js</code> you will find all of these endpoints are defined there:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/create_game&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/join_game&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/remove_game&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/remove_player&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is why our Matchmaker is able to create games on the Rock Paper Scissors Apocalypse server.</p>
+<p>But our Matchmaker doesn't just send requests to game servers in order to organize games, it needs to keep its own records of the games it have created and it needs to curate those records.</p>
+<p>Time to take a look at the data layer.</p>
+<hr />
+<h2 id="dao">DAO</h2>
+<p>A DAO or <code>Data Access Object</code> gives us an abstracted interface to manage Matchmaker game data.</p>
+<p>It is one of the more complex parts of the code and also the most important.</p>
+<p>With the matchmaker we have to account for a lot data consistency challenges, like what happens if two players try to join the same game at the exact same time?</p>
+<p>The DAO aims to account for that while also providing a relatively straight forward interface to us in the Matchmaker API.</p>
+<p>The DAO code is in <code>matchmaker/game_data/dao.py</code>, but before we dig in there let's take a look at it in action. Here is the the code that creates a game using the DAO in our Matchmaker API:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">new_game</span> <span class="o">=</span> <span class="n">Game</span><span class="p">(</span>
+        <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="n">product_id</span><span class="p">,</span>
+        <span class="n">game_server</span><span class="o">.</span><span class="n">game_server_url</span><span class="p">,</span>
+        <span class="n">user_profile</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span>
+        <span class="n">user_profile</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">game_server</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">snip</span><span class="o">&gt;</span>
+
+<span class="n">get_game_dao</span><span class="p">()</span><span class="o">.</span><span class="n">create_game</span><span class="p">(</span><span class="n">new_game</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>All we need to do is create a <code>Game</code> object with the required attributes and then called <code>get_game_dao()</code> to get a reference to our DAO and then call the <code>create_game()</code> function on it.</p>
+<p>This DAO function will take care of adding our game data to our database as well as adding it to the pending set. In fact anyone using the DAO doesn't need to know anything about pending, active or lobby sets. As the user of the DAO you are just creating, joining and fetching lists of games. You don't need to know anything about how that data is managed behind the scenes.</p>
+<p>I'm not going to say much more about the DAO - there will be a dedicated course for that. </p>
+<p>For now you can explore yourself and see if you can figure out what is going on.</p>
+<hr />
+<h2 id="making-changes">Making Changes</h2>
+<p>Making changes to our backend services is a bit different since it doesn't have some UI you can test directly. In order to test to Matchmaker you need the whole Varcade Games stack running so you can verify that it is talking to game server correctly, listening out for events correctly and that its API is working as expected.</p>
+<p>A robust set of tests is essential for any server side application, and our Matchmaker is not exception.</p>
+<h3 id="running-the-tests">Running the Tests</h3>
+<p>In your terminal navigate over to the server directory for the website.</p>
+<p>For example, if your code is located in <code>~/code/varcade_games</code> then you'd run:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/code/varcade_games/matchmaker
+</code></pre></div>
+</td></tr></table>
+<p>Just like the Game Portal tests we ran earlier, our tests use a docker image.</p>
+<p>We build an image with all of the code and tests, then we run the container and run the tests.</p>
+<p>This gives us a consistent environment to run our tests in - us and everyone else running these tests will be running with the same dependencies and configurations. </p>
+<p>If we just ran the tests on our dev machine we could get different results due to different configuration.</p>
+<p>I've abstracted away most of the complexity of running the tests so all you need to do is run:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make build_test_image
+</code></pre></div>
+</td></tr></table>
+<p>This may take a while... </p>
+<p>Next we run the image as follows:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make run_test_image_mounted
+</code></pre></div>
+</td></tr></table>
+<p>Once it's done you can run the following make commands to run the actual tests:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make run_tests
+</code></pre></div>
+</td></tr></table>
+<p>You should see a whole lot of output after running that command, and it hopefully ends with something like the following:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">========</span> <span class="m">97</span> passed, <span class="m">44</span> warnings <span class="k">in</span> <span class="m">2</span>.55s <span class="o">========</span>
+</code></pre></div>
+</td></tr></table>
+<p>(There are a few warnings... but the tests pass!)</p>
+<p>These tests test the functionality of the matchmaker - they tell us if something functional broke.</p>
+<p>So let's break something...</p>
+<p>Open up <code>matchmaker/lobby/api.py</code>.</p>
+<p>Find the function called <code>get_open_games</code>.</p>
+<p>This is the API endpoint that returns the list of open games that players can join.</p>
+<p>Change the following line:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">available_games</span> <span class="o">=</span> <span class="n">get_game_dao</span><span class="p">()</span><span class="o">.</span><span class="n">get_available_games</span><span class="p">(</span>
+        <span class="n">product_id</span><span class="p">,</span>
+        <span class="n">page_index</span><span class="p">,</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">entry_count</span><span class="p">,</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;LOBBY_MAX_PAGE_SIZE&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>to </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">available_games</span> <span class="o">=</span> <span class="n">get_game_dao</span><span class="p">()</span><span class="o">.</span><span class="n">get_available_games</span><span class="p">(</span>
+        <span class="s1">&#39;test,</span>
+        <span class="n">page_index</span><span class="p">,</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">entry_count</span><span class="p">,</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;LOBBY_MAX_PAGE_SIZE&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>All we're doing here is making it so the endpoint ignores the product ID given to it and simply inserts 'test'. </p>
+<p>We should expect this to break some stuff since we need a valid product ID in order to fetch any open games for that product. </p>
+<p>Run the tests again with <code>make run_tests</code>.</p>
+<p>The out put should have changed:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#&lt;snip&gt;</span>
+
+<span class="nv">self</span> <span class="o">=</span> &lt;test_api.TestFindGameAPI object at 0x7f4ae7c64f90&gt;, <span class="nv">test_client</span> <span class="o">=</span> &lt;FlaskClient &lt;Flask <span class="s1">&#39;app&#39;</span>&gt;&gt;
+
+    def test_view_available_games_success<span class="o">(</span>self, test_client<span class="o">)</span>:
+        <span class="nv">response</span> <span class="o">=</span> test_client.get<span class="o">(</span>
+            f<span class="s2">&quot;game_lobby/{self.test_game.product_id}/open_games&quot;</span>,
+            <span class="nv">headers</span><span class="o">=[(</span><span class="s2">&quot;Content-Type&quot;</span>, <span class="s2">&quot;application/json&quot;</span><span class="o">)]</span>,
+        <span class="o">)</span>
+        <span class="c1"># No games create yet</span>
+        assert len<span class="o">(</span>json.loads<span class="o">(</span>response.data<span class="o">))</span> <span class="o">==</span> <span class="m">0</span>
+
+        self.dao.create_game<span class="o">(</span>self.test_game<span class="o">)</span>
+        self.dao.publish_game<span class="o">(</span>self.test_game<span class="o">)</span>
+
+        <span class="nv">response</span> <span class="o">=</span> test_client.get<span class="o">(</span>
+            f<span class="s2">&quot;game_lobby/{self.test_game.product_id}/open_games&quot;</span>,
+            <span class="nv">headers</span><span class="o">=[(</span><span class="s2">&quot;Content-Type&quot;</span>, <span class="s2">&quot;application/json&quot;</span><span class="o">)]</span>,
+        <span class="o">)</span>
+
+        <span class="nv">game_list</span> <span class="o">=</span> json.loads<span class="o">(</span>response.data<span class="o">)</span>
+&gt;       assert len<span class="o">(</span>game_list<span class="o">)</span> <span class="o">==</span> <span class="m">1</span>
+E       assert <span class="nv">0</span> <span class="o">==</span> <span class="m">1</span>
+E         +0
+E         -1
+
+tests/lobby/test_api.py:446: AssertionError
+
+
+<span class="c1">#&lt;snip&gt;</span>
+
+<span class="o">==========</span> <span class="m">2</span> failed, <span class="m">95</span> passed, <span class="m">42</span> warnings <span class="k">in</span> <span class="m">2</span>.63s <span class="o">===================</span>
+</code></pre></div>
+</td></tr></table>
+<p>In this output we can see that we now have a failing test. It is failing for the exact reason we made it fail. We have a test that tries to fetch a list of open games for a specific game:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">test_view_available_games_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_client</span><span class="p">):</span>
+        <span class="c1"># Send a request to the &#39;open_games&#39; endpoint</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">test_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;game_lobby/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">test_game</span><span class="o">.</span><span class="n">product_id</span><span class="si">}</span><span class="s2">/open_games&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;application/json&quot;</span><span class="p">)],</span>
+        <span class="p">)</span>
+        <span class="c1"># No games create yet</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span>
+
+        <span class="c1"># Manually create a game</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dao</span><span class="o">.</span><span class="n">create_game</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_game</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dao</span><span class="o">.</span><span class="n">publish_game</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_game</span><span class="p">)</span>
+
+        <span class="c1"># Fetch list of available games</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">test_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;game_lobby/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">test_game</span><span class="o">.</span><span class="n">product_id</span><span class="si">}</span><span class="s2">/open_games&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;application/json&quot;</span><span class="p">)],</span>
+        <span class="p">)</span>
+
+        <span class="n">game_list</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Our test fails here</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">game_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="k">assert</span> <span class="n">game_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;game_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_game</span><span class="o">.</span><span class="n">game_id</span>
+</code></pre></div>
+</td></tr></table>
+<p>The reason our test is now failing is because it creates a game with a product ID of 'test_game.product_id', BUT our change just overwrites the actual product ID with 'test'. This results in our endpoint returning an empty list since 'test' is not a valid game and therefore can't have any open games.</p>
+<p>Revert the change and run the tests again to see them passing once again.</p>
+<h3 id="coverage">Coverage</h3>
+<p>Now try running:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make run_coverage
+</code></pre></div>
+</td></tr></table>
+<p>This tells us how much of our code is covered by tests:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>----------- coverage: platform linux, python <span class="m">3</span>.7.8-final-0 -----------
+Name                                            Stmts   Miss  Cover   Missing
+-----------------------------------------------------------------------------
+matchmaker/__init__.py                              <span class="m">0</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/app.py                                  <span class="m">28</span>      <span class="m">2</span>    <span class="m">93</span>%   <span class="m">25</span>, <span class="m">49</span>
+matchmaker/config.py                               <span class="m">34</span>      <span class="m">4</span>    <span class="m">88</span>%   <span class="m">53</span>, <span class="m">56</span>-58
+matchmaker/core/__init__.py                         <span class="m">0</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/core/game_server_api.py                 <span class="m">30</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/core/game_servers.py                    <span class="m">29</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/game_data/__init__.py                    <span class="m">0</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/game_data/dao.py                       <span class="m">110</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/game_data/models.py                    <span class="m">122</span>      <span class="m">2</span>    <span class="m">98</span>%   <span class="m">69</span>, <span class="m">168</span>
+matchmaker/game_worker.py                          <span class="m">40</span>     <span class="m">40</span>     <span class="m">0</span>%   <span class="m">1</span>-67
+matchmaker/lobby/__init__.py                        <span class="m">0</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/lobby/api.py                            <span class="m">94</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/workers/__init__.py                      <span class="m">0</span>      <span class="m">0</span>   <span class="m">100</span>%
+matchmaker/workers/event_stream_workers.py         <span class="m">79</span>      <span class="m">4</span>    <span class="m">95</span>%   <span class="m">89</span>-93, <span class="m">103</span>-107
+matchmaker/workers/game_management_workers.py      <span class="m">60</span>      <span class="m">1</span>    <span class="m">98</span>%   <span class="m">115</span>
+matchmaker/workers/worker_manager.py               <span class="m">33</span>      <span class="m">2</span>    <span class="m">94</span>%   <span class="m">61</span>-62
+-----------------------------------------------------------------------------
+TOTAL                                             <span class="m">659</span>     <span class="m">55</span>    <span class="m">92</span>%
+</code></pre></div>
+</td></tr></table>
+<p>AS I mentioned before, code coverage is a useful indicator about how much test coverage you have <em>but</em> it's important to understand that 100% coverage doesn't mean you have bug free or high quality code.</p>
+<p>Don't use coverage it as a target, use it as a guide.</p>
+<h3 id="type-checking">Type Checking</h3>
+<p>For our Python projects we also have some type checking.</p>
+<p>Python is a dynamically typed language, meaning we have no compiler to tell us about errors and we often have to wait until we are running the code to know whether it even runs.</p>
+<p>Enter Mypy.</p>
+<p>Mypy is a static type checker that will analyze our code and tell us if there is any in there that might be problematic.</p>
+<p>You can run the type checker against the game portal by running:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make run_type_checking
+</code></pre></div>
+</td></tr></table>
+<p>Which should result in some output like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nb">echo</span> <span class="s2">&quot;Running Mypy against web app&quot;</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    mypy --ignore-missing-imports app.py <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Running Mypy against game worker&quot;</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    mypy --ignore-missing-imports game_worker.py<span class="err">&#39;</span>
+Running Mypy against web app
+Success: no issues found <span class="k">in</span> <span class="m">1</span> <span class="nb">source</span> file
+Running Mypy against game worker
+Success: no issues found <span class="k">in</span> <span class="m">1</span> <span class="nb">source</span> file
+</code></pre></div>
+</td></tr></table>
+<p>You should run your tests and type checking before you commit any changes to the repository.</p>
+<hr />
+<p>That's it for the Matchmaker for now. The Matchmaker server at least - you may have noticed that I have yet to mention anything about the event stream events we looked at in the last section.</p>
+<p>We need to talk about workers...</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../matchmaker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Matchmaker" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              The Matchmaker
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../workers/" class="md-footer__link md-footer__link--next" aria-label="Next: The Workers" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              The Workers
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+    
+  </body>
+</html>

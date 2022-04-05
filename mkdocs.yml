@@ -25,6 +25,7 @@ nav:
         Inputs & Outputs: systems/io.md
     - Hardware:
         Introduction: hardware/index.md
+        Mouse & Keyboard: hardware/keyboards_and_mice.md
     - Software:
         Introduction: software/index.md
     - Coding:
