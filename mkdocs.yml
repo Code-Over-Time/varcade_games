@@ -28,8 +28,10 @@ nav:
         Mouse & Keyboard: hardware/keyboards_and_mice.md
     - Software:
         Introduction: software/index.md
+        Command Line Interface: software/terminal.md
     - Coding:
         Introduction: coding/index.md
+        Programming Languages: coding/languages.md
   - Your Internship:
     - Overview: internship.md
     - Getting Set Up:

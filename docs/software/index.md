@@ -8,6 +8,7 @@ As a software engineer it can be useful understand software from a more philosop
 
 Here we will explore exactly that. More specifically we will look at:
 
+* Terminal
 * Browsers
 * IDEs
 * Source Control
