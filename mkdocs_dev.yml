@@ -24,6 +24,7 @@ nav:
         How Computers Work: computers/001_how_computers_work.md
         Anatomy of a Computer: computers/002_robot_anatomy.md
         Hardware vs Software: computers/003_hardware_software.md
+        Connecting Computers: computers/004_connecting_computers.md
     - Systems:
         Introduction: systems/index.md
         Inputs & Outputs: systems/io.md
