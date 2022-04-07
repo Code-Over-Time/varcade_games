@@ -20,6 +20,10 @@ nav:
   - Welcome: index.md
   - Curriculum: curriculum.md
   - Reading Material:
+    - Computers 101:
+        How Computers Work: computers/001_how_computers_work.md
+        Anatomy of a Computer: computers/002_robot_anatomy.md
+        Hardware vs Software: computers/003_hardware_software.md
     - Systems:
         Introduction: systems/index.md
         Inputs & Outputs: systems/io.md
@@ -28,8 +32,10 @@ nav:
         Mouse & Keyboard: hardware/keyboards_and_mice.md
     - Software:
         Introduction: software/index.md
+        Command Line Interface: software/terminal.md
     - Coding:
         Introduction: coding/index.md
+        Programming Languages: coding/languages.md
   - Your Internship:
     - Overview: internship.md
     - Getting Set Up:

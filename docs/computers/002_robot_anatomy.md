@@ -31,8 +31,8 @@ Let's worry about the complexity of sending messages between devices later, for 
 
 we know that if we tell it to do something it will do that thing, but how does it turn that command, the input, into the action of doing it, or the output. It needs some sort of transformation to happen in the middle. This is where it is easier just to think of it as magic but of course it isn’t. Essentially it is a combination of two things: 
 
-* CPU - Central Processing Unit
-* RAM - Random Access Memory 
+* CPU (Central Processing Unit)
+* Memory 
 
 ## Robot Brain
 
@@ -42,7 +42,7 @@ Remember earlier on when we talked about the robot asking questions about its en
 
 When we create a computer program we are actually creating a plan for the CPU to follow. Let's not worry about **exactly** how the CPU executes our plan right now, just know that it is the CPU that is processing the commands we submit to our robot.
 
-The other half of our robot's brain is RAM, also called memory. 
+The other half of our robot's brain is its memory. 
 
 In order to function effectively, a CPU needs memory. Our Robot remembers words like ‘Open’ and ‘Fridge’. It also remembers that ‘Open’ is an action and that ‘Fridge’ is a thing. So how is it all connected? 
 
@@ -67,33 +67,81 @@ The first word is ‘Open’, so it will search its stored actions for that acti
 
 Once it knows we are talking about the fridge it will need to find the fridge, scanning the kitchen for something that looks like a fridge. So it will also need to have a visual description of a fridge in memory so that it knows one when it sees it.
 
-If this is confusing, don’t worry, it’s a complex subject. I don’t expect to turn you into a computer scientist just by reading this little analogy, the idea is simply to understand the role of these components in a computer. I think it would be helpful to stop and think about the implications of what we have learned so far. If the robot stores everything it knows in memory, you can safely assume we need a lot of memory. And if the CPU is coordinating inputs and outputs, interacting with multiple components then it had better be fast. Ever heard someone boast that their computer has “16 gigs of RAM’? This is the amount of memory their computer has, and it is quite a lot by current standards. It means their computer can store a lot of information and actions. How about “The all new iPhone has a 2 gigahertz processor”? This is referring to the speed of its CPU - and just like our robot, the faster the better, because your phone is doing a lot of stuff.
-Let’s get back to our robot. Once the CPU has found the information it needs in memory it sends it to the arms. This is not unlike how our own brains work. If I told you to open the fridge you will hear my words and your brain will need to think about it for a fraction of a second before it then sends the message, in the form of electrical signals, to your arms. This all happens subconsciously of course, but your brain needs to access your memory to see what a fridge is and what opening one involves. These are things you have learned over time, both the language used to describe the everyday items that surround you and what those items look like. A computer needs to be told what these things are, just like you did.
-A computer’s memory is also like human memory in the sense that it has short term and long term memory. The short term memory is our RAM and the long term memory is our hard drive. A good way to think about this is from the point of view of an actor. Lets imagine an actor has lots of scripts to learn. Sitting on their table is a stack of them. If our actor memorised each and every script then they would be able to recite lines really quickly. On the other hand, if they had not memorised each script they would have to find the script in the pile on the table, open it up and find a passage in order to recite the lines - which of course takes a lot longer. The problem that the actor has is they cannot remember all of those scripts at once. So what do they do? They will likely memorise the script that they know they will be using next and leave the rest of them sitting idly on the table, meaning they can quickly and easily recite lines from the script that they need right now. The table is like our hard drive, we can put a lot of scripts there for later use. The scripts are the information that we are storing. In the case of a computer this would be music files, videos, photos or documents. Our actor’s brain represents our RAM. It is limited in storage so it can only hold one script at a time, but it is much faster to work with.
-So what does this mean for our robot? Our sandwich making program would be stored on the hard drive because there is no need for it to be taking up the limited space in our RAM. When we tell the robot to run the program the CPU will then transfer it to short term memory so that it knows how to make the sandwich. Reading the instructions from short term memory is much faster than reading from the hard drive, so rather than reading and following each instruction one at a time from hard drive, we transfer the whole lot to short term memory and then follow each instruction. 
+If this is confusing, don’t worry, it’s a complex subject. I don’t expect to turn you into a computer scientist just by reading this little analogy, the idea is simply to understand the role of these components in a computer. I think it would be helpful to stop and think about the implications of what we have learned so far. 
+
+If the robot stores everything it knows in memory, you can safely assume we need a lot of memory. And if the CPU is coordinating inputs and outputs, interacting with multiple components then it had better be fast. 
+
+Have you ever heard someone boast that their computer has “16 gigs of RAM"? This is the amount of memory their computer has, and it is quite a lot by current standards. It means their computer can store a lot of information and actions. 
+
+How about “The all new iPhone has a 2 gigahertz processor”? This is referring to the speed of its CPU - and just like our robot, the faster the better, because your phone is doing a lot of stuff.
+
+Let’s get back to our robot. Once the CPU has found the information it needs in memory it sends it to the arms. This is not unlike how our own brains work. If I told you to open the fridge you will hear my words and your brain will need to think about it for a fraction of a second before it then sends the message, in the form of electrical signals, to your arms. 
+
+This all happens subconsciously of course, but your brain needs to access your memory to see what a fridge is and what opening one involves. These are things you have learned over time, both the language used to describe the everyday items that surround you and what those items look like. A computer needs to be told what these things are, just like you did.
+
+A computer’s memory is also like human memory in the sense that it has short term and long term memory. The short term memory is our RAM (Random Access Memory) and the long term memory is our hard drive. 
+
+A good way to think about this is from the point of view of an actor. Lets imagine an actor has lots of scripts to learn. Sitting on their table is a stack of them. If our actor memorized each and every script then they would be able to recite lines really quickly. On the other hand, if they had not memorized each script they would have to find the script in the pile on the table, open it up and find a passage in order to recite the lines - which of course takes a lot longer. 
+
+The problem that an actor has is that they cannot remember all of those scripts at once. So what do they do? They will likely memorize the script that they know they will be using next and leave the rest of them sitting idly on the table, meaning they can quickly and easily recite lines from the script that they need right now. 
+
+The table is like a hard drive, we can put a lot of scripts there for later use. The scripts are the information that we are storing. In the case of a computer this would be music files, videos, photos or documents. Our actor’s brain represents our RAM. It is limited in storage so it can only hold one script at a time, but it is much faster to work with.
+
+So what does this mean for our robot? Our sandwich making program would be stored on the hard drive because there is no need for it to be taking up the limited space in our RAM. When we tell the robot to run the program the CPU will then transfer it to short term memory so that it knows how to make the sandwich. 
+
+Reading the instructions from short term memory is much faster than reading from the hard drive, so rather than reading and following each instruction one at a time from hard drive, we transfer the whole lot to short term memory and then follow each instruction.
+
 We’re now ready to see the complete picture of what is happening when we tell our robot to make our sandwich:
 
-Issue the command: “Run ham and cheese sandwich making program”
-The command is picked up by the robots microphone ears
-The command is passed to the CPU and written down in short term memory
-The command is analysed
-The words ‘run’ and ‘program’ tell us to search the hard drive, or long term memory, for a program by the name ‘ham and cheese sandwich’
-The program is located and transferred from the hard drive to short term memory
-The robot reads and performs each instruction in the program from short term memory
-When the robot is finished making the sandwich the program is removed from short term memory
-The robot awaits the next command
+1. We issue the command: “Run ham and cheese sandwich making program”
+2. The command is picked up by the robots microphone ears
+3. The command is passed to the CPU and written down in short term memory
+4. The CPU reads the command one word at a time
+5. The words ‘run’ and ‘program’ tell us to search the hard drive, or long term memory, for a program by the name ‘ham and cheese sandwich’
+6. The program is located and transferred from the hard drive to short term memory
+7. The robot reads and performs each instruction in the program from short term memory
+8. When the robot is finished making the sandwich the program is removed from short term memory
+9. The robot awaits the next command
 
-If we hadn’t copied the program into our short term memory it would have taken thousands of times longer to actually read and follow each instruction. This short term memory is, however, much more expensive, which is why there is generally a lot less of it. More importantly than that, if we were to switch off our robot everything in short term memory will disappear. This is called ‘transient’ storage, meaning we can expect to lose all of the information in short term memory if the robot loses power. This could happen because we turn it off, or it’s battery dies or it turns itself off for some reason. Our hard drive, or long term memory, does not work like this, it will remember everything even after losing power. 
+If we hadn’t copied the program into our short term memory it would have taken thousands of times longer to actually read and follow each instruction. This short term memory is, however, much more expensive, which is why there is generally a lot less of it. 
+
+More importantly than that, if we were to switch off our robot everything in short term memory will disappear. This is because it is ‘transient’ storage, meaning we lose all of the information in short term memory if the robot loses power. This could happen because we turn it off, or it’s battery dies or it turns itself off for some reason. Our hard drive, or long term memory, does not work like this, it will remember everything even after losing power. 
 
 I think it’s about time to leave the robot to one side and talk about how all of this actually applies in the real world. How about we watch a video on our computer. In order to do this we will need two things:
 
-A video file (this could be a movie downloaded from the internet)
-A program that can player videos (usually already available on most computers)
+* A video file (this could be a movie downloaded from the internet)
+* A program that can player videos (usually already available on most computers)
 
-The video file will be represented as an icon on our computer screen. It will have a name and mostly likely a small image to go alongside it, we just need to open it and watch. To do this you will need to click with your mouse or touchpad (if on a laptop). That click is the input that tells the computer what to do. Whatever the CPU was doing at the time was interrupted by your request to open the video. It begins the process of loading the program into your short term memory, just like our sandwich maker program. You may have already guessed that the video file is also stored on our hard drive, so the next thing our CPU does is load that file into short term memory so that our video player program can play it for us. The output of all this? You will see the video play on your monitor. Our video player program will use the CPU in order to process the information in the video file and send it to the monitor.  
-    There is of course a lot more going on behind the scenes but this is the basic principle of all programs. They are stored on the hard drive, loaded into memory and then often work with other information that is also stored on the hard drive. Have you ever had a computer that takes a long time to start up? You turn it on and have to wait forever before you can actually use it? This is because the computer is moving a lot of different programs into memory, getting ready for you to use it. Over time our computer seems to get slower and slower but this is more likely caused by more information being transferred between long and short term memory. You may install a new program that runs as soon as your computer starts (like anti-virus software). Now every time your computer starts it will need to move this program to short term memory, meaning it is that much slower at actually starting up. Imagine for a moment that you are making dinner - the more ingredients you have, the longer it will take you to prep and the longer it will be before you can actually start cooking.
-    Now that we have seen how these important components all interact with each other it is worth throwing out a few honorable mentions. You may have heard of a ‘motherboard’. I have spoken a lot about the CPU transferring information between long and short term memory as well as coordinating inputs and outputs. It is the motherboard that facilitates all of these communications. Each component is connected to the motherboard in such a way that electrical signals can be sent between them. We also have components that are specifically designed to work with speakers and monitors. They handle playing music as displaying fancy 3D game graphics. They are called sound cards and graphics cards. The is also a PSU, or power supply unit, which is responsible for ensuring that all of these components have enough power (electrical power that is) to function properly. 
+The video file will be represented as an icon on our computer screen. It will have a name and mostly likely a small image to go alongside it, we just need to open it and watch. 
 
-Now that we have been through all of these core components we can think about answering the question we posed earlier on. Can our robot paint a beautiful picture or write a poem? The answer to that question is technically yes. However it would be a hugely complex program to write. Think about how careful we had to be when instructing our robot to make a simple sandwich. Also take into account that we only created a very basic version of that program. Now imagine what it would take to teach it to paint. First off we would teach it the mechanics of painting, ie. using a brush, dipping it in paint and rubbing it on the canvas etc… Everything beyond that will be an immense undertaking. I will let you go down that rabbit hole on your own if you wish; have a think about how you would command the robot to paint a picture or write a poem. The more simple version would be for the robot to simply copy existing images (ie. paint a picture of a person or a landscape that they are currently looking at.
-    It is important to understand that there are things that computers are great at and other things that they are currently pretty bad at. Processing data and storing information is where they excel. A computer that can run a series of maths equations much faster and more accurately than a human can. If there is a well defined set of rules, or parameters, to operate within then a computer will likely do the job well (to learn this for yourself just try beating a super computer at chess!). Humans on the other hand are far better at things like designing solutions to problems (designing software for example, both technically and visually). We are also better at processing the space around us, whether that means cleaning our house or building a new one - we are incredibly efficient when it comes to navigating the world. We are also much better at just being human, sadness and laughter, joy and heartbreak are all uniquely human attributes that computers today cannot effectively simulate.
-    There is a test named ‘The Turing Test’ (named after Alan Turing, a hugely important figure in the development of computer science) in which human participants are sat down at several different computers and must chat to one another. They are all in separate rooms while chatting. The trick is that one of the participants is actually a computer program. The challenge is to fool the human into thinking they are talking to another human when in fact they are talking to a computer. At the time of writing this there is a website you can go to in order to try this out for yourself: www.cleverbot.com. The website is a simple chat application where you can converse with a ‘chatbot’. A chat bot is an artificially intelligent computer program that will respond to the things you say. You can have full blown conversations with this bot, however it is pretty obvious that you are not talking to a human.
+To do this you will need to click with your mouse or touchpad (if on a laptop). That click is the input that tells the computer what to do. Whatever the CPU was doing at the time was interrupted by your request to open the video. It begins the process of loading the program into your short term memory, just like our sandwich maker program. 
+
+You may have already guessed that the video file is also stored on our hard drive, so the next thing our CPU does is start the video player program, which then loads the video into short term memory so it can be played. 
+
+The output of all this? You will see the video play on your monitor. Our video player program will use the CPU in order to process the information in the video file and send it to the monitor.
+
+There is of course a lot more going on behind the scenes but this is the basic principle of all programs. They are stored on the hard drive, loaded into memory and then often work with other information that is also stored on the hard drive. 
+
+Have you ever had a computer that takes a long time to start up? You turn it on and have to wait forever before you can actually use it? This is because the computer is moving a lot of different programs into memory, getting ready for you to use it. Over time our computer seems to get slower and slower but this is more likely caused by more information being transferred between long and short term memory. You may install a new program that runs as soon as your computer starts (like anti-virus software). Now every time your computer starts it will need to move this program to short term memory, meaning it is that much slower at actually starting up.
+
+Now that we have seen how these important components all interact with each other it is worth throwing out a few honorable mentions. You may have heard of a ‘motherboard’. I have spoken a lot about the CPU transferring information between long and short term memory as well as coordinating inputs and outputs. 
+
+It is the motherboard that facilitates all of these communications. Each component is connected to the motherboard in such a way that electrical signals can be sent between them. 
+
+We also have components that are specifically designed to work with speakers and monitors. They handle playing music as displaying fancy 3D game graphics. They are called sound cards and graphics cards. The is also a PSU, or power supply unit, which is responsible for ensuring that all of these components have enough power (electrical power that is) to function properly. 
+
+## Final Thoughts
+
+Now that we have been through all of these core components we can think about answering the question we posed earlier on. Can our robot paint a beautiful picture or write a poem? The answer to that question is technically yes. 
+
+However it would be a hugely complex program to write. Think about how careful we had to be when instructing our robot to make a simple sandwich. Also take into account that we only created a very basic version of that program. Now imagine what it would take to teach it to paint. First off we would teach it the mechanics of painting, ie. using a brush, dipping it in paint and rubbing it on the canvas etc… Everything beyond that will be an immense undertaking. I will let you go down that rabbit hole on your own if you wish; have a think about how you would command the robot to paint a picture or write a poem. The more simple version would be for the robot to simply copy existing images (ie. paint a picture of a person or a landscape that they are currently looking at.
+   
+It is important to understand that there are things that computers are great at and other things that they are currently pretty bad at. Processing data and storing information is where they excel. 
+
+A computer that can run a series of maths equations much faster and more accurately than a human can. If there is a well defined set of rules, or parameters, to operate within then a computer will likely do the job well (to learn this for yourself just try beating a super computer at chess!). 
+
+Humans on the other hand are far better at things like designing solutions to problems (designing software for example, both technically and visually). We are also better at processing the space around us, whether that means cleaning our house or building a new one - we are incredibly efficient when it comes to navigating the world. We are also much better at just being human, sadness and laughter, joy and heartbreak are all uniquely human attributes that computers today cannot effectively simulate.
+
+There is a test named ‘The Turing Test’ (named after Alan Turing, a hugely important figure in the development of computer science) in which human participants are sat down at several different computers and must chat to one another. They are all in separate rooms while chatting. The trick is that one of the participants is actually a computer program. 
+
+The challenge is to fool the human into thinking they are talking to another human when in fact they are talking to a computer. At the time of writing this there is a website you can go to in order to try this out for yourself: www.cleverbot.com. The website is a simple chat application where you can converse with a ‘chatbot’. A chat bot is an artificially intelligent computer program that will respond to the things you say. You can have full blown conversations with this bot, however it is pretty obvious that you are not talking to a human.

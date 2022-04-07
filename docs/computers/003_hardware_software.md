@@ -1,63 +1,102 @@
-Hardware VS. Software
+# Hardware VS. Software
+
 Now that we are more familiar with the anatomy of our robot and how to program it we should stop to look at some more common computer terms that are useful to know and various different types of software. In the last section we talked about our CPU, RAM and harddrive. These components are known as hardware. The word ‘hardware’ is used to describe all physical components of a computer, including our mouse, keyboard, monitor and graphics/sound cards. If someone is interested in your hardware they will generally be most interested in the CPU, RAM and graphics card. Knowing the specifications of these pieces of hardware is enough to tell us how fast we can expect the computer to run as well as how many programs it can handle running simultaneously before it starts to slow down and become unresponsive. 
     We briefly mentioned CPU power earlier on and used the word ‘gigahertz’. This word is actually composed to two words, the second being the most interesting: hertz. This is a word commonly used in physics and engineering and simply means ‘cycles per second’ or ‘frequency’. If you look at an ordinary clock, the seconds hand ticks once every second, so it could be said that it is running at 1 hertz. If you have any experience with music theory you will be familiar with the measure of beats per minute, which is a similar concept. If you use public transport and your bus comes once every hour, you could call that the frequency of your bus - or buses per hour. In fact we can invent a new unit of measurement right now: ‘Burtz’, which means buses per hour. The bus that I take every day runs at a frequency of 3 burtz, meaning three of them come within the space of an hour. I would have to wait around less if that frequency was increased. If the buses ran at 12 burtz it would mean there would be one every five minutes, which would be great! 
 To go back to our CPU and its ‘cycles per second’, a cycle is basically the operation of a single instruction. So earlier on when we said our CPU transferred our sandwich program from the hard drive to RAM, this would have been millions of operations. This means that it’s a good thing that the first part of the word ‘gigahertz’ means ‘billions’. So then we say our CPU is running at ‘2 gigahertz’ it means that it can perform a whopping 2 billion operations every second! Remember this the next time you get angry at your computer. That poor little processor is working incredibly hard trying to keep up with the demands of modern software. Each program running on your computer is like an angry customer in a packed restaurant shouting at a single waiter who is struggling to keep up with their orders.
 
 When it comes to memory and storage we used a different word: ‘gigabytes’, or ‘gigs of RAM’. The ‘giga’ in this word means the same thing but the ‘bytes’ is very different. You may have guessed that ‘gigabytes’ means ‘billions of bytes’, and if so then you guessed correctly. But what is a byte? Answering that question presents a new one, so let’s look at something called a ‘bit’ first. A ‘bit’ in computing is the smallest unit of information that a computer can work with. For humans the smallest unit of information would be a letter. Words are made of letters, sentences of words, paragraphs of sentences, chapters of paragraphs and books of chapters. Letters aren’t composed of anything else like sentences, paragraphs and chapters are. We can’t break down a letter any further. A bit is to a computer what a single letter is to us. On it’s own a letter cannot do much, but once we start creating sequences of letters we end up with books that contain huge amounts of information. In computing we do the same with bits. In the English alphabet there are 26 letters, but for a computer’s alphabet there are only two bits: 1 and 0. A byte is just a sequence eight bits. So one gigabyte is one billion bytes, which is actually eight billion bits. Why there are eight bits in a byte is beyond the scope of this book, but check out the recommended reading section at the end of this book if you want to dive deeper into that world.
-    So how does a computer that stores a bunch of bits manage to display text and images to us? Well that is actually pretty simple. We use certain sequences of bits to represent things. A computer may represent the letter ‘A’ using this sequence of bits: ‘01000001’. So in our RAM if we want to store the letter ‘A’ we will use that sequence, which uses up 8 bits of the billions of bits available to us. To illustrate this point let’s imagine we are back in school. You are sitting in a particularly boring class and want to pass a note to your friend. You have been caught doing this before so you and your friend set up a code where you use bits to represent letters, this way your teacher won’t know what you are saying if you get caught again:
 
-A
-01000001
-N
-01001110
-B
-01000010
-O
-01001111
-C
-01000011
-P
-01010000
-D
-01000100
-Q
-01010001
-E
-01000101
-R
-01010010
-F
-01000110
-S
-01010011
-G
-01000111
-T
-01010100
-H
-01001000
-U
-01010101
-I
-01001001
-V
-01010110
-J
-01001010
-W
-01010111
-K
-01001011
-X
-01011000
-L
-01001100
-Y
-01011001
-M
-01001101
-Z
-01011010
+So how does a computer that stores a bunch of bits manage to display text and images to us? Well that is actually pretty simple. We use certain sequences of bits to represent things. A computer may represent the letter ‘A’ using this sequence of bits: ‘01000001’. So in our RAM if we want to store the letter ‘A’ we will use that sequence, which uses up 8 bits of the billions of bits available to us. To illustrate this point let’s imagine we are back in school. You are sitting in a particularly boring class and want to pass a note to your friend. You have been caught doing this before so you and your friend set up a code where you use bits to represent letters, this way your teacher won’t know what you are saying if you get caught again:
+
+<table cellspacing="3" >
+    <tr>
+        <td>A</td>
+        <td>01000001</td>
+        <td>N</td>
+        <td>01001110</td>
+    </tr>
+    <tr>
+        <td>B</td>
+        <td>01000010</td>
+        <td>O</td>
+        <td>01001111</td>
+    </tr>
+    <tr>
+        <td>C</td>
+        <td>01000011</td>
+        <td>P</td>
+        <td>01010000</td>
+    </tr>
+    <tr>
+        <td>D</td>
+        <td>01000100</td>
+        <td>Q</td>
+        <td>01010001</td>
+    </tr>
+    <tr>
+        <td>E</td>
+        <td>01000101</td>
+        <td>R</td>
+        <td>01010010</td>
+    </tr>
+    <tr>
+        <td>F</td>
+        <td>01000110</td>
+        <td>S</td>
+        <td>01010011</td>
+    </tr>
+    <tr>
+        <td>G</td>
+        <td>01000111</td>
+        <td>T</td>
+        <td>01010100</td>
+    </tr>
+    <tr>
+        <td>H</td>
+        <td>01001000</td>
+        <td>U</td>
+        <td>01010101</td>
+    </tr>
+    <tr>
+        <td>I</td>
+        <td>01001001</td>
+        <td>V</td>
+        <td>01010110</td>
+    </tr>
+    <tr>
+        <td>J</td>
+        <td>01001010</td>
+        <td>W</td>
+        <td>01010111</td>
+    </tr>
+    <tr>
+        <td>K</td>
+        <td>01001011</td>
+        <td>X</td>
+        <td>01011000</td>
+    </tr>
+    <tr>
+        <td>L</td>
+        <td>01001100</td>
+        <td>Y</td>
+        <td>01011001</td>
+    </tr>
+    <tr>
+        <td>M</td>
+        <td>01001101</td>
+        <td>Z</td>
+        <td>01011010</td>
+    </tr>
+
+</table>
+
+
+
+
+
+
+
+
 
 
 As we can see, each letter of the alphabet is represented by a unique sequence of bits. 
