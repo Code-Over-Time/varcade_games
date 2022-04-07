@@ -20,6 +20,9 @@ nav:
   - Welcome: index.md
   - Curriculum: curriculum.md
   - Reading Material:
+    - Computers 101:
+        How Computers Work: computers/001_how_computers_work.md
+        Anatomy of a Computer: computers/002_robot_anatomy.md
     - Systems:
         Introduction: systems/index.md
         Inputs & Outputs: systems/io.md

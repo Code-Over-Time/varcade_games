@@ -1,39 +1,72 @@
-Robot Anatomy
+# Robot Anatomy
+
 Everyone computer has a few core components, most of which you will no doubt have heard of:
 
-CPU
-Memory (or RAM)
-Hard drive
-Motherboard
+* CPU
+* Memory (or RAM)
+* Hard drive
+* Motherboard
 
 And most will have other components that you will definitely have heard of:
 
-Keyboard/Mouse
-Monitor
-Speakers
+* Keyboard/Mouse
+* Monitor
+* Speakers
 
 So how do these familiar words apply to our robot? Let’s start with the fact that we told our robot what to do by speaking to it. We issued commands one after another and our robot executed them. This means the robot must have ears right? The technical term for ‘Robot Ears’ is one we are all familiar with - a microphone. A mouse, keyboard or the touch screen on your phone will work the same way, except we do not use our voice, we interact through touch. These are all known as input devices. 
-You may have seen the letters I and O used like this: I/O. You may have also guessed that the I stands for ‘Input’. The ‘O’ stands for ‘Output’. In the case of our Robot, the Output is the robot’s actions. So when we told it to open the fridge, the command ‘Open the fridge’ is an input, and the output is the robot opening the fridge. When it comes to computers, the output device we are most familiar with is our monitor or screen and our speakers. Have you ever looked at a picture on a computer? Chances are you did so by using your mouse to double click on a file, or clicked on a friend’s Facebook post. This is your input; you are telling the computer you want to see the picture by clicking on it. The computer will then display that image on your screen; that is the output. We are implicitly familiar with the concept of inputs and outputs in our everyday lives. Have you ever bought a bottle of water from a vending machine? You input a coin and the vending machine outputs your water. Most of our daily actions consist of input and outputs, or actions and reactions - computers are no different.
-This gets this a little more complicated if we consider something like the humble text message. When you type a text message on your phone the input is your finger touching the onscreen keyboard (if you are using a touch screen), the output is a letter displayed on your screen. By tapping on the keyboard you are issuing a command - add this letter to my message. The command is received by the phone and it will obediently add the selected letter to your message. If you tap the send button you have issued a different command, one that causes the phone to send your message. The output in this case is a message sent from your phone. Interestingly, your output, the message, will become the input on the recipient's phone. Your phone, and your mobile network, have issued a command to their phone - saying ‘notify this person that they have a message’. That person can then tap the open button on their screen, which is a new input, and the phone will display that message, which is the final output.
 
-If we go back to our robot, we know that if we tell it to do something it will do that thing, but how does it turn that command, the input, into the action of doing it, or the output. It needs some sort of transformation to happen in the middle. This is where it is easier just to think of it as magic but of course it isn’t. Essentially it is a combination of two things: 
+You may have seen the letters I and O used like this: I/O. You may have also guessed that the I stands for ‘Input’. The ‘O’ stands for ‘Output’. 
 
-CPU
-Memory
+In the case of our Robot, the Output is the robot’s actions. So when we told it to open the fridge, the command ‘Open the fridge’ is an input, and the output is the robot opening the fridge. 
 
-The CPU is the Robot’s brain. It is the thing that takes the input and performs the necessary actions to provide the expected output. Remember earlier on when we talked about the robot asking question about its environment? Is there cheese in the fridge, is it spoiled etc... It is the CPU that is responsible for this, it can be used to compare things and take certain actions depending on the state of those things. When we create our computer programs we are actually creating a plan for the CPU to follow. How exactly a CPU does this is beyond the scope of this book, but check out the recommended reading section at the end of the book if you want deep dive into the world of computer processors.
-In order to function, our CPU needs memory. Our Robot remembers words like ‘Open’ and ‘Fridge’. It also remembers that ‘Open’ is an action and that ‘Fridge’ is a thing. So how is it all connected? Firstly the Robot’s ears are connected to the CPU and when the ears detect sound that information is sent to the CPU. The CPU is also connected to the robot’s memory. Once it gets the command from the ears it will send that information to memory. To understand why it does this imagine if I asked you add ten different numbers together and then listed the numbers off really quickly. You would probably want to write them down. Once they are written down it is easier for you to add them together. This is the same principle as the relationship between the CPU and Memory. The CPU can store things in memory and then work with it.
+When it comes to computers, the output devices we are most familiar with are our monitor, or screen, and our speakers.
+
+Have you ever looked at a picture on a computer? Chances are you did so by using your mouse to double click on a file, or clicked on a friend’s Facebook post. This is your input; you are telling the computer you want to see the picture by clicking on it. The computer will then display that image on your screen; that is the output. We are implicitly familiar with the concept of inputs and outputs in our everyday lives. Have you ever bought a bottle of water from a vending machine? You input a coin and the vending machine outputs your water. Most of our daily actions consist of input and outputs, or actions and reactions - computers are no different.
+
+This gets this a little more complicated if we consider something like the humble text message. When you type a text message on your phone the input is your finger touching the onscreen keyboard (if you are using a touch screen), the output is a letter displayed on your screen. By tapping on the keyboard you are issuing a command - add this letter to my message. The command is received by the phone and it will obediently add the selected letter to your message. 
+
+If you tap the send button you have issued a different command, one that causes the phone to send your message. The output in this case is a message sent from your phone. Interestingly, your output, the message, will become the input on the recipient's phone. Your phone, and your mobile network, have issued a command to their phone - saying ‘notify this person that they have a message’. That person can then tap the open button on their screen, which is a new input, and the phone will display that message, which is the final output.
+
+Let's worry about the complexity of sending messages between devices later, for now let's go back to our Robot.
+
+we know that if we tell it to do something it will do that thing, but how does it turn that command, the input, into the action of doing it, or the output. It needs some sort of transformation to happen in the middle. This is where it is easier just to think of it as magic but of course it isn’t. Essentially it is a combination of two things: 
+
+* CPU - Central Processing Unit
+* RAM - Random Access Memory 
+
+## Robot Brain
+
+The CPU is one part of the Robot’s brain. It is the thing that takes the input and performs the necessary actions to provide the expected output. 
+
+Remember earlier on when we talked about the robot asking questions about its environment? Is there cheese in the fridge, is it spoiled etc... It is the CPU that is manages this this. It can be used to compare things and take certain actions depending on the state of those things. 
+
+When we create a computer program we are actually creating a plan for the CPU to follow. Let's not worry about **exactly** how the CPU executes our plan right now, just know that it is the CPU that is processing the commands we submit to our robot.
+
+The other half of our robot's brain is RAM, also called memory. 
+
+In order to function effectively, a CPU needs memory. Our Robot remembers words like ‘Open’ and ‘Fridge’. It also remembers that ‘Open’ is an action and that ‘Fridge’ is a thing. So how is it all connected? 
+
+Firstly the Robot’s ears are connected to the CPU and when the ears detect sound that information is sent to the CPU. The CPU is also connected to the robot’s memory. Once it gets the command from the ears it will send that information to memory. 
+
+To understand why it does this imagine if I asked you add ten different numbers together and then listed the numbers off really quickly. You would probably want to write them down. Once they are written down it is easier for you to add them together. This is the same principle as the relationship between the CPU and Memory. The CPU can store information in memory so that it can work with it later.
+
 If we were to represent this as a conversation between the various components we might end up with something like this:
 
-Ears: Hey, CPU! You’ve gotta hear this!
-CPU: Ok ears, I’ve got a second to listen to you.
-Ears: Our master said “Open the fridge”.
-CPU: Ok, thanks - hey Memory, I need you to remember this: “Open the fridge.”
-Memory: “Open the fridge”? Got it.
-CPU: Thanks, now I can look at this command properly and figure out what to do
+    Ears: Hey, CPU! You’ve gotta hear this!
+    CPU: Ok ears, I’ve got a second to listen to you.
+    Ears: Our master said “Open the fridge”.
+    CPU: Ok, thanks - hey Memory, I need you to remember this: “Open the fridge.”
+    Memory: “Open the fridge”? Got it.
+    CPU: Thanks, now I can look at this command properly and figure out what to do
 
 So our command has now been added to memory - but it is not the only thing that is in memory. A robot’s memory represents its understanding of the world in which it lives and how to interact with that world. If we tell it to go somewhere it will walk there because that action (ie. how to walk) is stored in it’s memory.
-Once our command is in memory the CPU can look at it one word at a time. The first word is ‘Open’, so it will search its stored actions for that word. When it finds the word in memory it will also find out what it means. In this case it will let the Robot know that it will need to use its arms. It also knows that one of the next words in the command should be a thing that can be opened. In our case it is the fridge, which is fine because a fridge can be opened, but if we had said ‘Open the cat’ the Robot wouldn’t know what to do (or it would do something horrible). Once it knows we are talking about the fridge it will need to find the fridge, scanning the kitchen for something that looks like a fridge. So it will also need to have a visual description of a fridge in memory so that it knows one when it sees it.
+
+Once our command is in memory the CPU can look at it one word at a time. 
+
+The first word is ‘Open’, so it will search its stored actions for that action. When it finds the action in memory it will also find out what it means. In this case it will let the Robot know that it will need to use its arms. It also knows that one of the next words in the command should be a thing that can be opened. In our case it is the fridge, which is fine because a fridge can be opened, but if we had said ‘Open the cat’ the Robot wouldn’t know what to do (or it would do something horrible). 
+
+Once it knows we are talking about the fridge it will need to find the fridge, scanning the kitchen for something that looks like a fridge. So it will also need to have a visual description of a fridge in memory so that it knows one when it sees it.
+
 If this is confusing, don’t worry, it’s a complex subject. I don’t expect to turn you into a computer scientist just by reading this little analogy, the idea is simply to understand the role of these components in a computer. I think it would be helpful to stop and think about the implications of what we have learned so far. If the robot stores everything it knows in memory, you can safely assume we need a lot of memory. And if the CPU is coordinating inputs and outputs, interacting with multiple components then it had better be fast. Ever heard someone boast that their computer has “16 gigs of RAM’? This is the amount of memory their computer has, and it is quite a lot by current standards. It means their computer can store a lot of information and actions. How about “The all new iPhone has a 2 gigahertz processor”? This is referring to the speed of its CPU - and just like our robot, the faster the better, because your phone is doing a lot of stuff.
 Let’s get back to our robot. Once the CPU has found the information it needs in memory it sends it to the arms. This is not unlike how our own brains work. If I told you to open the fridge you will hear my words and your brain will need to think about it for a fraction of a second before it then sends the message, in the form of electrical signals, to your arms. This all happens subconsciously of course, but your brain needs to access your memory to see what a fridge is and what opening one involves. These are things you have learned over time, both the language used to describe the everyday items that surround you and what those items look like. A computer needs to be told what these things are, just like you did.
 A computer’s memory is also like human memory in the sense that it has short term and long term memory. The short term memory is our RAM and the long term memory is our hard drive. A good way to think about this is from the point of view of an actor. Lets imagine an actor has lots of scripts to learn. Sitting on their table is a stack of them. If our actor memorised each and every script then they would be able to recite lines really quickly. On the other hand, if they had not memorised each script they would have to find the script in the pile on the table, open it up and find a passage in order to recite the lines - which of course takes a lot longer. The problem that the actor has is they cannot remember all of those scripts at once. So what do they do? They will likely memorise the script that they know they will be using next and leave the rest of them sitting idly on the table, meaning they can quickly and easily recite lines from the script that they need right now. The table is like our hard drive, we can put a lot of scripts there for later use. The scripts are the information that we are storing. In the case of a computer this would be music files, videos, photos or documents. Our actor’s brain represents our RAM. It is limited in storage so it can only hold one script at a time, but it is much faster to work with.
