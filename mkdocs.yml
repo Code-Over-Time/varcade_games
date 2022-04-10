@@ -25,6 +25,7 @@ nav:
         Inputs & Outputs: systems/io.md
     - Hardware:
         Introduction: hardware/index.md
+        Mouse & Keyboard: hardware/keyboards_and_mice.md
     - Software:
         Introduction: software/index.md
     - Coding:
@@ -82,6 +83,20 @@ nav:
         - Setting up Grafana: onboarding/instrumentation/grafana.md
         - Running a load test: onboarding/instrumentation/load_test.md
       - Next Steps: onboarding/closing_words.md
+    - Hands-on Tasks:
+      - How It Works: tasks/overview.md
+      - Junior:
+          - Keyboard Shortcuts: tasks/junior/001_keyboard_login.md
+          - Skip, Skip Skip: tasks/junior/002_skip_cutscene.md
+          - Build Tools: tasks/junior/003_build_tools.md
+      - Mid:
+          - Error Handling: tasks/mid/000_error_handling.md
+          - Settings Menu: tasks/mid/001_game_settings.md
+      - Senior:
+          - Per Round Stats: tasks/senior/000_per_round_stats.md
+          - Deduplication: tasks/senior/001_deduplication.md
+      - Principle:
+          - Async Game Server: tasks/principle/001_async_node.md
 markdown_extensions:
   - attr_list
   - admonition

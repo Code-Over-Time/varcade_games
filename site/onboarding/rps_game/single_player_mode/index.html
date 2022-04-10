@@ -1,0 +1,2240 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://codeovertime.com/onboarding/rps_game/single_player_mode/">
+      
+      <link rel="icon" href="../../../img/logo.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Single player - Code Over Time [ALPHA]</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#working-with-phaser" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Code Over Time [ALPHA]" class="md-header__button md-logo" aria-label="Code Over Time [ALPHA]" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Code Over Time [ALPHA]
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Single player
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent=""  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent=""  aria-label="Light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Code Over Time [ALPHA]" class="md-nav__button md-logo" aria-label="Code Over Time [ALPHA]" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    Code Over Time [ALPHA]
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../curriculum/" class="md-nav__link">
+        Curriculum
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Reading Material
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reading Material" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reading Material
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Systems
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Systems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systems/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systems/io/" class="md-nav__link">
+        Inputs & Outputs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Hardware
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        Software
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        Coding
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Coding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Coding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../coding/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Your Internship
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Your Internship" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Your Internship
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../internship/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Getting Set Up
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting Set Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Set Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2_2">
+        Dev Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Dev Environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Dev Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/windows/" class="md-nav__link">
+        Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/osx/" class="md-nav__link">
+        OSX
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/environment_setup/testing_your_setup/" class="md-nav__link">
+        Testing your setup
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      <label class="md-nav__link" for="__nav_4_2_3">
+        Project Setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Project Setup" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Project Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/intro/" class="md-nav__link">
+        Varcade Games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/get_the_code/" class="md-nav__link">
+        Get the code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/running_vcg/" class="md-nav__link">
+        Running Varcade Games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/varcade_games/adding_a_game/" class="md-nav__link">
+        Adding a game
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/next_steps/" class="md-nav__link">
+        Next Steps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      <label class="md-nav__link" for="__nav_4_3">
+        Onboarding
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Onboarding" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Onboarding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_2" type="checkbox" id="__nav_4_3_2" >
+      
+      <label class="md-nav__link" for="__nav_4_3_2">
+        Varcade Games
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Varcade Games" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Varcade Games
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/intro_client/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/system_architecture/" class="md-nav__link">
+        System Architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/reverse_engineering/" class="md-nav__link">
+        Reverse Engineering
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/making_changes/" class="md-nav__link">
+        Making Changes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/tests_and_linters/" class="md-nav__link">
+        Tests and Linters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_3" type="checkbox" id="__nav_4_3_3" >
+      
+      <label class="md-nav__link" for="__nav_4_3_3">
+        Plugging in games
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Plugging in games" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugging in games
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/intro_server/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/admin/" class="md-nav__link">
+        The Admin panel
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/embedding_games/" class="md-nav__link">
+        Embedding games
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../varcade_games/matchmaker/" class="md-nav__link">
+        The Matchmaker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_4" type="checkbox" id="__nav_4_3_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4_3_4">
+        The Game Client
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The Game Client" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          The Game Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_the_game/" class="md-nav__link">
+        Working with Rock Paper Scissors Apocalypse
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../key_concepts/" class="md-nav__link">
+        Key Concepts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Single player
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Single player
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-phaser" class="md-nav__link">
+    Working with Phaser
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Phaser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    Layout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-main-menu" class="md-nav__link">
+    The main menu
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#character-selection" class="md-nav__link">
+    Character Selection
+  </a>
+  
+    <nav class="md-nav" aria-label="Character Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-components" class="md-nav__link">
+    Custom components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tweening" class="md-nav__link">
+    Tweening
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven-development" class="md-nav__link">
+    Data driven development
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-scene" class="md-nav__link">
+    VS scene
+  </a>
+  
+    <nav class="md-nav" aria-label="VS scene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-data" class="md-nav__link">
+    View data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-update-method" class="md-nav__link">
+    The update method
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-fight-scene" class="md-nav__link">
+    The fight scene
+  </a>
+  
+    <nav class="md-nav" aria-label="The fight scene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#game-events" class="md-nav__link">
+    Game Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#game-states" class="md-nav__link">
+    Game States
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-other-scenes" class="md-nav__link">
+    The other scenes
+  </a>
+  
+    <nav class="md-nav" aria-label="The other scenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#game-over" class="md-nav__link">
+    Game over
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booting-and-loading" class="md-nav__link">
+    Booting and Loading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrative" class="md-nav__link">
+    Narrative
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the_game_engine/" class="md-nav__link">
+        The Game Engine
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_design/" class="md-nav__link">
+        Game Design
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_5" type="checkbox" id="__nav_4_3_5" >
+      
+      <label class="md-nav__link" for="__nav_4_3_5">
+        The Game Server
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The Game Server" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          The Game Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/playing_with_others/" class="md-nav__link">
+        Playing with Others
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/key_concepts/" class="md-nav__link">
+        Key Concepts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/system_design/" class="md-nav__link">
+        System Design
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rps_game_server/the_game_engine/" class="md-nav__link">
+        The Game Engine
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_6" type="checkbox" id="__nav_4_3_6" >
+      
+      <label class="md-nav__link" for="__nav_4_3_6">
+        Backend Services
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Backend Services" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Backend Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/matchmaker/" class="md-nav__link">
+        The Matchmaker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/working_with_matchmaker/" class="md-nav__link">
+        Working with the Matchmaker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/workers/" class="md-nav__link">
+        The Workers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/stats_tracker/" class="md-nav__link">
+        The Stats Tracker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_7" type="checkbox" id="__nav_4_3_7" >
+      
+      <label class="md-nav__link" for="__nav_4_3_7">
+        Instrumentation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Instrumentation" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Instrumentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/grafana/" class="md-nav__link">
+        Setting up Grafana
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/load_test/" class="md-nav__link">
+        Running a load test
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../closing_words/" class="md-nav__link">
+        Next Steps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-phaser" class="md-nav__link">
+    Working with Phaser
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Phaser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    Layout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-main-menu" class="md-nav__link">
+    The main menu
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#character-selection" class="md-nav__link">
+    Character Selection
+  </a>
+  
+    <nav class="md-nav" aria-label="Character Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-components" class="md-nav__link">
+    Custom components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tweening" class="md-nav__link">
+    Tweening
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven-development" class="md-nav__link">
+    Data driven development
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-scene" class="md-nav__link">
+    VS scene
+  </a>
+  
+    <nav class="md-nav" aria-label="VS scene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-data" class="md-nav__link">
+    View data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-update-method" class="md-nav__link">
+    The update method
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-fight-scene" class="md-nav__link">
+    The fight scene
+  </a>
+  
+    <nav class="md-nav" aria-label="The fight scene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#game-events" class="md-nav__link">
+    Game Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#game-states" class="md-nav__link">
+    Game States
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-other-scenes" class="md-nav__link">
+    The other scenes
+  </a>
+  
+    <nav class="md-nav" aria-label="The other scenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#game-over" class="md-nav__link">
+    Game over
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booting-and-loading" class="md-nav__link">
+    Booting and Loading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrative" class="md-nav__link">
+    Narrative
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Single player</h1>
+                
+                <p><a href="../img/fight_scene.png"><img alt="Screenshot of the in game fight scene" src="../img/fight_scene.png" /></a></p>
+<h2 id="working-with-phaser">Working with Phaser</h2>
+<p>Phaser is a 2d graphics engine and does not come with any fancy UI or layout functionality.</p>
+<p>When working on Varcade Games we were able to use HTML and CSS to easily lay out all of our content in a nice organized fashion.</p>
+<p>With Phaser we're 2d graphics land, which means a Cartesian plane and a X/Y coordinates. </p>
+<p><img alt="Image of a 2d x/y coordinate plane" src="../img/coordinate_system.png" /></p>
+<p>The top left hand corner of the game is point X=0, Y=0. </p>
+<p>As we add images, test and buttons to our game we have to explicitly set their X/Y coordinates on that plane.</p>
+<p>If you're not careful you will end up with lots of hardcoded values in your code, which can become pretty painful pretty quickly.</p>
+<p>So, before we go any further we should check out our layout file.</p>
+<h3 id="layout">Layout</h3>
+<p>Open up <code>client/src/game_data/layout.js</code> and have a look around.</p>
+<p>At the top we have a couple of global variables. It's useful to calculate and store screen height / width and half height / half width as they will help us position game objects relative to the screen.</p>
+<p>For example if you want to position something in the middle of the screen you set X to half width and Y to half height. You will see these values used extensively throughout the rest of the file.</p>
+<p>The first layout, and most straight forward layout, in the file is for the Loading scene:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">LoadingScene</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">ui</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">text</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">originX</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+          <span class="nx">originY</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+          <span class="nx">bitmapFontId</span><span class="o">:</span> <span class="s1">&#39;verdana64&#39;</span><span class="p">,</span>
+          <span class="nx">color</span><span class="o">:</span> <span class="mh">0xFF0000</span><span class="p">,</span>
+          <span class="nx">fontSize</span><span class="o">:</span> <span class="mf">48</span><span class="p">,</span>
+          <span class="nx">x</span><span class="o">:</span> <span class="nx">globalLayoutData</span><span class="p">.</span><span class="nx">halfScreenWidth</span><span class="p">,</span>
+          <span class="nx">y</span><span class="o">:</span> <span class="nx">globalLayoutData</span><span class="p">.</span><span class="nx">halfScreenHeight</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+</code></pre></div>
+</td></tr></table>
+<p>So what can we infer from this?</p>
+<p>Well it's safe to say that there is probably a loading scene. That loading scene probably has some UI and the UI looks like it has some text.</p>
+<p>That text has a bunch of data associated with it. A lot of it should be obvious - there's an X and Y coordinate, a color, a font ID and a font size.</p>
+<p>The only bits that might be unfamiliar are <code>originX</code> and <code>originY</code>.</p>
+<p>You will see this used extensively through out our layout file as it is a really useful feature that Phaser has.</p>
+<p>When positioning an object in 2d space you can specify the coordinates relative to some point on the object... this is a lot easier to explain with a diagram:</p>
+<p><a href="../img/origin_coords.png"><img alt="Visual representation of Origin coordinates" src="../img/origin_coords.png" /></a></p>
+<p>As you can see in the image above, I am describing the position of the images in space relative to a point on the image.</p>
+<p>If I set the origin X and Y of an image to (0, 0), then placing the image at coordinates (10, 10) will result in Phaser rendering that image with the top left corner at that point.</p>
+<p>If I set the origin X and origin Y of an image to (0.5, 0.5), then placing the image at coordinates (40, 30) will result in Phaser rendering that image with the center at those coordinates.</p>
+<p>Why 0.5? Because the minimum value for the origin is 0 and the maximum is 1.0. So specifying 0.5 for the origin of both X and Y represents half way of both axes. </p>
+<p>If this is confusing don't worry about - jump into the code and make some changes and see what happens. </p>
+<p>The background for the main menu scene is defined next in the layout:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">MainMenuScene</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">ui</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">background</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">originX</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+          <span class="nx">originY</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+          <span class="nx">x</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+          <span class="nx">y</span><span class="o">:</span> <span class="mf">0</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Try changing the origin X and Y to 0.5 and see what happens. </p>
+<p>What do you need to change X and Y to in order to fix it?</p>
+<p>That brief introduction should be enough for you to be able to find your way around the various scene layouts - so let's move on to the code.</p>
+<h2 id="the-main-menu">The main menu</h2>
+<p>The main menu is one of the simpler scenes in the game, so we can use it to get a sense of how scenes are set up.</p>
+<p>First off we need to create a new instance of a Phaser Scene:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">MainMenuScene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Class</span><span class="p">({</span>
+
+  <span class="nx">Extends</span><span class="o">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span><span class="p">,</span>
+
+  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;MainMenuScene&#39;</span> <span class="p">})</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menuHighlightIconIndex</span> <span class="o">=</span> <span class="mf">0</span>
+  <span class="p">},</span>
+
+  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">error</span> <span class="c1">// This will be filled if returning from an error in another scene</span>
+  <span class="p">},</span>
+
+  <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>  
+  <span class="p">}</span>
+
+  <span class="p">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>You will see this same basic setup in all of our scenes. <code>Initialize</code> acts as our constructor. </p>
+<p><code>init</code> is called when the scene is being started and can also be used to pass data around, as we do here. </p>
+<p>Finally the create function is where we actually create our scene by adding images and text etc...</p>
+<p>Our rendering code looks like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">layoutData</span> <span class="o">=</span> <span class="nx">getSceneLayoutData</span><span class="p">(</span><span class="s1">&#39;MainMenuScene&#39;</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">bgLayout</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">layoutData</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">background</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span>
+  <span class="nx">bgLayout</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">bgLayout</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="s1">&#39;mainMenuBg&#39;</span>
+<span class="p">).</span><span class="nx">setOrigin</span><span class="p">(</span>
+  <span class="nx">bgLayout</span><span class="p">.</span><span class="nx">originX</span><span class="p">,</span> <span class="nx">bgLayout</span><span class="p">.</span><span class="nx">originY</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is where we add the background image for our scene.</p>
+<p>First we fetch the layout information for the scene.</p>
+<p>Next we call a Phaser function: <code>this.add.image</code> - which is basically saying to Phaser 'add an image to this scene'.</p>
+<p>We give it the various coordinates and the ID of the image (this can be found in the <a href="/rps_game/key_concepts/#assets">asset list</a> we discussed earlier) and we're done.</p>
+<p>Notice that the <code>add.image(...)</code> method returns an instance of itself so that we can chain a series of method calls together. In this case we add the image and then set the origin X/Y in one go.</p>
+<p>Once the background is sorted we add two buttons - one for single player and one for multi player. </p>
+<p>For now we only need to worry about single player, so this is the code we care about:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">singlePlayerButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextButton</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">,</span>
+      <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span>
+      <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span>
+      <span class="s1">&#39;Single Player&#39;</span><span class="p">,</span>
+      <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">bitmapFontId</span><span class="p">,</span>
+      <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">fontSize</span><span class="p">,</span>
+      <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">color</span><span class="p">,</span>
+      <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="c1">// On click</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Starting new single player game...&#39;</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">gameInterface</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SinglePlayerGame</span><span class="p">({</span>
+          <span class="nx">sequence</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+          <span class="nx">vsScreenDelay</span><span class="o">:</span> <span class="mf">500</span><span class="p">,</span>
+          <span class="nx">bossFight</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nx">undefeated</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="nx">audioManager</span><span class="p">.</span><span class="nx">playEffect</span><span class="p">(</span><span class="s1">&#39;impact&#39;</span><span class="p">,</span> <span class="p">{</span>
+          <span class="nx">seek</span><span class="o">:</span> <span class="mf">1</span>
+        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">scene</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">&#39;StoryIntroScene&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">gameInterface</span><span class="o">:</span> <span class="nx">gameInterface</span> <span class="p">})</span>
+      <span class="p">},</span>
+      <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="c1">// On hover</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">fistIndicator</span><span class="p">.</span><span class="nx">setY</span><span class="p">(</span><span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">fistIndicatorYOffset</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">fistIndicator</span><span class="p">.</span><span class="nx">setTexture</span><span class="p">([</span><span class="s1">&#39;rockIco&#39;</span><span class="p">,</span> <span class="s1">&#39;paperIco&#39;</span><span class="p">,</span> <span class="s1">&#39;scissorsIco&#39;</span><span class="p">][</span><span class="o">++</span><span class="k">this</span><span class="p">.</span><span class="nx">menuHighlightIconIndex</span> <span class="o">%</span> <span class="mf">3</span><span class="p">])</span>
+      <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="nx">singlePlayerButton</span><span class="p">.</span><span class="nx">setOrigin</span><span class="p">(</span>
+      <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">originX</span><span class="p">,</span>
+      <span class="nx">menuButtonLayout</span><span class="p">.</span><span class="nx">originY</span>
+    <span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">existing</span><span class="p">(</span><span class="nx">singlePlayerButton</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>There's quite a lot going on here, but it's all pretty simple stuff. We simple create a new instance of a <code>text button</code> - which is a custom component that renders text that can be clicked. Hopefully you've already seen and interacted with this text button by playing the game.</p>
+<p>The text button needs some coordinates and configuration values, but what's more interesting is the final constructor argument. </p>
+<p>It's a callback - it's the code that is executed when the text button is clicked.</p>
+<p>We create an instance of a <code>SinglePlayerGame</code> and then call <code>this.scene.start</code> to progress on to the next scene in single player mode.</p>
+<p>The next scene is the <code>StoryIntroScene</code> which presents the game narrative - but that scene is a bit boring, so let's skip over it an move straight on to character selection.</p>
+<h2 id="character-selection">Character Selection</h2>
+<p>The character selection scene will hopefully feel familiar already. </p>
+<p>Our layouts are back and really we're just loading a bunch of different assets - but there are some new concepts that are worth touching on.</p>
+<h3 id="custom-components">Custom components</h3>
+<p>You've already seen one custom component in the form of a <code>TextButton</code>. The character select scene has another called <code>CharacterInfoBox</code>, which represents the following section of the UI:</p>
+<p><a href="../img/character_info_box.png"><img alt="Screenshot of character stats UI from the game" src="../img/character_info_box.png" /></a></p>
+<p>These custom components can be found in <code>client/src/ui_elements.js</code>.</p>
+<p>It's worth calling out that that some of these components are subclasses of existing Phaser entities, but some are simply an abstraction to reduce code complexity.</p>
+<p>Our <code>TextButton</code>, for example, extends <code>Phaser.GameObjects.BitmapText</code> - meaning it can be handled by Phaser like any other game object.</p>
+<p>Our <code>CharacterInfoBox</code> on the other hand is not a type of GameObject. It is simply a wrapper class around a group of components in the UI. It didn't make sense to me at the time to make it a game object - though this might change in the future.</p>
+<p>Regardless of whether our custom components are game objects are not, the intention is the same. We want to avoid code duplication and we want to keep our scene code simple. </p>
+<h3 id="tweening">Tweening</h3>
+<p>We've got some fancy animations going on in this scene. To do this we use a common technique called <code>tweening</code>, which is kind of short for <code>in between</code>. You may also hear this being referred to as <code>interpolation</code>.</p>
+<p>Basically we are telling phaser:</p>
+<blockquote>
+<p>I have this image of a character at position X. I want to move the character to position Y and I want it to take 1 second. You fill in all of the points <em>in between</em> to create a smooth looking animation.</p>
+</blockquote>
+<p>In Phaser the code looks like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">tweenCharacterIn</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">character</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">character</span><span class="p">.</span><span class="nx">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">tweenConfig</span> <span class="o">=</span> <span class="p">{</span>   <span class="c1">// A `tween config` that tells Phaser what to animate</span>
+      <span class="nx">targets</span><span class="o">:</span> <span class="p">[</span><span class="nx">character</span><span class="p">],</span> <span class="c1">// The game entities we want to tween </span>
+      <span class="nx">x</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">layoutData</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">character</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="c1">// The attribute of the entity we want to tween</span>
+      <span class="nx">duration</span><span class="o">:</span> <span class="mf">500</span><span class="p">,</span>  <span class="c1">// How long we want the tween to take</span>
+      <span class="nx">ease</span><span class="o">:</span> <span class="s1">&#39;Expo.easeOut&#39;</span><span class="p">,</span>  <span class="c1">// This is a &#39;easing&#39; function, which adds a sort of deceleration effect</span>
+      <span class="nx">repeat</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="nx">onComplete</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>  <span class="c1">// This is called when the animations completes</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">characterSelectEnabled</span> <span class="o">=</span> <span class="kc">true</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tweens</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">tweenConfig</span><span class="p">)</span>
+  <span class="p">},</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is the method we call when we want to animate a character on to the screen.</p>
+<p>I've added some comments to explain the various components. The most important part is:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">x</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">layoutData</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">character</span><span class="p">.</span><span class="nx">x</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is telling Phaser to tween the <code>x</code> attribute of our character image. When the character is off screen the <code>x</code> coordinate will be a negative value.</p>
+<p>We're telling Phaser to increase the <code>x</code> coordinate until it's value is equal to <code>this.layoutData.ui.character.x</code>.</p>
+<p>It looks something like this when laid out on a labelled axis:</p>
+<p><a href="../img/tween_character.png"><img alt="Screenshot of character stats UI from the game" src="../img/tween_character.png" /></a></p>
+<p>In our example the Aruka's initial coordinates are:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x: -40
+y: 40
+Origin x: 0.0
+Origin y: 1.0
+</code></pre></div>
+</td></tr></table>
+<p>But we want Phaser to animate him over to:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x: 10
+y: 40
+Origin x: 0.0
+Origin y: 1.0
+</code></pre></div>
+</td></tr></table>
+<p>And we want it to take 500 milliseconds.</p>
+<p>Try changing some of these values yourself. Increase or decrease the duration to slow down or speed up the animation. Also take a look at the <a href="https://www.phaser.io/examples/v3/view/tweens/ease-equations">Phaser docs</a> to see what other <code>ease</code> functions are available and what they do.</p>
+<p>Again - the best way to understand this stuff is to play with it yourself.</p>
+<h3 id="data-driven-development">Data driven development</h3>
+<p>If you've been looking through the code you may notice we load the character image and headshot by looping through the character list and creating images for each one: </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">fullbody</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span>
+    <span class="nx">characterLayout</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">characterLayout</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="c1">// Start off screen</span>
+    <span class="nx">characterLayout</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span>
+    <span class="nx">character</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;_upperbody&#39;</span>
+  <span class="p">).</span><span class="nx">setVisible</span><span class="p">(</span>
+    <span class="kc">false</span>
+  <span class="p">).</span><span class="nx">setOrigin</span><span class="p">(</span>
+    <span class="nx">characterLayout</span><span class="p">.</span><span class="nx">originX</span><span class="p">,</span>
+    <span class="nx">characterLayout</span><span class="p">.</span><span class="nx">originY</span>
+  <span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>With the above code we create and add an image to the scene. Notice that the first argument, which is the X coordinate, is a negative value. As already mentioned above this is because we want to animate the image in from the left.</p>
+<p>Also notice that the line <code>character.id + '_upperbody'</code>. This is the ID of the texture. If you look through the game assets or read through the loading code you will find that the character images are all named <code>&lt;character_id&gt;_&lt;image_id&gt;.</code> </p>
+<p>For example:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>man_headshot,       // Manbo&#39;s headshot
+hog_upperbody,      // Hogo Sha&#39;s upper body
+mai_flag            // Mainyu&#39;s flag
+</code></pre></div>
+</td></tr></table>
+<p>This allows us to dynamically add characters to the game simply by adding the required images and character config (their backstory etc...). We don't need to change any code - meaning our game is <code>data driven</code> when it comes to the characters.</p>
+<h2 id="vs-scene">VS scene</h2>
+<p>The VS scene is where we display who the player will be facing in the next round. This one is pretty simple - though there are a couple of things we should look at a little closer.</p>
+<h3 id="view-data">View data</h3>
+<p>If you look at the <code>init</code> method you'll see something called <code>viewData</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">init</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">gameInterface</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">gameInterface</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">viewData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">gameInterface</span><span class="p">.</span><span class="nx">getGameViewData</span><span class="p">()</span>  <span class="c1">// This guy right here</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">p1Ready</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">p2Ready</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">unknownOpponent</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">battleSceneStarted</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Back in the main menu scene we created an instance of a <code>SinglePlayerGame</code>. That object contains an object we call the <code>view data</code>. </p>
+<p>This object contains everything the UI needs to know in order to display the current state of the key.</p>
+<p>This is as close as our ever gets to the <code>game engine</code> (and the game server - bit we'll get to that later). It's an <code>abstraction</code>.</p>
+<p>This object is how we <code>decouple</code> our game logic from our UI. This is essential if we want to use the same engine on the client and on the server.</p>
+<h3 id="the-update-method">The update method</h3>
+<p>This is the first time we use <code>Phaser</code>'s update method. It is a scene method that is called once every frame.</p>
+<p>So if the game is running at 30 frames per second, this method will be called 30 times every second.</p>
+<p>In the VS scene we need to wait until both player have selected a character.</p>
+<p>For single player this happens instantly because in single player mode each character has a predetermined list of opponents.</p>
+<p>During multi-player we need to wait in this scene for an opponent.</p>
+<p>We don't need to worry about multi-player right now, but let's look at how we use the view data to update the state of this scene:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">p2Ready</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">viewData</span><span class="p">.</span><span class="nx">p2Spec</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">unknownOpponent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Opponent joined multi-player game, need to animate this out</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tweens</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span>
+      <span class="nx">targets</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">unknownOpponent</span><span class="p">,</span>
+      <span class="nx">x</span><span class="o">:</span> <span class="s1">&#39;+=&#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">layoutData</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">unknownOpponent</span><span class="p">.</span><span class="nx">xTranslationDistance</span><span class="p">,</span>
+      <span class="nx">duration</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">layoutData</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">unknownOpponent</span><span class="p">.</span><span class="nx">xTranslationDuration</span><span class="p">,</span>
+      <span class="nx">ease</span><span class="o">:</span> <span class="s1">&#39;Expo.easeOut&#39;</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">p2Layout</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">layoutData</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">p2</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">p2CharacterImage</span><span class="p">.</span><span class="nx">setTexture</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">viewData</span><span class="p">.</span><span class="nx">p2Spec</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;_upperbody&#39;</span><span class="p">)</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>This is a snippet taken from the <code>update</code> method.</p>
+<p><code>this.p2Ready</code> is a boolean that belongs to the VS scene. We use this to make sure we don't process character selection more than once.</p>
+<p><code>this.viewData.p2Spec</code> tells us which character, if any has been selected. </p>
+<p><code>P2</code> is player 2 and <code>spec</code> references the <code>specification</code>, or settings, of the character they selected.</p>
+<p>The VS scene has no idea whether P2 is the computer or another human player on the other side of the world - and that's exactly how we want it.</p>
+<p>Once a <code>spec</code> has been set we are free to go ahead and render the character that was selected, using information contained within the spec.</p>
+<h2 id="the-fight-scene">The fight scene</h2>
+<p><a href="../img/fight_scene_2.png"><img alt="Screenshot of the in game fight scene" src="../img/fight_scene_2.png" /></a></p>
+<p>The fight scene is where all of the action happens, so unsurprisingly it is the most complicated scene in the game.</p>
+<p>The graphics are fairly straight forward, nothing much we haven't seen in other scenes.</p>
+<p>We have some text, character art and a background.</p>
+<p>Each character has a health bar, which is another custom component that lives in <code>client/src/ui_elements/health_bar.js</code>. All we do is render two rectangles, one on top of the other. We size the one on top based on the % health remaining for that character.</p>
+<p>We use our update method to keep our health bars up to date:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">update</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="nx">delta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">p1HealthBar</span><span class="p">.</span><span class="nx">updateHealth</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">viewData</span><span class="p">.</span><span class="nx">p1CurrentHealth</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">p2HealthBar</span><span class="p">.</span><span class="nx">updateHealth</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">viewData</span><span class="p">.</span><span class="nx">p2CurrentHealth</span><span class="p">)</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Again we're just pulling information from the <code>viewData</code> object. This information could be coming from the server, or not, the scene doesn't care.</p>
+<p>The real complexity in this scene comes from it's interactions with the game engine, so let's look there.</p>
+<h3 id="game-events">Game Events</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">gameInterface</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">((</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">gameEventListener</span><span class="p">(</span><span class="nx">event</span><span class="p">))</span>
+
+<span class="p">...</span>
+
+<span class="nx">gameEventListener</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span> <span class="k">instanceof</span> <span class="nx">RPSRoundEvent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">switch</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">ROUND_COUNTDOWN</span><span class="o">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">handleRoundCountdownEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+          <span class="k">break</span>
+        <span class="k">case</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">WEAPON_COUNTDOWN</span><span class="o">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">handleWeaponCountdownEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+          <span class="k">break</span>
+        <span class="k">case</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">STATE_CHANGE</span><span class="o">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">handleStateChangeEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+          <span class="k">break</span>
+        <span class="k">case</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">WEAPONS_SELECTED</span><span class="o">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">handleBattleEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+          <span class="k">break</span>
+        <span class="k">case</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">ROUND_FINISHED</span><span class="o">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">handleRoundEnd</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+          <span class="k">break</span>
+        <span class="k">case</span> <span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">ROUND_STARTED</span><span class="o">:</span>
+          <span class="k">break</span>
+        <span class="k">default</span><span class="o">:</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Got unknown round event type: &#39;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span>
+          <span class="k">break</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">event</span> <span class="k">instanceof</span> <span class="nx">RPSGameEvent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">switch</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">RPSGameEvent</span><span class="p">.</span><span class="nx">GAME_COMPLETE</span><span class="o">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">leaveScene</span><span class="p">(</span><span class="s1">&#39;PostFightScene&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">gameInterface</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">gameInterface</span> <span class="p">})</span>
+          <span class="k">break</span>
+        <span class="k">default</span><span class="o">:</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Got unknown game event type: &#39;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span>
+          <span class="k">break</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>First we register a handler with something called the <code>gameInterface</code>. This game interface is the instance of <code>SinglePlayerGame</code> that we created in the menu scene.</p>
+<p>It's the same object we fetch the view data from - but the view data is a read-only data model, it doesn't allow us to interact with the game. We do that directly through the <code>SinglePlayerGame</code> object itself.</p>
+<p>In the event handler we have napped an event ID to methods that exist without our scene.</p>
+<p>These events are coming from the game engine, and could be coming from our local client or from a game server, depending on whether we're playing single or multi player.</p>
+<p>If you've played the game enough, the events should make immediate sense:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">ROUND_STARTED</span>       <span class="c1">// A new round has started</span>
+<span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">ROUND_COUNTDOWN</span>     <span class="c1">// At the start of each round we show a &#39;Get Ready&#39; message - that is this event</span>
+<span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">WEAPON_COUNTDOWN</span>    <span class="c1">// The 3 second countdown for weapon selection comes in this event</span>
+<span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">STATE_CHANGE</span>        <span class="c1">// This signifies a state change, we&#39;ll discuss states more when we get to the game engine, but states includes things like [NEW_ROUND, COUNDOWN, WAITING_FOR_WEAPON_SELECTION]</span>
+<span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">WEAPONS_SELECTED</span>    <span class="c1">// Both players have selected their weapon so we need to show the result</span>
+<span class="nx">RPSRoundEvent</span><span class="p">.</span><span class="nx">ROUND_FINISHED</span>      <span class="c1">// A round has ended</span>
+</code></pre></div>
+</td></tr></table>
+<p>The game engine fires out these key events letting the game client know that it should update the game state. </p>
+<h3 id="game-states">Game States</h3>
+<p>Another thing that's worth looking at is how we handle game state changes.</p>
+<p>State changes are slightly different to events in that we sometimes want to know when we enter a state and when we exit a state, so here's how we handle that:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="nx">stateHandlerMap</span><span class="p">[</span><span class="nx">RPSRoundStates</span><span class="p">.</span><span class="nx">NEW_ROUND</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">onEnter</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="nx">onExit</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">handleStateChangeEvent</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">stateHandlerMap</span><span class="p">[</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">oldState</span><span class="p">].</span><span class="nx">onExit</span><span class="p">()</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">stateHandlerMap</span><span class="p">[</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">newState</span><span class="p">].</span><span class="nx">onEnter</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="the-other-scenes">The other scenes</h2>
+<p>There are some other scenes, but we don't need to look to intensely at them just yet.</p>
+<h3 id="game-over">Game over</h3>
+<p>When that game ends, whether you lost the first match or defeated the last boss, you are sent to the <code>game over</code> scene.</p>
+<p>Depending on the result the scene will display a different message. </p>
+<p>If you beat the game you will get to see the end credits.</p>
+<h3 id="booting-and-loading">Booting and Loading</h3>
+<p>I've already mentioned these scenes. It's where we load all of the images and audio files we need to run the game.</p>
+<h3 id="narrative">Narrative</h3>
+<p>There are two different narrative scenes:</p>
+<ul>
+<li>The game lore</li>
+<li>The character lore</li>
+</ul>
+<p>When single player mode begins we display the game lore - this is the story line of the game. It scrolls up the screen and can be skipped.</p>
+<p>When the player selects a character they will then see that characters back story. This is also simple scrolling text that can be skipped.</p>
+<p>All of these characters, the story lines, their stats etc... are game design details. These details are configured in the game engine, so let's look there next.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../key_concepts/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Key Concepts" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Key Concepts
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../the_game_engine/" class="md-footer__link md-footer__link--next" aria-label="Next: The Game Engine" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              The Game Engine
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+    
+  </body>
+</html>

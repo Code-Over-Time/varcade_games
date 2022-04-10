@@ -1,0 +1,98 @@
+site_name: Code Over Time [ALPHA]
+site_url: https://codeovertime.com/
+theme:
+  name: material
+  logo: img/logo.png
+  favicon: img/logo.png
+  palette:
+    - scheme: default
+      primary: black
+      toggle:
+        primary: black
+        icon: material/toggle-switch-off-outline
+        name: Dark mode
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/toggle-switch
+        name: Light mode
+nav: 
+  - Welcome: index.md
+  - Curriculum: curriculum.md
+  - Reading Material:
+    - Computers 101:
+        How Computers Work: computers/001_how_computers_work.md
+        Anatomy of a Computer: computers/002_robot_anatomy.md
+        Hardware vs Software: computers/003_hardware_software.md
+        Connecting Computers: computers/004_connecting_computers.md
+    - Systems:
+        Introduction: systems/index.md
+        Inputs & Outputs: systems/io.md
+    - Hardware:
+        Introduction: hardware/index.md
+        Mouse & Keyboard: hardware/keyboards_and_mice.md
+    - Software:
+        Introduction: software/index.md
+        Command Line Interface: software/terminal.md
+    - Coding:
+        Introduction: coding/index.md
+        Programming Languages: coding/languages.md
+  - Your Internship:
+    - Overview: internship.md
+    - Getting Set Up:
+      - Introduction: setup/index.md
+      - Dev Environment:
+        - Overview: setup/environment_setup/intro.md
+        - Linux: setup/environment_setup/linux.md
+        - Windows: setup/environment_setup/windows.md
+        - OSX: setup/environment_setup/osx.md
+        - Testing your setup: setup/environment_setup/testing_your_setup.md
+      - Project Setup:
+        - Varcade Games: setup/varcade_games/intro.md
+        - Get the code: setup/varcade_games/get_the_code.md
+        - Running Varcade Games: setup/varcade_games/running_vcg.md
+        - Adding a game: setup/varcade_games/adding_a_game.md
+      - Next Steps: setup/next_steps.md
+    - Onboarding:
+      - Introduction: onboarding/index.md
+      - Varcade Games:
+        - Introduction: onboarding/varcade_games/intro_client.md
+        - System Architecture: onboarding/varcade_games/system_architecture.md
+        - Reverse Engineering: onboarding/varcade_games/reverse_engineering.md
+        - Making Changes: onboarding/varcade_games/making_changes.md
+        - Tests and Linters: onboarding/varcade_games/tests_and_linters.md
+      - Plugging in games:
+        - Introduction: onboarding/varcade_games/intro_server.md
+        - The Admin panel: onboarding/varcade_games/admin.md
+        - Embedding games: onboarding/varcade_games/embedding_games.md
+        - The Matchmaker: onboarding/varcade_games/matchmaker.md
+      - The Game Client:
+        - Introduction: onboarding/rps_game/intro.md
+        - Working with Rock Paper Scissors Apocalypse: onboarding/rps_game/working_with_the_game.md
+        - Key Concepts: onboarding/rps_game/key_concepts.md
+        - Single player: onboarding/rps_game/single_player_mode.md
+        - The Game Engine: onboarding/rps_game/the_game_engine.md
+        - Game Design: onboarding/rps_game/game_design.md
+      - The Game Server:
+        - Introduction: onboarding/rps_game_server/intro.md
+        - Playing with Others: onboarding/rps_game_server/playing_with_others.md
+        - Key Concepts: onboarding/rps_game_server/key_concepts.md
+        - System Design: onboarding/rps_game_server/system_design.md
+        - The Game Engine: onboarding/rps_game_server/the_game_engine.md
+      - Backend Services:
+        - Introduction: onboarding/backend/intro.md
+        - The Matchmaker: onboarding/backend/matchmaker.md
+        - Working with the Matchmaker: onboarding/backend/working_with_matchmaker.md
+        - The Workers: onboarding/backend/workers.md
+        - The Stats Tracker: onboarding/backend/stats_tracker.md
+      - Instrumentation:
+        - Introduction: onboarding/instrumentation/intro.md
+        - Setting up Grafana: onboarding/instrumentation/grafana.md
+        - Running a load test: onboarding/instrumentation/load_test.md
+      - Next Steps: onboarding/closing_words.md
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      linenums: true
