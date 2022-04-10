@@ -6,6 +6,26 @@ A combination of reading and doing.
 
 The menu on your left will provide you with reading material that covers various different software engineering related topics as well as detailed guides on how to work with Varcade Games, along with some tasks for you to do yourself.
 
+## What you will need
+
+In order to work with Code Over Time you will need a computer, an internet connection and time. 
+
+### Computer
+
+You will not be able to follow this material on a tablet or phone, you will need a desktop or laptop computer. A PC or a Mac will do fine.
+
+### Internet
+
+All of the content is online and you will need to download and install a number of different pieces of software.
+
+### Time
+
+There are no shortcuts to learning how to program a computer, you will need to put in the time. It's also worth remembering that an hour per day is far more valuable than one 5 hour marathon session per week. Consistency is key.
+
+It's worth thinking about your motivations now. If you are looking to learn enough about coding to get a well paid job as quickly as possible then Code Over Time is not for you. 
+
+If, on the other hand, you want to learn how to build software and are willing to put in the time - then this is definitely the right place for you.
+
 ## Reading Material
 
 This section covers many different but important topics related to computers and software engineering.
