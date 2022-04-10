@@ -25,7 +25,7 @@ from player_stats.handlers import EXRPSStatsHandler, PlayerStatsHandler
 # will include paths with unique IDs, resulting in high cardinality
 # metrics
 def api_call(req):
-    """ The name of the function becomes the label name. """
+    """The name of the function becomes the label name."""
     return f'{req.endpoint}.{req.view_args.get("product_id", "")}'
 
 
