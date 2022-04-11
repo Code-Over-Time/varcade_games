@@ -16,7 +16,15 @@ For example, if your code is located in `~/code/varcade_games` then you'd run:
 cd ~/code/varcade_games/website/client
 ```
 
-From there you can run:
+Next we need to install some additional dependencies. Specifically `npm`, which is the [Node Package Manager](https://www.npmjs.com/). This is a tool that allows you to install libraries that you can use to build your own applications (for example, Vue.js). For installation instructions check out [their official docs](https://docs.npmjs.com/cli/).
+
+After the installation complete you can run the following command to actually install all of the project dependencies:
+
+```bash
+npm install
+```
+
+Once that is done you can run:
 
 ```bash
 npm run lint
