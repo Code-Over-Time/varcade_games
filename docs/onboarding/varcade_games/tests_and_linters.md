@@ -213,7 +213,7 @@ These tests test the functionality of the game portal - they tell us if somethin
 
 So let's break something...
 
-Open up `website/server/tests/game_portal/games/test_games.py`.
+Open up `website/server/tests/game_portal/games/test_accounts.py`.
 
 Find the test called `test_create_user_with_short_password`.
 
