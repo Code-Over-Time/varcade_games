@@ -26,9 +26,9 @@ Or maybe you want to be a game developer, so you plan to create stunningly reali
 
 Perhaps AI and Machine Learning tickles your fancy. 
 
-I might recommend a different learning path for each of the above.
+I might recommend a different learning path for each of the above, which is why `what programming language should I learn first` is a difficult question to answer.
 
-But regardless of all of that - there are some pieces of advice that I'd give to everyone, regardless of their goals and interests.
+Regardless of all of that, however, there are some pieces of advice that I'd give to anyone, regardless of their goals and interests.
 
 ## Fundamentals
 
@@ -38,20 +38,76 @@ People say this all the time - and it seems to me to be true in all things.
 
 If you can't do the simple things well, what hope have you got doing more complex things?
 
-But this statement begs the question: "But what are the fundamentals?"
+But this statement does beg the question: "What are the fundamentals?"
 
-And that is a hard question to answer.
+And depending on who you ask you might get a different answer.
 
-In software engineering I'd include the following when thinking about fundamentals:
+This is because we tend to think of programming, computer science, software engineering, web development etc... as all being the same thing, when really there are some differences.
 
-### Abstraction
+So lets define some of these things.
 
+* **Computer Science** - The study of computation and computer technology, hardware, and software.
 
-### Modularity
+* **Programming** - The process of designing, writing, testing, debugging, and maintaining the source code of computer programs.
 
+* **Software Engineering** - The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software, and the study of these approaches. That is the application of engineering to software.
 
-### Complexity
+* **Web Development** - Building, creating, and maintaining websites. It includes aspects such as web design , web publishing , web programming, and database management.
 
+So as you can see there are some differences. Some are subtle, like the difference between programming and software engineering. Programming is definitely a part of software engineering, it's how we create software in the first place, but it is more than just programming.
+
+Computer science is very much concerned with the hardware and low level details of how a computer works, but web development is more focused on what a web browser can do, rather than what a computer can do.
+
+Web development could be considered a specialization of software engineering and also requires programming.
+
+The waters here appear pretty muddy, but these distinctions are important as they will impact where you focus your energy. 
+
+Let's get back to the fundamentals. I think it's worth defining some fundamentals for each, but it's important to note that different people may have different opinions on this, and what follows is just my opinion.
+
+### Computer Science
+
+These are all low level topics and I think most programmers should endeavor to get at least a basic understanding of most of them. 
+
+If you want to work on low level software like operating systems, databases, embedded systems or game engines you should probably have a good understanding of all of these.
+
+* Hardware design
+* Logic & Binary arithmetic
+* **Data structures & Algorithms**
+* **Computational complexity**
+* Compiler design
+
+I have highlighted `Data Structures and Algorithms` and `Computational Complexity` here, as I think these are the most important topics for generalists to have a good understanding of.
+
+### Programming
+
+* Logic
+* Control flow
+* Configuration management
+* Standard lib
+* Memory management (yes - even in memory managed languages)
+* Data modelling
+* Abstraction
+* Modularity
+* Testing
+* Refactoring
+* Profiling / performance analysis
+
+### Software Engineering
+
+* System design
+* System analysis
+* Continuous integration
+* Code management
+* Deployment / release management
+* Version management
+
+### Web Development
+
+* HTML
+* Dom structure
+* Javascript
+* SQL
+* Web security
 
 ## Don't be an X developer
 

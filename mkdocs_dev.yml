@@ -20,76 +20,84 @@ nav:
   - Welcome: index.md
   - Curriculum: curriculum.md
   - Reading Material:
-    - Computers 101:
-        How Computers Work: computers/001_how_computers_work.md
-        Anatomy of a Computer: computers/002_robot_anatomy.md
-        Hardware vs Software: computers/003_hardware_software.md
-        Connecting Computers: computers/004_connecting_computers.md
     - Systems:
-        Introduction: systems/index.md
-        Inputs & Outputs: systems/io.md
+        Introduction: reading_material/systems/index.md
+        Inputs & Outputs: reading_material/systems/io.md
     - Hardware:
-        Introduction: hardware/index.md
-        Mouse & Keyboard: hardware/keyboards_and_mice.md
+        Introduction: reading_material/hardware/index.md
+        Mouse & Keyboard: reading_material/hardware/keyboards_and_mice.md
     - Software:
-        Introduction: software/index.md
-        Command Line Interface: software/terminal.md
+        Introduction: reading_material/software/index.md
     - Coding:
-        Introduction: coding/index.md
-        Programming Languages: coding/languages.md
+        Introduction: reading_material/coding/index.md
+        Programming Languages: reading_material/coding/languages.md
   - Your Internship:
-    - Overview: internship.md
+    - Overview: internship/internship.md
     - Getting Set Up:
-      - Introduction: setup/index.md
+      - Introduction: internship/setup/index.md
       - Dev Environment:
-        - Overview: setup/environment_setup/intro.md
-        - Linux: setup/environment_setup/linux.md
-        - Windows: setup/environment_setup/windows.md
-        - OSX: setup/environment_setup/osx.md
-        - Testing your setup: setup/environment_setup/testing_your_setup.md
+        - Overview: internship/setup/environment_setup/intro.md
+        - Linux: internship/setup/environment_setup/linux.md
+        - Windows: internship/setup/environment_setup/windows.md
+        - OSX: internship/setup/environment_setup/osx.md
+        - Testing your setup: internship/setup/environment_setup/testing_your_setup.md
       - Project Setup:
-        - Varcade Games: setup/varcade_games/intro.md
-        - Get the code: setup/varcade_games/get_the_code.md
-        - Running Varcade Games: setup/varcade_games/running_vcg.md
-        - Adding a game: setup/varcade_games/adding_a_game.md
-      - Next Steps: setup/next_steps.md
+        - Varcade Games: internship/setup/varcade_games/intro.md
+        - Get the code: internship/setup/varcade_games/get_the_code.md
+        - Running Varcade Games: internship/setup/varcade_games/running_vcg.md
+        - Adding a game: internship/setup/varcade_games/adding_a_game.md
+      - Next Steps: internship/setup/next_steps.md
     - Onboarding:
-      - Introduction: onboarding/index.md
+      - Introduction: internship/onboarding/index.md
       - Varcade Games:
-        - Introduction: onboarding/varcade_games/intro_client.md
-        - System Architecture: onboarding/varcade_games/system_architecture.md
-        - Reverse Engineering: onboarding/varcade_games/reverse_engineering.md
-        - Making Changes: onboarding/varcade_games/making_changes.md
-        - Tests and Linters: onboarding/varcade_games/tests_and_linters.md
+        - Introduction: internship/onboarding/varcade_games/intro_client.md
+        - System Architecture: internship/onboarding/varcade_games/system_architecture.md
+        - Reverse Engineering: internship/onboarding/varcade_games/reverse_engineering.md
+        - Making Changes: internship/onboarding/varcade_games/making_changes.md
+        - Tests and Linters: internship/onboarding/varcade_games/tests_and_linters.md
       - Plugging in games:
-        - Introduction: onboarding/varcade_games/intro_server.md
-        - The Admin panel: onboarding/varcade_games/admin.md
-        - Embedding games: onboarding/varcade_games/embedding_games.md
-        - The Matchmaker: onboarding/varcade_games/matchmaker.md
+        - Introduction: internship/onboarding/varcade_games/intro_server.md
+        - The Admin panel: internship/onboarding/varcade_games/admin.md
+        - Embedding games: internship/onboarding/varcade_games/embedding_games.md
+        - The Matchmaker: internship/onboarding/varcade_games/matchmaker.md
       - The Game Client:
-        - Introduction: onboarding/rps_game/intro.md
-        - Working with Rock Paper Scissors Apocalypse: onboarding/rps_game/working_with_the_game.md
-        - Key Concepts: onboarding/rps_game/key_concepts.md
-        - Single player: onboarding/rps_game/single_player_mode.md
-        - The Game Engine: onboarding/rps_game/the_game_engine.md
-        - Game Design: onboarding/rps_game/game_design.md
+        - Introduction: internship/onboarding/rps_game/intro.md
+        - Working with Rock Paper Scissors Apocalypse: internship/onboarding/rps_game/working_with_the_game.md
+        - Key Concepts: internship/onboarding/rps_game/key_concepts.md
+        - Single player: internship/onboarding/rps_game/single_player_mode.md
+        - The Game Engine: internship/onboarding/rps_game/the_game_engine.md
+        - Game Design: internship/onboarding/rps_game/game_design.md
       - The Game Server:
-        - Introduction: onboarding/rps_game_server/intro.md
-        - Playing with Others: onboarding/rps_game_server/playing_with_others.md
-        - Key Concepts: onboarding/rps_game_server/key_concepts.md
-        - System Design: onboarding/rps_game_server/system_design.md
-        - The Game Engine: onboarding/rps_game_server/the_game_engine.md
+        - Introduction: internship/onboarding/rps_game_server/intro.md
+        - Playing with Others: internship/onboarding/rps_game_server/playing_with_others.md
+        - Key Concepts: internship/onboarding/rps_game_server/key_concepts.md
+        - System Design: internship/onboarding/rps_game_server/system_design.md
+        - The Game Engine: internship/onboarding/rps_game_server/the_game_engine.md
       - Backend Services:
-        - Introduction: onboarding/backend/intro.md
-        - The Matchmaker: onboarding/backend/matchmaker.md
-        - Working with the Matchmaker: onboarding/backend/working_with_matchmaker.md
-        - The Workers: onboarding/backend/workers.md
-        - The Stats Tracker: onboarding/backend/stats_tracker.md
+        - Introduction: internship/onboarding/backend/intro.md
+        - The Matchmaker: internship/onboarding/backend/matchmaker.md
+        - Working with the Matchmaker: internship/onboarding/backend/working_with_matchmaker.md
+        - The Workers: internship/onboarding/backend/workers.md
+        - The Stats Tracker: internship/onboarding/backend/stats_tracker.md
       - Instrumentation:
-        - Introduction: onboarding/instrumentation/intro.md
-        - Setting up Grafana: onboarding/instrumentation/grafana.md
-        - Running a load test: onboarding/instrumentation/load_test.md
-      - Next Steps: onboarding/closing_words.md
+        - Introduction: internship/onboarding/instrumentation/intro.md
+        - Setting up Grafana: internship/onboarding/instrumentation/grafana.md
+        - Running a load test: internship/onboarding/instrumentation/load_test.md
+      - Next Steps: internship/onboarding/closing_words.md
+    - Hands-on Tasks:
+      - How It Works: internship/tasks/overview.md
+      - Junior:
+          - Keyboard Shortcuts: internship/tasks/junior/001_keyboard_login.md
+          - Skip, Skip Skip: internship/tasks/junior/002_skip_cutscene.md
+          - Build Tools: internship/tasks/junior/003_build_tools.md
+          - Error Handling: internship/tasks/junior/004_error_handling.md
+      - Mid:
+          - Settings Menu: internship/tasks/mid/001_game_settings.md
+      - Senior:
+          - Per Round Stats: internship/tasks/senior/000_per_round_stats.md
+          - Deduplication: internship/tasks/senior/001_deduplication.md
+      - Principle:
+          - Async Game Server: internship/tasks/principle/001_async_node.md
 markdown_extensions:
   - attr_list
   - admonition
