@@ -1,5 +1,7 @@
 # Programming Languages
 
+# What language should I learn?
+
 > What programming language should I learn first?
 
 This is possibly the most common question I see from beginners. 
@@ -139,8 +141,28 @@ In other words - generalists are often more useful than specialists.
 
 ## Pick something and finish it
 
+You will likely need to do some sort of course to learn to program. Whether this is an online course, a, bootcamp or a college degree I think you should commit to it and finish it. 
 
+It will be hard. It will be uncomfortable. There will be times you feel like an idiot (you're not). But there will be moments of extreme satisfaction as things finally **click** for you.
 
-## Final Thoughts
+Like most things in life, what will get out what you put in. If you put in the time, effort and focus you will get there - you just need to commit and stick to it.
 
-I'm sure I'll write more on this topic in the future - but in general I like to do things in threes. It's a nice manageable number. You can fit three things neatly in your head.
+To make the process a little be easier I think it helps to have a goal. Something you want to do with your growing skill set. Maybe you want to build a game, or create a social media site that doesn't destroy society. Maybe you want to create educational software to help children with autism learn more effectively or use software to empower people struggling through poverty or war.
+
+Whatever it is - having a thing you want to build makes learning the **how** to do it much easier. 
+
+In other words, it helps to have a **why**. And for what it's worth, I reckon having 'to make lots of money' as your why is far less effective than you might think.
+
+## Just tell me what language to learn
+
+This is something I definitely don't want to be prescriptive on, but here are some thoughts on what language might be right for you...
+
+If you're into computers, hardware, operating systems etc... it would probably be a good idea to start with C. It gets you close to the hardware and is very powerful. 
+
+Are you interested primarily in web development and less interested in everything going on behind the browser? I'd probably go for Javascript.
+
+Are you itching to just build software? Then I think Python is a great choice. It was specifically designed to read like a natural language (ie. English) so it is quite approachable, and you can build desktop apps, simple games, server applications, system automation, machine learning etc... using it. It's my favourite language because it is so quick to prototype with and it's standard library is the best I've used. But don't be fooled - writing Python is different to writing **good** Python, and there is still complexity there when writing real world software.
+
+Want to build games, but don't care about building a game engine? C# is a great choice as it is the language of choice for the popular engine Unity3D.
+
+Want to build games from the ground up? C++ is probably a good choice.
