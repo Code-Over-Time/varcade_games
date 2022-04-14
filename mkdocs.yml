@@ -30,6 +30,7 @@ nav:
         Introduction: reading_material/software/index.md
     - Coding:
         Introduction: reading_material/coding/index.md
+        Where to start: reading_material/coding/languages.md
   - Your Internship:
     - Overview: internship/internship.md
     - Getting Set Up:
