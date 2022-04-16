@@ -57,7 +57,7 @@ The waters here appear pretty muddy, but these distinctions are important as the
 
 Let's get back to the fundamentals. I think it's worth defining some fundamentals for each, but it's important to note that different people may have different opinions on this, and what follows is just my opinion.
 
-## Computer Science
+### Computer Science
 
 These are all low level topics and I think most programmers should endeavor to get at least a basic understanding of most of them.
 
@@ -71,7 +71,7 @@ If you want to work on low level software like operating systems, databases, emb
 
 I have highlighted `Data Structures and Algorithms` and `Computational Complexity` here, as I think these are the most important topics for generalists to have a good understanding of.
 
-## Programming
+### Programming
 
 When it comes to programming, actually creating a piece of functionality within a piece of software, this is my list of important fundamentals.
 
@@ -95,7 +95,7 @@ I've highlighted the three topics that I think are some of the more important bu
 
 **Refactoring** is one of the more important topics in programming that I don't think gets anywhere near enough time and attention, especially with beginners. When you write a piece of code you will probably not get it 'right' the first time. It will likely be more verbose than it needs to be, not quite as performant, readable or extensible as it should be either. Writing a piece of code can be thought of as a discovery process. Once you have something working you have discovered how to do it - the next step is to refine it. Refactoring is that refinement and is something you should be doing constantly. A codebase evolves and changes over time - the code you wrote yesterday, last week or last year is not immune to that change, and you should make time for it.
 
-## Software Engineering
+### Software Engineering
 
 Here we venture much more into the business side of things. How do we actually deliver, operate and maintain software.
 
@@ -115,7 +115,7 @@ It's a pretty heavy read, full of data gathered by analyzing both high and low p
 
 It's also vital to remember that we rarely create software for the sake of creating it - we create it for the people that will be using it. The user is everything, don't forget that.
 
-## Web Development
+### Web Development
 
 When it comes to web development I think it's easier to define a list of fundamentals, because without understanding the things on this list you simply won't be effective and I think there's little room for argument here.
 

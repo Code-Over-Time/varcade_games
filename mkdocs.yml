@@ -95,7 +95,7 @@ nav:
           - Settings Menu: internship/tasks/mid/001_game_settings.md
       - Senior:
           - Per Round Stats: internship/tasks/senior/000_per_round_stats.md
-          - Deduplication: internship/tasks/senior/001_deduplication.md
+          - De-duplication: internship/tasks/senior/001_deduplication.md
       - Principle:
           - Async Game Server: internship/tasks/principle/001_async_node.md
 markdown_extensions:
