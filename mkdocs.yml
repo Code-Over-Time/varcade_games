@@ -92,6 +92,8 @@ nav:
           - Build Tools: internship/tasks/junior/003_build_tools.md
           - Error Handling: internship/tasks/junior/004_error_handling.md
           - Stats UI Design: internship/tasks/junior/005_stats_ui_design.md
+          - Error Handling 2: internship/tasks/junior/007_error_handling_2.md
+          - Test Coverage: internship/tasks/junior/008_test_coverage.md
       - Mid:
           - Settings Menu: internship/tasks/mid/001_game_settings.md
       - Senior:
