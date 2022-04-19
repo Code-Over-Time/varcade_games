@@ -6,6 +6,8 @@
             <h1 class="header-text">Varcade Games</h1>
         </div>
         <div>
+
+            <!-- Image and into text -->
             <div class="intro row justify-content-center">
                 <div class="intro-text">
                     <h1 class="intro-header">Online gaming from the comfort of your browser.</h1>
@@ -31,16 +33,53 @@
                     </div>
                 </div>
             </div>
-            <div class="info row justify-content-center" style="background: black">
-                <div class="col-md-12" style="min-height: 500px;">
-                    Some other content
+
+            <!-- Pitch 1 -->
+            <div class="row info justify-content-center">
+                <div class="info-content row">
+                    <div class="info-text col-md-6">
+                        <h1 class="info-header">Arcade gaming in your browser.</h1>
+                        <h3 class="info-body">
+                            Relive the excitement of the arcades, with single and multi player arcade action inside your web browser!
+                        </h3>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="info-img" :src="gameplayScr">
+                    </div>
                 </div>
             </div>
-            <div class="info row justify-content-center" style="background: black">
-                <div class="col-md-12" style="min-height: 500px;">
-                    Some other content
+
+            <!-- Pitch 2 -->
+            <div class="row info justify-content-center">
+                <div class="info-content row">
+                    <div class="col-md-6">
+                        <img class="info-img" :src="mplayScr">
+                    </div>
+                    <div class="info-text col-md-6">
+                        <h1 class="info-header">Face off against your friends.</h1>
+                        <h3>
+                            With leaderboards and gameplay stats, you can track who is really winning, across multiple dimensions!
+                        </h3>
+                    </div>
                 </div>
             </div>
+
+            <!-- Pitch 3 -->
+            <div class="row info justify-content-center">
+                <div class="info-content row">
+                    <div class="info-text col-md-6">
+                        <h1 class="info-header">No account needed.</h1>
+                        <h3>
+                            Just want to play on your own? No problem, you don't even need an account to enjoy single player gaming.
+                        </h3>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="info-img" :src="titleScr">
+                    </div>
+                </div>
+            </div>
+
+
             <!-- <div class="login-box-container">
                 <wp-login-register 
                     title="Welcome Back!" 
@@ -53,11 +92,18 @@
 </template>
 
 <script>
+    import gameplayScr from '../assets/images/gameplay.png'
+    import mplayScr from '../assets/images/multi_player.png'
+    import titleScr from '../assets/images/title_screen.png'
+
 
     export default {
         name: 'game_index',
         data () {
             return {
+                gameplayScr,
+                mplayScr,
+                titleScr
             }
         },
         methods: {
@@ -134,10 +180,32 @@
     }
 
     .info {
-        text-align: center;
-        padding: 70px 45px;
+        padding: 1rem 1rem;
         margin: auto;
         border-bottom: 8px solid #222;
+        background: black;
+    }
+
+    .info-content {
+        padding: 70px 45px;
+        max-width: 1200px;
+    }
+
+    .info-header {
+        font-weight: bold;
+        font-size: 3.1rem;
+        line-height: 1.1;
+        margin-bottom: .5rem;
+    }
+
+    .info-body {
+        font-size: 1.625rem;
+        font-weight: 400;
+    }
+
+    .info-img {
+        text-align: center;
+        max-width: 100%;
     }
 
     .sign-up {
@@ -166,9 +234,9 @@
 
     .index-screen-image {
         background: 
-            linear-gradient(rgba(0, 0, 0, 0.8), 
-            rgba(0, 0, 0, 0.8)),
-            aliceblue url(/img/bg.73674fee.jpg);
+            linear-gradient(rgba(0, 0, 0, 0.7), 
+            rgba(0, 0, 0, 1.0)),
+            black url(/img/bg.73674fee.jpg);
         background-repeat: no-repeat;
         background-position: center;
         height: 100vh;
