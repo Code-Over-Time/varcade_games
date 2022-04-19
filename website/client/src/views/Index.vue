@@ -26,6 +26,9 @@
                             </div>
                         </div>
                     </form>
+                    <div class="guest-entry">
+                        <a href="/games">Continue as a guest ></a>
+                    </div>
                 </div>
             </div>
             <div class="info row justify-content-center" style="background: black">
@@ -111,7 +114,7 @@
     .intro-header {
         max-width: 1024px;
         font-weight: bold;
-        text-shadow: 2 2 black;
+        text-shadow: 2px 2px black;
         font-size: 4rem;
     }
 
@@ -152,6 +155,15 @@
         font-size: 1.3rem;
     }
 
+    a {
+        color: #ff4848;
+    }
+
+    .guest-entry {
+        padding: 1em;
+        font-size: 1.2rem;
+    }
+
     .index-screen-image {
         background: 
             linear-gradient(rgba(0, 0, 0, 0.8), 
@@ -165,7 +177,7 @@
         z-index: -1; 
         background-size: cover;
         position: absolute;
-        top: -150px;
+        top: -250px;
         left: 0;
         right: 0;
         bottom: 0;
