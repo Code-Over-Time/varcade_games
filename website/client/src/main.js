@@ -20,6 +20,7 @@ import VueCarousel from 'vue-carousel'
 
 // App imports come last or CSS will act funny
 import Index from './views/Index.vue'
+import Login from './views/Login.vue'
 import GamePortal from './views/GamePortal.vue'
 import GamePlay from './views/GamePlay.vue'
 
@@ -147,10 +148,10 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Login',
+    name: 'Home',
     component: Index,
     meta: {
-      title: 'VarCade Games',
+      title: 'Varcade Games',
       meta: {
         requiresAuth: false
       },
@@ -167,28 +168,27 @@ const routes = [
     }
   },
   {
+    name: 'Login',
+    path: '/login',
+    component: Login
+  },
+  {
     name: 'Games',
     path: '/games',
-    component: GamePortal,
-    props: true,
-    meta: {
-      // requiresAuth: true
-    }
+    component: GamePortal
   },
   {
     name: 'PlayGame',
     path: '/games/play/:gameId',
     component: GamePlay,
-    props: true,
-    meta: {
-      // requiresAuth: true
-    }
+    props: true
   }
 ]
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
+  hashbang: false
 })
 
 router.beforeEach((to, from, next) => {

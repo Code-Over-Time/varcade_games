@@ -18,18 +18,23 @@
                             <input 
                                 class="form-control sign-up-email-input"
                                 type="text" 
-                                placeholder="Enter your email address">
+                                placeholder="Enter your email address"
+                                v-model="signupEmail">
                             <div class="input-group-append">
-                                <button class="btn btn-custom" type="button">
-                                    <span>
-                                        Get Started >
-                                    </span>
-                                </button>
+                                    <button
+                                        class="btn btn-custom"
+                                        @click="redirectToRegister()" 
+                                        type="button" 
+                                        href="/login">
+                                            Get Started >
+                                    </button>
                             </div>
                         </div>
                     </form>
                     <div class="guest-entry">
-                        <a href="/games">Continue as a guest ></a>
+                        <router-link :to="{ path: '/games' }">
+                            Continue as a guest >
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -79,14 +84,77 @@
                 </div>
             </div>
 
+            <!-- FAQ -->
+            <div class="row info justify-content-center">
+                <div class="info-content row">
+                    <div class="info-text col-md-12">
+                        <h1 class="info-header">Frequently Asked Questions</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h1 class="info-header mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            What is Varcade Games?
+                                        </button>
+                                    </h1>
+                                </div>
 
-            <!-- <div class="login-box-container">
-                <wp-login-register 
-                    title="Welcome Back!" 
-                    subtitle="Ready to play some games?"
-                    showGuestButton="true"
-                />
-            </div> -->
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                            Varcade Games in an online gaming portal that hosts single player and multi player arcade style games. By arcade style, we mean the old arcade games where you put a coin in a slot and try to beat the game (or your friends!). 
+                                        </p>
+                                        <p>
+                                            HOWEVER - Varcade Games is not a real product, it is a part of the education platform 'Code Over Time'. It is a demo of a product, used as a teaching tool for aspiring programmers. Varcade Games was created as a real world project that intermediate programmers can use to prepare for entering the real world of software engineering.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            What is Code Over Time?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                            Code Over Time is an online simulation of an internship for software engineers and is available at <a href="https://codeovertime.com">CodeOverTime.com</a>.
+                                        </p>
+                                        <p>
+                                            Through working with Code Over Time, aspiring programmers get to experience what it is like to work on a real software project - ie. Varcade Games.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Can I actually log in and play?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                            Yes! This website is fully functional. You can log in and play 'Rock Paper Scissors Apocalypse'. It even supports online multi-player gameplay!.
+                                        </p>
+                                        <p>
+                                            Note: This is a dev server so it may be reset at any time and you could lose your account. Also you should avoid using a real email address or personal information to create an account.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -96,18 +164,26 @@
     import mplayScr from '../assets/images/multi_player.png'
     import titleScr from '../assets/images/title_screen.png'
 
-
     export default {
         name: 'game_index',
         data () {
             return {
                 gameplayScr,
                 mplayScr,
-                titleScr
+                titleScr,
+                signupEmail: ""
             }
         },
         methods: {
-
+            redirectToRegister(){
+                this.$router.push({ 
+                    path: '/login',
+                    query: {
+                        'createNew': 'true',
+                        'email': this.signupEmail
+                    }
+                });
+            },
         },
         computed: {
           
@@ -120,7 +196,7 @@
 
 </script>
 
-<style scoped>
+<style>
 
     .btn-custom {
         color: #fff;

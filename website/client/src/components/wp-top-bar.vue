@@ -18,7 +18,7 @@
                   <p>Logout</p>
               </b-nav-item>
               
-              <b-nav-item href="/" v-else>
+              <b-nav-item href="#" v-on:click="redirectToLogin()" v-else>
                   <p>Login</p>
               </b-nav-item>
 
@@ -59,6 +59,14 @@ export default {
   },
   methods: {
 
+    redirectToLogin: function () {
+      this.$router.push({ 
+          path: '/login',
+          query: {
+              'createNew': 'false'
+          }
+      });
+    },
     logout: function() {
       return this.$store.dispatch('logout')
     }

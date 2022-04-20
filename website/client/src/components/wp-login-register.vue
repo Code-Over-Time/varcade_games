@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%">
+  <div class="login-container">
     <div class="form-box-bg">
 
         <div class="container">
@@ -96,14 +96,7 @@
 
         </div>
     </div>
-    <div class="guest_button" v-if="showGuest">
-      <a  type="button"
-          href="/games"
-          class="btn btn-custom btn-block"
-          style="font-weight: bold;">
-        Enter as Guest
-      </a>
-    </div>
+    
   </div>
 </template>
 
@@ -115,7 +108,7 @@ import {login, register} from '../auth.js';
 
 export default {
   name: "wp-login-register",
-  props: ["title", "subtitle", "showGuestButton"],
+  props: ["title", "subtitle", "showRegister", "prepopulatedEmail"],
   data () {
     return {
       loginSelected: true,
@@ -161,9 +154,6 @@ export default {
         return "Register Now"
       }
       return "Please enter a valid Email address, username and password."
-    },
-    showGuest: function() {
-      return this.showGuestButton != null || this.showGuestButton === "true";
     },
   },
   methods: {
@@ -237,9 +227,16 @@ export default {
         console.log('Got user info, login complete.');
         this.$router.push({ name: 'Games' })
       });
+    },
+  },
+  beforeMount: function () {
+    this.loginSelected = this.showRegister == null || this.showRegister === "false";
+    if (this.prepopulatedEmail) {
+      this.remail = this.prepopulatedEmail;
+      this.lemail = this.prepopulatedEmail;
     }
-
   }
+
 }
 
 </script>
@@ -252,6 +249,10 @@ export default {
 
   p.error {
     font-weight: bold;
+  }
+
+  .login-container {
+    min-width: 500px;
   }
 
   .container {
