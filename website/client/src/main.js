@@ -64,6 +64,7 @@ Vue.component('wp-matchmaker', require('./components/wp-matchmaker.vue').default
 Vue.component('wp-player-stats', require('./components/wp-player-stats.vue').default)
 Vue.component('wp-game-leaderboard', require('./components/wp-game-leaderboard.vue').default)
 Vue.component('wp-active-game', require('./components/wp-active-game.vue').default)
+Vue.component('wp-faq', require('./components/wp-faq.vue').default)
 
 // ######################################################
 // #
