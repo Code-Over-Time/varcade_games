@@ -4,7 +4,9 @@
         </div>
         <div class="content">
             <div class="header-wrapper">
-                <h1 class="header-text">Varcade Games</h1>
+                <router-link to="/"  style="text-decoration: none;">
+                    <h1 class="header-text">Varcade Games</h1>
+                </router-link>
             </div>
             <div class="login-box-container">
                 <wp-login-register 
@@ -14,6 +16,12 @@
                     :prepopulatedEmail="this.$route.query.email"
                 />
             </div>
+            <div class="back-link">
+                <router-link to="/">
+                    &lt; Go Back
+                </router-link>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -43,6 +51,7 @@
 </script>
 
 <style scoped>
+
     .content{
       position: absolute;
       left: 50%; 
@@ -70,7 +79,12 @@
         justify-content: center;
         vertical-align: middle;
         height: 80%;
-        padding: 4rem;
+        padding: 4rem 4rem 1rem 4rem;
+    }
+
+    .back-link {
+        text-align: center;
+        font-size: 1.2rem;
     }
 
     @media only screen 
