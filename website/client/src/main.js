@@ -65,6 +65,8 @@ Vue.component('wp-player-stats', require('./components/wp-player-stats.vue').def
 Vue.component('wp-game-leaderboard', require('./components/wp-game-leaderboard.vue').default)
 Vue.component('wp-active-game', require('./components/wp-active-game.vue').default)
 Vue.component('wp-faq', require('./components/wp-faq.vue').default)
+Vue.component('wp-homepage-pitch', require('./components/wp-homepage-pitch.vue').default)
+Vue.component('wp-vcg-intro', require('./components/wp-vcg-intro.vue').default)
 
 // ######################################################
 // #

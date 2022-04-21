@@ -70,6 +70,14 @@
         justify-content: center;
         vertical-align: middle;
         height: 80%;
+        padding: 4rem;
+    }
+
+    @media only screen 
+    and (max-device-width : 768px) {
+        .login-box-container {
+            padding: 4rem 1rem;
+        }
     }
 
 </style>

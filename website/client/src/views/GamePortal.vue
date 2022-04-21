@@ -59,7 +59,7 @@
         margin-top: 2em;
         margin-bottom: 2em;
         max-width: 960px;
-        min-height: 100%;
+        min-height: 100vh;
     }
 
     @media screen and (max-width: 1024px) {
