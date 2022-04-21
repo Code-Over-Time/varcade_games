@@ -1,7 +1,6 @@
 <template>
     <div>
-         <div class="index-screen-image">
-        </div>
+        <div class="index-screen-image"></div>
         <div class="header-wrapper">
             <h1 class="header-text">Varcade Games</h1>
         </div>
@@ -15,17 +14,11 @@
 </template>
 
 <script>
-    import gameplayScr from '../assets/images/gameplay.png'
-    import mplayScr from '../assets/images/multi_player.png'
-    import titleScr from '../assets/images/title_screen.png'
 
     export default {
         name: 'game_index',
         data () {
             return {
-                gameplayScr,
-                mplayScr,
-                titleScr,
                 signupEmail: ""
             }
         },
@@ -90,7 +83,7 @@
         background: 
             linear-gradient(rgba(0, 0, 0, 0.5), 
             rgba(0, 0, 0, 0.7)),
-            black url(/img/bg.73674fee.jpg);
+            black url('~@/assets/images/bg.jpg');
         background-repeat: no-repeat;
         background-position: center;
         height: 100vh;

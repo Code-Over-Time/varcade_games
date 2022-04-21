@@ -61,9 +61,9 @@
 
     .index-full-screen-image {
         background: 
-            linear-gradient(rgba(0, 0, 0, 0.3), 
+            linear-gradient(rgba(0, 0, 0, 0.5), 
             rgba(0, 0, 0, 0.7)),
-            black url(/img/bg.73674fee.jpg);
+            black url('~@/assets/images/bg.jpg');
         background-repeat: no-repeat;
         background-position: center;
         height: 100vh;
