@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="index-screen-image">
+         <div class="index-screen-image">
         </div>
         <div class="header-wrapper">
             <h1 class="header-text">Varcade Games</h1>
