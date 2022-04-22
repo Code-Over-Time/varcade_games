@@ -98,7 +98,8 @@
 
     .info-img {
         text-align: center;
-        max-width: 100%;
+        max-width: 400px;
+        width: 100%;
     }
 
     .info-img-container {
@@ -125,7 +126,6 @@
 
         .info-img {
             margin-top: 2rem;
-            max-width: 80%;
         }
 
         .move-up {
@@ -143,13 +143,16 @@
             font-size: 2rem;
         }
 
+        .info-content {
+            padding: 70px 10%;
+        }
+
         .info-body {
             font-size: 1.2rem;
         }
 
         .info-img {
             margin-top: 2rem;
-            max-width: 100%;
         }
     }
 

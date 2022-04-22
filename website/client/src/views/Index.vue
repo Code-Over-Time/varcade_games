@@ -1,11 +1,18 @@
 <template>
     <div>
-        <div class="index-screen-image"></div>
-        <div class="header-wrapper">
+        <div class="index-screen-image" :style="headerImageHeightCSS"></div>
+        <div class="header-wrapper row">
             <h1 class="header-text">Varcade Games</h1>
+            <button
+                class="btn btn-custom header-button ml-auto" 
+                @click="redirectToLogin()" 
+                type="button">
+                    Sign In
+            </button>
         </div>
+        
         <div>
-            <wp-vcg-intro></wp-vcg-intro>
+            <wp-vcg-intro ref="headerContent"></wp-vcg-intro>
             <wp-homepage-pitch></wp-homepage-pitch>
             <wp-faq></wp-faq>
         </div>
@@ -19,26 +26,41 @@
         name: 'game_index',
         data () {
             return {
-                signupEmail: ""
+                signupEmail: '',
+                headerImageHeightCSS: 'height: 100vh'
             }
         },
         methods: {
-            redirectToRegister(){
+            redirectToLogin () {
                 this.$router.push({ 
                     path: '/login',
                     query: {
-                        'createNew': 'true',
-                        'email': this.signupEmail
+                        'createNew': 'false',
+                        'email': ''
                     }
                 });
             },
+            sizeHeaderImage () {
+                if (this.$refs.headerContent) {
+                    let totalHeight = this.$refs.headerContent.$el.offsetHeight + 
+                        this.$refs.headerContent.$el.offsetTop;
+                    this.headerImageHeightCSS = `height: ${totalHeight}px`;
+                    console.log(this.$refs.headerContent.$el);
+                }
+                else {
+                    this.headerImageHeightCSS = 'height: 100vh';
+                }
+            }
         },
-        computed: {
-          
+        mounted() {
+           this.$nextTick(() => {
+              window.addEventListener('onorientationchange', this.sizeHeaderImage);
+              window.addEventListener('resize', this.sizeHeaderImage);
+           });
+           this.sizeHeaderImage(); 
         },
-        mounted: function () {
-        },
-        created: function () {
+        created() {
+           
         }
     }
 
@@ -62,17 +84,22 @@
     }
 
     .header-wrapper {
-        position: relative;
-        max-width: 1920px;
         margin: 0 15%;
         padding-top: 20px;
-        width: 100%;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         height: 5rem;
         z-index: 10;
+    }
+
+    .header-button {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: normal;
+        max-height: 2.4rem;
+        margin-top: 3px;
     }
 
     a, a:hover, a:visited {
@@ -86,13 +113,12 @@
             black url('~@/assets/images/bg.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        height: 100vh;
         max-width: 100vw;
         position: absolute;
         z-index: -1; 
         background-size: cover;
         position: absolute;
-        top: -250px;
+        top: 0px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -108,14 +134,25 @@
 
     @media (max-device-width : 1940px) {
         .header-wrapper {
-            margin: 0 0;
-            text-align: center;
+            margin: 0 5%;
+        }
+    }
+
+    @media (max-device-width : 800px) {
+        .header-text {
+            font-size: 28px;
+            max-width: 10%;
         }
     }
 
     @media (max-device-width : 500px) {
+        .header-button {
+            font-size: 0.9rem;
+            max-height: 1.9rem;
+        }
+
         .header-text {
-            font-size: 26px;
+            font-size: 16px;
         }
     }
 

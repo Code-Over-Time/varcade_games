@@ -85,6 +85,7 @@
     .back-link {
         text-align: center;
         font-size: 1.2rem;
+        margin-bottom: 2rem;
     }
 
     @media only screen 

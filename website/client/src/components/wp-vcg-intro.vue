@@ -98,7 +98,7 @@
 
     .intro-text {
         max-width: 800px;
-        padding: 75px 0;
+        padding: 2rem 0;
     }
 
     .sign-up {
@@ -126,7 +126,19 @@
     }
 
     .btn-lrg-screen {
+        display: inline-block;
+    }
 
+    @media only screen 
+    and (max-device-height : 680px) {
+
+        .intro {
+            padding-top: 1rem;
+        }
+
+        .intro-text {
+            padding: 1rem;
+        }
     }
 
     @media only screen 
