@@ -17,6 +17,7 @@ class Game(models.Model):
     desc: models.CharField = models.CharField(max_length=180)
     client_url: models.CharField = models.CharField(max_length=160)
     cover_art: models.ImageField = models.ImageField(upload_to="images", null=True)
+    banner_art: models.ImageField = models.ImageField(upload_to="images", null=True)
     stats_config: models.FileField = models.FileField(
         upload_to="stats_config", null=True
     )

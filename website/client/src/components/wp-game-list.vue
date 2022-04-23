@@ -3,7 +3,7 @@
     <div class="game-list">
 
       <div id="active-games">
-        <p>{{ heading }}</p>
+        <h2 class="list-heading">{{ heading }}</h2>
         <hr/>
         <div v-if="activeGamesList != null">
 
@@ -13,21 +13,28 @@
                 <b-col cols="12">
                   <carousel :perPage="4">
                     
-                    <slide class="p-2" v-for="game in activeGamesList" :key="game.game_id">
+                    <slide v-for="game in activeGamesList" :key="game.game_id">
 
                       <div class="card game-card" style="width: 18rem;">
                         <div class="card-image">
-                          <img class="card-img-top" :src="game.cover_art" alt="Image - Game Cover Art">
-                          <div v-if="playable" class="image-overlay">
+                          
+                          <img 
+                            class="card-img-top" 
+                            :src="game.cover_art" 
+                            alt="Image - Game Cover Art"
+                            @click="selectionListener(game.game_id)">
+                          
+                          <!-- <div v-if="playable" class="image-overlay">
                             <router-link class="icon-link" :to="{ name: 'PlayGame', params: { gameId: game.game_id } }">
                               <font-awesome-icon class="image-overlay-button" :icon="icoPlay" size="4x" />      
                             </router-link>
-                          </div>
+                          </div> -->
+
                         </div>
-                        <div class="card-body">
+                        <!-- <div class="card-body">
                           <h5 class="card-title">{{ game.name }}</h5>
                           <p class="card-text">{{ game.desc }}</p>
-                        </div>
+                        </div> -->
                       </div>
                     </slide>
                   </carousel>
@@ -59,8 +66,8 @@
 
 <script>
 
-  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-  import { faPlay, faSpinner } from '@fortawesome/free-solid-svg-icons'
+  // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+  import { /**faPlay,**/ faSpinner } from '@fortawesome/free-solid-svg-icons'
 
   export default {
     name: "wp-game-list",
@@ -68,12 +75,13 @@
       heading: String, 
       filterField: String, 
       filterValue: String, 
-      playable: Boolean
+      playable: Boolean,
+      selectionListener: Function
     },
-    components: { FontAwesomeIcon },
+    components: {},
     data () {
       return {
-        icoPlay: faPlay,  
+        // icoPlay: faPlay,  
         loadingSpinner: faSpinner
       }
     },
@@ -100,6 +108,11 @@
 </script>
 
 <style scoped>
+
+  .list-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 
   .game-list {
     margin-bottom: 5rem;
