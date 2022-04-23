@@ -92,7 +92,9 @@
         }
 
         if (this.filterField){
-          return this.$store.state.games.filter(obj => obj[this.filterField] === this.filterValue);
+          return this.$store.state.games.filter(
+            obj => this.filterValue.split('|').indexOf(obj[this.filterField]) >= 0
+          );
         }
 
         return this.$store.state.games
