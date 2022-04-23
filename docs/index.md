@@ -144,7 +144,7 @@ I genuinely believe that the most effective way to get good at software engineer
 
 I also like music (particularly Metal) and Kettlebells.
 
-You won’t find me on social media or anything like that – it seems like they’re bad for you… but you can find me over on the [Code Over Time Discord server](https://discord.gg/kCpFSeEx).
+You won’t find me on social media or anything like that... it seems like social media is bad for you… but you can email me at kev(at)codeovertime.com, apply to join the private CodeOverTime Discord channel and get hands on support working with Varcade Games from me and the CodeOverTime community.
 
 Thanks,
 
