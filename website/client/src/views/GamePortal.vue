@@ -13,8 +13,12 @@
         <div class="feature-image" :style="featureBgCss"></div>
         <div class="root-container">
         
-            <div class="feature-container row align-items-end">
+            <div class="feature-container row align-items-end" :style="featureCss">
                 <div class="feature-info row">
+
+                    <div class="row">
+                        <h3 class="col feature-header">FEATURED GAME:</h3>
+                    </div>
 
                     <div class="row">
                         <h1 class="col feature-title">{{ featureTitle}}</h1>
@@ -84,7 +88,8 @@
             return {
                 featureTitle: "",
                 featureDesc: "",
-                featureBgCss: "background: black;"
+                featureBgCss: "background: black;",
+                featureCss: "display: none;"
             }
         },
         methods: {
@@ -98,9 +103,12 @@
         mounted: function () {
             runWithRetries(loadActiveGames, [this.$store, () => {
                 if (this.$store.state.games && this.$store.state.games.length > 0) {
-                    let selectedGame = this.$store.state.games[0]
+                    let selectedGame = this.$store.state.games.filter(
+                        obj => obj.game_id == 'exrps'
+                    )[0];
                     this.featureTitle = selectedGame.name;
                     this.featureDesc = selectedGame.desc;
+                    this.featureCss = "display: flex"
                     this.featureBgCss = `background-image: url("${selectedGame.banner_art}")`
                 }
             }]); 
@@ -158,6 +166,10 @@
 
     .feature-info {
         max-width: 25vw;
+    }
+
+    .feature-header {
+        color: #ff4848;
     }
 
     .feature-title {

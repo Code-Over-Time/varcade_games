@@ -16,7 +16,8 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import VueCarousel from 'vue-carousel'
+import Flicking from "@egjs/vue-flicking";
+// import "@egjs/vue-flicking/dist/flicking.css";
 
 // App imports come last or CSS will act funny
 import Index from './views/Index.vue'
@@ -34,8 +35,7 @@ import { refreshAuthToken, loadTokensFromLocalStorage } from './auth.js'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-
-Vue.use(VueCarousel)
+Vue.use(Flicking);
 
 // ######################################################
 // #

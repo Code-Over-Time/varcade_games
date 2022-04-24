@@ -8,39 +8,22 @@
         <div v-if="activeGamesList != null">
 
           <div v-if="activeGamesList.length > 0">
-            <b-container style="margin: 0; padding: 0;">
-              <b-row>
-                <b-col cols="12">
-                  <carousel :perPage="4">
-                    
-                    <slide v-for="game in activeGamesList" :key="game.game_id">
+            <div>
 
-                      <div class="card game-card" style="width: 18rem;">
-                        <div class="card-image">
-                          
-                          <img 
-                            class="card-img-top" 
-                            :src="game.cover_art" 
-                            alt="Image - Game Cover Art"
-                            @click="selectionListener(game.game_id)">
-                          
-                          <!-- <div v-if="playable" class="image-overlay">
-                            <router-link class="icon-link" :to="{ name: 'PlayGame', params: { gameId: game.game_id } }">
-                              <font-awesome-icon class="image-overlay-button" :icon="icoPlay" size="4x" />      
-                            </router-link>
-                          </div> -->
+              <Flicking :options="{ align: 'prev', circular: true, renderOnlyVisible: true  }">
+                <div v-for="game in activeGamesList" :key="game.game_id" style="margin-right:2rem;">
+                  <div 
+                      class="card-img" 
+                      :style="`background-image: url('${game.cover_art}')`" 
+                      alt="Image - Game Cover Art"
+                      draggable="false"
+                      @click="selectionListener(game.game_id)">
+                      
+                  </div>
+                </div>
+              </Flicking>
 
-                        </div>
-                        <!-- <div class="card-body">
-                          <h5 class="card-title">{{ game.name }}</h5>
-                          <p class="card-text">{{ game.desc }}</p>
-                        </div> -->
-                      </div>
-                    </slide>
-                  </carousel>
-                </b-col>
-              </b-row>
-            </b-container>
+            </div>
           </div>
 
           <div v-else class="empty-list">
@@ -66,8 +49,8 @@
 
 <script>
 
-  // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-  import { /**faPlay,**/ faSpinner } from '@fortawesome/free-solid-svg-icons'
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+  import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
   export default {
     name: "wp-game-list",
@@ -78,10 +61,11 @@
       playable: Boolean,
       selectionListener: Function
     },
-    components: {},
+    components: {
+      FontAwesomeIcon
+    },
     data () {
-      return {
-        // icoPlay: faPlay,  
+      return { 
         loadingSpinner: faSpinner
       }
     },
@@ -112,12 +96,19 @@
 <style scoped>
 
   .list-heading {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: bold;
   }
 
   .game-list {
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
+  }
+
+  .game-list-container {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
   }
 
   .loading-content {
@@ -133,6 +124,12 @@
     justify-content: center;
     text-align: center; 
   }
+
+  .game-list-slide {
+/*    flex-shrink: unset;
+    flex-basis: unset;
+    padding-right: 1rem;*/
+  }
   
   .game-card{
     background: transparent;
@@ -146,8 +143,12 @@
     margin-top: 0.5em;
   }
 
-  .card-image {
-    position: relative;
+  .card-img {
+    min-width: 400px;
+    min-height: 225px;
+    width: 100%;
+    height: 100%;
+    background-size: 400px 225px;
   }
 
   .icon-link {
