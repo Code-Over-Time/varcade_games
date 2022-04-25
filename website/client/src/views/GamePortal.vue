@@ -14,7 +14,7 @@
         <div class="root-container">
         
             <div class="feature-container row align-items-end" :style="featureCss">
-                <div class="feature-info row">
+                <div class="feature-info col">
 
                     <div class="row">
                         <h3 class="col feature-header">FEATURED GAME:</h3>
@@ -30,8 +30,8 @@
 
                     <div class="row">
                         <div class="col feature-button">
-                            <button class="btn btn-custom" type="button">
-                                    Play
+                            <button class="btn btn-custom" type="button" @click="redirectToGame(featureId)">
+                                    Play Now
                             </button>
                         </div>
                         <div class="col feature-button">
@@ -88,6 +88,7 @@
             return {
                 featureTitle: "",
                 featureDesc: "",
+                featureId: "",
                 featureBgCss: "background: black;",
                 featureCss: "display: none;"
             }
@@ -95,6 +96,9 @@
         methods: {
             selectionListener(gameId) {
                 console.log(gameId + ' selected');
+            },
+            redirectToGame (gameId) {
+                this.$router.push({ path: `/games/play/${gameId}` });
             }
         },
         computed: {
@@ -106,6 +110,7 @@
                     let selectedGame = this.$store.state.games.filter(
                         obj => obj.game_id == 'exrps'
                     )[0];
+                    this.featureId = selectedGame.game_id;
                     this.featureTitle = selectedGame.name;
                     this.featureDesc = selectedGame.desc;
                     this.featureCss = "display: flex"
@@ -160,30 +165,31 @@
     .feature-container {
         margin-bottom: 2rem;
         height: 75vh;
-        padding-bottom: 10rem;
+        padding-bottom: 10vh;
         margin-left: 0;
     }
 
     .feature-info {
         max-width: 25vw;
+        padding: 0;
     }
 
     .feature-header {
         color: #ff4848;
+        font-size: 2rem;
+        font-weight: bold;
     }
 
     .feature-title {
-        font-size: 2vw;
+        font-size: 5rem;
         font-weight: bold;
         text-shadow: 2px 2px black;
     }
 
     .feature-desc {
-        font-size: 1vw;
+        font-size: 2rem;
         text-shadow: 2px 2px black;
     }
-
-    
 
     .feature-image {
         background-repeat: no-repeat;
@@ -202,15 +208,95 @@
         overflow: hidden;
     }
 
-    @media screen and (max-width: 1024px) {
-        .root-container { 
-            max-width: 80%;
+    @media screen and (max-width: 1768px) {
+        .feature-info {
+            max-width: 30vw;
+        }
+
+        .feature-header {
+            font-size: 1.6rem;
+        }
+
+        .feature-title {
+            font-size: 4rem;
+        }
+
+        .feature-desc {
+            font-size: 1.6rem;
         }
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (orientation:landscape) {
+        .feature-image {
+            mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 90vh, transparent 100vh) !important;
+            height: 100vh !important;
+        }
+    }
+
+    @media  screen and (max-width: 1024px),
+            screen and (max-height: 1128px) {
+
         .root-container { 
-            max-width: 90%;
+        }
+
+        .feature-info {
+            max-width: 33vw;
+            padding: 0;
+        }
+
+        .feature-container {
+            margin-bottom: 0;
+        }
+
+        .feature-header {
+            font-size: 1rem;
+        }
+
+        .feature-title {
+            font-size: 2rem;
+        }
+
+        .feature-desc {
+            font-size: 1rem;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+
+        .fs-header {
+            margin: 0 1rem;
+            padding-top: 10px;
+        }
+
+        .root-container { 
+            max-width: 100%;
+            margin: 0 1rem 0 1rem;
+        }
+
+        .feature-info {
+            max-width: 55vw;
+        }
+
+        .feature-image {
+            mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 30vh, transparent 40vh);
+            height: 40vh;
+        }
+
+        .feature-container {
+            height: 30vh;
+            margin-bottom: 0;
+        }
+
+        .feature-header {
+            font-size: 0.8rem;
+        }
+
+        .feature-title {
+            font-size: 18px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
         }
     }
 

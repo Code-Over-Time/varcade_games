@@ -1,29 +1,16 @@
 <template>
 
-    <div>
-        <!-- Game canvas is injected into this element -->
-        <div class="game-container">
-            <div v-if="!gameLoaded">
-                <font-awesome-icon class="red-ico" :icon="loadingSpinner" spin size="4x"/>
-            </div>
-            <div v-show="gameLoaded" id="gameContainer" ref="gameContainer"></div>
+    <div class="game-root"> 
+        <div v-if="!gameLoaded" class="row align-items-center" style="width: 100vw; height: 100vh;">
+            <font-awesome-icon class="col red-ico" :icon="loadingSpinner" spin size="4x"/>
         </div>
-
-        <div v-if="selectedGame" class="game-desc">
-            <div class="row">
-                <div class="col-2">
-                    <img :src="selectedGame.cover_art" class="img-fluid" max-width="256" alt="Image - Game Cover Art">
-                </div>
-                <div class="col">
-                    <h2>{{ selectedGame.name }}</h2>
-                    <hr/>
-                    <p>
-                        {{ selectedGame.desc }}
-                    </p>
-                </div>
+        <div class="game-container row align-items-center justify-content-center">
+            <div class="col">
+                <!-- Game canvas is injected into this element -->
+                <div v-show="gameLoaded" id="gameContainer" ref="gameContainer"></div>
             </div>
         </div>
-
+    
         <wp-matchmaker :game-id="gameId"/>
 
     </div>
@@ -123,12 +110,29 @@
 
 </script>
 
-<style>
+<style scoped>
+
+    .red-ico {
+        color: #ff4848
+    }
+
+    /*#gameContainer {
+        margin: 0;
+    }*/
+
+    .game-root {
+        /*width: 100vw;
+        height: 100vh;
+        margin: auto;*/
+    }
 
     .game-container {
-        margin: 5em;
-        justify-content: center;
-        display: flex;
+        /*width: 960px;
+        height: 640px;
+        margin: 0;*/
+        /*width: 100vw;
+        height: 100vh;
+        display: flex;*/
     }
     
 </style>

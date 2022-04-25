@@ -1,25 +1,7 @@
 <template>
 
-    <div>
-        <wp-top-bar/>
-        <div class="root-container">
-            
-            <wp-active-game :selected-game="selectedGame"/>
-
-            <div class="row">
-            
-                <div class="col">
-                    <wp-player-stats :selected-game="selectedGame"/>  
-                </div>
-
-                <div class="col">
-                    <wp-game-leaderboard :game-id="gameId"/>
-                </div>
-            
-            </div>
-
-        </div>
-        <wp-footer/>
+    <div>    
+        <wp-active-game :selected-game="selectedGame"/>
     </div>
 
 </template>
@@ -43,33 +25,5 @@
 </script>
 
 <style>
-
-    .red-ico {
-        color: #ff4848
-    }
-    
-    .game-desc {
-        margin-bottom: 2em;
-    }
-
-    .info-box-bg {
-        background: #dbdbdb1f;
-        padding: 1em;
-        height: 20em;
-    }
-
-    .info-box-empty {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .info-box-layout {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
 
 </style>

@@ -5,7 +5,7 @@ module.exports = {
             headers: { 
                 "Access-Control-Allow-Origin": "*" 
             },
-            public: "varcade.local"
+            public: "192.168.1.113"
         }
     }
 }

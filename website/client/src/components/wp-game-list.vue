@@ -8,10 +8,17 @@
         <div v-if="activeGamesList != null">
 
           <div v-if="activeGamesList.length > 0">
-            <div>
-
-              <Flicking :options="{ align: 'prev', circular: true, renderOnlyVisible: true  }">
-                <div v-for="game in activeGamesList" :key="game.game_id" style="margin-right:2rem;">
+          
+              <Flicking :options="{ 
+                  align: 'prev', 
+                  circular: false, 
+                  bound: true, 
+                  renderOnlyVisible: true,
+                  moveType: ['freeScroll', { stopAtEdge: true }],
+                  renderOnlyVisible: true
+                }">
+                
+                <div v-for="game in activeGamesList" :key="game.game_id" class="game-div">
                   <div 
                       class="card-img" 
                       :style="`background-image: url('${game.cover_art}')`" 
@@ -23,7 +30,6 @@
                 </div>
               </Flicking>
 
-            </div>
           </div>
 
           <div v-else class="empty-list">
@@ -104,43 +110,11 @@
     margin-bottom: 6rem;
   }
 
-  .game-list-container {
-    padding: 0;
-    margin: 0;
-    max-width: 100%;
-    width: 100%;
-  }
-
   .loading-content {
     padding: 1em;
     display: flex;
     justify-content: center;
     text-align: center;
-  }
-
-  .loading-content {
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    text-align: center; 
-  }
-
-  .game-list-slide {
-/*    flex-shrink: unset;
-    flex-basis: unset;
-    padding-right: 1rem;*/
-  }
-  
-  .game-card{
-    background: transparent;
-    border: none;
-    padding-top: 0.5em;
-    margin: 0;
-  }
-
-  .card-body {
-    padding: 0;
-    margin-top: 0.5em;
   }
 
   .card-img {
@@ -149,33 +123,47 @@
     width: 100%;
     height: 100%;
     background-size: 400px 225px;
+
   }
 
-  .icon-link {
-    color: #ff4848;
+  .game-div {
+    margin-right: 1rem;
   }
 
-  .image-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background: rgba(0, 0, 0, 0.5);
+  @media screen and (max-width: 1768px) {
+    .card-img {
+      min-width: 240px;
+      min-height: 135px;
+      background-size: 240px 135px;
+    }
+
+    .game-list {
+      margin-bottom: 3rem;
+    }
+
+    .list-heading {
+      font-size: 1.5rem;
+    }
   }
 
-  .image-overlay-button {
-    margin: auto;
-    display: block;
-    height: 100%;
+  @media screen and (max-width: 500px) {
+    .card-img {
+      min-width: 167px;
+      min-height: 94px;
+      background-size: 167px 94px;
+    }
+
+    .game-div {
+      margin-right: 0.3rem;
+    }
+
+    .game-list {
+    }
+
+    .list-heading {
+      font-size: 1.2rem;
+    }
   }
 
-  .card:hover .image-overlay {
-    opacity: 1;
-  }
 
 </style>

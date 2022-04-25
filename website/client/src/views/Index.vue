@@ -146,6 +146,12 @@
     }
 
     @media (max-device-width : 500px) {
+        .btn-custom {
+            font-size: 12px;
+            line-height: 14px;
+            padding: 0.2rem 0.5rem;
+        }
+    
         .header-button {
             font-size: 0.9rem;
             max-height: 1.9rem;
