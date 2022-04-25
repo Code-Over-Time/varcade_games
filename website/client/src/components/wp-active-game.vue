@@ -4,15 +4,11 @@
         <div v-if="!gameLoaded" class="row align-items-center" style="width: 100vw; height: 100vh;">
             <font-awesome-icon class="col red-ico" :icon="loadingSpinner" spin size="4x"/>
         </div>
-        <div class="game-container row align-items-center justify-content-center">
-            <div class="col">
-                <!-- Game canvas is injected into this element -->
-                <div v-show="gameLoaded" id="gameContainer" ref="gameContainer"></div>
-            </div>
+        <div class="game-container">
+            <!-- Game canvas is injected into this element -->
+            <div v-show="gameLoaded" id="gameContainer" ref="gameContainer"></div>
         </div>
-    
         <wp-matchmaker :game-id="gameId"/>
-
     </div>
 
 </template>
@@ -112,27 +108,19 @@
 
 <style scoped>
 
-    .red-ico {
-        color: #ff4848
-    }
-
-    /*#gameContainer {
-        margin: 0;
-    }*/
-
     .game-root {
-        /*width: 100vw;
+        width: 100vw;
         height: 100vh;
-        margin: auto;*/
+        display: flex;
+        margin: 2rem 0;
+        justify-content: center;
     }
 
     .game-container {
-        /*width: 960px;
-        height: 640px;
-        margin: 0;*/
-        /*width: 100vw;
-        height: 100vh;
-        display: flex;*/
+        max-width: 960px;
+        max-height: 640px;
+        width: 100%;
+        height: 100%;
     }
     
 </style>

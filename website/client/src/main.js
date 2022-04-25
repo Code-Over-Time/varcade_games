@@ -15,9 +15,10 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './assets/css/main.css';
 
 import Flicking from "@egjs/vue-flicking";
-// import "@egjs/vue-flicking/dist/flicking.css";
+
 
 // App imports come last or CSS will act funny
 import Index from './views/Index.vue'
@@ -67,6 +68,7 @@ Vue.component('wp-active-game', require('./components/wp-active-game.vue').defau
 Vue.component('wp-faq', require('./components/wp-faq.vue').default)
 Vue.component('wp-homepage-pitch', require('./components/wp-homepage-pitch.vue').default)
 Vue.component('wp-vcg-intro', require('./components/wp-vcg-intro.vue').default)
+Vue.component('wp-featured-game', require('./components/wp-featured-game.vue').default)
 
 // ######################################################
 // #

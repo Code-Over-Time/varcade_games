@@ -1,0 +1,116 @@
+html {
+    background: #141414;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background: transparent;
+    color: white;
+    margin: 0;
+    margin-bottom: 6em; 
+}
+
+hr {
+    background: #ffffff24;
+}
+
+@font-face {
+  font-family: "neon-sign";
+  src: local("neon-sign"), url(../../fonts/DriveThruNf-6nj1.ttf) format("truetype");
+}
+
+.btn-custom {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    background-color: #ff4848;
+}
+
+.header-text {
+    font-size: 32px;
+    font-family: "neon-sign", Helvetica, Arial;
+    color: #ff4848;
+    text-shadow: 0 0 15px #f00
+}
+
+.header-wrapper {
+    margin: 0 15%;
+    padding-top: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5rem;
+    z-index: 10;
+}
+
+.header-button {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: normal;
+    max-height: 2.4rem;
+    margin-top: 3px;
+}
+
+.fs-header {
+    margin: 0 4rem;
+    padding-top: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5rem;
+    z-index: 10;
+}
+
+a, a:hover, a:visited {
+    color: #ff4848;
+}
+
+.red-ico {
+    color: #ff4848
+}
+
+@media  screen and (max-width: 1024px),
+        screen and (max-height: 1128px) {
+    .fs-header {
+        margin: 0 2rem;
+    }
+}
+   
+@media (max-device-width : 1940px) {
+    .header-wrapper {
+        margin: 0 5%;
+    }
+}
+
+@media (max-device-width : 800px) {
+    .header-text {
+        font-size: 28px;
+        max-width: 10%;
+    }
+}
+
+@media (max-device-width : 500px) {
+    .btn-custom {
+        font-size: 12px;
+        line-height: 14px;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .fs-header {
+        margin: 0 1rem;
+        padding-top: 10px;
+    }
+
+    .header-button {
+        font-size: 0.9rem;
+        max-height: 1.9rem;
+    }
+
+    .header-text {
+        font-size: 16px;
+    }
+}

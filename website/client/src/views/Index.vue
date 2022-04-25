@@ -66,45 +66,7 @@
 
 </script>
 
-<style>
-
-    .btn-custom {
-        color: #fff;
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 24px;
-        background-color: #ff4848;
-    }
-    
-    .header-text {
-        font-size: 32px;
-        font-family: "neon-sign", Helvetica, Arial;
-        color: #ff4848;
-        text-shadow: 0 0 15px #f00
-    }
-
-    .header-wrapper {
-        margin: 0 15%;
-        padding-top: 20px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 5rem;
-        z-index: 10;
-    }
-
-    .header-button {
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: normal;
-        max-height: 2.4rem;
-        margin-top: 3px;
-    }
-
-    a, a:hover, a:visited {
-        color: #ff4848;
-    }
+<style scoped>
 
     .index-screen-image {
         background: 
