@@ -9,14 +9,22 @@
 
             <div class="info-modal-content selected-image" :style="selectedBgCss">
                 <div class="selected-overview">
-                    <h1 class="selected-title">{{ selectedGameName }}</h1>
-                    <button class="btn btn-custom" 
-                            type="button" 
-                            @click="redirectToGame(selectedGame.game_id)">
-                        Play Now
-                    </button>
-                    <div>
-                        <h2 class="selected-desc">{{ selectedGameDesc }}</h2>
+                    <div class="row">
+                        <h1 class="col selected-title">{{ selectedGameName }}</h1>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-custom" 
+                                    type="button" 
+                                    @click="redirectToGame(selectedGame.game_id)">
+                                Play Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h2 class="col selected-desc">{{ selectedGameDesc }}</h2>
                     </div>
                 </div>
                 

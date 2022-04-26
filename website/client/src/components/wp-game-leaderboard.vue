@@ -35,9 +35,11 @@
                     </div>
                 </div>
             </div>
-            <div v-else>
-                <p>Loading Leaderboard...</p>
-                <font-awesome-icon class="red-ico" :icon="loadingSpinner" spin size="4x"/>
+            <div v-else class="row">
+                <div class="col lb-loading">
+                    <p>Loading Leaderboard...</p>
+                    <font-awesome-icon class="red-ico" :icon="loadingSpinner" spin size="4x"/>
+                </div>
             </div>
         </div>   
 
@@ -112,6 +114,11 @@
     .lb-container {
         overflow-x: hidden;
         overflow-y: auto;
+    }
+
+    .lb-loading {
+        text-align: center;
+        margin: 2rem;
     }
 
 </style>
