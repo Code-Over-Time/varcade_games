@@ -1,13 +1,6 @@
 <template>
 
     <div>
-            
-        <h2>
-            Your Stats
-        </h2>
-
-        <hr/>
-        
         <div class="info-box-bg" v-bind:class="{ 'info-box-empty': !statsLoaded || !statsRecorded }">
             <div v-if="playerGameStats">
                 <div v-if="statsRecorded">

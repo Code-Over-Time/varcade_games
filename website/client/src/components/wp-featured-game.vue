@@ -27,7 +27,7 @@
                     <div class="col feature-button">
                         <button class="btn btn-custom feature-btn" 
                                 type="button"
-                                @click="showGameInfoModal(featureId)">
+                                @click="infoListener(featureId)">
                             Info
                         </button>
                     </div>
@@ -41,7 +41,8 @@
     export default {
         name: 'featured-game',
         props: {
-            featuredGame: Object
+            featuredGame: Object,
+            infoListener: Function
         },
         data () {
             return {
@@ -69,10 +70,6 @@
         methods: {
             redirectToGame (gameId) {
                 this.$router.push({ path: `/games/play/${gameId}` });
-            },
-            showGameInfoModal(gameId) {
-                console.log(`Showing info for game-id: ${gameId}`);
-                this.$bvModal.show('game-info-modal');
             }
         }
     }

@@ -11,7 +11,7 @@
         </div>
 
         <div class="root-container">
-            <wp-featured-game :featuredGame="featuredGame"/>
+            <wp-featured-game :featuredGame="featuredGame" :infoListener="selectionListener"/>
             
             <wp-game-list 
                 heading="Active Games" 
@@ -46,13 +46,7 @@
             />
         </div>
         
-        <b-modal 
-            id="game-info-modal" 
-            hide-footer 
-            hide-header
-            content-class="game-info-content"
-            size="lg">
-        </b-modal>
+        <wp-game-info :selectedGame="selectedGame"/>
 
         <wp-footer/>
     </div>
@@ -65,19 +59,38 @@
         name: 'game_portal',
         data () {
             return {
-                featuredGame: null
+                featuredGame: null,
+                selectedGame: null
+            }
+        },
+        computed: {
+            selectedGameName () {
+                if (this.selectedGame) {
+                    return this.selectedGame.name;
+                }
+                return "";
+            },
+            selectedGameDesc () {
+                if (this.selectedGame) {
+                    return this.selectedGame.desc;
+                }
+                return "";
+            },
+            selectedBgCss () {
+                if (this.selectedGame) {
+                    return `background-image: url("${this.selectedGame.banner_art}")`
+                }
+                return "";
             }
         },
         methods: {
             selectionListener(gameId) {
-                console.log(gameId + ' selected');
+                this.selectedGame = this.$store.state.games.filter(
+                        obj => obj.game_id === gameId)[0];
+                this.$bvModal.show('game-info-modal');
             },
             redirectToGame (gameId) {
                 this.$router.push({ path: `/games/play/${gameId}` });
-            },
-            showGameInfoModal(gameId) {
-                console.log(`Showing info for game-id: ${gameId}`);
-                this.$bvModal.show('game-info-modal');
             },
             redirectToLogin () {
                 this.$router.push({ 
@@ -93,7 +106,7 @@
             runWithRetries(loadActiveGames, [this.$store, () => {
                 if (this.$store.state.games && this.$store.state.games.length > 0) {
                     this.featuredGame = this.$store.state.games.filter(
-                        obj => obj.game_id == 'exrps'
+                        obj => obj.game_id === 'exrps'
                     )[0];
                 }
             }]); 
@@ -127,10 +140,6 @@
             margin: 0 1rem 0 1rem;
         }
 
-    }
-
-    /deep/ .game-info-content {
-        background-color: #343a40;
     }
 
 </style>

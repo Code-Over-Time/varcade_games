@@ -15,5 +15,5 @@ class GameSerializer(serializers.HyperlinkedModelSerializer):
             "banner_art",
             "stats_config",
             "game_state",
-            "game_type"
+            "game_type",
         )

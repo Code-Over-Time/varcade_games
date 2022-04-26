@@ -1,23 +1,30 @@
 <template>
 
-    <div>    
-        <h2>
-            Leaderboard
-        </h2>
-        <hr/>
+    <div>
         <div class="info-box-bg lb-container"  
              v-bind:class="{ 'info-box-empty': !leaderboardLoaded || !leaderboardScoresRecorded }">
             <div v-if="leaderboard">
                 <div v-if="leaderboard.length > 0">
                     
-                    <div class="row lb-row lb-header">
+                    <!-- <div class="row lb-row lb-header">
                         <div class="col">Username</div>    
                         <div class="col">Wins</div>
-                    </div>
+                    </div> -->
 
                     <div class="row lb-row" v-for="(entry, index) in leaderboard" :key="entry.user_id">
-                        <div class="col">{{ index + 1 }}. {{ entry.username}}</div>    
-                        <div class="col">{{entry.score}}</div>
+
+                        <div class="col-md-2">
+                            <h1>{{ index + 1 }}</h1>
+                        </div>
+                        
+                        <div class="col-md-8"> 
+                            <h2>{{ entry.username}}</h2>
+                        </div>    
+                        
+                        <div class="col-md-2">
+                            <h2>{{entry.score}}</h2>
+                        </div>
+
                     </div>
                 
                 </div>
@@ -91,10 +98,10 @@
 <style>
 
     .lb-row {
-        font-weight: bold;
-        border-bottom: 1px solid #ff48484a;
-        padding-top: 1em;
-        padding-bottom: 1em;
+        padding: 1rem;
+        background-color: #808080cf;
+        margin: 1rem 1rem;
+        border-radius: 10px;
     }
 
     .lb-header {

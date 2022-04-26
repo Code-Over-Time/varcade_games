@@ -69,6 +69,7 @@ Vue.component('wp-faq', require('./components/wp-faq.vue').default)
 Vue.component('wp-homepage-pitch', require('./components/wp-homepage-pitch.vue').default)
 Vue.component('wp-vcg-intro', require('./components/wp-vcg-intro.vue').default)
 Vue.component('wp-featured-game', require('./components/wp-featured-game.vue').default)
+Vue.component('wp-game-info', require('./components/wp-game-info.vue').default)
 
 // ######################################################
 // #
