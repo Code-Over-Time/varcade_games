@@ -1,7 +1,7 @@
 // Client wide Configuration to be imported into scenes as needed
 
 const clientConfig = {
-  serverUrl: 'http://192.168.1.113:8000',
+  serverUrl: 'http://api.varcade.local:8000',
   matchmakerUrl: 'http://matchmaker.varcade.local:5050',
   isDevServer: true
 }

@@ -8,6 +8,7 @@ metadata:
     nginx.org/websocket-services: game-rps
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:

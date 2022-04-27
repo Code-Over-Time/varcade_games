@@ -1,7 +1,7 @@
 // Game wide Configuration to be imported into scenes as needed
 
 const gameConfig = {
-  baseURL: 'http://192.168.1.113:8090/',
+  baseURL: 'http://games.varcade.local:8090/',
   socketProtocol: 'ws'
 }
 

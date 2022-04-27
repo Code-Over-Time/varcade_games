@@ -11,8 +11,8 @@
     "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
-    "@egjs/flicking": "^4.0.0",
-    "@egjs/vue-flicking": "^4.0.0",
+    "@egjs/flicking": "4.0.0",
+    "@egjs/vue-flicking": "4.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.2",
