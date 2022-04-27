@@ -109,7 +109,6 @@
 <style scoped>
 
     .game-root {
-        width: 100vw;
         height: 100vh;
         display: flex;
         margin: 2rem 0;

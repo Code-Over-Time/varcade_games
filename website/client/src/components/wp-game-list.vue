@@ -15,7 +15,8 @@
                   bound: true, 
                   renderOnlyVisible: true,
                   moveType: ['freeScroll', { stopAtEdge: true }],
-                  renderOnlyVisible: true
+                  renderOnlyVisible: true,
+                  preventClickOnDrag: true
                 }">
                 
                 <div v-for="game in activeGamesList" :key="game.game_id" class="game-div">
@@ -23,7 +24,6 @@
                       class="card-img" 
                       :style="`background-image: url('${game.cover_art}')`" 
                       alt="Image - Game Cover Art"
-                      draggable="false"
                       @click="selectionListener(game.game_id)">
                       
                   </div>

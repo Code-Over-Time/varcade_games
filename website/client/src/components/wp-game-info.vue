@@ -7,7 +7,15 @@
             content-class="game-info-content"
             size="lg">
 
-            <div class="info-modal-content selected-image" :style="selectedBgCss">
+            <div class="info-modal-content">
+                <div class="selected-image" :style="selectedBgCss">
+                    <font-awesome-icon 
+                        class="info-close red-ico" 
+                        :icon="imgCloseButton" 
+                        size="2x"
+                        @click="closeModal"
+                    />
+                </div>
                 <div class="selected-overview">
                     <div class="row">
                         <h1 class="col selected-title">{{ selectedGameName }}</h1>
@@ -22,7 +30,7 @@
                             </button>
                         </div>
                     </div>
-
+                    <hr/>
                     <div class="row">
                         <h2 class="col selected-desc">{{ selectedGameDesc }}</h2>
                     </div>
@@ -48,14 +56,18 @@
 </template>
 
 <script>
-
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+    import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+    
     export default {
         name: 'game_portal',
         props: {
             selectedGame: Object
         },
+        components: {FontAwesomeIcon},
         data () {
             return {
+                imgCloseButton: faTimesCircle
             }
         },
         computed: {
@@ -79,7 +91,7 @@
             },
             selectedBgCss () {
                 if (this.selectedGame) {
-                    // return `background-image: url("${this.selectedGame.banner_art}")`
+                    return `background-image: url("${this.selectedGame.banner_art}")`
                 }
                 return "";
             }
@@ -88,6 +100,9 @@
             redirectToGame (gameId) {
                 this.$router.push({ path: `/games/play/${gameId}` });
             },
+            closeModal () {
+                this.$bvModal.hide('game-info-modal');
+            }
         }
     }
 
@@ -99,12 +114,18 @@
         background-color: #343a40;
     }
 
+    /deep/ .modal-body {
+        padding: 0;
+        padding-bottom: 2rem;
+    }
+
     .selected-image {
-        /*background-repeat: no-repeat;*/
-        /*mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 350vh, transparent 400vh);*/
-        /*width: 100%;*/
-        /*background-size: 100% auto;*/
-        /*overflow: hidden;*/
+        mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 350px, transparent 450px);
+        width: 100%;
+        height: 450px;
+        max-height: 450px;
+        background-size: 100%;
+        text-align: right;
     }
 
     .info-modal-content {
@@ -120,6 +141,7 @@
         font-size: 2rem;
         font-weight: bold;
         max-width: 50%;
+        text-shadow: 2px 2px 2px black;
     }
 
     .selected-desc {
@@ -129,7 +151,64 @@
     }
 
     .selected-overview {
-        padding: 4rem 2rem;
+        padding: 0 2rem;
+        margin-top: -120px;
+    }
+
+    .info-close {
+        margin: 1rem;
+    }
+
+    @media screen and (max-width: 991px) {
+        .selected-image {
+            mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 200px, transparent 300px);
+            height: 300px;
+            max-height: 300px;
+        }
+
+        .selected-title {
+            font-size: 2rem;
+            max-width: 100%;
+        }
+
+        .selected-desc {
+            font-size: 1rem;
+            font-weight: 400;
+            max-width: 100%;
+        }
+
+        .selected-overview {
+            padding: 0 2rem;
+            margin-top: -120px;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .selected-image {
+            mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 100px, transparent 200px);
+            height: 200px;
+            max-height: 200px;
+        }
+
+        .live-info {
+            margin-top: 1rem;
+            padding: 0 1rem;
+        }
+
+        .selected-title {
+            font-size: 2rem;
+            max-width: 80%;
+        }
+
+        .selected-desc {
+            font-size: 1rem;
+            font-weight: 400;
+            max-width: 100%;
+        }
+
+        .selected-overview {
+            padding: 0 1rem;
+        }
     }
 
 </style>
