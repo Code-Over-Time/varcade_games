@@ -157,9 +157,6 @@ const routes = [
     component: Index,
     meta: {
       title: 'Varcade Games',
-      meta: {
-        requiresAuth: false
-      },
       metaTags: [
         {
           name: 'description',
@@ -198,7 +195,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   console.log(`Navigating to ${to.path}`)
-  if (to.name === 'Login' && store.getters.loggedIn) { // already logged in, go straight to games
+  // already logged in, go straight to games
+  if ((to.name === 'Login' || to.name === 'Home') && store.getters.loggedIn) { 
     next({ name: 'Games' })
   } else {
     if (to.matched.some(record => record.meta.requiresAuth)) {

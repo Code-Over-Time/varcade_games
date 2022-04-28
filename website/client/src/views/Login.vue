@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="index-full-screen-image">
+        <wp-top-bar :showLoginOption="false"/>
         </div>
         <div class="content">
             <div class="header-wrapper">

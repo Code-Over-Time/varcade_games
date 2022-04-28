@@ -1,16 +1,7 @@
 <template>
     <div>
         <div class="index-screen-image" :style="headerImageHeightCSS"></div>
-        <div class="header-wrapper row">
-            <h1 class="header-text">Varcade Games</h1>
-            <button
-                class="btn btn-custom header-button ml-auto" 
-                @click="redirectToLogin()" 
-                type="button">
-                    Sign In
-            </button>
-        </div>
-        
+        <wp-top-bar/>
         <div>
             <wp-vcg-intro ref="headerContent"></wp-vcg-intro>
             <wp-homepage-pitch></wp-homepage-pitch>
@@ -45,7 +36,6 @@
                     let totalHeight = this.$refs.headerContent.$el.offsetHeight + 
                         this.$refs.headerContent.$el.offsetTop;
                     this.headerImageHeightCSS = `height: ${totalHeight}px`;
-                    console.log(this.$refs.headerContent.$el);
                 }
                 else {
                     this.headerImageHeightCSS = 'height: 100vh';

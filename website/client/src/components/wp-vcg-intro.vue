@@ -6,7 +6,7 @@
             <h2 class="intro-sub-header">
                 Play anywhere, with anyone.
             </h2>
-            <form class="sign-up">
+            <div class="sign-up">
                 <h3 class="intro-form-text">
                     Ready to play? You can sign up here to enjoy full access to multi-player gaming, or log in as a guest to try out the single player experience.
                 </h3>
@@ -15,13 +15,13 @@
                         class="form-control sign-up-email-input"
                         type="text" 
                         placeholder="Enter your email address"
-                        v-model="signupEmail">
+                        v-model="signupEmail"
+                        @keyup.enter="redirectToRegister()">
                     <div class="input-group-append">
                             <button
                                 class="btn btn-custom  btn-lrg-screen"
                                 @click="redirectToRegister()" 
-                                type="button" 
-                                href="/login">
+                                type="button">
                                     Get Started >
                             </button>
                     </div>
@@ -29,13 +29,12 @@
                         <button
                             class="btn btn-custom btn-sml-screen"
                             @click="redirectToRegister()" 
-                            type="button" 
-                            href="/login">
+                            type="button">
                                 Get Started >
                         </button>
                     </div>
                 </div>
-            </form>
+            </div>
             <div class="guest-entry">
                 <router-link :to="{ path: '/games' }">
                     Continue as a guest >
