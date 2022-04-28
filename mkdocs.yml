@@ -96,6 +96,7 @@ nav:
           - Test Coverage: internship/tasks/junior/008_test_coverage.md
       - Mid:
           - Settings Menu: internship/tasks/mid/001_game_settings.md
+          - User Cleanup: internship/tasks/mid/002_user_cleanup.md
       - Senior:
           - Per Round Stats: internship/tasks/senior/000_per_round_stats.md
           - De-duplication: internship/tasks/senior/001_deduplication.md

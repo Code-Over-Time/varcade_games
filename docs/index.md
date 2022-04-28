@@ -41,7 +41,7 @@ Varcade Games is that real world product.
 
 It is an online gaming portal that allows game developers build and share their games while also taking advantage of built in functionality, such as a matchmaker and leaderboards.
 
-In order to build such a product you need to build and front end and a back end. 
+In order to build such a product you need to build a front end and a back end. 
 
 You need databases and realtime networking. 
 
@@ -95,7 +95,7 @@ With Code Over Time and Varcade Games you can build the skills you will need to 
 
 ### Experienced engineers
 
-Are you and experienced engineer that wants to try your hand at Python? Maybe you’ve never done web development and want to try out some of that tech.
+Are you an experienced engineer that wants to try your hand at Python? Maybe you’ve never done web development and want to try out some of that tech.
 
 With Code Over Time you’ve got a real project to jump into and experience those things first hand.
 
@@ -144,7 +144,7 @@ I genuinely believe that the most effective way to get good at software engineer
 
 I also like music (particularly Metal) and Kettlebells.
 
-You won’t find me on social media or anything like that – it seems like they’re bad for you… but you can find me over on the [Code Over Time Discord server](https://discord.gg/kCpFSeEx).
+You won’t find me on social media or anything like that... it seems like social media is bad for you… but you can email me at kev(at)codeovertime.com, apply to join the private CodeOverTime Discord channel and get hands on support working with Varcade Games from me and the CodeOverTime community.
 
 Thanks,
 
