@@ -101,7 +101,7 @@
                 return "";
             },
             isActiveGame () {
-                return this.selectedGame && this.selectedGame.game_type == "ACT";
+                return this.selectedGame && this.selectedGame.game_state === "ACT";
             }
         },
         methods: {
