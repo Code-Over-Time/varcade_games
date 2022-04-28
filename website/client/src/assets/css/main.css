@@ -69,6 +69,10 @@ a, a:hover, a:visited {
     color: #ff4848;
 }
 
+.naked-link {
+    text-decoration: none !important;
+}
+
 .red-ico {
     color: #ff4848
 }

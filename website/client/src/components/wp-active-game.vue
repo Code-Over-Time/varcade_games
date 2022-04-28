@@ -1,12 +1,12 @@
 <template>
 
     <div class="game-root"> 
-        <div v-if="!gameLoaded" class="row align-items-center" style="width: 100vw; height: 100vh;">
+        <div :class="gameLoaded ? 'loaded' : 'loading'" class="row align-items-center">
             <font-awesome-icon class="col red-ico" :icon="loadingSpinner" spin size="4x"/>
         </div>
         <div class="game-container">
             <!-- Game canvas is injected into this element -->
-            <div v-show="gameLoaded" id="gameContainer" ref="gameContainer"></div>
+            <div id="gameContainer" ref="gameContainer"></div>
         </div>
         <wp-matchmaker :game-id="gameId"/>
     </div>
@@ -107,6 +107,19 @@
 </script>
 
 <style scoped>
+
+    .loading {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+        top:  0;
+        left: 0;
+    }
+
+    .loaded {
+        display: none;
+    }
 
     .game-root {
         height: 100vh;

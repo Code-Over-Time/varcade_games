@@ -2,7 +2,9 @@
 
   <div :class="fullScreenHeader ? 'fs-header' : 'header-wrapper'" class="row">
       
-      <h1 class="header-text">Varcade Games</h1>
+      <router-link :to="'/'" class="naked-link">
+        <h1 class="header-text">Varcade Games</h1>
+      </router-link>     
       
       <div v-if="showLoginOption" class="ml-auto">
         <button
