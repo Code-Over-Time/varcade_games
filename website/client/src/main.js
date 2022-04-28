@@ -11,14 +11,13 @@ import axios from 'axios'
 
 import { clientConfig } from './config.js'
 
+import Flicking from "@egjs/vue-flicking";
+
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './assets/css/main.css';
-
-import Flicking from "@egjs/vue-flicking";
-
 
 // App imports come last or CSS will act funny
 import Index from './views/Index.vue'
@@ -34,8 +33,8 @@ import GamePlay from './views/GamePlay.vue'
 
 import { refreshAuthToken, loadTokensFromLocalStorage } from './auth.js'
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 Vue.use(Flicking);
 
 // ######################################################

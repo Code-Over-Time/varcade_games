@@ -10,7 +10,7 @@
 
 Every time a player selects `Single Player` mode in Rock Paper Scissors Apocalypse the 'lore' scene is loaded, which shows the back story.
 
-After reading this once players don't need to see it again, so once the skip it once (by hitting the fast forward button) we don't need to show it again.
+After reading this once players don't need to see it again, so once they skip it once (by hitting the fast forward button) we don't need to show it again.
 
 ## Deliverable
 

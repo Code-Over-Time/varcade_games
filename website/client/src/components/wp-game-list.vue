@@ -8,12 +8,11 @@
         <div v-if="activeGamesList != null">
 
           <div v-if="activeGamesList.length > 0">
-          
+            
               <Flicking :options="{ 
                   align: 'prev', 
                   circular: false, 
                   bound: true, 
-                  renderOnlyVisible: true,
                   moveType: ['freeScroll', { stopAtEdge: true }],
                   renderOnlyVisible: true,
                   preventClickOnDrag: true
@@ -57,7 +56,7 @@
 
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-
+  
   export default {
     name: "wp-game-list",
     props: {
@@ -100,6 +99,8 @@
 </script>
 
 <style scoped>
+
+  @import url("../../node_modules/@egjs/flicking/dist/flicking.css");
 
   .list-heading {
     font-size: 2rem;
