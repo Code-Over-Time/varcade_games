@@ -19,7 +19,7 @@ const config = {
   // Experimental fullscreen stuff
   scale: {
     mode: Phaser.Scale.FIT,
-    fullscreenTarget: 'gameContainer',
+    fullscreenTarget: 'gameContainer'
     // width: globalLayoutData.screenWidth,
     // height: globalLayoutData.screenHeight
   },
