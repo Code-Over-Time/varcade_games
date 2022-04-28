@@ -56,8 +56,7 @@ You should be able to copy and existing command and make the necessary change to
 
 ## Acceptance Criteria
 
-* You must be able to view all of your docker images with the command `make images`
-* You must be able to view all images for a specific service with a command like `make images a=game-portal` or `make images a=matchmaker`
+* You must be able to connect to a running docker container using the command `make shell a=<container name>`
 
 ***
 
