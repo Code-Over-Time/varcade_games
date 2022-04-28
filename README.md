@@ -6,6 +6,8 @@ Varcade Games is an online gaming portal with a built in matchmaker, leaderboard
 
 ![Screenshot of the Varcade Games game portal](assets/documentation/game_portal.png "Varcade Games Games")
 
+![Screenshot of a game info screen in Varcade Games](assets/documentation/game_info_window.png "Varcade Games Game Info")
+
 Developers can build an share single and multi player games, which can be published to the portal for players to play.
 
 ![Screenshot of an active game in Varcade Games](assets/documentation/rpsa_character_selection.png "Varcade Games Game")
@@ -80,7 +82,7 @@ In order to set up Varcade Games you will need:
 * Docker compose
 * Make
 
-# Building the applications  
+# Building the applications
 
 Clone the project then from your terminal, open the `build_tools` directory:
 

@@ -21,13 +21,18 @@
                         <h1 class="col selected-title">{{ selectedGameName }}</h1>
                     </div>
                     
-                    <div class="row">
+                    <div v-if="isActiveGame" class="row">
                         <div class="col">
                             <button class="btn btn-custom" 
                                     type="button" 
                                     @click="redirectToGame(selectedGame.game_id)">
                                 Play Now
                             </button>
+                        </div>
+                    </div>
+                    <div v-else class="row">
+                        <div class="col">
+                            <h3 class="info-coming-soon">COMING SOON!</h3>
                         </div>
                     </div>
                     <hr/>
@@ -94,6 +99,9 @@
                     return `background-image: url("${this.selectedGame.banner_art}")`
                 }
                 return "";
+            },
+            isActiveGame () {
+                return this.selectedGame && this.selectedGame.game_type == "ACT";
             }
         },
         methods: {
@@ -157,6 +165,13 @@
 
     .info-close {
         margin: 1rem;
+    }
+
+    .info-coming-soon {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #ff4848;
+        text-shadow: 2px 2px 5px black;
     }
 
     @media screen and (max-width: 991px) {
