@@ -179,6 +179,9 @@
         .btn-sml-screen {
             display: inline-block;
             margin-top: 0.5rem;
+            font-size: 18px;
+            line-height: 24px;
+            padding: 0.8rem;
         }
 
         .btn-lrg-screen {

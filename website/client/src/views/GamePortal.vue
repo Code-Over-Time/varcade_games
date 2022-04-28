@@ -15,32 +15,28 @@
             
             <wp-game-list 
                 heading="Active Games" 
-                filterField="game_state" 
-                filterValue="ACT" 
+                v-bind:filterFields="{game_state: 'ACT'}"
                 v-bind:playable="true"
                 v-bind:selectionListener="selectionListener"
             />
 
             <wp-game-list 
                 heading="Single-Player Games" 
-                filterField="game_type" 
-                filterValue="SPO|MSP" 
+                v-bind:filterFields="{game_type: 'SPO|MSP', game_state: 'ACT'}"
                 v-bind:playable="false"
                 v-bind:selectionListener="selectionListener"
             />
 
             <wp-game-list 
                 heading="Multi-player Games" 
-                filterField="game_type" 
-                filterValue="MPO|MSP" 
+                v-bind:filterFields="{game_type: 'MPO|MSP', game_state: 'ACT'}"
                 v-bind:playable="false"
                 v-bind:selectionListener="selectionListener"
             />
 
             <wp-game-list 
                 heading="Coming Soon" 
-                filterField="game_state" 
-                filterValue="CMS" 
+                v-bind:filterFields="{game_state: 'CMS'}"
                 v-bind:playable="false"
                 v-bind:selectionListener="selectionListener"
             />

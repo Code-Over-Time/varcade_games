@@ -61,8 +61,7 @@
     name: "wp-game-list",
     props: {
       heading: String, 
-      filterField: String, 
-      filterValue: String, 
+      filterFields: Object, 
       playable: Boolean,
       selectionListener: Function
     },
@@ -80,10 +79,14 @@
           return null
         }
 
-        if (this.filterField){
-          return this.$store.state.games.filter(
-            obj => this.filterValue.split('|').indexOf(obj[this.filterField]) >= 0
-          );
+        if (this.filterFields){
+          let filtered = this.$store.state.games; 
+          for (const [filterField, filterValues] of Object.entries(this.filterFields)) {
+            filtered = filtered.filter(
+              obj => filterValues.split('|').indexOf(obj[filterField]) >= 0
+            );
+          }
+          return filtered;
         }
 
         return this.$store.state.games
