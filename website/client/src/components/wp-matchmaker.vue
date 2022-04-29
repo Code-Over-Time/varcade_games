@@ -89,13 +89,11 @@
 
     import Matchmaker from '../matchmaker.js';
 
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
     import { faUserCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 
     export default {
         name: 'matchmaker-modal',
         props: ['gameId'],
-        components: {FontAwesomeIcon},
         data () {
             return {
                 matchmaker: null,

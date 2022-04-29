@@ -21,13 +21,15 @@
                         <button class="btn btn-custom feature-btn" 
                                 type="button" 
                                 @click="redirectToGame(featureId)">
-                            Play Now
+                            <font-awesome-icon :icon="imgPlayButton" class="btn-ico"/>
+                            Play
                         </button>
                     </div>
                     <div class="col feature-button">
                         <button class="btn btn-custom feature-btn" 
                                 type="button"
                                 @click="infoListener(featureId)">
+                            <font-awesome-icon :icon="imgInfoButton" class="btn-ico"/>
                             Info
                         </button>
                     </div>
@@ -38,6 +40,9 @@
 </template>
 
 <script>
+
+    import { faPlay, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
     export default {
         name: 'featured-game',
         props: {
@@ -50,7 +55,9 @@
                 featureDesc: "",
                 featureId: "",
                 featureBgCss: "background: black;",
-                featureCss: "display: none;"
+                featureCss: "display: none;",
+                imgPlayButton: faPlay,
+                imgInfoButton: faInfoCircle
             }
         },
         watch: {

@@ -14,7 +14,6 @@
 </template>
 
 <script>
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
     import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
     export default {
@@ -22,7 +21,6 @@
         props: {
             'selectedGame': Object
         },
-        components: {FontAwesomeIcon},
         data () {
             return {
                 loadingSpinner: faSpinner,

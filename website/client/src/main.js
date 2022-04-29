@@ -12,7 +12,7 @@ import axios from 'axios'
 import { clientConfig } from './config.js'
 
 import Flicking from "@egjs/vue-flicking";
-
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -33,15 +33,15 @@ import GamePlay from './views/GamePlay.vue'
 
 import { refreshAuthToken, loadTokensFromLocalStorage } from './auth.js'
 
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
-Vue.use(Flicking);
-
 // ######################################################
 // #
 // #                  VUES
 // #
 // ######################################################
+
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(Flicking);
 
 Vue.config.errorHandler = function (err, vm, info) {
   alert('Err: ' + err + ', info: ' + info)
@@ -54,6 +54,9 @@ window.onerror = function (message, source, lineno, colno, error) {
   console.error('Error! Message: ', message)
   console.error('Exception thrown', source, lineno)
 }
+
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.component('wp-info-board', require('./components/wp-info-board.vue').default)
 Vue.component('wp-game-list', require('./components/wp-game-list.vue').default)

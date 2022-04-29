@@ -33,7 +33,6 @@
 
     import axios from 'axios';
 
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
     import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
     import {runWithRetries} from '../utils.js';
@@ -43,7 +42,6 @@
         props: {
             'selectedGame': Object
         },
-        components: {FontAwesomeIcon},
         data () {
             return {
                 playerGameStats: null,

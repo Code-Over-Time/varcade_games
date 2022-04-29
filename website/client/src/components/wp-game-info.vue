@@ -26,7 +26,8 @@
                             <button class="btn btn-custom" 
                                     type="button" 
                                     @click="redirectToGame(selectedGame.game_id)">
-                                Play Now
+                                <font-awesome-icon :icon="imgPlayButton" class="btn-ico"/>
+                                Play
                             </button>
                         </div>
                     </div>
@@ -61,18 +62,17 @@
 </template>
 
 <script>
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-    import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+    import { faTimesCircle, faPlay } from '@fortawesome/free-solid-svg-icons'
     
     export default {
         name: 'game_portal',
         props: {
             selectedGame: Object
         },
-        components: {FontAwesomeIcon},
         data () {
             return {
-                imgCloseButton: faTimesCircle
+                imgCloseButton: faTimesCircle,
+                imgPlayButton: faPlay
             }
         },
         computed: {
