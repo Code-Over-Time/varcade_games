@@ -3,12 +3,15 @@
     <div>
         <div class="info-box-bg" v-bind:class="{ 'info-box-empty': !statsLoaded || !statsRecorded }">
             <div v-if="playerGameStats">
-                <div v-if="statsRecorded">
-                    <ul v-for="value in playerGameStats" :key="`${ value }`">
-                        <li>
-                            {{ value }}
-                        </li>
-                    </ul>
+                <div v-if="statsRecorded" class="stats-container">
+                    <div class="row" v-for="value in playerGameStats" :key="`${ value }`">
+                        <div class="col">
+                            <h3 class="stat-title">{{ value.statName }}</h3>
+                        </div>
+                        <div class="col ml-auto">
+                            <h2 class="stat-value">{{ value.statValue }}</h2>
+                        </div>
+                    </div>
                 </div>
                 <div v-else class="row info-box-layout justify-content-center">
                     <div class="col stats-empty">
@@ -82,9 +85,11 @@
                 if (statsFormat && statsData) {
                     statsFormat.stat_ordering.forEach(entry => {
                         if (statsData[entry]) {
-                            this.playerGameStats.push(`
-                                ${statsFormat.strings.en[entry]}: 
-                                ${statsData[entry]}`
+                            this.playerGameStats.push(
+                                {
+                                    statName: statsFormat.strings.en[entry],
+                                    statValue: statsData[entry]
+                                }
                             )
                         }
                     })
@@ -103,6 +108,21 @@
 </script>
 
 <style>
+
+    .stats-container {
+        padding: 1rem;
+    }
+
+    .stat-title {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: right;
+    }
 
     .stats-empty {
         margin: 1rem;

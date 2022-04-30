@@ -15,6 +15,9 @@
                             {{ index + 1 }}.
                         </div>
                         
+                        <div class="col lb-leader" :class="index == 0 ? '': 'lb-contender'">
+                            <font-awesome-icon class="leader-ico" :icon="imgFirstPlace" size="2x"/>
+                        </div>
                         <div class="col lb-name"> 
                             {{ entry.username}}
                         </div>    
@@ -50,7 +53,7 @@
 
     import axios from 'axios';
     
-    import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+    import { faSpinner, faTrophy } from '@fortawesome/free-solid-svg-icons'
 
     import {runWithRetries} from '../utils.js';
 
@@ -60,7 +63,8 @@
         data () {
             return {
                 leaderboard: null,
-                loadingSpinner: faSpinner
+                loadingSpinner: faSpinner,
+                imgFirstPlace: faTrophy
             }
         },
         computed: {
@@ -122,6 +126,17 @@
         margin: 2rem;
     }
 
+    .lb-leader {
+        flex-grow: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .lb-contender {
+        display: none;
+    }
+
     .lb-info {
         margin-left: 1rem;
     }
@@ -155,6 +170,10 @@
         justify-content: center;
     }
 
+    .leader-ico {
+            
+    }
+
     @media screen and (max-width: 500px) {
         .lb-row {
             padding: 0.5rem;
@@ -165,6 +184,13 @@
             margin-left: 0rem;
         }
 
+        .leader-ico {
+            font-size: 1em;
+        }
+
+        .lb-leader {
+            padding: 0;
+        }
     }
 
 </style>
