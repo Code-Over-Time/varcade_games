@@ -36,7 +36,7 @@ export default {
   props: [  ],
   computed: {
     userProfile: function () {
-      return this.$store.getters.userProfile;
+      return this.$store.getters.userProfile
     }
   },
   methods: {

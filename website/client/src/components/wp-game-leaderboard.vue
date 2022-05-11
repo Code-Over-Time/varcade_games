@@ -51,11 +51,11 @@
 
 <script>
 
-    import axios from 'axios';
+    import axios from 'axios'
     
     import { faSpinner, faTrophy } from '@fortawesome/free-solid-svg-icons'
 
-    import {runWithRetries} from '../utils.js';
+    import {runWithRetries} from '../utils.js'
 
     export default {
         name: 'game-leaderboard',
@@ -82,16 +82,16 @@
                     `${this.$store.state.serverUrl}/games/${this.$store.state.apiVersion}/leaderboard/${this.gameId}/`
 
                 axios.get(leaderboardUrl).then(resp => {
-                    this.leaderboard = resp.data;
+                    this.leaderboard = resp.data
                 }).catch((error) => {
                   onError(error)
-                });
+                })
             }
 
         },
         
         mounted: function () {
-            runWithRetries(this.loadLeaderboard, []);
+            runWithRetries(this.loadLeaderboard, [])
         }
     }
 

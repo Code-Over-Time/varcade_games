@@ -48,31 +48,31 @@
                         this.destroyListener = callback
                     }
 
-                    let gameScript = document.createElement('script');
-                    gameScript.setAttribute('src', this.selectedGame.client_url);
-                    gameScript.setAttribute('type', 'text/javascript');
+                    let gameScript = document.createElement('script')
+                    gameScript.setAttribute('src', this.selectedGame.client_url)
+                    gameScript.setAttribute('type', 'text/javascript')
                     gameScript.setAttribute('id', `_game_instance_${this.gameId}`)
-                    document.body.appendChild(gameScript);
+                    document.body.appendChild(gameScript)
 
                     this.loadingInterval = setInterval(() => {
-                        console.log("Game loading...");
+                        console.log("Game loading...")
                         const gameContainerElement = document.getElementById('gameContainer') 
                         this.gameLoaded = gameContainerElement != null && 
                             gameContainerElement.firstChild != null
                         if (this.gameLoaded) {
-                            clearInterval(this.loadingInterval);
-                            console.log("Game loaded.");
+                            clearInterval(this.loadingInterval)
+                            console.log("Game loaded.")
                             //uncomment to add glow - make this a per game setting?
                             //const ref = this.$refs['gameContainer']
                             //ref.style.boxShadow = '0px 0px 100px 5px #ff4848';
                         }
-                    }, 500);
+                    }, 500)
                 }
             },
 
             gameScriptLoaded: function() {
                 if (document.getElementById(`_game_instance_${this.gameId}`) != null) {
-                    return true;
+                    return true
                 }
                 return false
             },
@@ -88,17 +88,17 @@
                 this.destroyListener()
             }
 
-            var gameScript = document.getElementById(`_game_instance_${this.gameId}`);
+            var gameScript = document.getElementById(`_game_instance_${this.gameId}`)
             if (gameScript != null) {
-                document.body.removeChild(gameScript);
+                document.body.removeChild(gameScript)
                 console.log('Game unloaded.')
             }
             if (this.loadingInterval != null) {
-                clearInterval(this.loadingInterval);
+                clearInterval(this.loadingInterval)
             }
         },
         created: function () {
-            this.loadGameData();
+            this.loadGameData()
         }
     }
 

@@ -76,13 +76,13 @@
         }
 
         if (this.filterFields){
-          let filtered = this.$store.state.games; 
+          let filtered = this.$store.state.games 
           for (const [filterField, filterValues] of Object.entries(this.filterFields)) {
             filtered = filtered.filter(
               obj => filterValues.split('|').indexOf(obj[filterField]) >= 0
-            );
+            )
           }
-          return filtered;
+          return filtered
         }
 
         return this.$store.state.games

@@ -61,7 +61,7 @@
                         'createNew': 'true',
                         'email': this.signupEmail
                     }
-                });
+                })
             },
         }
     }

@@ -65,9 +65,9 @@
                 immediate: true,
                 handler(newValue) {
                     if (newValue) {
-                        this.featureId = newValue.game_id;
-                        this.featureTitle = newValue.name;
-                        this.featureDesc = newValue.desc;
+                        this.featureId = newValue.game_id
+                        this.featureTitle = newValue.name
+                        this.featureDesc = newValue.desc
                         this.featureCss = "display: flex"
                         this.featureBgCss = `background-image: url("${newValue.banner_art}")`
                     }
@@ -76,7 +76,7 @@
         },
         methods: {
             redirectToGame (gameId) {
-                this.$router.push({ path: `/games/play/${gameId}` });
+                this.$router.push({ path: `/games/play/${gameId}` })
             }
         }
     }

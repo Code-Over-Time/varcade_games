@@ -29,25 +29,25 @@
                         'createNew': 'false',
                         'email': ''
                     }
-                });
+                })
             },
             sizeHeaderImage () {
                 if (this.$refs.headerContent) {
                     let totalHeight = this.$refs.headerContent.$el.offsetHeight + 
-                        this.$refs.headerContent.$el.offsetTop;
-                    this.headerImageHeightCSS = `height: ${totalHeight}px`;
+                        this.$refs.headerContent.$el.offsetTop
+                    this.headerImageHeightCSS = `height: ${totalHeight}px`
                 }
                 else {
-                    this.headerImageHeightCSS = 'height: 100vh';
+                    this.headerImageHeightCSS = 'height: 100vh'
                 }
             }
         },
         mounted() {
            this.$nextTick(() => {
-              window.addEventListener('onorientationchange', this.sizeHeaderImage);
-              window.addEventListener('resize', this.sizeHeaderImage);
-           });
-           this.sizeHeaderImage(); 
+              window.addEventListener('onorientationchange', this.sizeHeaderImage)
+              window.addEventListener('resize', this.sizeHeaderImage)
+           })
+           this.sizeHeaderImage() 
         },
         created() {
            

@@ -87,7 +87,7 @@
 
 <script>
 
-    import Matchmaker from '../matchmaker.js';
+    import Matchmaker from '../matchmaker.js'
 
     import { faUserCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -114,20 +114,20 @@
             initMatchmaker: function () {
                 if (!this.matchmaker && !window.getMatchmaker) {
                     const matchmaker = new Matchmaker(this.gameId, this.$store, () => {
-                        this.$bvModal.show('matchmaker-modal');
-                        this.refreshGameList();
-                    });
+                        this.$bvModal.show('matchmaker-modal')
+                        this.refreshGameList()
+                    })
                     
-                    this.matchmaker = matchmaker;
+                    this.matchmaker = matchmaker
                     window.getMatchmaker = function() {
-                        return matchmaker;
+                        return matchmaker
                     }
                 }
             },
 
             /* Matchmaker Actions*/
             closeMatchmaker: function () {
-                this.$bvModal.hide('matchmaker-modal');
+                this.$bvModal.hide('matchmaker-modal')
             },
 
             notifyMatchmakerClosed: function () {
@@ -138,55 +138,55 @@
             refreshGameList: function () {
                 this.matchmaker.getOpenGameList(
                     response => {
-                        this.openGames = response;
+                        this.openGames = response
                     },
                     error => {
-                        console.log(`Game creation failed => ${error}`);
+                        console.log(`Game creation failed => ${error}`)
                     }
-                );
+                )
             },
             
             createGame: function () {
                 this.matchmaker.createGame(
                     response => {
-                        console.log(`Create game => ${response}`);
+                        console.log(`Create game => ${response}`)
                         this.matchmaker.notifyJoinedGame(
                             response.target_game_server,
                             this.$store.state.userProfile.user.id, 
                             response.token
-                        );
+                        )
                         // TODO:    This needs to go last or weird stuff happens
                         //          The main menu doesn't clear
-                        this.$bvModal.hide('matchmaker-modal');  
+                        this.$bvModal.hide('matchmaker-modal')  
                     }, 
                     error => {
-                        console.log('Game creation failed => ' + error);
+                        console.log('Game creation failed => ' + error)
                     }
-                );
+                )
             },
 
             joinGame: function (targetGameId) {
                 this.matchmaker.joinGame(targetGameId,
                     response => {
-                        console.log(`Join game => ${response}`);
+                        console.log(`Join game => ${response}`)
                         this.matchmaker.notifyJoinedGame(
                             response.target_game_server,
                             this.$store.state.userProfile.user.id, 
                             response.token
-                        );
+                        )
                         // TODO:    This needs to go last or weird stuff happens
                         //          The main menu doesn't clear
-                        this.$bvModal.hide('matchmaker-modal');
+                        this.$bvModal.hide('matchmaker-modal')
                     }, 
                     error => {
-                        console.log(`Game creation failed => ${error}`);
+                        console.log(`Game creation failed => ${error}`)
                     }
-                );
+                )
             }
 
         },
         created: function () {
-            this.initMatchmaker();
+            this.initMatchmaker()
         }
     }
 

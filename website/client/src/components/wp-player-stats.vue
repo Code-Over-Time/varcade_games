@@ -34,11 +34,11 @@
 
 <script>
 
-    import axios from 'axios';
+    import axios from 'axios'
 
     import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-    import {runWithRetries} from '../utils.js';
+    import {runWithRetries} from '../utils.js'
 
     export default {
         name: 'player-stats',
@@ -63,22 +63,22 @@
         methods: {
 
             loadPlayerGameStats: function (onError) {
-                const statsUrl = `${this.$store.state.serverUrl}/games/${this.$store.state.apiVersion}/stats/${this.selectedGame.game_id}/`;
+                const statsUrl = `${this.$store.state.serverUrl}/games/${this.$store.state.apiVersion}/stats/${this.selectedGame.game_id}/`
 
                 const customStatsUrl = this.selectedGame.stats_config
                 axios.get(customStatsUrl).then(resp => {
-                    const statsFormat = resp.data;
+                    const statsFormat = resp.data
                     
                     axios.get(statsUrl).then(resp => {
                         this.processCustomStats(statsFormat, resp.data)
                     }).catch((error) => {
                       onError(error)
-                    });
+                    })
 
                 }).catch((error) => {
                   console.error('Unable to download game specific stats format file.')
                   onError(error)
-                });
+                })
             },
             processCustomStats: function (statsFormat, statsData) {
                 this.playerGameStats = []
@@ -101,7 +101,7 @@
         },
 
         mounted: function () {
-            runWithRetries(this.loadPlayerGameStats, []);
+            runWithRetries(this.loadPlayerGameStats, [])
         }
     }
 

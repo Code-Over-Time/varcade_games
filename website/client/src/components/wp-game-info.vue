@@ -78,38 +78,38 @@
         computed: {
             selectedGameId () {
                 if (this.selectedGame) {
-                    return this.selectedGame.game_id;
+                    return this.selectedGame.game_id
                 }
-                return null;
+                return null
             },
             selectedGameName () {
                 if (this.selectedGame) {
-                    return this.selectedGame.name;
+                    return this.selectedGame.name
                 }
-                return "";
+                return ""
             },
             selectedGameDesc () {
                 if (this.selectedGame) {
-                    return this.selectedGame.desc;
+                    return this.selectedGame.desc
                 }
-                return "";
+                return ""
             },
             selectedBgCss () {
                 if (this.selectedGame) {
                     return `background-image: url("${this.selectedGame.banner_art}")`
                 }
-                return "";
+                return ""
             },
             isActiveGame () {
-                return this.selectedGame && this.selectedGame.game_state === "ACT";
+                return this.selectedGame && this.selectedGame.game_state === "ACT"
             }
         },
         methods: {
             redirectToGame (gameId) {
-                this.$router.push({ path: `/games/play/${gameId}` });
+                this.$router.push({ path: `/games/play/${gameId}` })
             },
             closeModal () {
-                this.$bvModal.hide('game-info-modal');
+                this.$bvModal.hide('game-info-modal')
             }
         }
     }

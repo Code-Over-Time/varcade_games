@@ -1,9 +1,3 @@
-// ######################################################
-// #
-// #                  IMPORTS
-// #
-// ######################################################
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
@@ -11,13 +5,13 @@ import axios from 'axios'
 
 import { clientConfig } from './config.js'
 
-import Flicking from "@egjs/vue-flicking";
+import Flicking from "@egjs/vue-flicking"
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import './assets/css/main.css';
+import './assets/css/main.css'
 
 // App imports come last or CSS will act funny
 import Index from './views/Index.vue'
@@ -25,13 +19,8 @@ import Login from './views/Login.vue'
 import GamePortal from './views/GamePortal.vue'
 import GamePlay from './views/GamePlay.vue'
 
-// ######################################################
-// #
-// #                  AXIOS Interceptors
-// #
-// ######################################################
-
 import { refreshAuthToken, loadTokensFromLocalStorage } from './auth.js'
+
 
 // ######################################################
 // #
@@ -39,9 +28,9 @@ import { refreshAuthToken, loadTokensFromLocalStorage } from './auth.js'
 // #
 // ######################################################
 
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
-Vue.use(Flicking);
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+Vue.use(Flicking)
 
 Vue.config.errorHandler = function (err, vm, info) {
   alert('Err: ' + err + ', info: ' + info)
@@ -56,7 +45,7 @@ window.onerror = function (message, source, lineno, colno, error) {
 }
 
 
-Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.component('wp-info-board', require('./components/wp-info-board.vue').default)
 Vue.component('wp-game-list', require('./components/wp-game-list.vue').default)

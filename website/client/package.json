@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve --port 8002 --mode development",
     "serve-prod": "vue-cli-service serve --port 8002 --mode production",
     "build": "vue-cli-service build --mode production",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint ./src --no-fix",
     "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
     "@vue/cli-service": "^4.5.17",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
@@ -46,18 +47,24 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "plugin:import/errors"
     ],
     "parserOptions": {
       "parser": "babel-eslint",
       "ecmaVersion": 6
     },
-    "rules": {}
+    "rules": {
+      "semi": [
+        1,
+        "never"
+      ],
+      "import/first": 2
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
   ]
-
 }

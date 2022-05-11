@@ -40,7 +40,7 @@
         },
         computed: {
             showRegister: function () {
-                return this.$route.query.createNew;
+                return this.$route.query.createNew
             }
         },
         mounted: function () {

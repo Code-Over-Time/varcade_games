@@ -102,9 +102,9 @@
 
 <script>
 
-import axios from 'axios';
+import axios from 'axios'
 
-import {login, register} from '../auth.js';
+import {login, register} from '../auth.js'
 
 export default {
   name: "wp-login-register",
@@ -159,11 +159,11 @@ export default {
   methods: {
 
     selectRegister: function() {
-      this.loginSelected = false;
+      this.loginSelected = false
     },
 
     selectLogin: function() {
-      this.loginSelected = true;
+      this.loginSelected = true
     },
 
     checkLoginCredentials: function() {
@@ -171,8 +171,8 @@ export default {
                           this.lemail !== '' && 
                           this.lpassword != null && 
                           this.lpassword !== '' &&
-                          this.validateEmail(this.lemail); 
-      return this.loginEnabled;
+                          this.validateEmail(this.lemail) 
+      return this.loginEnabled
     },
 
     checkRegisterCredentials: function() {
@@ -182,8 +182,8 @@ export default {
                               this.rpassword !== '' &&
                               this.rusername != null && 
                               this.rusername !== '' &&
-                              this.validateEmail(this.remail); 
-      return this.registerEnabled;
+                              this.validateEmail(this.remail) 
+      return this.registerEnabled
     },
 
     validateEmail: function (mail) {
@@ -194,19 +194,19 @@ export default {
     },
 
     login: function() {
-      if (!this.loginEnabled) return;
+      if (!this.loginEnabled) return
       this.showInvalidCredentialsError = false
       login(this.$store, this.lemail, this.lpassword, () => {
-        this.fetchUserProfile();
+        this.fetchUserProfile()
       }, () => {
         this.showInvalidCredentialsError = true
       })
     },
 
     register: function() {
-      if (!this.registerEnabled) return;
+      if (!this.registerEnabled) return
       register(this.$store, this.remail, this.rusername, this.rpassword, () => {  // On success
-          this.fetchUserProfile();
+          this.fetchUserProfile()
         }, (status, errorData) => { //onError
           if (status === 400 && errorData) {
             this.registrationFieldErrors = []
@@ -220,20 +220,20 @@ export default {
     },
 
     fetchUserProfile: function() {
-      const profileUrl = this.$store.state.serverUrl + '/profile_service/v1/profile/';
-      console.log('Loading user profile...');
+      const profileUrl = this.$store.state.serverUrl + '/profile_service/v1/profile/'
+      console.log('Loading user profile...')
       axios.get(profileUrl).then(resp => {
-        this.$store.commit('setUserProfile', resp.data);
-        console.log('Got user info, login complete.');
+        this.$store.commit('setUserProfile', resp.data)
+        console.log('Got user info, login complete.')
         this.$router.push({ name: 'Games' })
-      });
+      })
     },
   },
   beforeMount: function () {
-    this.loginSelected = this.showRegister == null || this.showRegister === "false";
+    this.loginSelected = this.showRegister == null || this.showRegister === "false"
     if (this.prepopulatedEmail) {
-      this.remail = this.prepopulatedEmail;
-      this.lemail = this.prepopulatedEmail;
+      this.remail = this.prepopulatedEmail
+      this.lemail = this.prepopulatedEmail
     }
   }
 

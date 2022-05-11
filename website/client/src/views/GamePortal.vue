@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import { runWithRetries, loadActiveGames } from '../utils.js';
+    import { runWithRetries, loadActiveGames } from '../utils.js'
 
     export default {
         name: 'game_portal',
@@ -54,31 +54,31 @@
         computed: {
             selectedGameName () {
                 if (this.selectedGame) {
-                    return this.selectedGame.name;
+                    return this.selectedGame.name
                 }
-                return "";
+                return ""
             },
             selectedGameDesc () {
                 if (this.selectedGame) {
-                    return this.selectedGame.desc;
+                    return this.selectedGame.desc
                 }
-                return "";
+                return ""
             },
             selectedBgCss () {
                 if (this.selectedGame) {
                     return `background-image: url("${this.selectedGame.banner_art}")`
                 }
-                return "";
+                return ""
             }
         },
         methods: {
             selectionListener(gameId) {
                 this.selectedGame = this.$store.state.games.filter(
-                        obj => obj.game_id === gameId)[0];
-                this.$bvModal.show('game-info-modal');
+                        obj => obj.game_id === gameId)[0]
+                this.$bvModal.show('game-info-modal')
             },
             redirectToGame (gameId) {
-                this.$router.push({ path: `/games/play/${gameId}` });
+                this.$router.push({ path: `/games/play/${gameId}` })
             },
             redirectToLogin () {
                 this.$router.push({ 
@@ -87,7 +87,7 @@
                         'createNew': 'false',
                         'email': ''
                     }
-                });
+                })
             }
         },
         mounted: function () {
@@ -95,9 +95,9 @@
                 if (this.$store.state.games && this.$store.state.games.length > 0) {
                     this.featuredGame = this.$store.state.games.filter(
                         obj => obj.game_id === 'exrps'
-                    )[0];
+                    )[0]
                 }
-            }]); 
+            }]) 
         }
     }
 

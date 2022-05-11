@@ -56,7 +56,7 @@ export default {
           query: {
               'createNew': 'false'
           }
-      });
+      })
     },
     logout: function() {
       return this.$store.dispatch('logout')
