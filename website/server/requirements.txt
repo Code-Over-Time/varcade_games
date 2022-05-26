@@ -7,7 +7,7 @@ djangorestframework==3.11.2
 django-cors-headers==3.5.0
 django-rest-auth[with_social]==0.9.5
 djangorestframework-api-key==2.0.0
-PyJWT==2.1.0
+PyJWT==2.4.0
 djangorestframework-simplejwt==4.8.0
 django-prometheus==2.1.0
 redis==3.5.2
