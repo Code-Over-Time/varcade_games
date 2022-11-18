@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:16-alpine
 
 RUN apk add bash
 RUN apk add git
