@@ -1,0 +1,9 @@
+[tool.black]
+exclude = '''
+/(
+  \.git
+  | env
+  | migrations
+)/
+
+'''
