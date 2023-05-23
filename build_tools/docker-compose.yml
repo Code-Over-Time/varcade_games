@@ -10,7 +10,7 @@ services:
     image: mysql:5.7
     platform: linux/x86_64
     ports:  
-      - "3306:3306"
+      - "3300:3300"
     environment:
        MYSQL_DATABASE: "${GAME_PORTAL_DB}"
        MYSQL_USER: ""
