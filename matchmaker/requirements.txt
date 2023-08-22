@@ -1,4 +1,4 @@
-Flask==2.1.1
+Flask==2.2.5
 redis==3.5.2
 flask-redis==0.4.0
 requests==2.24.0
