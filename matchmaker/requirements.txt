@@ -1,4 +1,4 @@
-Flask==2.1.1
+Flask==2.2.5
 redis==3.5.2
 flask-redis==0.4.0
 requests==2.31.0
@@ -6,4 +6,4 @@ flask-cors==3.0.9
 gunicorn==20.0.4
 prometheus-client==0.10.1
 PyJWT==2.4.0
-prometheus-flask-exporter==0.18.2
+prometheus-flask-exporter==0.20.3
