@@ -3,6 +3,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apk add bash
 RUN apk add vim
+RUN apk add -u gcc musl-dev
 
 RUN mkdir /stats_tracker
 WORKDIR /stats_tracker

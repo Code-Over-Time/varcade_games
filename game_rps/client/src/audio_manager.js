@@ -32,8 +32,8 @@ class AudioManager {
     if (!this.activeMusic) {
       return
     }
-    this.game.sound.remove(this.activeMusic)
     this.activeMusic.stop()
+    this.game.sound.remove(this.activeMusic)
     this.activeMusic = null
   }
 
