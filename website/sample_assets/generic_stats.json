@@ -1,0 +1,14 @@
+{
+    "stat_ordering": [
+        "games",
+        "wins",
+        "losses"
+    ],
+    "strings": {
+        "en": {
+            "games": "Games played",
+            "wins": "Games Won",
+            "losses": "Games Lost"
+        }
+    }
+}
