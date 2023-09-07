@@ -1,7 +1,7 @@
-FROM node:16-alpine
+FROM node:16-slim
 
-RUN apk add bash
-RUN apk add git
+RUN apt-get update
+RUN apt-get install git -y
 
 RUN mkdir /game_portal_client
 WORKDIR /game_portal_client
