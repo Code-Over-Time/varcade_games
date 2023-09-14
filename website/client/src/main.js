@@ -182,7 +182,10 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode: 'history',
-  hashbang: false
+  hashbang: false,
+  scrollBehavior: function () {
+    return { x: 0, y: 0 }
+  }
 })
 
 router.beforeEach((to, from, next) => {
