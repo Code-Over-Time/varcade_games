@@ -3,11 +3,11 @@ import VueRouter from 'vue-router'
 
 import { vcgStore } from './store.js'
 
-// App imports come last or CSS will act funny
 import Index from './views/Index.vue'
 import Login from './views/Login.vue'
 import GamePortal from './views/GamePortal.vue'
 import GamePlay from './views/GamePlay.vue'
+import Profile from './views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +45,11 @@ const routes = [
     path: '/games/play/:gameId',
     component: GamePlay,
     props: true
+  },
+  {
+    name: 'Profile',
+    path: '/profile',
+    component: Profile
   }
 ]
 
@@ -78,6 +83,5 @@ vcgRouter.beforeEach((to, from, next) => {
     }
   }
 })
-
 
 export { vcgRouter }

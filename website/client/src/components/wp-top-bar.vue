@@ -7,6 +7,7 @@
       </router-link>     
       
       <div v-if="showLoginOption" class="ml-auto">
+        
         <button
           v-if="!isLoggedIn"
           class="btn btn-custom header-button"
@@ -15,9 +16,15 @@
             Sign In
         </button>
 
-        <a v-else href="#" @click="logout()">
-            Log Out
-        </a>
+        <div v-else>
+            <router-link :to="'/profile'">
+                Profile
+            </router-link>
+             | 
+            <a href="#" @click="logout()">
+                Log Out
+            </a>
+        </div>
       </div>
       
   </div>
