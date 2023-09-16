@@ -12,7 +12,7 @@ class Profile(models.Model):
     user: models.OneToOneField = models.OneToOneField(
         settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE
     )
-    location: models.CharField = models.CharField(max_length=30, blank=True)
+    location: models.CharField = models.CharField(max_length=2, blank=True)
     level: models.IntegerField = models.IntegerField(default=1)
     xp: models.IntegerField = models.IntegerField(default=0)
 

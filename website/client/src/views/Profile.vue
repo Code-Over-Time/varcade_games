@@ -17,6 +17,9 @@
 
                 <h5>Display name</h5>
                 <p>{{ username  }}</p>
+                
+                <h5>Country</h5>
+                <country-select v-model="country" :country="country" topCountry="IE" />
 
             </div>
 
@@ -33,6 +36,7 @@
         name: 'profile',
         data () {
             return {
+                country: ""
             }
         },
         computed: {

@@ -8,9 +8,12 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './assets/css/main.css'
 
+import vueCountryRegionSelect from 'vue-country-region-select'
+
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Flicking)
+Vue.use(vueCountryRegionSelect)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

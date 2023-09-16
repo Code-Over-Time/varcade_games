@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
@@ -31,10 +31,27 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
 
 class ProfileServiceView(APIView):
-    http_method_names = ["get"]
+    http_method_names = ["get", "put"]
 
     def get(self, request, format=None):
         if request.user.is_anonymous:
-            return Response()
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         profile = Profile.objects.get(user=request.user)
-        return Response(ProfileSerializer(profile, context={"request": request}).data)
+        return Response(ProfileSerializer(
+            profile, context={"request": request}).data)
+
+    def put(self, request):
+        if request.user.is_anonymous:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        profile = Profile.objects.get(user=request.user)
+        serializer = ProfileSerializer(
+                instance=profile, 
+                data={"location": request.data.get("location")}, 
+                partial = True
+            )
+        if not serializer.is_valid():
+            return Response(serializer.errors, 
+                            status=status.HTTP_400_BAD_REQUEST)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
