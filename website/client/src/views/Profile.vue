@@ -1,7 +1,7 @@
 <template>
 
     <div>
-       <wp-top-bar/> 
+       <wp-top-bar :fullScreenHeader="true"/> 
         
         <div class="row profile-settings">
             
@@ -17,10 +17,17 @@
 
                 <h5>Display name</h5>
                 <p>{{ username  }}</p>
-                
                 <h5>Country</h5>
                 <country-select v-model="country" :country="country" topCountry="IE" />
-
+                <hr>
+                <div>
+                    <button type="button"  
+                        class="btn btn-custom" 
+                        @click="saveProfile"
+                        title="Save changes to your profile">
+                            Save Changes
+                    </button>
+                </div>
             </div>
 
         </div>
@@ -32,18 +39,31 @@
 
 <script>
 
+    import axios from 'axios'
+    
     export default {
         name: 'profile',
         data () {
             return {
-                country: ""
+                country: this.$store.getters.userProfile.location
+
             }
         },
         computed: {
             username () {
                 return "my user name"
             }
-        }
+        },
+        methods: {
+            saveProfile () {
+                const profileUrl = this.$store.state.serverUrl + '/profile_service/v1/profile/'
+                console.log('Loading user profile...')
+                axios.put(profileUrl, {location: this.country}).then(resp => {
+                    this.$store.commit('setUserProfile', resp.data)
+                    console.log('Update user profile.')
+                })
+            }
+        }   
     }
 
 </script>
