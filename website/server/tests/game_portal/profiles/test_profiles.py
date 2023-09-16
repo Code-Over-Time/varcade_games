@@ -30,16 +30,16 @@ class TestProfileModel:
 
 
 @pytest.mark.django_db
-class TestGameViewset:
+class TestProfileViewset:
     def setup_method(self):
         self.user = Account.objects.create_user("test_user", "user@test.com", "pass")
 
-    def test_game_viewset_get_user_profile_no_auth(self, api_client):
+    def test_profile_viewset_get_user_profile_no_auth(self, api_client):
         url = reverse("profile_service")
         response = api_client.get(url)
-        assert response.status_code == 200
+        assert response.status_code == 401 
 
-    def test_game_viewset_get_user_profile(self, api_client):
+    def test_profile_viewset_get_user_profile(self, api_client):
         factory = APIRequestFactory()
         view = ProfileServiceView.as_view()
 
@@ -48,3 +48,35 @@ class TestGameViewset:
         response = view(request)
 
         assert response.status_code == 200
+
+    def test_profile_viewset_update_profile(self, api_client):
+        factory = APIRequestFactory()
+        view = ProfileServiceView.as_view()
+
+        request = factory.put(reverse("profile_service"), {"location": "XX"})
+        force_authenticate(request, user=self.user)
+        response = view(request)
+
+        assert response.status_code == 200
+        profile = Profile.objects.get(user_id=self.user.id)
+        assert profile.location == "XX"
+
+    def test_profile_viewset_update_profile_bad_data(self, api_client):
+        factory = APIRequestFactory()
+        view = ProfileServiceView.as_view()
+
+        request = factory.put(reverse("profile_service"), {"location": "XXX"})
+        force_authenticate(request, user=self.user)
+        response = view(request)
+
+        assert response.status_code == 400
+        profile = Profile.objects.get(user_id=self.user.id)
+        assert profile.location == ""
+
+    def test_profile_viewset_update_profile_no_auth(self, api_client):
+        factory = APIRequestFactory()
+        view = ProfileServiceView.as_view()
+        request = factory.put(reverse("profile_service"), {"location": "XXX"})
+        response = view(request)
+        assert response.status_code == 401
+
