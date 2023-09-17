@@ -45,14 +45,11 @@
         name: 'profile',
         data () {
             return {
-                country: this.$store.getters.userProfile.location
-
+                country: this.$store.getters.userProfile.location,
+                username: this.$store.getters.userProfile.user.username
             }
         },
         computed: {
-            username () {
-                return "my user name"
-            }
         },
         methods: {
             saveProfile () {
