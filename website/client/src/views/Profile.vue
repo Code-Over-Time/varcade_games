@@ -6,28 +6,13 @@
         <div class="row profile-settings">
             
             <div class="col-3 settings-container settings-menu">
-                <h5>Profile Information</h5>
-                <h5>Security</h5>
+                <a href="#"><h5>Profile Information</h5></a>
+                <a href="#"><h5>Security</h5></a>
             </div>
 
             <div class="col-9 settings-container settings-display">
-
-                <h4>Profile Information</h4>
-                <hr>
-
-                <h5>Display name</h5>
-                <p>{{ username  }}</p>
-                <h5>Country</h5>
-                <country-select v-model="country" :country="country" topCountry="IE" />
-                <hr>
-                <div>
-                    <button type="button"  
-                        class="btn btn-custom" 
-                        @click="saveProfile"
-                        title="Save changes to your profile">
-                            Save Changes
-                    </button>
-                </div>
+                <wp-user-info v-if="currentPanel === 'userInfo'"></wp-user-info>
+                <wp-security v-if="currentPanel === 'security'"></wp-security>
             </div>
 
         </div>
@@ -39,27 +24,16 @@
 
 <script>
 
-    import axios from 'axios'
-    
     export default {
         name: 'profile',
         data () {
             return {
-                country: this.$store.getters.userProfile.location,
-                username: this.$store.getters.userProfile.user.username
+                currentPanel: "security"
             }
         },
         computed: {
         },
         methods: {
-            saveProfile () {
-                const profileUrl = this.$store.state.serverUrl + '/profile_service/v1/profile/'
-                console.log('Loading user profile...')
-                axios.put(profileUrl, {location: this.country}).then(resp => {
-                    this.$store.commit('setUserProfile', resp.data)
-                    console.log('Update user profile.')
-                })
-            }
         }   
     }
 
