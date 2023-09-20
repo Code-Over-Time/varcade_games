@@ -182,7 +182,13 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode: 'history',
-  hashbang: false
+  hashbang: false,
+  scrollBehavior: function (to, from, savedPosition) {
+    if (to.name === 'PlayGame') {
+      return { y: 0 }
+    }
+    return savedPosition
+  }
 })
 
 router.beforeEach((to, from, next) => {
